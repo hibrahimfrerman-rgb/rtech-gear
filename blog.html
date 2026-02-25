@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blog | R-Tech Gear</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/header.css" />
+  <link rel="stylesheet" href="assets/css/blog.css" />
+</head>
+<body>
+  <div id="siteHeader"></div>
+
+  <main class="container">
+    <!-- BLOG LIST PAGE: HERO BANNER -->
+    <section class="blogBanner" id="blog-list-banner">
+      <div class="blogBannerOverlay"></div>
+      <div class="blogBannerContent">
+        <h1 class="blogBannerTitle">Blog</h1>
+        <div class="blogBannerCrumbs">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span>Blog</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="blogLayout" id="blog-list-layout">
+      <aside class="blogSidebar">
+        <!-- BLOG LIST: LEFT SIDEBAR FILTERS -->
+        <section class="blogWidget">
+          <h3 class="blogWidgetTitle">Categories</h3>
+          <ul class="blogCategoryList" id="blogCategories"></ul>
+        </section>
+        <section class="blogWidget">
+          <h3 class="blogWidgetTitle">Search</h3>
+          <form class="blogSearch" id="blogSearchForm">
+            <input id="blogSearchInput" type="search" placeholder="Enter your keyword" />
+            <button type="submit" aria-label="Search">Search</button>
+          </form>
+        </section>
+        <section class="blogWidget">
+          <h3 class="blogWidgetTitle">Recent Posts</h3>
+          <div class="recentList" id="blogRecent"></div>
+        </section>
+        <section class="blogWidget">
+          <h3 class="blogWidgetTitle">Archives</h3>
+          <ul class="blogArchiveList" id="blogArchives"></ul>
+        </section>
+        <section class="blogWidget">
+          <h3 class="blogWidgetTitle">Tags</h3>
+          <div class="blogTagCloud" id="blogTags"></div>
+        </section>
+      </aside>
+
+      <section id="blog-list-content">
+        <!-- BLOG LIST: POSTS GRID -->
+        <div class="blogListHead">
+          <h2 class="blogListTitle">Latest Posts</h2>
+          <div class="blogListMeta" id="blogListMeta"></div>
+        </div>
+        <div class="blogPostsGrid" id="blogPostsGrid"></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script src="assets/js/include.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/header.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/blog.js"></script>
+  <link rel="stylesheet" href="assets/css/first-pass.css" />
+  <script src="assets/js/first-pass.js"></script>
+</body>
+</html>

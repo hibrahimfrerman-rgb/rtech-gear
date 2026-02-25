@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Product - R-Tech Gear</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/header.css" />
+  <link rel="stylesheet" href="assets/css/first-pass.css" />
+  <link rel="stylesheet" href="assets/css/product-page.css" />
+</head>
+
+<body>
+  <div id="siteHeader"></div>
+
+  <main class="container" id="productPage">
+    <div class="crumbs">
+      <a href="index.html">Home</a>
+      <span class="crumbSep">/</span>
+      <a href="shop.html">Shop</a>
+      <span class="crumbSep">/</span>
+      <span id="crumbProductName">Product</span>
+    </div>
+
+    <section class="productTop">
+      <div class="productGrid">
+        <div class="productGallery">
+          <div class="productMedia" id="productMedia"></div>
+          <div class="thumbRow" id="thumbRow"></div>
+        </div>
+
+        <aside class="productInfo">
+          <div class="productKicker" id="productKicker">PRODUCT</div>
+          <h1 class="productTitle" id="productTitle">Loading product...</h1>
+
+          <div class="ratingRow">
+            <span class="ratingStars" id="ratingStars">4.8 *</span>
+            <span class="ratingMeta" id="ratingMeta">0 reviews</span>
+          </div>
+
+          <div class="priceRow">
+            <div class="priceNow" id="priceNow">KES 0</div>
+            <div class="priceWas" id="priceWas"></div>
+            <div class="priceOff" id="priceOff"></div>
+          </div>
+
+          <p class="muted" id="productDesc"></p>
+
+          <div class="optionBlock">
+            <div class="optionLabel">Quantity</div>
+            <div class="qtyInline">
+              <button class="qtyBtn" id="qtyMinus" type="button" aria-label="Decrease quantity">-</button>
+              <span class="qtyValue" id="qtyValue">1</span>
+              <button class="qtyBtn" id="qtyPlus" type="button" aria-label="Increase quantity">+</button>
+            </div>
+          </div>
+
+          <div class="productActions">
+            <button class="btn btnPrimary" id="addToCartBtn" type="button">Add to cart</button>
+            <button class="btn btnGhost" id="buyNowBtn" type="button">Buy now</button>
+            <button class="btn btnGhost" id="wishlistBtn" type="button">Save</button>
+          </div>
+
+          <div class="payRow">
+            <div class="payItem"><span class="payIcon"></span> Secure checkout</div>
+            <div class="payItem"><span class="payIcon"></span> Fast support</div>
+          </div>
+
+          <div class="productMetaList">
+            <div class="metaItem">
+              <span class="metaLabel">SKU:</span>
+              <span class="metaValue" id="skuValue">-</span>
+            </div>
+            <div class="metaItem">
+              <span class="metaLabel">Tags:</span>
+              <span class="metaValue" id="tagsValue">General</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="productTabs">
+        <div class="tabRow">
+          <button class="tab isActive" type="button" data-tab="tabDescription">Description</button>
+          <button class="tab" type="button" data-tab="tabAdditional">Additional Information</button>
+        </div>
+        <div class="tabBody">
+          <div class="tabPane" id="tabDescription">
+            <p class="muted" id="tabDescriptionText"></p>
+          </div>
+          <div class="tabPane" id="tabAdditional" hidden>
+            <p class="muted" id="tabAdditionalText"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="relatedTop">
+        <h2 class="sectionTitle">Related Products</h2>
+      </div>
+      <div class="grid" id="relatedGrid"></div>
+    </section>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <a class="whatsAppBubble" id="floatWhatsAppLink" href="#" target="_blank" rel="noopener" aria-label="WhatsApp support">
+    <span class="waIcon" aria-hidden="true"></span>
+  </a>
+
+  <div class="cartDrawer" id="cartDrawer" aria-hidden="true">
+    <div class="cartPanel" role="dialog" aria-label="Cart">
+      <div class="cartTop">
+        <div class="cartTitle">
+          <span class="cartIcon" aria-hidden="true"></span>
+          Shopping Cart
+        </div>
+        <button class="iconBtn" id="cartCloseBtn" type="button" aria-label="Close cart">x</button>
+      </div>
+
+      <div class="cartProgress">
+        <div class="cartProgressBar">
+          <span class="cartProgressFill" id="cartProgressFill"></span>
+          <span class="cartProgressCheck" id="cartProgressCheck" aria-hidden="true"></span>
+        </div>
+        <div class="cartProgressText" id="cartProgressText">Buy KES 0 more to get Free Delivery</div>
+      </div>
+
+      <div class="cartItems" id="cartItems"></div>
+
+      <div class="cartEmpty" id="cartEmpty">
+        <div class="cartEmptyArt"></div>
+        <div class="cartEmptyTitle">No products in the cart.</div>
+        <div class="muted small">Your cart is currently empty. Let us help you find the perfect item!</div>
+        <a class="btn btnGhost" href="shop.html">Continue Shopping</a>
+      </div>
+
+      <div class="cartBottom">
+        <div class="cartTotalRow">
+          <span class="muted">Subtotal</span>
+          <strong id="cartTotal">KES 0</strong>
+        </div>
+        <div class="cartActionsRow">
+          <a class="btn btnGhost w100" href="cart.html">View Cart</a>
+          <a class="btn btnPrimary w100" href="checkout.html">Checkout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wishlistDrawer" id="wishlistDrawer" aria-hidden="true">
+    <div class="wishlistPanel" role="dialog" aria-label="Wishlist">
+      <div class="cartTop">
+        <div class="cartTitle">
+          <span class="cartIcon" aria-hidden="true"></span>
+          Wishlist
+        </div>
+        <button class="iconBtn" id="wishlistCloseBtn" type="button" aria-label="Close wishlist">x</button>
+      </div>
+      <div class="cartItems" id="wishlistItems"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/include.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/header.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/product-page.js"></script>
+  <script src="assets/js/first-pass.js"></script>
+</body>
+</html>

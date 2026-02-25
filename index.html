@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>R-Tech Gear - Kenya-friendly tech</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/header.css" />
+</head>
+
+<body>
+
+  <!-- PARTIAL MOUNTS -->
+  <div id="siteHeader"></div>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero heroEcom" id="home-hero">
+      <div class="heroTop">
+        <button class="heroPill" type="button">Shop Now</button>
+        <div class="heroSearch">
+          <input type="search" placeholder="Enter your keyword" aria-label="Search products" />
+          <button class="heroSearchBtn" type="button" aria-label="Search">
+            <img class="icon-svg" src="assets/icons/icon-search.svg" alt="" aria-hidden="true" />
+          </button>
+        </div>
+        <div class="heroTrending">
+          <span class="heroTrendLabel">Search trending:</span>
+          <span>Headphone</span>
+          <span>Audio</span>
+          <span>Smartphone</span>
+          <span>Smartwatch</span>
+        </div>
+      </div>
+
+      <div class="heroRow">
+        <div class="heroLeft">
+          <div class="heroSlider" id="heroSlider">
+            <div class="heroSlide isActive" data-bg="assets/img/hero-1.jpg" data-pill="Kenya-friendly payments (M-Pesa, cards, bank transfer)">
+              <div class="heroOverlay">
+                <div class="heroKicker">KENYA-FIRST TECH</div>
+                <div class="heroTitle">Tech gear that fits real life in Kenya.</div>
+                <div class="heroDesc">Curated tech picks. Fast checkout. Fast support.</div>
+                <a class="heroCta" href="shop.html">Shop Now</a>
+              </div>
+            </div>
+            <div class="heroSlide" data-bg="assets/img/hero-2.jpg" data-pill="Quick checkout">
+              <div class="heroOverlay">
+                <div class="heroKicker">PAYMENTS</div>
+                <div class="heroTitle">Kenya-friendly payments</div>
+                <div class="heroDesc">M-Pesa first. More options coming.</div>
+                <a class="heroCta" href="shop.html">Learn More</a>
+              </div>
+            </div>
+            <div class="heroSlide" data-bg="assets/img/hero-3.jpg" data-pill="Fast WhatsApp support">
+              <div class="heroOverlay">
+                <div class="heroKicker">SUPPORT</div>
+                <div class="heroTitle">Fast support on WhatsApp</div>
+                <div class="heroDesc">Quick answers. Smooth checkout.</div>
+                <a class="heroCta" href="#" id="heroWhatsApp">Chat on WhatsApp</a>
+              </div>
+            </div>
+
+            <div class="heroPillText" id="heroPillText">Kenya-friendly payments (M-Pesa, cards, bank transfer)</div>
+
+            <div class="heroControls">
+              <button class="heroCtrlBtn" type="button" id="heroPrev" aria-label="Previous">&lsaquo;</button>
+              <button class="heroCtrlBtn" type="button" id="heroNext" aria-label="Next">&rsaquo;</button>
+              <button class="heroCtrlBtn" type="button" id="heroPause" aria-label="Pause">&#10074;&#10074;</button>
+            </div>
+            <div class="heroDots" id="heroDots"></div>
+          </div>
+        </div>
+
+        <div class="heroRight">
+          <a class="promoCard" href="shop.html" style="background-image:url('assets/img/promo-1.jpg')">
+            <div class="promoOverlay">
+              <div class="promoTag">NEW ARRIVALS</div>
+              <div class="promoName">Smart Skipping Ropes</div>
+              <div class="promoLink">Shop Now &rarr;</div>
+            </div>
+          </a>
+          <a class="promoCard" href="shop.html" style="background-image:url('assets/img/promo-2.jpg')">
+            <div class="promoOverlay">
+              <div class="promoTag">TRENDING</div>
+              <div class="promoName">Massage Guns</div>
+              <div class="promoLink">Shop Now &rarr;</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOME: CATEGORY ICON STRIP -->
+    <section class="categoryRow" id="home-categories" aria-label="Popular categories">
+      <div class="categoryItem"><div class="catIcon"></div><div class="catName">Audio</div></div>
+      <div class="categoryItem"><div class="catIcon"></div><div class="catName">Phones</div></div>
+      <div class="categoryItem"><div class="catIcon"></div><div class="catName">Gaming</div></div>
+      <div class="categoryItem"><div class="catIcon"></div><div class="catName">Cameras</div></div>
+      <div class="categoryItem"><div class="catIcon"></div><div class="catName">Wearables</div></div>
+      <div class="categoryItem"><div class="catIcon"></div><div class="catName">Smart Home</div></div>
+      <div class="categoryItem"><div class="catIcon"></div><div class="catName">Power</div></div>
+      <div class="categoryItem"><div class="catIcon"></div><div class="catName">Accessories</div></div>
+    </section>
+
+    <!-- BENEFITS STRIP (like "Free shipping Nairobi" etc.) -->
+    <!-- HOME: SERVICE POLICIES / BENEFITS -->
+    <section class="benefits" id="home-benefits">
+      <div class="benefit">
+        <div class="benefitIcon" data-icon="fast-delivery" aria-hidden="true"></div>
+        <div class="benefitTitle">Fast delivery</div>
+        <div class="benefitText muted small">Nairobi pickup + quick delivery options.</div>
+      </div>
+
+      <div class="benefit">
+        <div class="benefitIcon" data-icon="secure-payments" aria-hidden="true"></div>
+        <div class="benefitTitle">Secure payments</div>
+        <div class="benefitText muted small">M-Pesa, Cards, Bank transfer (DPO soon).</div>
+      </div>
+
+      <div class="benefit">
+        <div class="benefitIcon" data-icon="support-24" aria-hidden="true"></div>
+        <div class="benefitTitle">24/7 support</div>
+        <div class="benefitText muted small">Quick help on product, orders, and setup.</div>
+      </div>
+
+      <div class="benefit">
+        <div class="benefitIcon" data-icon="warranty" aria-hidden="true"></div>
+        <div class="benefitTitle">Warranty cover</div>
+        <div class="benefitText muted small">Protected purchases with clear warranty terms.</div>
+      </div>
+
+      <div class="benefit">
+        <div class="benefitIcon" data-icon="money-back" aria-hidden="true"></div>
+        <div class="benefitTitle">Money-back guarantee</div>
+        <div class="benefitText muted small">Simple return process on eligible items.</div>
+      </div>
+    </section>
+
+    <!-- HOME: FLASH SALE (AD + MOVING PRODUCTS) -->
+    <section class="section flashSaleSection" id="flashSaleSection">
+      <div class="sectionTop">
+        <h2 class="sectionTitle">Deals of the day</h2>
+        <div class="flashSaleControls">
+          <button class="iconBtn flashSaleBtn" id="flashSalePrev" type="button" aria-label="Previous">&#8249;</button>
+          <button class="iconBtn flashSaleBtn" id="flashSaleNext" type="button" aria-label="Next">&#8250;</button>
+        </div>
+      </div>
+      <div class="flashSaleLayout">
+        <a class="flashSaleAd" id="flashSaleAd" href="shop.html" style="background-image:url('assets/img/promo-1.jpg')">
+          <div class="flashSaleAdOverlay">
+            <div class="flashSaleAdTag">BLACK FRIDAY</div>
+            <div class="flashSaleAdTitle" id="flashSaleAdTitle">Flash Sale</div>
+          </div>
+        </a>
+        <div class="flashSaleTrackWrap">
+          <div class="flashSaleTrack" id="flashSaleTrack"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED -->
+    <!-- HOME: FEATURED PRODUCTS -->
+    <section class="section" id="home-featured-products">
+      <div class="sectionTop">
+        <h2 class="sectionTitle">Featured products</h2>
+        <a class="btn btnGhost" href="shop.html">View all</a>
+      </div>
+      <div class="grid" id="featuredGrid"></div>
+    </section>
+
+    <!-- TOP DEALS -->
+    <!-- HOME: DEALS OF THE WEEK -->
+    <section class="section" id="home-deals-of-week">
+      <div class="sectionTop">
+        <h2 class="sectionTitle">Deals of the week</h2>
+      </div>
+      <div class="scrollRow" id="dealsGrid"></div>
+    </section>
+
+    <!-- TRENDING -->
+    <!-- HOME: TRENDING SMARTPHONES -->
+    <section class="section" id="home-trending-smartphones">
+      <div class="sectionTop">
+        <h2 class="sectionTitle">Top smartphone trends</h2>
+        <a class="btn btnGhost" href="shop.html?category=phones">View all</a>
+      </div>
+      <div class="carousel" id="trendingCarousel">
+        <button class="carouselBtn prev" type="button" aria-label="Previous">&lsaquo;</button>
+        <div class="carouselTrack" id="trendingTrack"></div>
+        <button class="carouselBtn next" type="button" aria-label="Next">&rsaquo;</button>
+        <div class="carouselDots" id="trendingDots"></div>
+      </div>
+    </section>
+
+    <!-- AUDIO -->
+    <!-- HOME: AUDIO BLOCK -->
+    <section class="section splitSection" id="home-audio-block">
+      <div class="splitArt"></div>
+      <div class="splitContent">
+        <div class="sectionTop">
+          <h2 class="sectionTitle">Audio & sound</h2>
+        </div>
+        <div class="splitGrid" id="audioGrid"></div>
+      </div>
+    </section>
+
+    <!-- SMARTWATCH -->
+    <!-- HOME: SMARTWATCH BLOCK -->
+    <section class="section splitSection" id="home-smartwatch-block">
+      <div class="splitContent">
+        <div class="sectionTop">
+          <h2 class="sectionTitle">Smartwatch</h2>
+        </div>
+        <div class="splitGrid" id="smartwatchGrid"></div>
+      </div>
+      <div class="splitArt alt"></div>
+    </section>
+
+    <!-- REVIEWS -->
+    <!-- HOME: CUSTOMER REVIEWS -->
+    <section class="section reviewsSection" id="home-reviews">
+      <div class="sectionTop">
+        <h2 class="sectionTitle">What our customers say</h2>
+      </div>
+      <div class="grid reviewsGrid">
+        <div class="card reviewCard">
+          <div class="reviewAvatar"></div>
+          <div class="reviewName">Mercy A.</div>
+          <div class="reviewText muted small">Fast delivery and clean packaging. The quality is top tier.</div>
+        </div>
+        <div class="card reviewCard">
+          <div class="reviewAvatar"></div>
+          <div class="reviewName">Brian K.</div>
+          <div class="reviewText muted small">Excellent support on WhatsApp and quick checkout.</div>
+        </div>
+        <div class="card reviewCard">
+          <div class="reviewAvatar"></div>
+          <div class="reviewName">Faith M.</div>
+          <div class="reviewText muted small">Products arrived as described. Highly recommend.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <!-- HOME: LATEST NEWS -->
+    <section class="section" id="home-news">
+      <div class="sectionTop">
+        <h2 class="sectionTitle">From latest news</h2>
+        <a class="btn btnGhost" href="blog.html">Read all</a>
+      </div>
+      <div class="newsGrid">
+        <a class="newsCard" href="blog-single.html?slug=creator-starter-kit-2026">
+          <div class="newsThumb"></div>
+          <div class="newsContent">
+            <div class="newsTitle">Building a creator kit on a budget</div>
+            <div class="muted small">Top gear picks for phone creators in Kenya.</div>
+          </div>
+        </a>
+        <a class="newsCard" href="blog-single.html?slug=wireless-audio-buying-guide">
+          <div class="newsThumb"></div>
+          <div class="newsContent">
+            <div class="newsTitle">Why power banks matter in 2026</div>
+            <div class="muted small">Stay powered all day with reliable charging.</div>
+          </div>
+        </a>
+        <a class="newsCard" href="blog-single.html?slug=home-office-upgrades-that-help">
+          <div class="newsThumb"></div>
+          <div class="newsContent">
+            <div class="newsTitle">Smartwatch features to care about</div>
+            <div class="muted small">Health tracking and notifications that work.</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <!-- FLOATING WHATSAPP BUBBLE (support only, not a top CTA) -->
+  <a class="whatsAppBubble" id="floatWhatsAppLink" href="#" target="_blank" rel="noopener" aria-label="WhatsApp support">
+    <span class="waIcon" aria-hidden="true"></span>
+  </a>
+
+  <div class="newsletterModal" id="newsletterModal" aria-hidden="true">
+    <div class="newsletterPanel" role="dialog" aria-label="Newsletter signup">
+      <button class="iconBtn closeModalBtn" id="closeNewsletterBtn" type="button" aria-label="Close">x</button>
+      <div class="newsletterGrid">
+        <div class="newsletterArt"></div>
+        <div class="newsletterContent">
+          <div class="newsletterKicker">Sign up Newsletter</div>
+          <h3 class="newsletterTitle">Get 10% discount</h3>
+          <p class="muted">Sign up for exclusive drops, deals, and new arrivals.</p>
+          <div class="newsletterForm">
+            <input type="email" placeholder="Enter your email" aria-label="Email address" />
+            <button class="btn btnPrimary" type="button">Subscribe</button>
+          </div>
+          <label class="newsletterCheck">
+            <input type="checkbox" id="newsletterDontShow" />
+            Don't show this popup again
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART DRAWER -->
+  <div class="cartDrawer" id="cartDrawer" aria-hidden="true">
+    <div class="cartPanel" role="dialog" aria-label="Cart">
+      <div class="cartTop">
+        <div class="cartTitle">
+          <span class="cartIcon" aria-hidden="true"></span>
+          Shopping Cart
+        </div>
+        <button class="iconBtn" id="cartCloseBtn" type="button" aria-label="Close cart">x</button>
+      </div>
+
+      <div class="cartProgress">
+        <div class="cartProgressBar">
+          <span class="cartProgressFill" id="cartProgressFill"></span>
+          <span class="cartProgressCheck" id="cartProgressCheck" aria-hidden="true"></span>
+        </div>
+        <div class="cartProgressText" id="cartProgressText">Buy KES 0 more to get Free Delivery</div>
+      </div>
+
+      <div class="cartItems" id="cartItems"></div>
+
+      <div class="cartEmpty" id="cartEmpty">
+        <div class="cartEmptyArt"></div>
+        <div class="cartEmptyTitle">No products in the cart.</div>
+        <div class="muted small">Your cart is currently empty. Let us help you find the perfect item!</div>
+        <a class="btn btnGhost" href="shop.html">Continue Shopping</a>
+      </div>
+
+      <div class="cartBottom">
+        <div class="cartTotalRow">
+          <span class="muted">Subtotal</span>
+          <strong id="cartTotal">KES 0</strong>
+        </div>
+
+        <div class="cartActionsRow">
+          <a class="btn btnGhost w100" href="cart.html">View Cart</a>
+          <a class="btn btnPrimary w100" href="checkout.html">Checkout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WISHLIST DRAWER -->
+  <div class="wishlistDrawer" id="wishlistDrawer" aria-hidden="true">
+    <div class="wishlistPanel" role="dialog" aria-label="Wishlist">
+      <div class="cartTop">
+        <div class="cartTitle">
+          <span class="cartIcon" aria-hidden="true"></span>
+          Wishlist
+        </div>
+        <button class="iconBtn" id="wishlistCloseBtn" type="button" aria-label="Close wishlist">x</button>
+      </div>
+      <div class="cartItems" id="wishlistItems"></div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="assets/js/include.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/header.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/hero.js"></script>
+  <link rel="stylesheet" href="assets/css/first-pass.css" />
+  <script src="assets/js/first-pass.js"></script>
+</body>
+</html>

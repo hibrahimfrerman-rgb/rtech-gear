@@ -1,0 +1,52 @@
+/* product-page.css */
+.productTop .productMedia {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.qtyInline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 4px;
+}
+
+.qtyValue {
+  min-width: 28px;
+  text-align: center;
+  font-weight: 900;
+}
+
+.productMetaList {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.metaItem {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+
+.metaLabel {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.metaValue {
+  font-weight: 700;
+}
+
+.relatedTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.payRow .payItem {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.02), 0 10px 20px rgba(15, 23, 42, 0.04);
+}
+

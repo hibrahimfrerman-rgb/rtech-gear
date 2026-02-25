@@ -1,0 +1,197 @@
+:root{
+  --primary: var(--brand, #1f3a8a);
+  --icon-primary: #4f46e5;
+  --icon-hover: #7c3aed;
+  --text: var(--text, #0f172a);
+  --muted: var(--muted, #5b6b7c);
+  --border: var(--border, #e6ebf2);
+  --shadow: var(--shadow, 0 14px 30px rgba(20, 34, 66, 0.12));
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+}
+
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 180ms ease;
+}
+.site-header.is-scrolled{ box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08); }
+
+.header-utility{
+  background: linear-gradient(90deg, #1e3a8a 0%, #5b21b6 55%, #7c3aed 100%);
+  color: #fff;
+  font-size: 12px;
+  min-height: 34px;
+}
+.header-utility-inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 0;
+  font-weight: 600;
+}
+.utility-left,
+.utility-right{ display: flex; align-items: center; gap: 10px; }
+.utility-left{ color: #fff; }
+
+.phone-pill{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+}
+.utility-phone-icon{
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  background: #fff;
+  -webkit-mask: url("../icons/icon-phone.svg") center/contain no-repeat;
+          mask: url("../icons/icon-phone.svg") center/contain no-repeat;
+  animation: phonePulse 1.8s ease-in-out infinite;
+}
+@keyframes phonePulse{
+  0%,100%{ transform: scale(1); opacity: 1; }
+  50%{ transform: scale(1.15); opacity: 0.8; }
+}
+
+.header-top{ background: #fff; }
+.header-top-inner{
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.brand{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text);
+}
+.brand-logo{
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+.brand-text{ letter-spacing: 0.2px; }
+
+.nav-links{
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  font-weight: 600;
+}
+.nav-link{ color: var(--text); }
+.nav-link:hover{ color: var(--primary); }
+
+
+.header-icons{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.icon-btn{
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+  transition: transform 160ms ease, color 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+.icon-btn svg{ width: 24px; height: 24px; }
+.icon-svg{
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+.icon-btn .icon-svg{ width: 22px; height: 22px; }
+.icon-btn:hover{ transform: translateY(-1px); color: var(--primary); border-color: rgba(31,58,138,0.3); }
+
+.icon-glyph{
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: currentColor;
+}
+
+.icon-glyph-heart{
+  -webkit-mask: url("../icons/icon-heart.svg") center/contain no-repeat;
+          mask: url("../icons/icon-heart.svg") center/contain no-repeat;
+}
+
+.icon-glyph-cart{
+  -webkit-mask: url("../icons/icon-cart.svg") center/contain no-repeat;
+          mask: url("../icons/icon-cart.svg") center/contain no-repeat;
+}
+
+.icon-btn-heart,
+.icon-btn-cart{
+  background: transparent;
+  border-color: transparent;
+  color: #4f46e5;
+}
+
+.icon-btn-heart:hover,
+.icon-btn-cart:hover{
+  background: rgba(124, 58, 237, 0.10);
+  border-color: rgba(124, 58, 237, 0.22);
+  color: #7c3aed;
+}
+
+.badge{
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 10px;
+  display: grid;
+  place-items: center;
+  border: 2px solid #fff;
+}
+
+.price-pill{
+  background: var(--icon-primary);
+  color: #fff;
+  border-radius: var(--radius-pill);
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 13px;
+  min-width: 70px;
+  text-align: center;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.price-pill:hover{
+  background: var(--icon-hover);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 980px){
+  .header-top-inner{ grid-template-columns: auto auto; }
+  .nav-links{ justify-content: flex-start; flex-wrap: wrap; }
+}
+
+@media (max-width: 720px){
+  .header-top-inner{ grid-template-columns: 1fr; gap: 12px; }
+  .nav-links{ justify-content: flex-start; font-size: 14px; }
+  .header-icons{ justify-content: flex-start; }
+}

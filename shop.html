@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>R-Tech Gear - Shop</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/header.css" />
+</head>
+
+<body>
+
+  <div id="siteHeader"></div>
+
+  <main class="container">
+    <section class="section">
+      <div class="sectionTop">
+        <div>
+          <h1 class="sectionTitle">Shop all products</h1>
+          <p class="muted">Browse the latest gear and add to cart fast.</p>
+        </div>
+        <a class="btn btnGhost" href="checkout.html">Go to checkout</a>
+      </div>
+
+      <div class="grid" id="shopGrid"></div>
+    </section>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <a class="whatsAppBubble" id="floatWhatsAppLink" href="#" target="_blank" rel="noopener" aria-label="WhatsApp support">
+    <span class="waIcon" aria-hidden="true"></span>
+  </a>
+
+  <div class="cartDrawer" id="cartDrawer" aria-hidden="true">
+    <div class="cartPanel" role="dialog" aria-label="Cart">
+      <div class="cartTop">
+        <div class="cartTitle">
+          <span class="cartIcon" aria-hidden="true"></span>
+          Shopping Cart
+        </div>
+        <button class="iconBtn" id="cartCloseBtn" type="button" aria-label="Close cart">x</button>
+      </div>
+
+      <div class="cartProgress">
+        <div class="cartProgressBar">
+          <span class="cartProgressFill" id="cartProgressFill"></span>
+          <span class="cartProgressCheck" id="cartProgressCheck" aria-hidden="true"></span>
+        </div>
+        <div class="cartProgressText" id="cartProgressText">Buy KES 0 more to get Free Delivery</div>
+      </div>
+
+      <div class="cartItems" id="cartItems"></div>
+
+      <div class="cartEmpty" id="cartEmpty">
+        <div class="cartEmptyArt"></div>
+        <div class="cartEmptyTitle">No products in the cart.</div>
+        <div class="muted small">Your cart is currently empty. Let us help you find the perfect item!</div>
+        <a class="btn btnGhost" href="shop.html">Continue Shopping</a>
+      </div>
+
+      <div class="cartBottom">
+        <div class="cartTotalRow">
+          <span class="muted">Subtotal</span>
+          <strong id="cartTotal">KES 0</strong>
+        </div>
+
+        <div class="cartActionsRow">
+          <a class="btn btnGhost w100" href="cart.html">View Cart</a>
+          <a class="btn btnPrimary w100" href="checkout.html">Checkout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WISHLIST DRAWER -->
+  <div class="wishlistDrawer" id="wishlistDrawer" aria-hidden="true">
+    <div class="wishlistPanel" role="dialog" aria-label="Wishlist">
+      <div class="cartTop">
+        <div class="cartTitle">
+          <span class="cartIcon" aria-hidden="true"></span>
+          Wishlist
+        </div>
+        <button class="iconBtn" id="wishlistCloseBtn" type="button" aria-label="Close wishlist">x</button>
+      </div>
+      <div class="cartItems" id="wishlistItems"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/include.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/header.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/products.js"></script>
+  <link rel="stylesheet" href="assets/css/first-pass.css" />
+  <script src="assets/js/first-pass.js"></script>
+</body>
+</html>
+
+
+

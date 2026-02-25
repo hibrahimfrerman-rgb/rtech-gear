@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>R-Tech Gear - Track Your Order</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/header.css" />
+</head>
+
+<body>
+  <div id="siteHeader"></div>
+
+  <main class="container">
+    <section class="trackWrap">
+      <div class="trackHero">
+        <h1 class="trackTitle">Track Your Order</h1>
+        <p class="trackDesc">
+          Enter your Order ID and billing email to see your latest order status, estimated delivery stage, and payment details.
+        </p>
+        <div class="trackFlow" aria-hidden="true">
+          <span class="trackFlowIcon">1</span>
+          <span class="trackFlowLine"></span>
+          <span class="trackFlowIcon">2</span>
+          <span class="trackFlowLine"></span>
+          <span class="trackFlowIcon">3</span>
+          <span class="trackFlowLine"></span>
+          <span class="trackFlowIcon">4</span>
+        </div>
+      </div>
+
+      <div class="trackCard">
+        <form class="trackForm" id="trackForm" novalidate>
+          <label class="trackLabel" for="trackOrderId">Order ID</label>
+          <input class="trackInput" id="trackOrderId" name="orderId" type="text" placeholder="Example: RTG-1737429201111" required />
+          <div class="trackHint">You can find this on your order confirmation message/email.</div>
+
+          <label class="trackLabel" for="trackEmail">Billing email</label>
+          <input class="trackInput" id="trackEmail" name="email" type="email" placeholder="Email used during checkout" required />
+
+          <button class="btn btnPrimary trackBtn" type="submit" id="trackSubmitBtn">Track</button>
+        </form>
+
+        <div class="trackResult" id="trackResult">
+          <div class="trackResultHead">
+            <h2 class="trackResultTitle" id="trackResultTitle">Order found</h2>
+            <span class="trackBadge" id="trackBadge">Pending</span>
+          </div>
+          <div class="trackMeta" id="trackMeta"></div>
+          <div class="trackTimeline" id="trackTimeline"></div>
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+            <a class="btn btnGhost" href="shop.html">Continue shopping</a>
+            <a class="btn btnPrimary" id="trackSupportLink" href="#" target="_blank" rel="noopener">Need help?</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script src="assets/js/include.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    (function () {
+      const TRACK_STEPS = ["Confirmed", "Packed", "Shipped", "Delivered"];
+      const form = document.getElementById("trackForm");
+      const orderIdInput = document.getElementById("trackOrderId");
+      const emailInput = document.getElementById("trackEmail");
+      const resultEl = document.getElementById("trackResult");
+      const resultTitle = document.getElementById("trackResultTitle");
+      const badgeEl = document.getElementById("trackBadge");
+      const metaEl = document.getElementById("trackMeta");
+      const timelineEl = document.getElementById("trackTimeline");
+      const supportEl = document.getElementById("trackSupportLink");
+
+      if (supportEl && window.makeWhatsAppLink) {
+        supportEl.href = window.makeWhatsAppLink("Hi R-Tech Gear, I need help tracking my order.");
+      }
+
+      function safeJson(raw) {
+        try { return JSON.parse(raw); } catch (_) { return null; }
+      }
+
+      function loadOrders() {
+        const list = [];
+        const one = safeJson(localStorage.getItem("rtech_last_order"));
+        if (one && one.reference) list.push(one);
+        const many = safeJson(localStorage.getItem("rtech_order_history"));
+        if (Array.isArray(many)) {
+          many.forEach((o) => {
+            if (o && o.reference) list.push(o);
+          });
+        }
+        return list;
+      }
+
+      function statusIndexFromOrder(order) {
+        const explicit = String(order.status || "").toLowerCase();
+        if (explicit.includes("deliver")) return 3;
+        if (explicit.includes("ship")) return 2;
+        if (explicit.includes("pack")) return 1;
+        if (explicit.includes("confirm") || explicit.includes("paid")) return 0;
+
+        const ts = Number((String(order.reference || "").split("-")[1]) || Date.now());
+        const ageMs = Date.now() - ts;
+        if (ageMs > 1000 * 60 * 60 * 24) return 3;
+        if (ageMs > 1000 * 60 * 60 * 4) return 2;
+        if (ageMs > 1000 * 60 * 30) return 1;
+        return 0;
+      }
+
+      function renderTimeline(activeIdx) {
+        timelineEl.innerHTML = TRACK_STEPS.map((step, i) => {
+          const cls = i < activeIdx ? "done" : (i === activeIdx ? "active" : "");
+          return (
+            "<div class='trackStep " + cls + "'>" +
+              "<div class='trackStepDot' aria-hidden='true'></div>" +
+              "<div class='trackStepLabel'>" + step + "</div>" +
+            "</div>"
+          );
+        }).join("");
+      }
+
+      function openResult(title, badge, badgeOk, metaLines, statusIdx) {
+        resultTitle.textContent = title;
+        badgeEl.textContent = badge;
+        badgeEl.classList.toggle("ok", !!badgeOk);
+        metaEl.innerHTML = metaLines.map((x) => "<div>" + x + "</div>").join("");
+        renderTimeline(statusIdx);
+        resultEl.classList.add("is-open");
+      }
+
+      function findOrder(reference, email) {
+        const ref = String(reference || "").trim().toLowerCase();
+        const em = String(email || "").trim().toLowerCase();
+        if (!ref || !em) return null;
+        const orders = loadOrders();
+        return orders.find((o) => {
+          const oRef = String(o.reference || "").trim().toLowerCase();
+          const oMail = String(o.email || "").trim().toLowerCase();
+          return oRef === ref && oMail === em;
+        }) || null;
+      }
+
+      function tryPaymentTokenFlow() {
+        const params = new URLSearchParams(window.location.search);
+        const token =
+          params.get("TransactionToken") ||
+          params.get("TransToken") ||
+          params.get("ID") ||
+          params.get("token") ||
+          "";
+        if (!token) return false;
+
+        orderIdInput.value = "";
+        emailInput.value = "";
+        openResult("Checking payment status...", "Verifying", false, ["Please wait while we verify your payment token."], 0);
+
+        fetch("/api/dpo-verify-token?token=" + encodeURIComponent(token))
+          .then((res) => res.json())
+          .then((json) => {
+            const result = json.result || "";
+            const status = json.status || "Pending";
+            const amount = json.amount || "";
+            const currency = json.currency || "";
+            const ref = json.companyRef || "N/A";
+            const ok = result === "000" || /success/i.test(String(json.explanation || ""));
+
+            const idx = ok ? 1 : 0;
+            openResult(
+              ok ? "Payment received" : "Payment pending",
+              ok ? "Paid" : "Pending",
+              ok,
+              [
+                "<strong>Reference:</strong> " + ref,
+                "<strong>Status:</strong> " + status,
+                amount && currency ? "<strong>Amount:</strong> " + currency + " " + amount : "<strong>Amount:</strong> N/A"
+              ],
+              idx
+            );
+          })
+          .catch(() => {
+            openResult("Verification failed", "Error", false, ["Could not verify payment token right now. Please contact support."], 0);
+          });
+        return true;
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const orderId = orderIdInput.value.trim();
+        const email = emailInput.value.trim();
+        if (!orderId || !email) {
+          openResult("Missing details", "Fix fields", false, ["Enter both Order ID and Billing Email."], 0);
+          return;
+        }
+
+        const order = findOrder(orderId, email);
+        if (!order) {
+          openResult(
+            "Order not found",
+            "Not found",
+            false,
+            [
+              "We could not match that Order ID and Billing Email.",
+              "Check your confirmation message or contact support for help."
+            ],
+            0
+          );
+          return;
+        }
+
+        const idx = statusIndexFromOrder(order);
+        const status = TRACK_STEPS[idx];
+        const amount = Number(order.amount || 0);
+        const formatted = amount % 1 === 0 ? amount.toFixed(0) : amount.toFixed(2);
+        openResult(
+          "Order found",
+          status,
+          idx >= 2,
+          [
+            "<strong>Order ID:</strong> " + order.reference,
+            "<strong>Billing Email:</strong> " + (order.email || email),
+            "<strong>Amount:</strong> " + (order.currency || "KES") + " " + formatted
+          ],
+          idx
+        );
+      });
+
+      const q = new URLSearchParams(window.location.search);
+      if (q.get("order")) orderIdInput.value = q.get("order");
+      if (q.get("email")) emailInput.value = q.get("email");
+      tryPaymentTokenFlow();
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/css/first-pass.css" />
+  <script src="assets/js/first-pass.js"></script>
+</body>
+</html>

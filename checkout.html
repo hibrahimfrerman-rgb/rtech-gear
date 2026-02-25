@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>R-Tech Gear - Checkout</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/header.css" />
+</head>
+
+<body>
+  <div id="siteHeader"></div>
+
+  <main class="container">
+    <section class="checkoutTop">
+      <div>
+        <h1 class="checkoutTitle">Checkout</h1>
+        <p class="muted">Online payments are live via DPO. WhatsApp remains available for assistance.</p>
+      </div>
+      <div class="checkoutSteps" aria-label="Checkout steps">
+        <div class="stepPill isActive">Cart</div>
+        <div class="stepPill isActive">Details</div>
+        <div class="stepPill">Payment</div>
+        <div class="stepPill">Complete</div>
+      </div>
+    </section>
+
+    <section class="checkoutGrid">
+      <form class="checkoutForm" id="checkoutForm">
+        <section class="checkoutCard">
+          <div class="cardHead">
+            <div>
+              <div class="cardTitle">Shipping information</div>
+              <div class="muted small">Where should we deliver your order?</div>
+            </div>
+            <button class="btn btnGhost btnTiny" type="button">Edit</button>
+          </div>
+
+          <div class="formGrid">
+            <div class="formGroup">
+              <label for="fullName">Full name</label>
+              <input id="fullName" name="fullName" type="text" required />
+            </div>
+
+            <div class="formGroup">
+              <label for="phone">Phone number</label>
+              <input id="phone" name="phone" type="tel" required />
+            </div>
+          </div>
+
+          <div class="formGroup">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+
+          <div class="formGroup">
+            <label for="location">Delivery location (Nairobi suggestions)</label>
+            <input id="location" name="location" type="text" list="nairobiLocations" required />
+            <datalist id="nairobiLocations">
+              <option value="CBD - Kenyatta Ave"></option>
+              <option value="Westlands - Sarit Center"></option>
+              <option value="Kilimani - Yaya Center"></option>
+              <option value="Lavington - Junction Mall"></option>
+              <option value="Upper Hill - Hospital Rd"></option>
+              <option value="Kileleshwa - Oloitoktok Rd"></option>
+              <option value="Karen - The Hub"></option>
+              <option value="Roysambu - TRM"></option>
+              <option value="Kasarani - Seasons"></option>
+              <option value="Embakasi - Nyayo Estate"></option>
+              <option value="Ruiru - Bypass"></option>
+              <option value="Ruai - Eastern Bypass"></option>
+            </datalist>
+          </div>
+
+          <div class="formGroup">
+            <label for="notes">Order notes (optional)</label>
+            <textarea id="notes" name="notes" rows="3" placeholder="Landmark, delivery time, etc."></textarea>
+          </div>
+        </section>
+
+        <section class="checkoutCard">
+          <div class="cardHead">
+            <div>
+              <div class="cardTitle">Payment method</div>
+              <div class="muted small">Trusted payment. 100% money back guarantee.</div>
+            </div>
+            <button class="btn btnGhost btnTiny" type="button" id="changePaymentBtn">Change</button>
+          </div>
+
+          <div class="paymentChoice" id="paymentChoice">
+            <div class="payBadge">DPO</div>
+            <div class="payMeta">
+              <div class="payTitle">Cards, M-Pesa, Bank Transfer or Mobile Money</div>
+              <div class="muted small">Pay securely on checkout.</div>
+            </div>
+            <div class="payCheck" aria-hidden="true"></div>
+          </div>
+
+          <div class="paymentBlock">
+            <label class="payOption">
+              <input type="radio" name="payment" value="Cash on delivery" />
+              Cash on delivery (active)
+            </label>
+            <label class="payOption">
+              <input type="radio" name="payment" value="M-Pesa" />
+              M-Pesa (pay on checkout)
+            </label>
+            <label class="payOption">
+              <input type="radio" name="payment" value="PayPal" />
+              PayPal (cards)
+            </label>
+            <label class="payOption">
+              <input type="radio" name="payment" value="Pay slow" />
+              Pay slow (installments)
+            </label>
+            <label class="payOption">
+              <input type="radio" name="payment" value="DPO" checked />
+              DPO (cards, M-Pesa, bank)
+            </label>
+          </div>
+        </section>
+
+        <section class="checkoutCard">
+          <div class="cardHead">
+            <div>
+              <div class="cardTitle">Discounts</div>
+              <div class="muted small">Add a voucher or redeem credits</div>
+            </div>
+          </div>
+          <div class="discountRow">
+            <div class="discountItem">
+              <div class="discountTitle">Voucher</div>
+              <div class="muted small">No voucher applied</div>
+            </div>
+            <button class="btn btnGhost btnTiny" type="button">Apply</button>
+          </div>
+        </section>
+
+        <div class="payActionRow">
+          <button class="btn btnPrimary" id="payNowBtn" type="button">Pay now</button>
+          <button class="btn btnGhost" type="submit">Place order (WhatsApp)</button>
+        </div>
+      </form>
+
+      <aside class="checkoutSummary">
+        <div class="summaryTitle">Order summary</div>
+        <div id="checkoutItems"></div>
+        <div class="summaryLine">
+          <span>Shipping fee</span>
+          <span>Calculated</span>
+        </div>
+        <div class="summaryTotal">
+          <span>Total</span>
+          <strong id="checkoutTotal">KSH 0</strong>
+        </div>
+        <div class="summaryNote">We will confirm availability and delivery time.</div>
+
+        <div class="deliveryCard">
+          <div class="deliveryTitle">Delivery details</div>
+          <div class="muted small">Ships from Nairobi, arrives in 1-3 workdays.</div>
+        </div>
+
+        <div class="guaranteeCard">
+          <div class="guaranteeBadge">7 days</div>
+          <div>
+            <div class="guaranteeTitle">Money back guarantee</div>
+            <div class="muted small">Return if the item is not as described.</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <a class="whatsAppBubble" id="floatWhatsAppLink" href="#" target="_blank" rel="noopener" aria-label="WhatsApp support">
+    <span class="waIcon" aria-hidden="true"></span>
+  </a>
+
+  <div class="modal" id="paymentModal" aria-hidden="true">
+    <div class="modalPanel" role="dialog" aria-label="Select payment method">
+      <div class="modalHead">
+        <div>
+          <div class="modalTitle">Payment Method</div>
+          <div class="muted small">Trusted payment. 100% money back guarantee.</div>
+        </div>
+        <button class="iconBtn" type="button" id="closePaymentModal">x</button>
+      </div>
+
+      <div class="modalBody">
+        <label class="modalOption">
+          <input type="radio" name="modalPayment" value="M-Pesa" />
+          <span class="modalLogo">M-Pesa</span>
+          <span>Via R-Tech Gear</span>
+        </label>
+        <label class="modalOption">
+          <input type="radio" name="modalPayment" value="PayPal" />
+          <span class="modalLogo">PayPal</span>
+          <span>Cards, bank or balance</span>
+        </label>
+        <label class="modalOption">
+          <input type="radio" name="modalPayment" value="DPO" checked />
+          <span class="modalLogo">DPO</span>
+          <span>Cards, M-Pesa, bank</span>
+        </label>
+      </div>
+
+      <button class="btn btnPrimary w100" type="button" id="confirmPaymentBtn">Proceed</button>
+    </div>
+  </div>
+
+  <script src="assets/js/include.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/header.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <link rel="stylesheet" href="assets/css/first-pass.css" />
+  <script src="assets/js/first-pass.js"></script>
+</body>
+</html>
+
+
+
