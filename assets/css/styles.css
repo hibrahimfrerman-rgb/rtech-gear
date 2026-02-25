@@ -866,6 +866,64 @@ button{ font-family: inherit; }
   box-shadow: 0 8px 18px rgba(249, 115, 22, 0.28);
   border: 1px solid rgba(251, 146, 60, 0.35);
 }
+.flashTimer{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
+.flashTimerBox{
+  display: grid;
+  justify-items: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #f8fafc;
+  padding: 6px 4px;
+}
+.flashTimerNum{
+  font-weight: 900;
+  font-size: 13px;
+  color: #1e3a8a;
+  line-height: 1;
+}
+.flashTimerLbl{
+  margin-top: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.flashRemaining{
+  font-size: 12px;
+  font-weight: 800;
+  color: #b45309;
+}
+.flashRemainingBar{
+  height: 8px;
+  border-radius: 999px;
+  background: #fdecd6;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+.flashRemainingBar span{
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #fb923c, #f97316);
+  max-width: 100%;
+}
+.flashCard{
+  cursor: pointer;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+.flashCard:hover{
+  border-color: rgba(37, 99, 235, 0.32);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.12);
+  transform: translateY(-1px);
+}
+.flashCard:hover .flashTitleHover{
+  color: #1d4ed8;
+}
 
 .scrollRow{
   display:grid;

@@ -7,7 +7,6 @@
      Home:
        - #featuredGrid
        - #dealsGrid
-       - #flashSaleTrack
        - #trendingTrack / #trendingDots
        - #audioGrid
        - #smartwatchGrid
@@ -17,20 +16,6 @@
   */
   const JSON_PATH = "assets/data/products.json";
   const DEFAULT_CURRENCY = "KES";
-  const FLASH_GALLERY_IMAGES = [
-    "assets/img/gallary/power and phone.jpg",
-    "assets/img/gallary/power and phone 2.jpg",
-    "assets/img/gallary/promo smartwatch and sound.jpg",
-    "assets/img/gallary/smart watch and sound.jpg",
-    "assets/img/gallary/smart watch (2).jpg",
-    "assets/img/gallary/sound.jpg"
-  ];
-  const FLASH_AD_GALLERY = [
-    "assets/img/gallary/promo smartwatch and sound.jpg",
-    "assets/img/gallary/smart watch and sound.jpg",
-    "assets/img/gallary/power and phone 2.jpg",
-    "assets/img/gallary/sound.jpg"
-  ];
 
   function escapeHtml(value) {
     return String(value)
@@ -209,86 +194,6 @@
     `;
   }
 
-  // Flash sale countdown UI boxes injected into flash sale cards.
-  function flashTimerMarkup(seed) {
-    const base = Number(seed || 0);
-    const days = 2 + (base % 5);
-    const hours = 8 + (base % 12);
-    const mins = 20 + (base % 35);
-    const secs = 10 + (base % 49);
-    const pad = (n) => String(n).padStart(2, "0");
-    return `
-      <div class="flashSaleTimer" data-flash-seed="${base}">
-        <span class="flashSaleTimerBox"><span class="flashSaleTimerNum">${pad(days)}</span><span class="flashSaleTimerLbl">Days</span></span>
-        <span class="flashSaleTimerBox"><span class="flashSaleTimerNum">${pad(hours)}</span><span class="flashSaleTimerLbl">Hrs</span></span>
-        <span class="flashSaleTimerBox"><span class="flashSaleTimerNum">${pad(mins)}</span><span class="flashSaleTimerLbl">Mins</span></span>
-        <span class="flashSaleTimerBox"><span class="flashSaleTimerNum">${pad(secs)}</span><span class="flashSaleTimerLbl">Secs</span></span>
-      </div>
-    `;
-  }
-
-  function flashSaleCard(p, idx) {
-    const card = productCardCompact(p);
-    return card.replace('<div class="productMeta">', `<div class="productMeta">${flashTimerMarkup(idx + 1)}`);
-  }
-
-  function startFlashTimers(root) {
-    if (!root || root.dataset.flashTimersBound === "1") return;
-    root.dataset.flashTimersBound = "1";
-    root.querySelectorAll(".flashSaleTimer").forEach((el) => {
-      const seed = Number(el.getAttribute("data-flash-seed") || "1");
-      let total = (2 + (seed % 5)) * 86400 + (8 + (seed % 12)) * 3600 + (20 + (seed % 35)) * 60 + (10 + (seed % 49));
-      const nums = el.querySelectorAll(".flashSaleTimerNum");
-      function tick() {
-        total = total > 0 ? total - 1 : 0;
-        const d = Math.floor(total / 86400);
-        const h = Math.floor((total % 86400) / 3600);
-        const m = Math.floor((total % 3600) / 60);
-        const s = total % 60;
-        const vals = [d, h, m, s].map((n) => String(n).padStart(2, "0"));
-        nums.forEach((n, i) => { if (vals[i] !== undefined) n.textContent = vals[i]; });
-      }
-      tick();
-      setInterval(tick, 1000);
-    });
-  }
-
-  // Continuous back-and-forth movement for flash sale product lane.
-  function startFlashMotion(track, prevBtn, nextBtn) {
-    if (!track || track.dataset.flashMotionBound === "1") return;
-    track.dataset.flashMotionBound = "1";
-    let dir = 1;
-    let paused = false;
-    const step = 1.2;
-    const tickMs = 16;
-
-    function advance() {
-      if (paused) return;
-      track.scrollLeft += step * dir;
-      const max = Math.max(0, track.scrollWidth - track.clientWidth);
-      if (track.scrollLeft >= max - 2) dir = -1;
-      if (track.scrollLeft <= 2) dir = 1;
-    }
-
-    const timer = setInterval(advance, tickMs);
-    track.addEventListener("mouseenter", () => { paused = true; });
-    track.addEventListener("mouseleave", () => { paused = false; });
-    track.addEventListener("pointerdown", () => { paused = true; });
-    track.addEventListener("pointerup", () => { paused = false; });
-    track.addEventListener("pointercancel", () => { paused = false; });
-
-    if (prevBtn) prevBtn.addEventListener("click", () => {
-      dir = -1;
-      track.scrollBy({ left: -340, behavior: "smooth" });
-    });
-    if (nextBtn) nextBtn.addEventListener("click", () => {
-      dir = 1;
-      track.scrollBy({ left: 340, behavior: "smooth" });
-    });
-
-    track.addEventListener("remove", () => clearInterval(timer));
-  }
-
   function renderInto(el, products, limit) {
     if (!el) return;
     const list = limit ? products.slice(0, limit) : products;
@@ -338,24 +243,6 @@
     }, 1000);
   }
 
-  function initFlashSaleAd() {
-    const ad = document.getElementById("flashSaleAd");
-    const title = document.getElementById("flashSaleAdTitle");
-    if (!ad) return;
-
-    // Force gallery-only visuals so this section does not repeat hero promo images.
-    let i = 0;
-    const apply = () => {
-      const img = FLASH_AD_GALLERY[i % FLASH_AD_GALLERY.length];
-      ad.style.backgroundImage = `url('${img}')`;
-      if (title) title.textContent = i % 2 === 0 ? "Black Friday Picks" : "Flash Sale Picks";
-      i += 1;
-    };
-
-    apply();
-    setInterval(apply, 5000);
-  }
-
   // Page boot: render all product-driven sections if containers exist.
   async function init() {
     const featuredEl = document.getElementById("featuredGrid");
@@ -369,12 +256,8 @@
 
       if (featuredEl) renderInto(featuredEl, products, 6);
       if (shopEl) renderInto(shopEl, products, 0);
-      initFlashSaleAd();
 
       const dealsEl = document.getElementById("dealsGrid");
-      const flashSaleTrack = document.getElementById("flashSaleTrack");
-      const flashSalePrev = document.getElementById("flashSalePrev");
-      const flashSaleNext = document.getElementById("flashSaleNext");
       const trendingTrack = document.getElementById("trendingTrack");
       const trendingDots = document.getElementById("trendingDots");
       const audioEl = document.getElementById("audioGrid");
@@ -385,19 +268,6 @@
         const deals = products.filter((p) => p.compareAt && p.compareAt > p.price);
         const dedupedDeals = uniqueByKey(deals.length ? deals : products);
         renderInto(dealsEl, dedupedDeals, 6);
-      }
-      if (flashSaleTrack) {
-        const deals = products.filter((p) => p.compareAt && p.compareAt > p.price);
-        const base = uniqueByKey(deals.length ? deals : products);
-        const list = base.slice(0, 10).map((p, i) => ({
-          ...p,
-          // Rotate local gallery images to avoid repeated flash visuals.
-          image: FLASH_GALLERY_IMAGES[i % FLASH_GALLERY_IMAGES.length] || p.image
-        }));
-        flashSaleTrack.innerHTML = list.map((p, i) => flashSaleCard(p, i)).join("");
-        wireProductCardNavigation(flashSaleTrack);
-        startFlashTimers(flashSaleTrack);
-        startFlashMotion(flashSaleTrack, flashSalePrev, flashSaleNext);
       }
       if (trendingTrack) {
         const phones = uniqueByKey(filterByTag(products, "phone"));

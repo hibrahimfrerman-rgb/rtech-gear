@@ -56,6 +56,75 @@ function refreshWhatsAppLinks() {
 const CART_KEY = "rtech_cart_v1";
 const WISHLIST_KEY = "rtech_wishlist_v1";
 
+function ensureGlobalDrawers() {
+  if (!document.getElementById("cartDrawer")) {
+    const cartDrawer = document.createElement("div");
+    cartDrawer.innerHTML = `
+      <div class="cartDrawer" id="cartDrawer" aria-hidden="true">
+        <div class="cartPanel" role="dialog" aria-label="Cart">
+          <div class="cartTop">
+            <div class="cartTitle">
+              <span class="cartIcon" aria-hidden="true"></span>
+              Shopping Cart
+            </div>
+            <button class="iconBtn" id="cartCloseBtn" type="button" aria-label="Close cart">x</button>
+          </div>
+          <div class="cartProgress">
+            <div class="cartProgressBar">
+              <span class="cartProgressFill" id="cartProgressFill"></span>
+              <span class="cartProgressCheck" id="cartProgressCheck" aria-hidden="true"></span>
+            </div>
+            <div class="cartProgressText" id="cartProgressText">Buy KES 0 more to get Free Delivery</div>
+          </div>
+          <div class="cartItems" id="cartItems"></div>
+          <div class="cartEmpty" id="cartEmpty">
+            <div class="cartEmptyArt"></div>
+            <div class="cartEmptyTitle">No products in the cart.</div>
+            <div class="muted small">Your cart is currently empty. Let us help you find the perfect item!</div>
+            <a class="btn btnGhost" href="shop.html">Continue Shopping</a>
+          </div>
+          <div class="cartBottom">
+            <div class="cartTotalRow">
+              <span class="muted">Subtotal</span>
+              <strong id="cartTotal">KES 0</strong>
+            </div>
+            <div class="cartActionsRow">
+              <a class="btn btnGhost w100" href="cart.html">View Cart</a>
+              <a class="btn btnPrimary w100" href="checkout.html">Checkout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(cartDrawer.firstElementChild);
+  }
+
+  if (!document.getElementById("wishlistDrawer")) {
+    const wishlistDrawer = document.createElement("div");
+    wishlistDrawer.innerHTML = `
+      <div class="wishlistDrawer" id="wishlistDrawer" aria-hidden="true">
+        <div class="wishlistPanel" role="dialog" aria-label="Wishlist">
+          <div class="cartTop">
+            <div class="cartTitle">
+              <span class="cartIcon" aria-hidden="true"></span>
+              Wishlist
+            </div>
+            <button class="iconBtn" id="wishlistCloseBtn" type="button" aria-label="Close wishlist">x</button>
+          </div>
+          <div class="cartItems" id="wishlistItems"></div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(wishlistDrawer.firstElementChild);
+  }
+}
+
+function syncCartState() {
+  refreshCartUI();
+  renderCheckoutSummary();
+  renderCartPage();
+}
+
 function getCart() {
   const raw = localStorage.getItem(CART_KEY);
   return raw ? JSON.parse(raw) : [];
@@ -111,7 +180,7 @@ function addToCart(product) {
   else cart.push({ ...product, qty: 1, currency, image: product.image || "" });
 
   saveCart(cart);
-  refreshCartUI();
+  syncCartState();
   openCart();
 }
 
@@ -124,8 +193,7 @@ function removeOne(id) {
   const newCart = item.qty <= 0 ? cart.filter((x) => x.id !== id) : cart;
 
   saveCart(newCart);
-  refreshCartUI();
-  renderCartPage();
+  syncCartState();
 }
 
 function addOne(id) {
@@ -134,14 +202,12 @@ function addOne(id) {
   if (!item) return;
   item.qty += 1;
   saveCart(cart);
-  refreshCartUI();
-  renderCartPage();
+  syncCartState();
 }
 
 function clearCart() {
   saveCart([]);
-  refreshCartUI();
-  renderCartPage();
+  syncCartState();
 }
 
 /* =========================
@@ -717,6 +783,7 @@ function connectTrendingCarousel() {
 
 // Rotates flash sale ad image/title (left-side ad card).
 function connectFlashSaleAd() {
+  if (window.__flashSaleManaged) return;
   const ad = document.getElementById("flashSaleAd");
   const titleEl = document.getElementById("flashSaleAdTitle");
   if (!ad || ad.dataset.bound === "1") return;
@@ -758,12 +825,11 @@ function connectFlashSaleAd() {
    so we refresh WhatsApp links + connect cart buttons twice.
 ========================= */
 document.addEventListener("DOMContentLoaded", () => {
-  refreshCartUI();
+  ensureGlobalDrawers();
+  syncCartState();
   refreshWhatsAppLinks();
   connectWishlistToggles();
   refreshWishlistUI();
-  renderCheckoutSummary();
-  renderCartPage();
   connectCheckoutForm();
   connectTrendingCarousel();
   connectFlashSaleAd();
@@ -819,11 +885,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // After partials load, run again to catch the header/footer elements
   setTimeout(() => {
+    ensureGlobalDrawers();
     refreshWhatsAppLinks();
-    refreshCartUI();
+    syncCartState();
     refreshWishlistUI();
-    renderCheckoutSummary();
-    renderCartPage();
     connectTrendingCarousel();
     connectFlashSaleAd();
   }, 250);

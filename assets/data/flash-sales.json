@@ -1,0 +1,110 @@
+[
+  {
+    "id": "flash-power-phone-01",
+    "name": "Power Bank + Fast Charge Cable Kit",
+    "description": "Dual USB power bank bundle for all-day charging.",
+    "price": 2499,
+    "compareAt": 3499,
+    "currency": "KES",
+    "image": "assets/img/products/flash-sale/flash-power-phone-01.jpg",
+    "category": "power",
+    "deliverySpeed": "same-day",
+    "endsAt": "2027-01-10T20:00:00+03:00"
+  },
+  {
+    "id": "flash-power-phone-02",
+    "name": "Mini GaN Charger + Type-C Cable",
+    "description": "Compact high-speed charging kit for phone and tablet.",
+    "price": 1899,
+    "compareAt": 2699,
+    "currency": "KES",
+    "image": "assets/img/products/flash-sale/flash-power-phone-02.jpg",
+    "category": "power",
+    "deliverySpeed": "next-day",
+    "endsAt": "2027-01-10T22:00:00+03:00"
+  },
+  {
+    "id": "flash-smartwatch-01",
+    "name": "R-Tech Smartwatch Active",
+    "description": "Fitness tracking, call alerts, and 7-day battery life.",
+    "price": 5299,
+    "compareAt": 7399,
+    "currency": "KES",
+    "image": "assets/img/products/smartwatch/smartwatch-01.jpg",
+    "category": "wearables",
+    "deliverySpeed": "same-day",
+    "endsAt": "2027-01-11T18:30:00+03:00"
+  },
+  {
+    "id": "flash-smartwatch-02",
+    "name": "R-Tech Smartwatch Pro",
+    "description": "AMOLED display with advanced health insights.",
+    "price": 6899,
+    "compareAt": 9299,
+    "currency": "KES",
+    "image": "assets/img/products/flash-sale/flash-smartwatch-02.jpg",
+    "category": "wearables",
+    "deliverySpeed": "next-day",
+    "endsAt": "2027-01-12T21:30:00+03:00"
+  },
+  {
+    "id": "flash-audio-01",
+    "name": "Wireless Audio Duo Pods",
+    "description": "Low-latency earbuds with noise reduction.",
+    "price": 3199,
+    "compareAt": 4499,
+    "currency": "KES",
+    "image": "assets/img/products/flash-sale/flash-sound-01.jpg",
+    "category": "audio",
+    "deliverySpeed": "same-day",
+    "endsAt": "2027-01-09T23:00:00+03:00"
+  },
+  {
+    "id": "flash-audio-watch-01",
+    "name": "Smartwatch + Audio Combo",
+    "description": "Bundle deal for workout tracking and immersive sound.",
+    "price": 7999,
+    "compareAt": 10999,
+    "currency": "KES",
+    "image": "assets/img/products/flash-sale/flash-smartwatch-sound-01.jpg",
+    "category": "bundle",
+    "deliverySpeed": "next-day",
+    "endsAt": "2027-01-13T19:45:00+03:00"
+  },
+  {
+    "id": "flash-audio-watch-02",
+    "name": "Creator Audio + Watch Bundle",
+    "description": "Portable kit for creators, commuters, and gym sessions.",
+    "price": 8799,
+    "compareAt": 12399,
+    "currency": "KES",
+    "image": "assets/img/products/flash-sale/flash-promo-smartwatch-sound-01.jpg",
+    "category": "bundle",
+    "deliverySpeed": "standard",
+    "endsAt": "2027-01-14T21:00:00+03:00"
+  },
+  {
+    "id": "flash-speaker-01",
+    "name": "Portable Speaker Mini",
+    "description": "Pocket-size speaker with deep bass and long battery.",
+    "price": 2799,
+    "compareAt": 3899,
+    "currency": "KES",
+    "image": "assets/img/products/audio/audio-sound-01.jpg",
+    "category": "audio",
+    "deliverySpeed": "standard",
+    "endsAt": "2027-01-12T20:15:00+03:00"
+  },
+  {
+    "id": "flash-accessory-01",
+    "name": "Phone Creator Stand Kit",
+    "description": "Compact stand setup for content and desk workflows.",
+    "price": 2199,
+    "compareAt": 3099,
+    "currency": "KES",
+    "image": "assets/img/products/audio/audio-smartwatch-sound-01.jpg",
+    "category": "accessories",
+    "deliverySpeed": "same-day",
+    "endsAt": "2027-01-15T20:00:00+03:00"
+  }
+]

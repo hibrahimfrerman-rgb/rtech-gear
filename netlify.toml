@@ -5,3 +5,8 @@
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
+
+[[redirects]]
+  from = "/flash-sale"
+  to = "/flash-sale.html"
+  status = 200

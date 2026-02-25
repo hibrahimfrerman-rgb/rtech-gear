@@ -3,9 +3,7 @@
     const drawer = document.getElementById("wishlistDrawer");
     if (drawer) {
       drawer.classList.add("isOpen");
-      return;
     }
-    window.location.href = "wishlist.html";
   }
 
   function closeWishlist() {

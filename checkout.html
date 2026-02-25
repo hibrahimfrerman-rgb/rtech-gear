@@ -177,6 +177,60 @@
     <span class="waIcon" aria-hidden="true"></span>
   </a>
 
+  <div class="cartDrawer" id="cartDrawer" aria-hidden="true">
+    <div class="cartPanel" role="dialog" aria-label="Cart">
+      <div class="cartTop">
+        <div class="cartTitle">
+          <span class="cartIcon" aria-hidden="true"></span>
+          Shopping Cart
+        </div>
+        <button class="iconBtn" id="cartCloseBtn" type="button" aria-label="Close cart">x</button>
+      </div>
+
+      <div class="cartProgress">
+        <div class="cartProgressBar">
+          <span class="cartProgressFill" id="cartProgressFill"></span>
+          <span class="cartProgressCheck" id="cartProgressCheck" aria-hidden="true"></span>
+        </div>
+        <div class="cartProgressText" id="cartProgressText">Buy KES 0 more to get Free Delivery</div>
+      </div>
+
+      <div class="cartItems" id="cartItems"></div>
+
+      <div class="cartEmpty" id="cartEmpty">
+        <div class="cartEmptyArt"></div>
+        <div class="cartEmptyTitle">No products in the cart.</div>
+        <div class="muted small">Your cart is currently empty. Let us help you find the perfect item!</div>
+        <a class="btn btnGhost" href="shop.html">Continue Shopping</a>
+      </div>
+
+      <div class="cartBottom">
+        <div class="cartTotalRow">
+          <span class="muted">Subtotal</span>
+          <strong id="cartTotal">KES 0</strong>
+        </div>
+
+        <div class="cartActionsRow">
+          <a class="btn btnGhost w100" href="cart.html">View Cart</a>
+          <a class="btn btnPrimary w100" href="checkout.html">Checkout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wishlistDrawer" id="wishlistDrawer" aria-hidden="true">
+    <div class="wishlistPanel" role="dialog" aria-label="Wishlist">
+      <div class="cartTop">
+        <div class="cartTitle">
+          <span class="cartIcon" aria-hidden="true"></span>
+          Wishlist
+        </div>
+        <button class="iconBtn" id="wishlistCloseBtn" type="button" aria-label="Close wishlist">x</button>
+      </div>
+      <div class="cartItems" id="wishlistItems"></div>
+    </div>
+  </div>
+
   <div class="modal" id="paymentModal" aria-hidden="true">
     <div class="modalPanel" role="dialog" aria-label="Select payment method">
       <div class="modalHead">

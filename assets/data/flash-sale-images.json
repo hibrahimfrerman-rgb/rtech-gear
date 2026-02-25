@@ -1,0 +1,18 @@
+{
+  "heroImages": [
+    "assets/img/products/flash-sale/flash-power-phone-01.jpg",
+    "assets/img/products/flash-sale/flash-smartwatch-02.jpg",
+    "assets/img/products/flash-sale/flash-smartwatch-sound-01.jpg"
+  ],
+  "productImages": {
+    "flash-power-phone-01": "assets/img/products/flash-sale/flash-power-phone-01.jpg",
+    "flash-power-phone-02": "assets/img/products/flash-sale/flash-power-phone-02.jpg",
+    "flash-smartwatch-01": "assets/img/products/smartwatch/smartwatch-01.jpg",
+    "flash-smartwatch-02": "assets/img/products/flash-sale/flash-smartwatch-02.jpg",
+    "flash-audio-01": "assets/img/products/flash-sale/flash-sound-01.jpg",
+    "flash-audio-watch-01": "assets/img/products/flash-sale/flash-smartwatch-sound-01.jpg",
+    "flash-audio-watch-02": "assets/img/products/flash-sale/flash-promo-smartwatch-sound-01.jpg",
+    "flash-speaker-01": "assets/img/products/audio/audio-sound-01.jpg",
+    "flash-accessory-01": "assets/img/products/audio/audio-smartwatch-sound-01.jpg"
+  }
+}

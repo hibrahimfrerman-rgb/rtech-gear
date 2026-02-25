@@ -3,6 +3,7 @@
 */
 (function () {
   const JSON_PATH = "assets/data/products.json";
+  const FLASH_JSON_PATH = "assets/data/flash-sales.json";
   const DEFAULT_CURRENCY = "KES";
 
   function byId(id) {
@@ -53,6 +54,25 @@
         image: images[0] || "",
         images,
         tags: item.tags || []
+      };
+    }).filter((p) => p.name);
+  }
+
+  function normalizeFlashProducts(list) {
+    return (list || []).map((item) => {
+      const name = fixText(item.name || "");
+      const id = (item.id || name).toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 32);
+      const image = cleanUrl(item.image || "");
+      return {
+        id,
+        name,
+        desc: fixText(item.description || item.desc || ""),
+        price: Number(item.price || 0),
+        compareAt: Number(item.compareAt || item.compare_at_ksh || 0),
+        currency: item.currency || DEFAULT_CURRENCY,
+        image,
+        images: image ? [image] : [],
+        tags: ["Flash Sale", fixText(item.category || "Deals")]
       };
     }).filter((p) => p.name);
   }
@@ -156,13 +176,29 @@
     if (!host) return;
 
     try {
-      const res = await fetch(JSON_PATH);
-      const json = await res.json();
-      const products = normalizeProducts(json);
-      if (!products.length) return;
+      const [resMain, resFlash] = await Promise.all([
+        fetch(JSON_PATH),
+        fetch(FLASH_JSON_PATH).catch(() => null)
+      ]);
+      const jsonMain = await resMain.json();
+      const mainProducts = normalizeProducts(jsonMain);
+
+      let flashProducts = [];
+      if (resFlash && resFlash.ok) {
+        const jsonFlash = await resFlash.json();
+        flashProducts = normalizeFlashProducts(jsonFlash);
+      }
+
+      const allProducts = [...mainProducts];
+      flashProducts.forEach(function (fp) {
+        if (!allProducts.some(function (p) { return p.id === fp.id; })) {
+          allProducts.push(fp);
+        }
+      });
+      if (!allProducts.length) return;
 
       const qid = queryProductId();
-      const product = products.find(function (p) { return p.id === qid; }) || products[0];
+      const product = allProducts.find(function (p) { return p.id === qid; }) || allProducts[0];
       const rating = ratingFor(product.id);
       const thumbs = byId("thumbRow");
       const images = product.images.length ? product.images : [product.image];
@@ -250,7 +286,7 @@
       }
 
       bindTabs();
-      renderRelated(product, products);
+      renderRelated(product, allProducts);
     } catch (err) {
       console.error("Failed to load product page", err);
     }

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>R-Tech Gear - Flash Sale</title>
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/css/header.css" />
+  <link rel="stylesheet" href="assets/css/flash-sale.css" />
+</head>
+<body>
+  <div id="siteHeader"></div>
+
+  <main class="container flashSalePage" id="flashSalePage">
+    <section class="flashHero" id="flashSaleHero">
+      <div class="flashHeroInner">
+        <div class="flashHeroKicker">Limited Time</div>
+        <h1 class="flashHeroTitle" id="flashSaleHeroTitle">Flash Sale Live</h1>
+        <p class="flashHeroDesc">Autoplay is intentionally slow and pauses on hover so shoppers can browse without rush.</p>
+        <a class="btn btnPrimary" href="shop.html">Browse all products</a>
+      </div>
+    </section>
+
+    <section class="flashFilterRow" aria-label="Flash sale filters">
+      <div class="flashFilter">
+        <label for="flashFilterCategory">Category</label>
+        <select id="flashFilterCategory">
+          <option value="all">All categories</option>
+        </select>
+      </div>
+
+      <div class="flashFilter">
+        <label for="flashFilterPrice">Price</label>
+        <select id="flashFilterPrice">
+          <option value="all">All prices</option>
+          <option value="under-3000">Under KES 3000</option>
+          <option value="3000-7000">KES 3000 - 7000</option>
+          <option value="7000-plus">KES 7000+</option>
+        </select>
+      </div>
+
+      <div class="flashFilter">
+        <label for="flashFilterDelivery">Delivery speed</label>
+        <select id="flashFilterDelivery">
+          <option value="all">Any speed</option>
+          <option value="same-day">Same day</option>
+          <option value="next-day">Next day</option>
+          <option value="standard">Standard</option>
+        </select>
+      </div>
+    </section>
+
+    <section>
+      <div class="flashSaleGrid" id="flashSaleGrid"></div>
+      <div class="flashEmpty muted" id="flashSaleEmpty" hidden>No flash sale products match this filter.</div>
+    </section>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <a class="whatsAppBubble" id="floatWhatsAppLink" href="#" target="_blank" rel="noopener" aria-label="WhatsApp support">
+    <span class="waIcon" aria-hidden="true"></span>
+  </a>
+
+  <div class="cartDrawer" id="cartDrawer" aria-hidden="true">
+    <div class="cartPanel" role="dialog" aria-label="Cart">
+      <div class="cartTop">
+        <div class="cartTitle">
+          <span class="cartIcon" aria-hidden="true"></span>
+          Shopping Cart
+        </div>
+        <button class="iconBtn" id="cartCloseBtn" type="button" aria-label="Close cart">x</button>
+      </div>
+      <div class="cartProgress">
+        <div class="cartProgressBar">
+          <span class="cartProgressFill" id="cartProgressFill"></span>
+          <span class="cartProgressCheck" id="cartProgressCheck" aria-hidden="true"></span>
+        </div>
+        <div class="cartProgressText" id="cartProgressText">Buy KES 0 more to get Free Delivery</div>
+      </div>
+      <div class="cartItems" id="cartItems"></div>
+      <div class="cartEmpty" id="cartEmpty">
+        <div class="cartEmptyArt"></div>
+        <div class="cartEmptyTitle">No products in the cart.</div>
+        <div class="muted small">Your cart is currently empty. Let us help you find the perfect item!</div>
+        <a class="btn btnGhost" href="shop.html">Continue Shopping</a>
+      </div>
+      <div class="cartBottom">
+        <div class="cartTotalRow">
+          <span class="muted">Subtotal</span>
+          <strong id="cartTotal">KES 0</strong>
+        </div>
+        <div class="cartActionsRow">
+          <a class="btn btnGhost w100" href="cart.html">View Cart</a>
+          <a class="btn btnPrimary w100" href="checkout.html">Checkout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wishlistDrawer" id="wishlistDrawer" aria-hidden="true">
+    <div class="wishlistPanel" role="dialog" aria-label="Wishlist">
+      <div class="cartTop">
+        <div class="cartTitle">
+          <span class="cartIcon" aria-hidden="true"></span>
+          Wishlist
+        </div>
+        <button class="iconBtn" id="wishlistCloseBtn" type="button" aria-label="Close wishlist">x</button>
+      </div>
+      <div class="cartItems" id="wishlistItems"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/include.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/header.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/flash-sale.js"></script>
+  <link rel="stylesheet" href="assets/css/first-pass.css" />
+  <script src="assets/js/first-pass.js"></script>
+</body>
+</html>

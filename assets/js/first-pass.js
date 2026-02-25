@@ -394,6 +394,11 @@
 
     targets.forEach(function (el) {
       if (!el.classList.contains("fp-reveal")) el.classList.add("fp-reveal");
+      // Large, long-scrolling sections (like shop grids) can miss high
+      // intersection ratios on mobile, leaving content hidden.
+      if (el.classList.contains("section") && el.querySelector("#shopGrid")) {
+        el.classList.add("is-in");
+      }
     });
 
     if (!("IntersectionObserver" in window)) {
@@ -408,9 +413,12 @@
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -30px 0px" });
+    }, { threshold: 0.02, rootMargin: "0px 0px -30px 0px" });
 
-    targets.forEach(function (el) { io.observe(el); });
+    targets.forEach(function (el) {
+      if (el.classList.contains("is-in")) return;
+      io.observe(el);
+    });
   }
 
   function bindCategoryIcons() {
