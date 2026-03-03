@@ -1,5 +1,12 @@
 (function () {
+  function ensureDrawersReady() {
+    if (typeof window.ensureGlobalDrawers === "function") {
+      window.ensureGlobalDrawers();
+    }
+  }
+
   function openCart() {
+    ensureDrawersReady();
     const drawer = document.getElementById("cartDrawer");
     if (drawer) drawer.classList.add("isOpen");
   }
@@ -10,32 +17,37 @@
   }
 
   function connectCartButtons() {
-    const cartBtn = document.getElementById("cartBtn");
-    if (!cartBtn) return false;
-    cartBtn.addEventListener("click", openCart);
+    if (document.body.dataset.cartEventsBound === "1") return;
+    document.body.dataset.cartEventsBound = "1";
 
-    const closeBtn = document.getElementById("cartCloseBtn");
-    if (closeBtn) closeBtn.addEventListener("click", closeCart);
+    document.addEventListener("click", (e) => {
+      if (e.target.closest("#cartBtn")) {
+        openCart();
+        return;
+      }
+      if (e.target.closest("#cartCloseBtn")) {
+        closeCart();
+        return;
+      }
+      if (e.target.closest("#clearCartBtn")) {
+        clearCart();
+        return;
+      }
+      const drawer = document.getElementById("cartDrawer");
+      if (drawer && e.target === drawer) {
+        closeCart();
+      }
+    });
 
-    const clearBtn = document.getElementById("clearCartBtn");
-    if (clearBtn) clearBtn.addEventListener("click", clearCart);
-
-    const drawer = document.getElementById("cartDrawer");
-    if (drawer) {
-      drawer.addEventListener("click", (e) => {
-        if (e.target === drawer) closeCart();
-      });
-    }
-    return true;
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeCart();
+    });
   }
 
   window.openCart = openCart;
   window.closeCart = closeCart;
 
   document.addEventListener("DOMContentLoaded", () => {
-    const tryAttach = () => {
-      if (!connectCartButtons()) setTimeout(tryAttach, 150);
-    };
-    tryAttach();
+    connectCartButtons();
   });
 })();

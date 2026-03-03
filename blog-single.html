@@ -91,15 +91,30 @@
 
         <section class="blogReply">
           <h3>Leave a Reply</h3>
-          <form class="blogReplyForm">
+          <form
+            class="blogReplyForm"
+            id="blogReplyForm"
+            name="blog-reply"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            data-netlify-ajax="true"
+            data-success-message="Comment received. We will review it before publishing."
+          >
+            <input type="hidden" name="form-name" value="blog-reply" />
+            <input type="hidden" name="page" value="blog-single" />
+            <p class="hiddenNetlifyField">
+              <label>Do not fill this out if you are human: <input name="bot-field" /></label>
+            </p>
             <div class="blogReplyGrid">
-              <input type="text" placeholder="Name" />
-              <input type="email" placeholder="Email" />
-              <input type="text" placeholder="Website" />
+              <input name="name" type="text" placeholder="Name" required />
+              <input name="email" type="email" placeholder="Email" required />
+              <input name="website" type="text" placeholder="Website" />
             </div>
-            <textarea rows="6" placeholder="Comment"></textarea>
-            <button class="btn btnPrimary" type="button">Post Comment</button>
+            <textarea name="comment" rows="6" placeholder="Comment" required></textarea>
+            <button class="btn btnPrimary" type="submit">Post Comment</button>
           </form>
+          <div class="formFeedback" id="blogReplyFormFeedback" aria-live="polite"></div>
         </section>
 
         <section class="blogRelatedWrap">

@@ -62,6 +62,9 @@
   background: rgba(2, 6, 23, 0.38);
   z-index: 61;
 }
+.fp-mobile-backdrop[hidden] {
+  display: none !important;
+}
 
 .fp-mobile-drawer {
   position: fixed;
@@ -134,8 +137,8 @@
 }
 
 .heroSearchBtn {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border-radius: 999px;
   border: 1px solid transparent;
   background: transparent !important;
@@ -149,8 +152,8 @@
 
 .heroSearchBtn::before {
   content: "";
-  width: 20px;
-  height: 20px;
+  width: 17px;
+  height: 17px;
   display: block;
   background: currentColor;
   -webkit-mask: url("../icons/icon-search.svg") center/contain no-repeat;
@@ -553,9 +556,9 @@
     text-overflow: ellipsis;
   }
 
-  .fp-menu-toggle {
-    display: inline-flex;
-  }
+  .fp-menu-toggle { display: inline-flex !important; }
+  .fp-mobile-backdrop { display: block; }
+  .fp-mobile-drawer { display: block; }
 
   .fp-menu-toggle-right {
     margin-left: 2px;
@@ -564,6 +567,8 @@
   .header-icons {
     gap: 8px;
     justify-self: end;
+    justify-content: flex-end;
+    width: auto;
   }
 
   .header-icons .icon-btn {
@@ -579,19 +584,7 @@
     display: none !important;
   }
 
-  .fp-mobile-dock {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 75;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    background: rgba(255, 255, 255, 0.98);
-    border-top: 1px solid var(--border);
-    box-shadow: 0 -10px 22px rgba(15, 23, 42, 0.08);
-    padding-bottom: max(4px, env(safe-area-inset-bottom));
-  }
+  .fp-mobile-dock { display: none !important; }
 
   .fp-dock-link {
     display: grid;
@@ -638,13 +631,9 @@
             mask: url("../icons/icon-user.svg") center/contain no-repeat;
   }
 
-  .fp-has-mobile-dock main.container {
-    padding-bottom: 86px;
-  }
+  .fp-has-mobile-dock main.container { padding-bottom: 0; }
 
-  .fp-has-mobile-dock .whatsAppBubble {
-    bottom: 82px;
-  }
+  .fp-has-mobile-dock .whatsAppBubble { bottom: 18px; }
 
   .heroPill {
     width: auto !important;
@@ -685,13 +674,7 @@
     color: #111827;
   }
 
-  .categoryRow {
-    display: flex !important;
-    overflow-x: auto;
-    gap: 8px;
-    padding-bottom: 4px;
-    margin-top: 8px;
-  }
+  .categoryRow { display: none !important; }
 
   .categoryItem {
     min-width: 78px;
@@ -715,6 +698,57 @@
   #home-audio-block .splitArt,
   #home-smartwatch-block .splitArt.alt {
     min-height: 220px;
+  }
+
+  .fp-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1024px) {
+  .header-top-inner {
+    grid-template-columns: auto 1fr auto !important;
+    gap: 10px !important;
+    align-items: center;
+  }
+
+  .brand {
+    min-width: 0;
+    justify-self: center;
+    overflow: hidden;
+  }
+
+  .brand-text {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .fp-menu-toggle {
+    display: inline-flex !important;
+  }
+
+  .header-icons {
+    gap: 8px;
+    justify-self: end;
+    justify-content: flex-end;
+    width: auto;
+  }
+
+  .header-icons .icon-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .price-pill {
+    display: none;
+  }
+
+  .nav-links {
+    display: none !important;
   }
 }
 

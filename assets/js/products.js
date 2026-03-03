@@ -46,13 +46,36 @@
     return match ? match[0] : str;
   }
 
+  function minPrice(list, key) {
+    const nums = list
+      .map((item) => Number(item[key]))
+      .filter((value) => Number.isFinite(value) && value > 0);
+    return nums.length ? Math.min(...nums) : 0;
+  }
+
+  function maxPrice(list, key) {
+    const nums = list
+      .map((item) => Number(item[key]))
+      .filter((value) => Number.isFinite(value) && value > 0);
+    return nums.length ? Math.max(...nums) : 0;
+  }
+
   function normalizeProducts(list) {
     return (list || []).map((item) => {
       const name = fixText(item.name || "");
       const id = (item.id || name).toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 32);
       const images = Array.isArray(item.images) ? item.images.map(cleanUrl).filter(Boolean) : [];
-      const price = Number(item.price_ksh || item.price || 0);
-      const compareAt = Number(item.compare_at_ksh || 0);
+      const variants = Array.isArray(item.variants) ? item.variants : [];
+      const variantPrices = variants.map((variant) => ({
+        price: Number(variant.price_ksh || variant.price || 0),
+        compareAt: Number(variant.compare_at_ksh || variant.compareAt || 0)
+      }));
+      const price = variants.length
+        ? minPrice(variantPrices, "price") || Number(item.price_ksh || item.price || 0)
+        : Number(item.price_ksh || item.price || 0);
+      const compareAt = variants.length
+        ? maxPrice(variantPrices, "compareAt") || Number(item.compare_at_ksh || 0)
+        : Number(item.compare_at_ksh || 0);
       return {
         id,
         name,
@@ -63,7 +86,8 @@
         image: images[0] || "",
         images,
         tags: item.tags || [],
-        flags: item.flags || []
+        flags: item.flags || [],
+        variants
       };
     }).filter((p) => p.name);
   }
@@ -91,6 +115,52 @@
 
   function productUrl(p) {
     return `product.html?id=${encodeURIComponent(p.id)}`;
+  }
+
+  function defaultVariantForCard(p) {
+    if (!p.variants || !p.variants.length) return null;
+    return p.variants
+      .map((variant) => ({
+        id: variant.id,
+        name: variant.name || variant.label || "",
+        price: Number(variant.price_ksh || variant.price || p.price || 0),
+        currency: variant.currency || p.currency,
+        image: Array.isArray(variant.images) && variant.images.length ? variant.images[0] : p.image,
+        attributes: variant.attributes || {}
+      }))
+      .sort((a, b) => a.price - b.price)[0];
+  }
+
+  function buildCardCartPayload(p) {
+    const variant = defaultVariantForCard(p);
+    if (!variant) {
+      return {
+        id: p.id,
+        name: p.name,
+        price: p.price,
+        currency: p.currency,
+        image: p.image
+      };
+    }
+
+    const attrs = Object.keys(variant.attributes).map((key) => variant.attributes[key]).filter(Boolean);
+    return {
+      id: variant.id,
+      name: attrs.length ? `${p.name} - ${attrs.join(" / ")}` : p.name,
+      price: variant.price,
+      currency: variant.currency || p.currency,
+      image: variant.image || p.image
+    };
+  }
+
+  function productActionButton(p, safeName) {
+    const cartItem = buildCardCartPayload(p);
+    return `
+      <button class="btn btnGhost" type="button"
+        onclick="addToCart({ id:'${cartItem.id}', name:'${escapeHtml(cartItem.name).replace(/'/g, "&apos;")}', price:${cartItem.price}, currency:'${cartItem.currency}', image:'${cartItem.image}' })">
+        Add to cart
+      </button>
+    `;
   }
 
   // Full product card used in featured/shop/deals grids.
@@ -129,15 +199,12 @@
             <span class="ratingBadge">${r.rating}</span>
             <span class="ratingCount">${r.reviews} reviews</span>
           </div>
-          <div class="productDesc muted small">${safeDesc}</div>
+            <div class="productDesc muted small">${safeDesc}</div>
           <div class="productBottom">
             <div class="productPriceStack">
               <div class="price">${formatPrice(p.price, p.currency)}</div>
             </div>
-            <button class="btn btnGhost" type="button"
-              onclick="addToCart({ id:'${p.id}', name:'${safeName.replace(/'/g, "&apos;")}', price:${p.price}, currency:'${p.currency}', image:'${p.image}' })">
-              Add to cart
-            </button>
+            ${productActionButton(p, safeName)}
           </div>
         </div>
       </article>
@@ -184,10 +251,7 @@
             <div class="productPriceStack">
               <div class="price">${formatPrice(p.price, p.currency)}</div>
             </div>
-            <button class="btn btnGhost" type="button"
-              onclick="addToCart({ id:'${p.id}', name:'${safeName.replace(/'/g, "&apos;")}', price:${p.price}, currency:'${p.currency}', image:'${p.image}' })">
-              Add to cart
-            </button>
+            ${productActionButton(p, safeName)}
           </div>
         </div>
       </article>

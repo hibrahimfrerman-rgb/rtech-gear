@@ -279,8 +279,7 @@
     const header = document.getElementById("siteHeaderRoot");
     const inner = document.querySelector(".header-top-inner");
     const nav = document.querySelector(".nav-links");
-    const icons = document.querySelector(".header-icons");
-    if (!header || !inner || !nav || !icons) return;
+    if (!header || !inner || !nav) return;
     if (header.dataset.fpMobileNavBound) return;
     header.dataset.fpMobileNavBound = "1";
 
@@ -291,15 +290,7 @@
     leftToggle.setAttribute("aria-expanded", "false");
     leftToggle.innerHTML = "<span class='fp-menu-bars'><span></span><span></span><span></span></span>";
 
-    const rightToggle = document.createElement("button");
-    rightToggle.type = "button";
-    rightToggle.className = "fp-menu-toggle fp-menu-toggle-right";
-    rightToggle.setAttribute("aria-label", "Open categories");
-    rightToggle.setAttribute("aria-expanded", "false");
-    rightToggle.innerHTML = "<span class='fp-menu-bars'><span></span><span></span><span></span></span>";
-
     inner.insertBefore(leftToggle, inner.firstChild);
-    icons.appendChild(rightToggle);
 
     const backdrop = document.createElement("button");
     backdrop.type = "button";
@@ -324,67 +315,31 @@
       navDrawer.appendChild(link);
     });
 
-    const catDrawer = document.createElement("aside");
-    catDrawer.className = "fp-mobile-drawer is-right";
-    catDrawer.setAttribute("aria-label", "Mobile categories");
-
-    const catTitle = document.createElement("div");
-    catTitle.className = "fp-mobile-drawer-title";
-    catTitle.textContent = "Appliances";
-    catDrawer.appendChild(catTitle);
-
-    const catNames = Array.from(document.querySelectorAll(".categoryItem .catName"))
-      .map(function (el) { return (el.textContent || "").trim(); })
-      .filter(Boolean);
-    const fallbackCats = ["Audio", "Phones", "Gaming", "Cameras", "Wearables", "Smart Home", "Power", "Accessories"];
-    const cats = catNames.length ? catNames : fallbackCats;
-
-    cats.forEach(function (name) {
-      const link = document.createElement("a");
-      const slug = name.toLowerCase().replace(/\s+/g, "-");
-      link.className = "fp-mobile-drawer-link";
-      link.href = "shop.html?category=" + encodeURIComponent(slug);
-      link.textContent = name;
-      catDrawer.appendChild(link);
-    });
-
     header.appendChild(backdrop);
     header.appendChild(navDrawer);
-    header.appendChild(catDrawer);
 
-    function setOpen(side) {
-      const leftOpen = side === "left";
-      const rightOpen = side === "right";
-      header.classList.toggle("fp-left-open", leftOpen);
-      header.classList.toggle("fp-right-open", rightOpen);
-      backdrop.hidden = !(leftOpen || rightOpen);
+    function setOpen(open) {
+      header.classList.toggle("fp-left-open", !!open);
+      backdrop.hidden = !open;
 
-      leftToggle.setAttribute("aria-expanded", leftOpen ? "true" : "false");
-      rightToggle.setAttribute("aria-expanded", rightOpen ? "true" : "false");
-      leftToggle.setAttribute("aria-label", leftOpen ? "Close navigation" : "Open navigation");
-      rightToggle.setAttribute("aria-label", rightOpen ? "Close categories" : "Open categories");
+      leftToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      leftToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
     }
 
     leftToggle.addEventListener("click", function (e) {
       e.stopPropagation();
-      setOpen(header.classList.contains("fp-left-open") ? null : "left");
+      setOpen(!header.classList.contains("fp-left-open"));
     });
 
-    rightToggle.addEventListener("click", function (e) {
-      e.stopPropagation();
-      setOpen(header.classList.contains("fp-right-open") ? null : "right");
-    });
-
-    backdrop.addEventListener("click", function () { setOpen(null); });
-    navDrawer.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { setOpen(null); }); });
-    catDrawer.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { setOpen(null); }); });
+    backdrop.addEventListener("click", function () { setOpen(false); });
+    navDrawer.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { setOpen(false); }); });
 
     document.addEventListener("click", function (e) {
-      if (!header.contains(e.target)) setOpen(null);
+      if (!header.contains(e.target)) setOpen(false);
     });
 
     window.addEventListener("resize", function () {
-      if (window.innerWidth > 900) setOpen(null);
+      if (window.innerWidth > 1024) setOpen(false);
     });
   }
 
@@ -604,7 +559,6 @@
     bindTrendingDropdowns();
     bindMobileMenu();
     bindCategoryIcons();
-    bindMobileDock();
     bindRevealMotion();
     syncHeaderCartSummary();
     renderWishlistEmptyIllustration();

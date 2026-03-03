@@ -2,7 +2,7 @@
     {
         "id":  "ul-tt51-blk",
         "name":  "Ulanzi TT51 Portable Tripod - Universal Camera \u0026 Smartphone Stand (450mm-1380mm)",
-        "description":  "Meet Your Ultimate Companion for Capturing Stunning Moments: The Ulanzi TT51 Portable Tripod. Imagine this: You�re embarking on a new adventure or setting up a perfect shot for your vlog. The excitement is palpable, but you need the right tool to ensure every moment is captured with precision and stability. Enter the Ulanzi TT51 Portable Tripod � your new best friend for all your photography and videography needs. Who is the Ulanzi TT51 Portable Tripod? It�s not just another tripod; it�s a versatile and reliable partner designed to enhance your creative pursuits. With its sleek, lightweight design and sturdy build, the TT51 turns every surface into a stable platform, allowing you to focus on capturing the perfect shot without any hassle. Why You�ll Love It: Compact \u0026 Lightweight: Easily fits into your gear bag, making it perfect for on-the-go shooting. Versatile Functionality: Suitable for cameras, smartphones, and action cams � whatever your device, it supports it with ease. Adjustable Height: From 450mm to 1380mm, this tripod adjusts to your needs, whether you�re shooting from a low angle or reaching for those high shots. Stable \u0026 Reliable: The sturdy construction ensures stability, even on uneven surfaces, while the detachable ball head provides precision and flexibility. Picture This: You�re setting up for a breathtaking time-lapse of a city skyline, or capturing those unforgettable action shots on your next adventure. The Ulanzi TT51 Portable Tripod stands by your side, its adjustable legs and smooth swivel head helping you frame the perfect shot effortlessly. With the Ulanzi TT51 Portable Tripod, you�re not just capturing moments � you�re crafting memories with ease and stability. Elevate your photography and videography game with this essential companion.",
+        "description":  "Meet Your Ultimate Companion for Capturing Stunning Moments: The Ulanzi TT51 Portable Tripod. Imagine this: YouÃƒÂ¯Ã‚Â¿Ã‚Â½re embarking on a new adventure or setting up a perfect shot for your vlog. The excitement is palpable, but you need the right tool to ensure every moment is captured with precision and stability. Enter the Ulanzi TT51 Portable Tripod ÃƒÂ¯Ã‚Â¿Ã‚Â½ your new best friend for all your photography and videography needs. Who is the Ulanzi TT51 Portable Tripod? ItÃƒÂ¯Ã‚Â¿Ã‚Â½s not just another tripod; itÃƒÂ¯Ã‚Â¿Ã‚Â½s a versatile and reliable partner designed to enhance your creative pursuits. With its sleek, lightweight design and sturdy build, the TT51 turns every surface into a stable platform, allowing you to focus on capturing the perfect shot without any hassle. Why YouÃƒÂ¯Ã‚Â¿Ã‚Â½ll Love It: Compact \u0026 Lightweight: Easily fits into your gear bag, making it perfect for on-the-go shooting. Versatile Functionality: Suitable for cameras, smartphones, and action cams ÃƒÂ¯Ã‚Â¿Ã‚Â½ whatever your device, it supports it with ease. Adjustable Height: From 450mm to 1380mm, this tripod adjusts to your needs, whether youÃƒÂ¯Ã‚Â¿Ã‚Â½re shooting from a low angle or reaching for those high shots. Stable \u0026 Reliable: The sturdy construction ensures stability, even on uneven surfaces, while the detachable ball head provides precision and flexibility. Picture This: YouÃƒÂ¯Ã‚Â¿Ã‚Â½re setting up for a breathtaking time-lapse of a city skyline, or capturing those unforgettable action shots on your next adventure. The Ulanzi TT51 Portable Tripod stands by your side, its adjustable legs and smooth swivel head helping you frame the perfect shot effortlessly. With the Ulanzi TT51 Portable Tripod, youÃƒÂ¯Ã‚Â¿Ã‚Â½re not just capturing moments ÃƒÂ¯Ã‚Â¿Ã‚Â½ youÃƒÂ¯Ã‚Â¿Ã‚Â½re crafting memories with ease and stability. Elevate your photography and videography game with this essential companion.",
         "price_ksh":  2715,
         "compare_at_ksh":  3394,
         "discount_percent":  20,
@@ -18,12 +18,94 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "ul-tt51-138-black",
+                             "sku":  "TT51-138-BLK",
+                             "label":  "1.38m Black",
+                             "price_ksh":  2715,
+                             "compare_at_ksh":  3394,
+                             "attributes":  {
+                                                "Height":  "1.38m",
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/S4aceb0f3cf854641ab286d8378b4dcd4P.jpg",
+                                            "https://ae01.alicdn.com/kf/S534ec53778cf4d1d9ee06fbbf0cf59e8T.jpg",
+                                            "https://ae01.alicdn.com/kf/S455722d314754c89a316e39422b9336d7.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "ul-tt51-160-black",
+                             "sku":  "TT51-160-BLK",
+                             "label":  "1.60m Black",
+                             "price_ksh":  4149,
+                             "compare_at_ksh":  5186,
+                             "attributes":  {
+                                                "Height":  "1.60m",
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/S534ec53778cf4d1d9ee06fbbf0cf59e8T.jpg",
+                                            "https://ae01.alicdn.com/kf/S455722d314754c89a316e39422b9336d7.jpg",
+                                            "https://ae01.alicdn.com/kf/Sc49f9360a36e42be9dd9a250baf3a093E.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "ul-tt51-170-black",
+                             "sku":  "TT51-170-BLK",
+                             "label":  "1.70m Black",
+                             "price_ksh":  4899,
+                             "compare_at_ksh":  5999,
+                             "attributes":  {
+                                                "Height":  "1.70m",
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/S455722d314754c89a316e39422b9336d7.jpg",
+                                            "https://ae01.alicdn.com/kf/Sc49f9360a36e42be9dd9a250baf3a093E.jpg",
+                                            "https://ae01.alicdn.com/kf/S4aceb0f3cf854641ab286d8378b4dcd4P.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "ul-tt51-138-white",
+                             "sku":  "TT51-138-WHT",
+                             "label":  "1.38m White",
+                             "price_ksh":  2815,
+                             "compare_at_ksh":  3494,
+                             "attributes":  {
+                                                "Height":  "1.38m",
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/S534ec53778cf4d1d9ee06fbbf0cf59e8T.jpg",
+                                            "https://ae01.alicdn.com/kf/S4aceb0f3cf854641ab286d8378b4dcd4P.jpg",
+                                            "https://ae01.alicdn.com/kf/S455722d314754c89a316e39422b9336d7.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "ul-tt51-160-white",
+                             "sku":  "TT51-160-WHT",
+                             "label":  "1.60m White",
+                             "price_ksh":  4249,
+                             "compare_at_ksh":  5286,
+                             "attributes":  {
+                                                "Height":  "1.60m",
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/Sc49f9360a36e42be9dd9a250baf3a093E.jpg",
+                                            "https://ae01.alicdn.com/kf/S534ec53778cf4d1d9ee06fbbf0cf59e8T.jpg",
+                                            "https://ae01.alicdn.com/kf/S455722d314754c89a316e39422b9336d7.jpg"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "ul-st06s",
-        "name":  "Ulanzi ST-06S Universal 360� Mobile Phone Clip Holder",
-        "description":  "The Ulanzi ST-06S Universal 360� Mobile Phone Clip Holder is an ideal solution for photographers and videographers looking to mount their smartphone on a tripod. Compatible with a variety of smartphones, including iPhone, Samsung, and Xiaomi, this holder features a 360� rotatable design for flexible angles. It attaches to any tripod with a standard 1/4� screw, providing stability and smooth movement during shooting. With its lightweight and sturdy aluminum construction, the ST-06S ensures long-lasting use while securely holding your device without risk of scratching or slipping. Perfect for creators on the go.",
+        "name":  "Ulanzi ST-06S Universal 360ÃƒÂ¯Ã‚Â¿Ã‚Â½ Mobile Phone Clip Holder",
+        "description":  "The Ulanzi ST-06S Universal 360ÃƒÂ¯Ã‚Â¿Ã‚Â½ Mobile Phone Clip Holder is an ideal solution for photographers and videographers looking to mount their smartphone on a tripod. Compatible with a variety of smartphones, including iPhone, Samsung, and Xiaomi, this holder features a 360ÃƒÂ¯Ã‚Â¿Ã‚Â½ rotatable design for flexible angles. It attaches to any tripod with a standard 1/4ÃƒÂ¯Ã‚Â¿Ã‚Â½ screw, providing stability and smooth movement during shooting. With its lightweight and sturdy aluminum construction, the ST-06S ensures long-lasting use while securely holding your device without risk of scratching or slipping. Perfect for creators on the go.",
         "price_ksh":  1154,
         "compare_at_ksh":  1442,
         "discount_percent":  20,
@@ -38,12 +120,59 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "ul-st06s-black",
+                             "sku":  "ST06S-BLK",
+                             "label":  "Black",
+                             "price_ksh":  1154,
+                             "compare_at_ksh":  1442,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/S13c31503b04844d9a55159edf71bcb47C.jpg",
+                                            "https://ae01.alicdn.com/kf/S9ee36fc0059546ffbce776bcf507e245u.jpg",
+                                            "https://ae01.alicdn.com/kf/S079e8d2a678b461389fdc2ede144fb32m.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "ul-st06s-white",
+                             "sku":  "ST06S-WHT",
+                             "label":  "White",
+                             "price_ksh":  1185,
+                             "compare_at_ksh":  1480,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/S9ee36fc0059546ffbce776bcf507e245u.jpg",
+                                            "https://ae01.alicdn.com/kf/S13c31503b04844d9a55159edf71bcb47C.jpg",
+                                            "https://ae01.alicdn.com/kf/S079e8d2a678b461389fdc2ede144fb32m.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "ul-st06s-red",
+                             "sku":  "ST06S-RED",
+                             "label":  "Red",
+                             "price_ksh":  1225,
+                             "compare_at_ksh":  1532,
+                             "attributes":  {
+                                                "Color":  "Red"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/S079e8d2a678b461389fdc2ede144fb32m.jpg",
+                                            "https://ae01.alicdn.com/kf/S13c31503b04844d9a55159edf71bcb47C.jpg",
+                                            "https://ae01.alicdn.com/kf/S9ee36fc0059546ffbce776bcf507e245u.jpg"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "ul-ombra-12345",
-        "name":  "Ulanzi OMBRA 1.6M Video Travel Tripod 360� Panorama Fluid Drag Pan Tripod Max Load 6KG Arca Swiss Plate for DSLR Camera",
-        "description":  "The Ulanzi Select MT-44 is a versatile extendable tripod designed for both DSLR cameras and smartphones. Built from high-quality, durable materials, this tripod ensures superior stability, even during intense outdoor shoots. The tripod features a 360� ball head that allows for smooth, multi-angle rotation, helping users capture the perfect shot from any position. It extends up to [insert max height], making it ideal for a variety of shooting scenarios�whether indoors, outdoors, or on the go. The tripod\u0027s compact and portable design makes it a perfect companion for travel and on-location shoots. With anti-slip feet for added stability on rough surfaces, it meets the demands of modern vlogging, professional photography, and video recording.",
+        "name":  "Ulanzi OMBRA 1.6M Video Travel Tripod 360ÃƒÂ¯Ã‚Â¿Ã‚Â½ Panorama Fluid Drag Pan Tripod Max Load 6KG Arca Swiss Plate for DSLR Camera",
+        "description":  "The Ulanzi Select MT-44 is a versatile extendable tripod designed for both DSLR cameras and smartphones. Built from high-quality, durable materials, this tripod ensures superior stability, even during intense outdoor shoots. The tripod features a 360ÃƒÂ¯Ã‚Â¿Ã‚Â½ ball head that allows for smooth, multi-angle rotation, helping users capture the perfect shot from any position. It extends up to [insert max height], making it ideal for a variety of shooting scenariosÃƒÂ¯Ã‚Â¿Ã‚Â½whether indoors, outdoors, or on the go. The tripod\u0027s compact and portable design makes it a perfect companion for travel and on-location shoots. With anti-slip feet for added stability on rough surfaces, it meets the demands of modern vlogging, professional photography, and video recording.",
         "price_ksh":  17269,
         "compare_at_ksh":  21586,
         "discount_percent":  20,
@@ -58,7 +187,41 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "ul-ombra-12345-black",
+                             "sku":  "UL-OMBRA-12345-BLA",
+                             "label":  "Black",
+                             "price_ksh":  17269,
+                             "compare_at_ksh":  21586,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/3519590448/p/1/e/6/t/10301/1100086340045.mp4?from=chrome",
+                                            "https://ae01.alicdn.com/kf/A90d99cf50a8c48cf8599a9cd79bf4a46u.jpg",
+                                            "https://ae01.alicdn.com/kf/S807dcae1b32c49a9a7421cdd05cb50e9W.jpg",
+                                            "https://ae01.alicdn.com/kf/Aa3c1c178c368492fb50c0029c195685cK.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "ul-ombra-12345-white",
+                             "sku":  "UL-OMBRA-12345-WHI",
+                             "label":  "White",
+                             "price_ksh":  17319,
+                             "compare_at_ksh":  21646,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/3519590448/p/1/e/6/t/10301/1100086340045.mp4?from=chrome",
+                                            "https://ae01.alicdn.com/kf/A90d99cf50a8c48cf8599a9cd79bf4a46u.jpg",
+                                            "https://ae01.alicdn.com/kf/S807dcae1b32c49a9a7421cdd05cb50e9W.jpg",
+                                            "https://ae01.alicdn.com/kf/Aa3c1c178c368492fb50c0029c195685cK.jpg"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "ul-rig-pro",
@@ -78,7 +241,39 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "ul-rig-pro-black",
+                             "sku":  "URIG-BLK",
+                             "label":  "Black",
+                             "price_ksh":  1546,
+                             "compare_at_ksh":  1932,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/HTB1oHS0aI_vK1RkSmRyq6xwupXaG.jpg",
+                                            "https://ae01.alicdn.com/kf/HTB1nN.eah6I8KJjy0Fgq6xXzVXaZ.jpg?size=346904\u0026height=800\u0026width=800\u0026hash=698e516efd19aa4ef33a21d2b4555588",
+                                            "https://ae01.alicdn.com/kf/HTB1aRkhadrJ8KJjSspaq6xuKpXaY.jpg?size=256776\u0026height=800\u0026width=800\u0026hash=5a50bb0c9f03973b933c31469288a3c8"
+                                        ]
+                         },
+                         {
+                             "id":  "ul-rig-pro-red",
+                             "sku":  "URIG-RED",
+                             "label":  "Red",
+                             "price_ksh":  1619,
+                             "compare_at_ksh":  2024,
+                             "attributes":  {
+                                                "Color":  "Red"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/HTB1aRkhadrJ8KJjSspaq6xuKpXaY.jpg?size=256776\u0026height=800\u0026width=800\u0026hash=5a50bb0c9f03973b933c31469288a3c8",
+                                            "https://ae01.alicdn.com/kf/HTB1ZlkragDD8KJjy0Fdq6AjvXXaB.jpg?size=220842\u0026height=800\u0026width=800\u0026hash=775633f0da53bcc146a58633e409249d",
+                                            "https://ae01.alicdn.com/kf/HTB1oHS0aI_vK1RkSmRyq6xwupXaG.jpg"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "ul-mt16-2024",
@@ -98,7 +293,39 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "ul-mt16-black",
+                             "sku":  "MT16-BLK",
+                             "label":  "Black",
+                             "price_ksh":  4042,
+                             "compare_at_ksh":  5052,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/H2b310b0ab9304c2d8d06d4892fa9b278j.jpg",
+                                            "https://ae01.alicdn.com/kf/H1843906ada3045ba80ccfb54357e7493o.jpg",
+                                            "https://ae01.alicdn.com/kf/Hddc2699942494df1aac22daf2422eaecu.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "ul-mt16-white",
+                             "sku":  "MT16-WHT",
+                             "label":  "White",
+                             "price_ksh":  4129,
+                             "compare_at_ksh":  5160,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/H1843906ada3045ba80ccfb54357e7493o.jpg",
+                                            "https://ae01.alicdn.com/kf/H2b310b0ab9304c2d8d06d4892fa9b278j.jpg",
+                                            "https://ae01.alicdn.com/kf/Hddc2699942494df1aac22daf2422eaecu.jpg"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "ul-mt-09",
@@ -118,7 +345,41 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "ul-mt-09-black",
+                             "sku":  "UL-MT-09-BLA",
+                             "label":  "Black",
+                             "price_ksh":  1328,
+                             "compare_at_ksh":  1660,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/2738162058/p/1/e/6/t/10301/246567316944.mp4",
+                                            "https://ae01.alicdn.com/kf/A3fa1e09c46924322990a69e45300c2505.jpg",
+                                            "https://ae01.alicdn.com/kf/A61c41f3100914e0b8c58524edd9d3fcdR.jpg",
+                                            "https://ae01.alicdn.com/kf/Ac3ac631da4274352b3b97552c52994bbu.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "ul-mt-09-white",
+                             "sku":  "UL-MT-09-WHI",
+                             "label":  "White",
+                             "price_ksh":  1378,
+                             "compare_at_ksh":  1720,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/2738162058/p/1/e/6/t/10301/246567316944.mp4",
+                                            "https://ae01.alicdn.com/kf/A3fa1e09c46924322990a69e45300c2505.jpg",
+                                            "https://ae01.alicdn.com/kf/A61c41f3100914e0b8c58524edd9d3fcdR.jpg",
+                                            "https://ae01.alicdn.com/kf/Ac3ac631da4274352b3b97552c52994bbu.jpg"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "ul-mt11",
@@ -138,7 +399,41 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "ul-mt11-black",
+                             "sku":  "UL-MT11-BLA",
+                             "label":  "Black",
+                             "price_ksh":  2557,
+                             "compare_at_ksh":  3196,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/3000002737018/p/1/e/6/t/10301/1100211269682.mp4?from=chrome",
+                                            "https://ae01.alicdn.com/kf/S9e6c0c29aa5946f883282007c866fa8ff.jpg",
+                                            "https://ae01.alicdn.com/kf/S607ec5724f694282a9dbeae5968b15e7P.jpg",
+                                            "https://ae01.alicdn.com/kf/Sc9a191d679d94fb98dd54c8c8d830052R.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "ul-mt11-white",
+                             "sku":  "UL-MT11-WHI",
+                             "label":  "White",
+                             "price_ksh":  2607,
+                             "compare_at_ksh":  3256,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/3000002737018/p/1/e/6/t/10301/1100211269682.mp4?from=chrome",
+                                            "https://ae01.alicdn.com/kf/S9e6c0c29aa5946f883282007c866fa8ff.jpg",
+                                            "https://ae01.alicdn.com/kf/S607ec5724f694282a9dbeae5968b15e7P.jpg",
+                                            "https://ae01.alicdn.com/kf/Sc9a191d679d94fb98dd54c8c8d830052R.jpg"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "ul-stk-001",
@@ -158,7 +453,41 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "ul-stk-001-black",
+                             "sku":  "UL-STK-001-BLA",
+                             "label":  "Black",
+                             "price_ksh":  4149,
+                             "compare_at_ksh":  5186,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://drive.google.com/file/d/1qKNmQwqT0Dj5V-CjQHeGvpHmWiZZNQqm/view?usp=drivesdk",
+                                            "https://drive.google.com/file/d/1q51FZGXqYxyykH3bAIOS2rbxjHkUG4HL/view?usp=drivesdk",
+                                            "https://drive.google.com/file/d/1q0UsZhBrFd0D7XSsmCbpJrCcTvGk9U2x/view?usp=drivesdk",
+                                            "https://drive.google.com/file/d/1py7BjStjWMrANqd0anrIuIqm_vpulQqe/view?usp=drivesdk"
+                                        ]
+                         },
+                         {
+                             "id":  "ul-stk-001-white",
+                             "sku":  "UL-STK-001-WHI",
+                             "label":  "White",
+                             "price_ksh":  4199,
+                             "compare_at_ksh":  5246,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://drive.google.com/file/d/1qKNmQwqT0Dj5V-CjQHeGvpHmWiZZNQqm/view?usp=drivesdk",
+                                            "https://drive.google.com/file/d/1q51FZGXqYxyykH3bAIOS2rbxjHkUG4HL/view?usp=drivesdk",
+                                            "https://drive.google.com/file/d/1q0UsZhBrFd0D7XSsmCbpJrCcTvGk9U2x/view?usp=drivesdk",
+                                            "https://drive.google.com/file/d/1py7BjStjWMrANqd0anrIuIqm_vpulQqe/view?usp=drivesdk"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "ul-wm10",
@@ -178,12 +507,44 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "ul-wm10-black",
+                             "sku":  "WM10-BLK",
+                             "label":  "Black",
+                             "price_ksh":  3656,
+                             "compare_at_ksh":  4570,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://ae-pic-a1.aliexpress-media.com/kf/Sc4a43c457cfc4697894bdc01e2b67357L/Ulanzi-WM-10-Wireles-Lavalier-Microphone-1-to-1-Mic-USB-C-for-Android-iPhone-with.jpg_640x640Q90.jpg_.webp",
+                                            "https://ae-pic-a1.aliexpress-media.com/kf/S49b601ebe9ba4f0c87fed9f3b92d237a6/Ulanzi-WM-10-Wireles-Lavalier-Microphone-1-to-1-Mic-USB-C-for-Android-iPhone-with.jpg_640x640Q90.jpg_.webp",
+                                            "https://ae-pic-a1.aliexpress-media.com/kf/S02d6b19cd1e943d0aa618042cec6d066E/Ulanzi-WM-10-Wireles-Lavalier-Microphone-1-to-1-Mic-USB-C-for-Android-iPhone-with.jpg_640x640Q90.jpg_.webp"
+                                        ]
+                         },
+                         {
+                             "id":  "ul-wm10-white",
+                             "sku":  "WM10-WHT",
+                             "label":  "White",
+                             "price_ksh":  3729,
+                             "compare_at_ksh":  4660,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://ae-pic-a1.aliexpress-media.com/kf/S49b601ebe9ba4f0c87fed9f3b92d237a6/Ulanzi-WM-10-Wireles-Lavalier-Microphone-1-to-1-Mic-USB-C-for-Android-iPhone-with.jpg_640x640Q90.jpg_.webp",
+                                            "https://ae-pic-a1.aliexpress-media.com/kf/S02d6b19cd1e943d0aa618042cec6d066E/Ulanzi-WM-10-Wireles-Lavalier-Microphone-1-to-1-Mic-USB-C-for-Android-iPhone-with.jpg_640x640Q90.jpg_.webp",
+                                            "https://ae-pic-a1.aliexpress-media.com/kf/Sc4a43c457cfc4697894bdc01e2b67357L/Ulanzi-WM-10-Wireles-Lavalier-Microphone-1-to-1-Mic-USB-C-for-Android-iPhone-with.jpg_640x640Q90.jpg_.webp"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "-1",
         "name":  "Ulanzi TT51 Portable Tripod - Universal Camera \u0026 Smartphone Stand (450mm-1380mm) - Bundle 1",
-        "description":  "Meet Your Ultimate Companion for Capturing Stunning Moments: The Ulanzi TT51 Portable Tripod. Imagine this: You�re embarking on a new adventure or setting up a perfect shot for your vlog. The excitement is palpable, but you need the right tool to ensure every moment is captured with precision and stability. Enter the Ulanzi TT51 Portable Tripod � your new best friend for all your photography and videography needs. Who is the Ulanzi TT51 Portable Tripod? It�s not just another tripod; it�s a versatile and reliable partner designed to enhance your creative pursuits. With its sleek, lightweight design and sturdy build, the TT51 turns every surface into a stable platform, allowing you to focus on capturing the perfect shot without any hassle. Why You�ll Love It: Compact \u0026 Lightweight: Easily fits into your gear bag, making it perfect for on-the-go shooting. Versatile Functionality: Suitable for cameras, smartphones, and action cams � whatever your device, it supports it with ease. Adjustable Height: From 450mm to 1380mm, this tripod adjusts to your needs, whether you�re shooting from a low angle or reaching for those high shots. Stable \u0026 Reliable: The sturdy construction ensures stability, even on uneven surfaces, while the detachable ball head provides precision and flexibility. Picture This: You�re setting up for a breathtaking time-lapse of a city skyline, or capturing those unforgettable action shots on your next adventure. The Ulanzi TT51 Portable Tripod stands by your side, its adjustable legs and smooth swivel head helping you frame the perfect shot effortlessly. With the Ulanzi TT51 Portable Tripod, you�re not just capturing moments � you�re crafting memories with ease and stability. Elevate your photography and videography game with this essential companion.",
+        "description":  "Meet Your Ultimate Companion for Capturing Stunning Moments: The Ulanzi TT51 Portable Tripod. Imagine this: YouÃƒÂ¯Ã‚Â¿Ã‚Â½re embarking on a new adventure or setting up a perfect shot for your vlog. The excitement is palpable, but you need the right tool to ensure every moment is captured with precision and stability. Enter the Ulanzi TT51 Portable Tripod ÃƒÂ¯Ã‚Â¿Ã‚Â½ your new best friend for all your photography and videography needs. Who is the Ulanzi TT51 Portable Tripod? ItÃƒÂ¯Ã‚Â¿Ã‚Â½s not just another tripod; itÃƒÂ¯Ã‚Â¿Ã‚Â½s a versatile and reliable partner designed to enhance your creative pursuits. With its sleek, lightweight design and sturdy build, the TT51 turns every surface into a stable platform, allowing you to focus on capturing the perfect shot without any hassle. Why YouÃƒÂ¯Ã‚Â¿Ã‚Â½ll Love It: Compact \u0026 Lightweight: Easily fits into your gear bag, making it perfect for on-the-go shooting. Versatile Functionality: Suitable for cameras, smartphones, and action cams ÃƒÂ¯Ã‚Â¿Ã‚Â½ whatever your device, it supports it with ease. Adjustable Height: From 450mm to 1380mm, this tripod adjusts to your needs, whether youÃƒÂ¯Ã‚Â¿Ã‚Â½re shooting from a low angle or reaching for those high shots. Stable \u0026 Reliable: The sturdy construction ensures stability, even on uneven surfaces, while the detachable ball head provides precision and flexibility. Picture This: YouÃƒÂ¯Ã‚Â¿Ã‚Â½re setting up for a breathtaking time-lapse of a city skyline, or capturing those unforgettable action shots on your next adventure. The Ulanzi TT51 Portable Tripod stands by your side, its adjustable legs and smooth swivel head helping you frame the perfect shot effortlessly. With the Ulanzi TT51 Portable Tripod, youÃƒÂ¯Ã‚Â¿Ã‚Â½re not just capturing moments ÃƒÂ¯Ã‚Â¿Ã‚Â½ youÃƒÂ¯Ã‚Â¿Ã‚Â½re crafting memories with ease and stability. Elevate your photography and videography game with this essential companion.",
         "price_ksh":  2715,
         "compare_at_ksh":  3394,
         "discount_percent":  20,
@@ -199,12 +560,46 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "-1-black",
+                             "sku":  "-1-BLA",
+                             "label":  "Black",
+                             "price_ksh":  2715,
+                             "compare_at_ksh":  3394,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/S4aceb0f3cf854641ab286d8378b4dcd4P.jpg",
+                                            "https://ae01.alicdn.com/kf/S534ec53778cf4d1d9ee06fbbf0cf59e8T.jpg",
+                                            "https://ae01.alicdn.com/kf/S455722d314754c89a316e39422b9336d7.jpg",
+                                            "https://ae01.alicdn.com/kf/Sc49f9360a36e42be9dd9a250baf3a093E.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "-1-white",
+                             "sku":  "-1-WHI",
+                             "label":  "White",
+                             "price_ksh":  2765,
+                             "compare_at_ksh":  3454,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/S4aceb0f3cf854641ab286d8378b4dcd4P.jpg",
+                                            "https://ae01.alicdn.com/kf/S534ec53778cf4d1d9ee06fbbf0cf59e8T.jpg",
+                                            "https://ae01.alicdn.com/kf/S455722d314754c89a316e39422b9336d7.jpg",
+                                            "https://ae01.alicdn.com/kf/Sc49f9360a36e42be9dd9a250baf3a093E.jpg"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "-2",
-        "name":  "Ulanzi ST-06S Universal 360� Mobile Phone Clip Holder - Bundle 2",
-        "description":  "The Ulanzi ST-06S Universal 360� Mobile Phone Clip Holder is an ideal solution for photographers and videographers looking to mount their smartphone on a tripod. Compatible with a variety of smartphones, including iPhone, Samsung, and Xiaomi, this holder features a 360� rotatable design for flexible angles. It attaches to any tripod with a standard 1/4� screw, providing stability and smooth movement during shooting. With its lightweight and sturdy aluminum construction, the ST-06S ensures long-lasting use while securely holding your device without risk of scratching or slipping. Perfect for creators on the go.",
+        "name":  "Ulanzi ST-06S Universal 360ÃƒÂ¯Ã‚Â¿Ã‚Â½ Mobile Phone Clip Holder - Bundle 2",
+        "description":  "The Ulanzi ST-06S Universal 360ÃƒÂ¯Ã‚Â¿Ã‚Â½ Mobile Phone Clip Holder is an ideal solution for photographers and videographers looking to mount their smartphone on a tripod. Compatible with a variety of smartphones, including iPhone, Samsung, and Xiaomi, this holder features a 360ÃƒÂ¯Ã‚Â¿Ã‚Â½ rotatable design for flexible angles. It attaches to any tripod with a standard 1/4ÃƒÂ¯Ã‚Â¿Ã‚Â½ screw, providing stability and smooth movement during shooting. With its lightweight and sturdy aluminum construction, the ST-06S ensures long-lasting use while securely holding your device without risk of scratching or slipping. Perfect for creators on the go.",
         "price_ksh":  1154,
         "compare_at_ksh":  1442,
         "discount_percent":  20,
@@ -219,12 +614,62 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "-2-black",
+                             "sku":  "-2-BLA",
+                             "label":  "Black",
+                             "price_ksh":  1154,
+                             "compare_at_ksh":  1442,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/2977325919/p/1/e/6/t/10301/1100223286626.mp4?from=chrome",
+                                            "https://ae01.alicdn.com/kf/S13c31503b04844d9a55159edf71bcb47C.jpg",
+                                            "https://ae01.alicdn.com/kf/S9ee36fc0059546ffbce776bcf507e245u.jpg",
+                                            "https://ae01.alicdn.com/kf/S079e8d2a678b461389fdc2ede144fb32m.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "-2-red",
+                             "sku":  "-2-RED",
+                             "label":  "Red",
+                             "price_ksh":  1204,
+                             "compare_at_ksh":  1502,
+                             "attributes":  {
+                                                "Color":  "Red"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/2977325919/p/1/e/6/t/10301/1100223286626.mp4?from=chrome",
+                                            "https://ae01.alicdn.com/kf/S13c31503b04844d9a55159edf71bcb47C.jpg",
+                                            "https://ae01.alicdn.com/kf/S9ee36fc0059546ffbce776bcf507e245u.jpg",
+                                            "https://ae01.alicdn.com/kf/S079e8d2a678b461389fdc2ede144fb32m.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "-2-white",
+                             "sku":  "-2-WHI",
+                             "label":  "White",
+                             "price_ksh":  1254,
+                             "compare_at_ksh":  1562,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/2977325919/p/1/e/6/t/10301/1100223286626.mp4?from=chrome",
+                                            "https://ae01.alicdn.com/kf/S13c31503b04844d9a55159edf71bcb47C.jpg",
+                                            "https://ae01.alicdn.com/kf/S9ee36fc0059546ffbce776bcf507e245u.jpg",
+                                            "https://ae01.alicdn.com/kf/S079e8d2a678b461389fdc2ede144fb32m.jpg"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "-3",
-        "name":  "Ulanzi OMBRA 1.6M Video Travel Tripod 360� Panorama Fluid Drag Pan Tripod Max Load 6KG Arca Swiss Plate for DSLR Camera - Bundle 3",
-        "description":  "The Ulanzi Select MT-44 is a versatile extendable tripod designed for both DSLR cameras and smartphones. Built from high-quality, durable materials, this tripod ensures superior stability, even during intense outdoor shoots. The tripod features a 360� ball head that allows for smooth, multi-angle rotation, helping users capture the perfect shot from any position. It extends up to [insert max height], making it ideal for a variety of shooting scenarios�whether indoors, outdoors, or on the go. The tripod\u0027s compact and portable design makes it a perfect companion for travel and on-location shoots. With anti-slip feet for added stability on rough surfaces, it meets the demands of modern vlogging, professional photography, and video recording.",
+        "name":  "Ulanzi OMBRA 1.6M Video Travel Tripod 360ÃƒÂ¯Ã‚Â¿Ã‚Â½ Panorama Fluid Drag Pan Tripod Max Load 6KG Arca Swiss Plate for DSLR Camera - Bundle 3",
+        "description":  "The Ulanzi Select MT-44 is a versatile extendable tripod designed for both DSLR cameras and smartphones. Built from high-quality, durable materials, this tripod ensures superior stability, even during intense outdoor shoots. The tripod features a 360ÃƒÂ¯Ã‚Â¿Ã‚Â½ ball head that allows for smooth, multi-angle rotation, helping users capture the perfect shot from any position. It extends up to [insert max height], making it ideal for a variety of shooting scenariosÃƒÂ¯Ã‚Â¿Ã‚Â½whether indoors, outdoors, or on the go. The tripod\u0027s compact and portable design makes it a perfect companion for travel and on-location shoots. With anti-slip feet for added stability on rough surfaces, it meets the demands of modern vlogging, professional photography, and video recording.",
         "price_ksh":  17269,
         "compare_at_ksh":  21586,
         "discount_percent":  20,
@@ -239,7 +684,41 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "-3-black",
+                             "sku":  "-3-BLA",
+                             "label":  "Black",
+                             "price_ksh":  17269,
+                             "compare_at_ksh":  21586,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/3519590448/p/1/e/6/t/10301/1100086340045.mp4?from=chrome",
+                                            "https://ae01.alicdn.com/kf/A90d99cf50a8c48cf8599a9cd79bf4a46u.jpg",
+                                            "https://ae01.alicdn.com/kf/S807dcae1b32c49a9a7421cdd05cb50e9W.jpg",
+                                            "https://ae01.alicdn.com/kf/Aa3c1c178c368492fb50c0029c195685cK.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "-3-white",
+                             "sku":  "-3-WHI",
+                             "label":  "White",
+                             "price_ksh":  17319,
+                             "compare_at_ksh":  21646,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/3519590448/p/1/e/6/t/10301/1100086340045.mp4?from=chrome",
+                                            "https://ae01.alicdn.com/kf/A90d99cf50a8c48cf8599a9cd79bf4a46u.jpg",
+                                            "https://ae01.alicdn.com/kf/S807dcae1b32c49a9a7421cdd05cb50e9W.jpg",
+                                            "https://ae01.alicdn.com/kf/Aa3c1c178c368492fb50c0029c195685cK.jpg"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "-4",
@@ -259,7 +738,57 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "-4-black",
+                             "sku":  "-4-BLA",
+                             "label":  "Black",
+                             "price_ksh":  1546,
+                             "compare_at_ksh":  1932,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/HTB1oHS0aI_vK1RkSmRyq6xwupXaG.jpg",
+                                            "https://ae01.alicdn.com/kf/HTB1nN.eah6I8KJjy0Fgq6xXzVXaZ.jpg?size=346904\u0026height=800\u0026width=800\u0026hash=698e516efd19aa4ef33a21d2b4555588",
+                                            "https://ae01.alicdn.com/kf/HTB1aRkhadrJ8KJjSspaq6xuKpXaY.jpg?size=256776\u0026height=800\u0026width=800\u0026hash=5a50bb0c9f03973b933c31469288a3c8",
+                                            "https://ae01.alicdn.com/kf/HTB1ZlkragDD8KJjy0Fdq6AjvXXaB.jpg?size=220842\u0026height=800\u0026width=800\u0026hash=775633f0da53bcc146a58633e409249d"
+                                        ]
+                         },
+                         {
+                             "id":  "-4-red",
+                             "sku":  "-4-RED",
+                             "label":  "Red",
+                             "price_ksh":  1596,
+                             "compare_at_ksh":  1992,
+                             "attributes":  {
+                                                "Color":  "Red"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/HTB1oHS0aI_vK1RkSmRyq6xwupXaG.jpg",
+                                            "https://ae01.alicdn.com/kf/HTB1nN.eah6I8KJjy0Fgq6xXzVXaZ.jpg?size=346904\u0026height=800\u0026width=800\u0026hash=698e516efd19aa4ef33a21d2b4555588",
+                                            "https://ae01.alicdn.com/kf/HTB1aRkhadrJ8KJjSspaq6xuKpXaY.jpg?size=256776\u0026height=800\u0026width=800\u0026hash=5a50bb0c9f03973b933c31469288a3c8",
+                                            "https://ae01.alicdn.com/kf/HTB1ZlkragDD8KJjy0Fdq6AjvXXaB.jpg?size=220842\u0026height=800\u0026width=800\u0026hash=775633f0da53bcc146a58633e409249d"
+                                        ]
+                         },
+                         {
+                             "id":  "-4-white",
+                             "sku":  "-4-WHI",
+                             "label":  "White",
+                             "price_ksh":  1646,
+                             "compare_at_ksh":  2052,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/HTB1oHS0aI_vK1RkSmRyq6xwupXaG.jpg",
+                                            "https://ae01.alicdn.com/kf/HTB1nN.eah6I8KJjy0Fgq6xXzVXaZ.jpg?size=346904\u0026height=800\u0026width=800\u0026hash=698e516efd19aa4ef33a21d2b4555588",
+                                            "https://ae01.alicdn.com/kf/HTB1aRkhadrJ8KJjSspaq6xuKpXaY.jpg?size=256776\u0026height=800\u0026width=800\u0026hash=5a50bb0c9f03973b933c31469288a3c8",
+                                            "https://ae01.alicdn.com/kf/HTB1ZlkragDD8KJjy0Fdq6AjvXXaB.jpg?size=220842\u0026height=800\u0026width=800\u0026hash=775633f0da53bcc146a58633e409249d"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "-5",
@@ -279,7 +808,41 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "-5-black",
+                             "sku":  "-5-BLA",
+                             "label":  "Black",
+                             "price_ksh":  4042,
+                             "compare_at_ksh":  5052,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/2738162058/p/1/e/6/t/10301/292001471782.mp4",
+                                            "https://ae01.alicdn.com/kf/H2b310b0ab9304c2d8d06d4892fa9b278j.jpg",
+                                            "https://ae01.alicdn.com/kf/H1843906ada3045ba80ccfb54357e7493o.jpg",
+                                            "https://ae01.alicdn.com/kf/Hddc2699942494df1aac22daf2422eaecu.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "-5-white",
+                             "sku":  "-5-WHI",
+                             "label":  "White",
+                             "price_ksh":  4092,
+                             "compare_at_ksh":  5112,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/2738162058/p/1/e/6/t/10301/292001471782.mp4",
+                                            "https://ae01.alicdn.com/kf/H2b310b0ab9304c2d8d06d4892fa9b278j.jpg",
+                                            "https://ae01.alicdn.com/kf/H1843906ada3045ba80ccfb54357e7493o.jpg",
+                                            "https://ae01.alicdn.com/kf/Hddc2699942494df1aac22daf2422eaecu.jpg"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "-6",
@@ -299,7 +862,41 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "-6-black",
+                             "sku":  "-6-BLA",
+                             "label":  "Black",
+                             "price_ksh":  1328,
+                             "compare_at_ksh":  1660,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/2738162058/p/1/e/6/t/10301/246567316944.mp4",
+                                            "https://ae01.alicdn.com/kf/A3fa1e09c46924322990a69e45300c2505.jpg",
+                                            "https://ae01.alicdn.com/kf/A61c41f3100914e0b8c58524edd9d3fcdR.jpg",
+                                            "https://ae01.alicdn.com/kf/Ac3ac631da4274352b3b97552c52994bbu.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "-6-white",
+                             "sku":  "-6-WHI",
+                             "label":  "White",
+                             "price_ksh":  1378,
+                             "compare_at_ksh":  1720,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/2738162058/p/1/e/6/t/10301/246567316944.mp4",
+                                            "https://ae01.alicdn.com/kf/A3fa1e09c46924322990a69e45300c2505.jpg",
+                                            "https://ae01.alicdn.com/kf/A61c41f3100914e0b8c58524edd9d3fcdR.jpg",
+                                            "https://ae01.alicdn.com/kf/Ac3ac631da4274352b3b97552c52994bbu.jpg"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "-7",
@@ -319,7 +916,41 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "-7-black",
+                             "sku":  "-7-BLA",
+                             "label":  "Black",
+                             "price_ksh":  2557,
+                             "compare_at_ksh":  3196,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/3000002737018/p/1/e/6/t/10301/1100211269682.mp4?from=chrome",
+                                            "https://ae01.alicdn.com/kf/S9e6c0c29aa5946f883282007c866fa8ff.jpg",
+                                            "https://ae01.alicdn.com/kf/S607ec5724f694282a9dbeae5968b15e7P.jpg",
+                                            "https://ae01.alicdn.com/kf/Sc9a191d679d94fb98dd54c8c8d830052R.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "-7-white",
+                             "sku":  "-7-WHI",
+                             "label":  "White",
+                             "price_ksh":  2607,
+                             "compare_at_ksh":  3256,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/3000002737018/p/1/e/6/t/10301/1100211269682.mp4?from=chrome",
+                                            "https://ae01.alicdn.com/kf/S9e6c0c29aa5946f883282007c866fa8ff.jpg",
+                                            "https://ae01.alicdn.com/kf/S607ec5724f694282a9dbeae5968b15e7P.jpg",
+                                            "https://ae01.alicdn.com/kf/Sc9a191d679d94fb98dd54c8c8d830052R.jpg"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "-8",
@@ -339,7 +970,41 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "-8-black",
+                             "sku":  "-8-BLA",
+                             "label":  "Black",
+                             "price_ksh":  4149,
+                             "compare_at_ksh":  5186,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://drive.google.com/file/d/1qKNmQwqT0Dj5V-CjQHeGvpHmWiZZNQqm/view?usp=drivesdk",
+                                            "https://drive.google.com/file/d/1q51FZGXqYxyykH3bAIOS2rbxjHkUG4HL/view?usp=drivesdk",
+                                            "https://drive.google.com/file/d/1q0UsZhBrFd0D7XSsmCbpJrCcTvGk9U2x/view?usp=drivesdk",
+                                            "https://drive.google.com/file/d/1py7BjStjWMrANqd0anrIuIqm_vpulQqe/view?usp=drivesdk"
+                                        ]
+                         },
+                         {
+                             "id":  "-8-white",
+                             "sku":  "-8-WHI",
+                             "label":  "White",
+                             "price_ksh":  4199,
+                             "compare_at_ksh":  5246,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://drive.google.com/file/d/1qKNmQwqT0Dj5V-CjQHeGvpHmWiZZNQqm/view?usp=drivesdk",
+                                            "https://drive.google.com/file/d/1q51FZGXqYxyykH3bAIOS2rbxjHkUG4HL/view?usp=drivesdk",
+                                            "https://drive.google.com/file/d/1q0UsZhBrFd0D7XSsmCbpJrCcTvGk9U2x/view?usp=drivesdk",
+                                            "https://drive.google.com/file/d/1py7BjStjWMrANqd0anrIuIqm_vpulQqe/view?usp=drivesdk"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "-9",
@@ -359,12 +1024,46 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "-9-black",
+                             "sku":  "-9-BLA",
+                             "label":  "Black",
+                             "price_ksh":  3656,
+                             "compare_at_ksh":  4570,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://ae-pic-a1.aliexpress-media.com/kf/Sc4a43c457cfc4697894bdc01e2b67357L/Ulanzi-WM-10-Wireles-Lavalier-Microphone-1-to-1-Mic-USB-C-for-Android-iPhone-with.jpg_640x640Q90.jpg_.webp",
+                                            "https://ae-pic-a1.aliexpress-media.com/kf/S49b601ebe9ba4f0c87fed9f3b92d237a6/Ulanzi-WM-10-Wireles-Lavalier-Microphone-1-to-1-Mic-USB-C-for-Android-iPhone-with.jpg_640x640Q90.jpg_.webp",
+                                            "https://ae-pic-a1.aliexpress-media.com/kf/S02d6b19cd1e943d0aa618042cec6d066E/Ulanzi-WM-10-Wireles-Lavalier-Microphone-1-to-1-Mic-USB-C-for-Android-iPhone-with.jpg_640x640Q90.jpg_.webp",
+                                            "https://ae-pic-a1.aliexpress-media.com/kf/S5c8135c81749457eb7073b43e54f6d11a/Ulanzi-WM-10-Wireles-Lavalier-Microphone-1-to-1-Mic-USB-C-for-Android-iPhone-with.jpg_640x640Q90.jpg_.webp"
+                                        ]
+                         },
+                         {
+                             "id":  "-9-white",
+                             "sku":  "-9-WHI",
+                             "label":  "White",
+                             "price_ksh":  3706,
+                             "compare_at_ksh":  4630,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://ae-pic-a1.aliexpress-media.com/kf/Sc4a43c457cfc4697894bdc01e2b67357L/Ulanzi-WM-10-Wireles-Lavalier-Microphone-1-to-1-Mic-USB-C-for-Android-iPhone-with.jpg_640x640Q90.jpg_.webp",
+                                            "https://ae-pic-a1.aliexpress-media.com/kf/S49b601ebe9ba4f0c87fed9f3b92d237a6/Ulanzi-WM-10-Wireles-Lavalier-Microphone-1-to-1-Mic-USB-C-for-Android-iPhone-with.jpg_640x640Q90.jpg_.webp",
+                                            "https://ae-pic-a1.aliexpress-media.com/kf/S02d6b19cd1e943d0aa618042cec6d066E/Ulanzi-WM-10-Wireles-Lavalier-Microphone-1-to-1-Mic-USB-C-for-Android-iPhone-with.jpg_640x640Q90.jpg_.webp",
+                                            "https://ae-pic-a1.aliexpress-media.com/kf/S5c8135c81749457eb7073b43e54f6d11a/Ulanzi-WM-10-Wireles-Lavalier-Microphone-1-to-1-Mic-USB-C-for-Android-iPhone-with.jpg_640x640Q90.jpg_.webp"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "-10",
         "name":  "Ulanzi TT51 Portable Tripod - Universal Camera \u0026 Smartphone Stand (450mm-1380mm) - Bundle 10",
-        "description":  "Meet Your Ultimate Companion for Capturing Stunning Moments: The Ulanzi TT51 Portable Tripod. Imagine this: You�re embarking on a new adventure or setting up a perfect shot for your vlog. The excitement is palpable, but you need the right tool to ensure every moment is captured with precision and stability. Enter the Ulanzi TT51 Portable Tripod � your new best friend for all your photography and videography needs. Who is the Ulanzi TT51 Portable Tripod? It�s not just another tripod; it�s a versatile and reliable partner designed to enhance your creative pursuits. With its sleek, lightweight design and sturdy build, the TT51 turns every surface into a stable platform, allowing you to focus on capturing the perfect shot without any hassle. Why You�ll Love It: Compact \u0026 Lightweight: Easily fits into your gear bag, making it perfect for on-the-go shooting. Versatile Functionality: Suitable for cameras, smartphones, and action cams � whatever your device, it supports it with ease. Adjustable Height: From 450mm to 1380mm, this tripod adjusts to your needs, whether you�re shooting from a low angle or reaching for those high shots. Stable \u0026 Reliable: The sturdy construction ensures stability, even on uneven surfaces, while the detachable ball head provides precision and flexibility. Picture This: You�re setting up for a breathtaking time-lapse of a city skyline, or capturing those unforgettable action shots on your next adventure. The Ulanzi TT51 Portable Tripod stands by your side, its adjustable legs and smooth swivel head helping you frame the perfect shot effortlessly. With the Ulanzi TT51 Portable Tripod, you�re not just capturing moments � you�re crafting memories with ease and stability. Elevate your photography and videography game with this essential companion.",
+        "description":  "Meet Your Ultimate Companion for Capturing Stunning Moments: The Ulanzi TT51 Portable Tripod. Imagine this: YouÃƒÂ¯Ã‚Â¿Ã‚Â½re embarking on a new adventure or setting up a perfect shot for your vlog. The excitement is palpable, but you need the right tool to ensure every moment is captured with precision and stability. Enter the Ulanzi TT51 Portable Tripod ÃƒÂ¯Ã‚Â¿Ã‚Â½ your new best friend for all your photography and videography needs. Who is the Ulanzi TT51 Portable Tripod? ItÃƒÂ¯Ã‚Â¿Ã‚Â½s not just another tripod; itÃƒÂ¯Ã‚Â¿Ã‚Â½s a versatile and reliable partner designed to enhance your creative pursuits. With its sleek, lightweight design and sturdy build, the TT51 turns every surface into a stable platform, allowing you to focus on capturing the perfect shot without any hassle. Why YouÃƒÂ¯Ã‚Â¿Ã‚Â½ll Love It: Compact \u0026 Lightweight: Easily fits into your gear bag, making it perfect for on-the-go shooting. Versatile Functionality: Suitable for cameras, smartphones, and action cams ÃƒÂ¯Ã‚Â¿Ã‚Â½ whatever your device, it supports it with ease. Adjustable Height: From 450mm to 1380mm, this tripod adjusts to your needs, whether youÃƒÂ¯Ã‚Â¿Ã‚Â½re shooting from a low angle or reaching for those high shots. Stable \u0026 Reliable: The sturdy construction ensures stability, even on uneven surfaces, while the detachable ball head provides precision and flexibility. Picture This: YouÃƒÂ¯Ã‚Â¿Ã‚Â½re setting up for a breathtaking time-lapse of a city skyline, or capturing those unforgettable action shots on your next adventure. The Ulanzi TT51 Portable Tripod stands by your side, its adjustable legs and smooth swivel head helping you frame the perfect shot effortlessly. With the Ulanzi TT51 Portable Tripod, youÃƒÂ¯Ã‚Â¿Ã‚Â½re not just capturing moments ÃƒÂ¯Ã‚Â¿Ã‚Â½ youÃƒÂ¯Ã‚Â¿Ã‚Â½re crafting memories with ease and stability. Elevate your photography and videography game with this essential companion.",
         "price_ksh":  2715,
         "compare_at_ksh":  3394,
         "discount_percent":  20,
@@ -380,12 +1079,46 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "-10-black",
+                             "sku":  "-10-BLA",
+                             "label":  "Black",
+                             "price_ksh":  2715,
+                             "compare_at_ksh":  3394,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/S4aceb0f3cf854641ab286d8378b4dcd4P.jpg",
+                                            "https://ae01.alicdn.com/kf/S534ec53778cf4d1d9ee06fbbf0cf59e8T.jpg",
+                                            "https://ae01.alicdn.com/kf/S455722d314754c89a316e39422b9336d7.jpg",
+                                            "https://ae01.alicdn.com/kf/Sc49f9360a36e42be9dd9a250baf3a093E.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "-10-white",
+                             "sku":  "-10-WHI",
+                             "label":  "White",
+                             "price_ksh":  2765,
+                             "compare_at_ksh":  3454,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://ae01.alicdn.com/kf/S4aceb0f3cf854641ab286d8378b4dcd4P.jpg",
+                                            "https://ae01.alicdn.com/kf/S534ec53778cf4d1d9ee06fbbf0cf59e8T.jpg",
+                                            "https://ae01.alicdn.com/kf/S455722d314754c89a316e39422b9336d7.jpg",
+                                            "https://ae01.alicdn.com/kf/Sc49f9360a36e42be9dd9a250baf3a093E.jpg"
+                                        ]
+                         }
+                     ]
     },
     {
         "id":  "-11",
-        "name":  "Ulanzi ST-06S Universal 360� Mobile Phone Clip Holder - Bundle 11",
-        "description":  "The Ulanzi ST-06S Universal 360� Mobile Phone Clip Holder is an ideal solution for photographers and videographers looking to mount their smartphone on a tripod. Compatible with a variety of smartphones, including iPhone, Samsung, and Xiaomi, this holder features a 360� rotatable design for flexible angles. It attaches to any tripod with a standard 1/4� screw, providing stability and smooth movement during shooting. With its lightweight and sturdy aluminum construction, the ST-06S ensures long-lasting use while securely holding your device without risk of scratching or slipping. Perfect for creators on the go.",
+        "name":  "Ulanzi ST-06S Universal 360ÃƒÂ¯Ã‚Â¿Ã‚Â½ Mobile Phone Clip Holder - Bundle 11",
+        "description":  "The Ulanzi ST-06S Universal 360ÃƒÂ¯Ã‚Â¿Ã‚Â½ Mobile Phone Clip Holder is an ideal solution for photographers and videographers looking to mount their smartphone on a tripod. Compatible with a variety of smartphones, including iPhone, Samsung, and Xiaomi, this holder features a 360ÃƒÂ¯Ã‚Â¿Ã‚Â½ rotatable design for flexible angles. It attaches to any tripod with a standard 1/4ÃƒÂ¯Ã‚Â¿Ã‚Â½ screw, providing stability and smooth movement during shooting. With its lightweight and sturdy aluminum construction, the ST-06S ensures long-lasting use while securely holding your device without risk of scratching or slipping. Perfect for creators on the go.",
         "price_ksh":  1154,
         "compare_at_ksh":  1442,
         "discount_percent":  20,
@@ -400,6 +1133,56 @@
                  ],
         "flags":  [
                       "featured"
-                  ]
+                  ],
+        "variants":  [
+                         {
+                             "id":  "-11-black",
+                             "sku":  "-11-BLA",
+                             "label":  "Black",
+                             "price_ksh":  1154,
+                             "compare_at_ksh":  1442,
+                             "attributes":  {
+                                                "Color":  "Black"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/2977325919/p/1/e/6/t/10301/1100223286626.mp4?from=chrome",
+                                            "https://ae01.alicdn.com/kf/S13c31503b04844d9a55159edf71bcb47C.jpg",
+                                            "https://ae01.alicdn.com/kf/S9ee36fc0059546ffbce776bcf507e245u.jpg",
+                                            "https://ae01.alicdn.com/kf/S079e8d2a678b461389fdc2ede144fb32m.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "-11-red",
+                             "sku":  "-11-RED",
+                             "label":  "Red",
+                             "price_ksh":  1204,
+                             "compare_at_ksh":  1502,
+                             "attributes":  {
+                                                "Color":  "Red"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/2977325919/p/1/e/6/t/10301/1100223286626.mp4?from=chrome",
+                                            "https://ae01.alicdn.com/kf/S13c31503b04844d9a55159edf71bcb47C.jpg",
+                                            "https://ae01.alicdn.com/kf/S9ee36fc0059546ffbce776bcf507e245u.jpg",
+                                            "https://ae01.alicdn.com/kf/S079e8d2a678b461389fdc2ede144fb32m.jpg"
+                                        ]
+                         },
+                         {
+                             "id":  "-11-white",
+                             "sku":  "-11-WHI",
+                             "label":  "White",
+                             "price_ksh":  1254,
+                             "compare_at_ksh":  1562,
+                             "attributes":  {
+                                                "Color":  "White"
+                                            },
+                             "images":  [
+                                            "https://video.aliexpress-media.com/play/u/ae_sg_item/2977325919/p/1/e/6/t/10301/1100223286626.mp4?from=chrome",
+                                            "https://ae01.alicdn.com/kf/S13c31503b04844d9a55159edf71bcb47C.jpg",
+                                            "https://ae01.alicdn.com/kf/S9ee36fc0059546ffbce776bcf507e245u.jpg",
+                                            "https://ae01.alicdn.com/kf/S079e8d2a678b461389fdc2ede144fb32m.jpg"
+                                        ]
+                         }
+                     ]
     }
 ]

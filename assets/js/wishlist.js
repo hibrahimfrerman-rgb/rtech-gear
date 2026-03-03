@@ -1,5 +1,12 @@
 (function () {
+  function ensureDrawersReady() {
+    if (typeof window.ensureGlobalDrawers === "function") {
+      window.ensureGlobalDrawers();
+    }
+  }
+
   function openWishlist() {
+    ensureDrawersReady();
     const drawer = document.getElementById("wishlistDrawer");
     if (drawer) {
       drawer.classList.add("isOpen");
@@ -12,28 +19,33 @@
   }
 
   function connectWishlistButtons() {
-    const btn = document.getElementById("wishlistBtn");
-    const drawer = document.getElementById("wishlistDrawer");
-    const closeBtn = document.getElementById("wishlistCloseBtn");
+    if (document.body.dataset.wishlistEventsBound === "1") return;
+    document.body.dataset.wishlistEventsBound = "1";
 
-    if (!btn) return false;
-    btn.addEventListener("click", openWishlist);
-    if (closeBtn) closeBtn.addEventListener("click", closeWishlist);
-    if (drawer) {
-      drawer.addEventListener("click", (e) => {
-        if (e.target === drawer) closeWishlist();
-      });
-    }
-    return true;
+    document.addEventListener("click", (e) => {
+      if (e.target.closest("#wishlistBtn")) {
+        openWishlist();
+        return;
+      }
+      if (e.target.closest("#wishlistCloseBtn")) {
+        closeWishlist();
+        return;
+      }
+      const drawer = document.getElementById("wishlistDrawer");
+      if (drawer && e.target === drawer) {
+        closeWishlist();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeWishlist();
+    });
   }
 
   window.openWishlist = openWishlist;
   window.closeWishlist = closeWishlist;
 
   document.addEventListener("DOMContentLoaded", () => {
-    const tryAttach = () => {
-      if (!connectWishlistButtons()) setTimeout(tryAttach, 150);
-    };
-    tryAttach();
+    connectWishlistButtons();
   });
 })();

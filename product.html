@@ -46,6 +46,11 @@
 
           <p class="muted" id="productDesc"></p>
 
+          <div class="variantPanel" id="variantPanel" hidden>
+            <div class="optionGroups" id="productOptions"></div>
+            <div class="variantSummary" id="variantSummary"></div>
+          </div>
+
           <div class="optionBlock">
             <div class="optionLabel">Quantity</div>
             <div class="qtyInline">
@@ -56,8 +61,8 @@
           </div>
 
           <div class="productActions">
-            <button class="btn btnPrimary" id="addToCartBtn" type="button">Add to cart</button>
-            <button class="btn btnGhost" id="buyNowBtn" type="button">Buy now</button>
+            <button class="btn btnGhost" id="addToCartBtn" type="button">Add to cart</button>
+            <button class="btn btnPrimary" id="buyNowBtn" type="button">Buy now</button>
             <button class="btn btnGhost" id="wishlistBtn" type="button">Save</button>
           </div>
 
@@ -102,6 +107,31 @@
         <h2 class="sectionTitle">Related Products</h2>
       </div>
       <div class="grid" id="relatedGrid"></div>
+    </section>
+
+    <section class="section">
+      <div class="benefits productBenefits">
+        <article class="benefit">
+          <div class="benefitIcon" data-icon="fast-delivery"></div>
+          <div class="benefitTitle">Fast Delivery</div>
+          <p class="muted small">Quick dispatch on stocked items across Nairobi and upcountry routes.</p>
+        </article>
+        <article class="benefit">
+          <div class="benefitIcon" data-icon="secure-payments"></div>
+          <div class="benefitTitle">Secure Checkout</div>
+          <p class="muted small">Pay with confidence through trusted checkout and verified order handling.</p>
+        </article>
+        <article class="benefit">
+          <div class="benefitIcon" data-icon="support-24"></div>
+          <div class="benefitTitle">Fast Support</div>
+          <p class="muted small">Get product guidance and order help quickly on WhatsApp when you need it.</p>
+        </article>
+        <article class="benefit">
+          <div class="benefitIcon" data-icon="warranty"></div>
+          <div class="benefitTitle">Quality Promise</div>
+          <p class="muted small">We focus on creator gear and practical tech with dependable everyday value.</p>
+        </article>
+      </div>
     </section>
   </main>
 

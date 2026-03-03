@@ -717,6 +717,7 @@ function connectTrendingCarousel() {
   const track = document.getElementById("trendingTrack");
   const dotsWrap = document.getElementById("trendingDots");
   if (!track || !dotsWrap) return;
+  const isPhone = window.matchMedia && window.matchMedia("(max-width: 900px)").matches;
 
   const prev = document.querySelector(".carouselBtn.prev");
   const next = document.querySelector(".carouselBtn.next");
@@ -751,6 +752,7 @@ function connectTrendingCarousel() {
   track.addEventListener("scroll", () => requestAnimationFrame(updateDots));
 
   function startAuto() {
+    if (isPhone) return;
     if (autoTimer) clearInterval(autoTimer);
     autoTimer = setInterval(autoPlay, 5000);
   }
@@ -787,6 +789,7 @@ function connectFlashSaleAd() {
   const ad = document.getElementById("flashSaleAd");
   const titleEl = document.getElementById("flashSaleAdTitle");
   if (!ad || ad.dataset.bound === "1") return;
+  const isPhone = window.matchMedia && window.matchMedia("(max-width: 900px)").matches;
   ad.dataset.bound = "1";
 
   const slides = [
@@ -805,6 +808,7 @@ function connectFlashSaleAd() {
   }
 
   draw();
+  if (isPhone) return;
   setInterval(() => {
     if (paused) return;
     secs -= 1;
@@ -819,6 +823,84 @@ function connectFlashSaleAd() {
   ad.addEventListener("mouseleave", () => { paused = false; });
 }
 
+function encodeFormBody(data) {
+  return new URLSearchParams(data).toString();
+}
+
+function setFormFeedback(feedbackEl, message, isOk) {
+  if (!feedbackEl) return;
+  feedbackEl.textContent = message || "";
+  feedbackEl.classList.toggle("isSuccess", !!isOk);
+  feedbackEl.classList.toggle("isError", !!message && !isOk);
+}
+
+function connectNetlifyForms() {
+  const forms = document.querySelectorAll("form[data-netlify-ajax='true']");
+  if (!forms.length) return;
+
+  forms.forEach((form) => {
+    if (form.dataset.bound === "1") return;
+    form.dataset.bound = "1";
+
+    const submitBtn = form.querySelector("[type='submit']");
+    const feedbackId = form.id ? `${form.id}Feedback` : "";
+    const feedbackEl = feedbackId ? document.getElementById(feedbackId) : form.nextElementSibling;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const payload = new FormData(form);
+      const originalText = submitBtn ? submitBtn.textContent : "";
+      setFormFeedback(feedbackEl, "", false);
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+      }
+
+      try {
+        const res = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: encodeFormBody(payload)
+        });
+
+        if (!res.ok) throw new Error("submit_failed");
+
+        form.reset();
+        setFormFeedback(
+          feedbackEl,
+          form.dataset.successMessage || "Submitted successfully.",
+          true
+        );
+
+        if (form.id === "newsletterSignupForm") {
+          localStorage.setItem("rtech_signed_up_newsletter", "1");
+          localStorage.setItem("rtech_hide_newsletter", "1");
+          const modal = document.getElementById("newsletterModal");
+          if (modal && form.dataset.closeOnSuccess === "true") {
+            setTimeout(() => {
+              modal.classList.remove("isOpen");
+            }, 1400);
+          }
+        }
+      } catch (_) {
+        setFormFeedback(
+          feedbackEl,
+          "Submission failed. Please try again in a moment.",
+          false
+        );
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText || "Submit";
+        }
+      }
+    });
+  });
+}
+
 /* =========================
    9) START APP
    Note: header loads after include.js fetches it,
@@ -831,6 +913,7 @@ document.addEventListener("DOMContentLoaded", () => {
   connectWishlistToggles();
   refreshWishlistUI();
   connectCheckoutForm();
+  connectNetlifyForms();
   connectTrendingCarousel();
   connectFlashSaleAd();
 
@@ -841,7 +924,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (newsletterModal) {
     const hide = localStorage.getItem("rtech_hide_newsletter") === "1";
-    if (!hide) {
+    const signedUp = localStorage.getItem("rtech_signed_up_newsletter") === "1";
+    if (!hide && !signedUp) {
       setTimeout(() => {
         newsletterModal.classList.add("isOpen");
       }, 900);
@@ -889,6 +973,7 @@ document.addEventListener("DOMContentLoaded", () => {
     refreshWhatsAppLinks();
     syncCartState();
     refreshWishlistUI();
+    connectNetlifyForms();
     connectTrendingCarousel();
     connectFlashSaleAd();
   }, 250);

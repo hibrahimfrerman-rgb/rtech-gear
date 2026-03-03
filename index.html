@@ -25,19 +25,41 @@
             <img class="icon-svg" src="assets/icons/icon-search.svg" alt="" aria-hidden="true" />
           </button>
         </div>
-        <div class="heroTrending">
+        <div class="heroTrending" aria-label="Quick category filters">
           <span class="heroTrendLabel">Search trending:</span>
-          <span>Headphone</span>
-          <span>Audio</span>
-          <span>Smartphone</span>
-          <span>Smartwatch</span>
+          <div class="heroTrendRail">
+            <select class="heroSelect" aria-label="Headphone category">
+              <option>Headphone</option>
+              <option>Wireless</option>
+              <option>Gaming</option>
+              <option>Noise Cancel</option>
+            </select>
+            <select class="heroSelect" aria-label="Audio category">
+              <option>Audio</option>
+              <option>Speakers</option>
+              <option>Earbuds</option>
+              <option>Soundbars</option>
+            </select>
+            <select class="heroSelect" aria-label="Smartphone category">
+              <option>Smartphone</option>
+              <option>Android</option>
+              <option>iOS</option>
+              <option>Budget</option>
+            </select>
+            <select class="heroSelect" aria-label="Smartwatch category">
+              <option>Smartwatch</option>
+              <option>Fitness</option>
+              <option>Hybrid</option>
+              <option>Kids</option>
+            </select>
+          </div>
         </div>
       </div>
 
       <div class="heroRow">
         <div class="heroLeft">
           <div class="heroSlider" id="heroSlider">
-            <div class="heroSlide isActive" data-bg="assets/img/hero-1.jpg" data-pill="Kenya-friendly payments (M-Pesa, cards, bank transfer)">
+            <div class="heroSlide isActive" data-bg-desktop="assets/img/hero/hero-main/desktop/hero-main-01-desktop.jpg" data-bg-mobile="assets/img/hero/hero-main/mobile/hero-main-01-mobile.jpg" data-pill="Kenya-friendly payments (M-Pesa, cards, bank transfer)">
               <div class="heroOverlay">
                 <div class="heroKicker">KENYA-FIRST TECH</div>
                 <div class="heroTitle">Tech gear that fits real life in Kenya.</div>
@@ -45,7 +67,7 @@
                 <a class="heroCta" href="shop.html">Shop Now</a>
               </div>
             </div>
-            <div class="heroSlide" data-bg="assets/img/hero-2.jpg" data-pill="Quick checkout">
+            <div class="heroSlide" data-bg-desktop="assets/img/hero/hero-main/desktop/hero-main-02-desktop.jpg" data-bg-mobile="assets/img/hero/hero-main/mobile/hero-main-02-mobile.jpg" data-pill="Quick checkout">
               <div class="heroOverlay">
                 <div class="heroKicker">PAYMENTS</div>
                 <div class="heroTitle">Kenya-friendly payments</div>
@@ -53,7 +75,7 @@
                 <a class="heroCta" href="shop.html">Learn More</a>
               </div>
             </div>
-            <div class="heroSlide" data-bg="assets/img/hero-3.jpg" data-pill="Fast WhatsApp support">
+            <div class="heroSlide" data-bg-desktop="assets/img/hero/hero-main/desktop/hero-main-03-desktop.jpg" data-bg-mobile="assets/img/hero/hero-main/mobile/hero-main-03-mobile.jpg" data-pill="Fast WhatsApp support">
               <div class="heroOverlay">
                 <div class="heroKicker">SUPPORT</div>
                 <div class="heroTitle">Fast support on WhatsApp</div>
@@ -74,14 +96,24 @@
         </div>
 
         <div class="heroRight">
-          <a class="promoCard" href="shop.html" style="background-image:url('assets/img/promo-1.jpg')">
+          <a
+            class="promoCard"
+            href="shop.html"
+            data-bg-desktop="assets/img/hero/hero-side-top/desktop/hero-side-top-desktop.jpg"
+            data-bg-mobile="assets/img/hero/hero-side-top/mobile/hero-side-top-mobile.jpg"
+            style="background-image:url('assets/img/hero/hero-side-top/desktop/hero-side-top-desktop.jpg')">
             <div class="promoOverlay">
               <div class="promoTag">NEW ARRIVALS</div>
               <div class="promoName">Smart Skipping Ropes</div>
               <div class="promoLink">Shop Now &rarr;</div>
             </div>
           </a>
-          <a class="promoCard" href="shop.html" style="background-image:url('assets/img/promo-2.jpg')">
+          <a
+            class="promoCard"
+            href="shop.html"
+            data-bg-desktop="assets/img/hero/hero-side-bottom/desktop/hero-side-bottom-desktop.jpg"
+            data-bg-mobile="assets/img/hero/hero-side-bottom/mobile/hero-side-bottom-mobile.jpg"
+            style="background-image:url('assets/img/hero/hero-side-bottom/desktop/hero-side-bottom-desktop.jpg')">
             <div class="promoOverlay">
               <div class="promoTag">TRENDING</div>
               <div class="promoName">Massage Guns</div>
@@ -289,15 +321,33 @@
     <div class="newsletterPanel" role="dialog" aria-label="Newsletter signup">
       <button class="iconBtn closeModalBtn" id="closeNewsletterBtn" type="button" aria-label="Close">x</button>
       <div class="newsletterGrid">
-        <div class="newsletterArt"></div>
+        <div class="newsletterArt">
+          <img src="assets/img/gallary/promo smartwatch and sound.jpg" alt="R-Tech Gear newsletter advert" loading="lazy" decoding="async" />
+        </div>
         <div class="newsletterContent">
           <div class="newsletterKicker">Sign up Newsletter</div>
           <h3 class="newsletterTitle">Get 10% discount</h3>
           <p class="muted">Sign up for exclusive drops, deals, and new arrivals.</p>
-          <div class="newsletterForm">
-            <input type="email" placeholder="Enter your email" aria-label="Email address" />
-            <button class="btn btnPrimary" type="button">Subscribe</button>
-          </div>
+          <form
+            class="newsletterForm"
+            id="newsletterSignupForm"
+            name="newsletter-signup"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            data-netlify-ajax="true"
+            data-success-message="You are signed up. Watch your inbox for deals and new drops."
+            data-close-on-success="true"
+          >
+            <input type="hidden" name="form-name" value="newsletter-signup" />
+            <input type="hidden" name="signup_source" value="homepage-popup" />
+            <p class="hiddenNetlifyField">
+              <label>Do not fill this out if you are human: <input name="bot-field" /></label>
+            </p>
+            <input id="newsletterEmail" name="email" type="email" placeholder="Enter your email" aria-label="Email address" required />
+            <button class="btn btnPrimary" type="submit">Subscribe</button>
+          </form>
+          <div class="formFeedback" id="newsletterSignupFormFeedback" aria-live="polite"></div>
           <label class="newsletterCheck">
             <input type="checkbox" id="newsletterDontShow" />
             Don't show this popup again

@@ -3,6 +3,7 @@
   if (!slider) return;
 
   const slides = Array.from(slider.querySelectorAll(".heroSlide"));
+  const promoCards = Array.from(document.querySelectorAll(".promoCard[data-bg-desktop]"));
   const dotsWrap = document.getElementById("heroDots");
   const pill = document.getElementById("heroPillText");
   const prevBtn = document.getElementById("heroPrev");
@@ -12,11 +13,29 @@
   let index = 0;
   let timer = null;
   let paused = false;
+  let pointerStartX = null;
 
-  slides.forEach((slide) => {
-    const bg = slide.getAttribute("data-bg");
-    if (bg) slide.style.backgroundImage = `url('${bg}')`;
-  });
+  function isInteractiveTarget(target) {
+    return !!target.closest(
+      "#heroPrev, #heroNext, #heroPause, .heroDot, .heroCta, a, button, input, select, textarea, label"
+    );
+  }
+
+  function applySlideBackgrounds() {
+    const useMobile = window.matchMedia && window.matchMedia("(max-width: 900px)").matches;
+    slides.forEach((slide) => {
+      const desktop = slide.getAttribute("data-bg-desktop") || slide.getAttribute("data-bg");
+      const mobile = slide.getAttribute("data-bg-mobile") || desktop;
+      const chosen = useMobile ? mobile : desktop;
+      if (chosen) slide.style.backgroundImage = `url('${chosen}')`;
+    });
+    promoCards.forEach((card) => {
+      const desktop = card.getAttribute("data-bg-desktop");
+      const mobile = card.getAttribute("data-bg-mobile") || desktop;
+      const chosen = useMobile ? mobile : desktop;
+      if (chosen) card.style.backgroundImage = `url('${chosen}')`;
+    });
+  }
 
   function setActive(i) {
     slides.forEach((s, idx) => s.classList.toggle("isActive", idx === i));
@@ -39,6 +58,7 @@
   }
 
   function start() {
+    if (window.matchMedia && window.matchMedia("(max-width: 900px)").matches) return;
     if (timer) clearInterval(timer);
     timer = setInterval(() => {
       if (!paused) next();
@@ -72,20 +92,30 @@
   slider.addEventListener("mouseenter", () => { paused = true; });
   slider.addEventListener("mouseleave", () => { paused = false; });
 
-  let startX = 0;
   slider.addEventListener("pointerdown", (e) => {
-    startX = e.clientX;
+    if (isInteractiveTarget(e.target) || !e.isPrimary) return;
+    pointerStartX = e.clientX;
   });
   slider.addEventListener("pointerup", (e) => {
-    const dx = e.clientX - startX;
+    if (pointerStartX === null || isInteractiveTarget(e.target) || !e.isPrimary) {
+      pointerStartX = null;
+      return;
+    }
+    const dx = e.clientX - pointerStartX;
     if (dx > 50) prev();
     if (dx < -50) next();
+    pointerStartX = null;
+  });
+  slider.addEventListener("pointercancel", () => {
+    pointerStartX = null;
   });
 
   if (heroWhatsApp && window.makeWhatsAppLink) {
     heroWhatsApp.href = window.makeWhatsAppLink("Hi R-Tech Gear, I need help choosing a product.");
   }
 
+  window.addEventListener("resize", applySlideBackgrounds);
+  applySlideBackgrounds();
   setActive(0);
   start();
 })();
