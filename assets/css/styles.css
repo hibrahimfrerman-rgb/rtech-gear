@@ -2639,6 +2639,17 @@ button{ font-family: inherit; }
   position: absolute;
   top: 12px;
   right: 12px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(255, 255, 255, 0.96);
+  color: #0f172a;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  line-height: 1;
 }
 .newsletterGrid{
   display:grid;
@@ -2724,6 +2735,13 @@ button{ font-family: inherit; }
   }
   .newsletterTitle{ font-size: 24px; }
   .newsletterForm{ grid-template-columns: 1fr; }
+  .closeModalBtn{
+    top: 10px;
+    right: 10px;
+    width: 42px;
+    height: 42px;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.14);
+  }
 }
 
 @media (max-width: 900px){

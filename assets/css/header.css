@@ -37,6 +37,7 @@
 .utility-left,
 .utility-right{ display: flex; align-items: center; gap: 10px; }
 .utility-left{ color: #fff; }
+.utility-text-mobile{ display: none; }
 
 .phone-pill{
   display: inline-flex;
@@ -194,4 +195,6 @@
   .header-top-inner{ grid-template-columns: 1fr; gap: 12px; }
   .nav-links{ justify-content: flex-start; font-size: 14px; }
   .header-icons{ justify-content: flex-start; }
+  .utility-text-desktop{ display: none; }
+  .utility-text-mobile{ display: inline; }
 }
