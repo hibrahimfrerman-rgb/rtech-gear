@@ -11,3 +11,12 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Node / build artifacts
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local tooling/build output (not needed for public demo site)
+admin/

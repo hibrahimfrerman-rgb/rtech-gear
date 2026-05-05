@@ -39,6 +39,15 @@
       .trim();
   }
 
+  function cleanDisplayName(value) {
+    const raw = fixText(value || "");
+    if (!raw) return "";
+    const primary = raw.split("|")[0].trim() || raw;
+    if (primary.length <= 56) return primary;
+    const clipped = primary.slice(0, 53).replace(/\s+\S*$/, "");
+    return `${clipped}...`;
+  }
+
   function cleanUrl(value) {
     if (!value) return "";
     const str = String(value);
@@ -79,6 +88,7 @@
       return {
         id,
         name,
+        displayName: cleanDisplayName(name) || name,
         desc: fixText(item.description || item.desc || ""),
         price,
         compareAt,
@@ -166,7 +176,7 @@
   // Full product card used in featured/shop/deals grids.
   function productCard(p) {
     const r = ratingFor(p.id);
-    const safeName = escapeHtml(p.name);
+    const safeName = escapeHtml(p.displayName || p.name);
     const safeDesc = escapeHtml(shorten(p.desc, 90));
     const placeholder = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480'%3E%3Crect width='100%25' height='100%25' fill='%23eef2ff'/%3E%3Ccircle cx='50%25' cy='45%25' r='80' fill='%23dbeafe'/%3E%3Crect x='35%25' y='60%25' width='30%25' height='10%25' rx='8' fill='%23c7d2fe'/%3E%3C/svg%3E";
     const imageUrl = p.image || placeholder;
@@ -214,7 +224,7 @@
   // Compact card used in horizontal tracks (trending/flash sale).
   function productCardCompact(p) {
     const r = ratingFor(p.id);
-    const safeName = escapeHtml(p.name);
+    const safeName = escapeHtml(p.displayName || p.name);
     const safeDesc = escapeHtml(shorten(p.desc, 60));
     const placeholder = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480'%3E%3Crect width='100%25' height='100%25' fill='%23eef2ff'/%3E%3Ccircle cx='50%25' cy='45%25' r='80' fill='%23dbeafe'/%3E%3Crect x='35%25' y='60%25' width='30%25' height='10%25' rx='8' fill='%23c7d2fe'/%3E%3C/svg%3E";
     const imageUrl = p.image || placeholder;

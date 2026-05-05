@@ -31,6 +31,12 @@
       .replace(/'/g, "&#39;");
   }
 
+  function shorten(text, n) {
+    const str = String(text || "").trim();
+    if (!str) return "";
+    return str.length > n ? `${str.slice(0, n - 1)}…` : str;
+  }
+
   function formatPrice(value, currency) {
     const amount = Number(value || 0);
     const cur = currency || "KES";
@@ -100,8 +106,9 @@
   }
 
   function flashCard(item) {
-    const safeName = escapeHtml(item.name);
-    const safeDesc = escapeHtml(item.description);
+    const fullName = escapeHtml(item.name);
+    const safeName = escapeHtml(shorten(item.name, 42) || item.name);
+    const safeDesc = escapeHtml(shorten(item.description, 110));
     const discount = item.discount > 0 ? `<span class="dealBadge">${item.discount}% off</span>` : "";
     const compareAt = item.compareAt > item.price ? `<div class="priceCompare">${formatPrice(item.compareAt, item.currency)}</div>` : "";
     const payload = cartPayload(item);
@@ -110,7 +117,7 @@
     return `
       <article class="card productCard flashCard" data-category="${escapeHtml(item.category)}" data-delivery="${escapeHtml(item.deliverySpeed)}" data-price="${item.price}" data-product-url="${targetUrl}">
         <div class="productThumbWrap">
-          <a class="productThumbLink" href="${targetUrl}" aria-label="View ${safeName}">
+          <a class="productThumbLink" href="${targetUrl}" aria-label="View ${fullName}">
             <div class="productThumb" style="background-image:url('${escapeHtml(item.image)}')"></div>
           </a>
           ${discount}

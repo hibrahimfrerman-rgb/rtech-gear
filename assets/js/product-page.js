@@ -47,6 +47,15 @@
       .slice(0, 48);
   }
 
+  function cleanDisplayName(value) {
+    const raw = fixText(value || "");
+    if (!raw) return "";
+    const primary = raw.split("|")[0].trim() || raw;
+    if (primary.length <= 64) return primary;
+    const clipped = primary.slice(0, 61).replace(/\s+\S*$/, "");
+    return `${clipped}...`;
+  }
+
   function makeShortDescription(value) {
     const text = fixText(value || "");
     if (!text) return "";
@@ -125,6 +134,7 @@
         id,
         sku: fixText(item.sku || item.id || id),
         name,
+        displayName: cleanDisplayName(name) || name,
         desc: longDesc,
         shortDesc: shortDesc,
         price: basePrice,
@@ -132,6 +142,7 @@
         currency: fixText(item.currency || DEFAULT_CURRENCY) || DEFAULT_CURRENCY,
         image: images[0] || (variants[0] ? variants[0].image : ""),
         images,
+        category: fixText(item.category || ""),
         tags: item.tags || [],
         variants: variants
       };
@@ -182,6 +193,10 @@
 
   function queryProductId() {
     return (queryParams().get("id") || "").trim().toLowerCase();
+  }
+
+  function queryProductIdRaw() {
+    return (queryParams().get("id") || "").trim();
   }
 
   function queryVariantId() {
@@ -386,15 +401,37 @@
       if (!allProducts.length) return;
 
       const qid = queryProductId();
+      const qidRaw = queryProductIdRaw();
       const qVariantId = queryVariantId();
-      const product = allProducts.find(function (p) { return p.id === qid; }) || allProducts[0];
+      let product = null;
+      let forcedVariant = null;
+
+      // Prefer resolving `?id=<variantId>` to its parent product even if flash-sale JSON includes a matching id.
+      if (qidRaw) {
+        const needle = qidRaw.toLowerCase();
+        for (let i = 0; i < mainProducts.length; i += 1) {
+          const p = mainProducts[i];
+          const hit = (p.variants || []).find(function (variant) {
+            return String(variant.id || "").toLowerCase() === needle;
+          });
+          if (hit) {
+            product = p;
+            forcedVariant = hit;
+            break;
+          }
+        }
+      }
+
+      if (!product) {
+        product = allProducts.find(function (p) { return p.id === qid; }) || allProducts[0];
+      }
       const rating = ratingFor(product.id);
       const variantPanel = byId("variantPanel");
       const optionsEl = byId("productOptions");
       const summaryEl = byId("variantSummary");
       const optionGroups = optionGroupsFor(product.variants || []);
       const selection = {};
-      const preselectedVariant = (product.variants || []).find(function (variant) {
+      const preselectedVariant = forcedVariant || (product.variants || []).find(function (variant) {
         return variant.id.toLowerCase() === qVariantId;
       }) || null;
       const initialVariant = preselectedVariant || (product.variants || [])[0] || null;
@@ -408,13 +445,13 @@
         });
       }
 
-      document.title = `${product.name} - R-Tech Gear`;
-      byId("crumbProductName").textContent = product.name;
-      byId("productKicker").textContent = (product.tags[0] || "Product").toUpperCase();
-      byId("productTitle").textContent = product.name;
+      document.title = `${product.displayName || product.name} - R-Tech Gear`;
+      byId("crumbProductName").textContent = product.displayName || product.name;
+      byId("productKicker").textContent = (product.category || product.tags[0] || "Product").toUpperCase();
+      byId("productTitle").textContent = product.displayName || product.name;
       byId("ratingStars").textContent = `${rating.rating} *`;
       byId("ratingMeta").textContent = `${rating.reviews} reviews`;
-      byId("tagsValue").textContent = (product.tags || []).join(", ") || "General";
+      byId("tagsValue").textContent = product.category || (product.tags || []).slice(0, 6).join(", ") || "General";
 
       function renderVariantOptions() {
         if (!variantPanel || !optionsEl || !summaryEl) return;
@@ -493,7 +530,8 @@
         byId("productDesc").textContent = shortDesc;
         byId("skuValue").textContent = sku;
         byId("tabDescriptionText").textContent = longDesc;
-        byId("tabAdditionalText").textContent = `SKU: ${sku} | Category: ${(product.tags || []).join(", ") || "General"}`;
+        const categoryText = product.category || (product.tags || []).slice(0, 6).join(", ") || "General";
+        byId("tabAdditionalText").textContent = `SKU: ${sku} | Category: ${categoryText}`;
 
         setMainImage(activeImage);
         renderThumbs(images, activeImageIndex, function (index) {

@@ -1,0 +1,626 @@
+RTECH SPARTAN PRODUCT HUB — one row per shared product,,,,,,,,,,,,,,,,,,,,,,,,,,
+"Add a product once here. Then add as many variants as you want in 02_Variant_Engine. Shared name, description, links, and images flow automatically.",,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,
+Product ID,Product Family,Base Product Name,Category,Shared Supplier URL,Default Supplier Shipping (KES),Default Tax/Duties (KES),Default Payment Fee %,Default Buffer (KES),Default Desired Profit (KES),Default Store Shipping Shown (KES),Ship Included? (Y/N),Default Weight (lbs),Default Lead Time (days),Shared Short Description,Shared Long Description,Image1,Image2,Image3,Image4,Image Folder,Codex Handle,Search Tags,Price Status,Active?,Legacy RTech SKU,Legacy Kilimall SKU/ID
+P001,10 Inch Ring Light With 7ft Tripod Stand,10 Inch Ring Light With 7ft (210CM) Tripod Stand,creator-gear,https://www.kilimall.co.ke/listing/2729104,699,,0.03,100,300,,N,0.5,3-5,"For creators who want clean shots and steady takes. Stable base for calls, photos, and content. Better lighting for pro-looking videos. M‑Pe","For creators who want clean shots and steady takes. Stable base for calls, photos, and content. Better lighting for pro-looking videos. M‑Pesa friendly checkout and fast support on WhatsApp. It is a simple win for creators, online sellers, and remote workers who want cleaner lighting without overcomplicating the setup. The tripod gives better placement freedom, while the light helps faces, products, and close shots look brighter and more polished.","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-LT-RL10-2729104\RT-LT-RL10-2729104-01.png""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-LT-RL10-2729104\RT-LT-RL10-2729104-02.png""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-LT-RL10-2729104\RT-LT-RL10-2729104-04.png""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-LT-RL10-2729104\RT-LT-RL10-2729104-03.png""",assets/img/products/10-inch-ring-light-with-7ft-tripod-stand/,glowforge-creator-ring-light-kit-10inch,10 Inch Ring Light With 7ft Tripod Stand 10 Inch Ring Light With 7ft (210CM) Tripod Stand creator-gear white,✓ Ready,Y,RT-LT-RL10-2729104,19048033
+P002,Universal 14inch LED Ring Light + 2.1m Tripod Stand,Universal 14inch LED Ring Light + 2.1m Tripod Stand (YouTube/TikTok),creator-gear,https://www.kilimall.co.ke/listing/3036323-14-Inch-RGB-Ring-Light-with-82-Tripod-2500K8500K-Dimmable-LED-RingLight-3-Color-Modes-10-Brightness-Level-for-YouTube-Live-TikTok-Video-Recording-14INCH,,,0.03,100,300,,N,0.5,3-5,"For creators who want clean shots and steady takes. Stable base for calls, photos, and content. Better lighting for pro-looking videos. M‑Pe","For creators who want clean shots and steady takes. Stable base for calls, photos, and content. Better lighting for pro-looking videos. M‑Pesa friendly checkout and fast support on WhatsApp. It is a simple win for creators, online sellers, and remote workers who want cleaner lighting without overcomplicating the setup. The tripod gives better placement freedom, while the light helps faces, products, and close shots look brighter and more polished.","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-LT-RL14-3088147\RT-LT-RL14-3088147-01.png""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-LT-RL14-3088147\RT-LT-RL14-3088147-03.png""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-LT-RL14-3088147\RT-LT-RL14-3088147-04.png""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-LT-RL14-3088147\RT-LT-RL14-3088147-02.png""",assets/img/products/universal-14inch-led-ring-light-+-2.1m-tripod-stand/,glowforge-creator-ring-light-kit-14inch,Universal 14inch LED Ring Light + 2.1m Tripod Stand Universal 14inch LED Ring Light + 2.1m Tripod Stand (YouTube/TikTok) creator-gear 14inch,✓ Ready,Y,RT-LT-RL14-3088147,19904327
+P003,10 Inch Ring Light + 7ft Tripod,"10 Inch Ring Light + 7ft Tripod (3 Color Modes, 10 Brightness Levels)",creator-gear,https://www.kilimall.co.ke/listing/1001714545-10-Inch-Ring-Light-with-7ft-Adjustable-Tripod-Stand-3-Color-Modes-10-Brightness-Levels-Perfect-for-TikTok-YouTube-Live-Streaming-Makeup-Podcasts-Studio-Lighting-and-Video-Shooting,,,0.03,100,300,,N,0.5,3-5,"For creators who want clean shots and steady takes. Stable base for calls, photos, and content. Better lighting for pro-looking videos. M‑Pe","For creators who want clean shots and steady takes. Stable base for calls, photos, and content. Better lighting for pro-looking videos. M‑Pesa friendly checkout and fast support on WhatsApp. It is a simple win for creators, online sellers, and remote workers who want cleaner lighting without overcomplicating the setup. The tripod gives better placement freedom, while the light helps faces, products, and close shots look brighter and more polished.","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-LT-RL10-1001714545\RT-LT-RL10-1001714545-06.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-LT-RL10-1001714545\RT-LT-RL10-1001714545-04-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-LT-RL10-1001714545\RT-LT-RL10-1001714545-04-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-LT-RL10-1001714545\RT-LT-RL10-1001714545-05.png""",assets/img/products/10-inch-ring-light-+-7ft-tripod/,glowforge-creator-ring-light-kit-10inch,"10 Inch Ring Light + 7ft Tripod 10 Inch Ring Light + 7ft Tripod (3 Color Modes, 10 Brightness Levels) creator-gear Black",✓ Ready,Y,RT-LT-RL10-1001714545,19353815
+P004,Heavy Duty Tripod Stand For Camera & Phones With Phone Holder - 1.2 Meters Tall Tripod,Heavy Duty Tripod Stand For Camera & Phones With Phone Holder - 1.2 Meters Tall Tripod,creator-gear,https://www.kilimall.co.ke/listing/2910043-Tripod-Stand-For-Camera-Phones-With-Phone-Holder-12-Meters-Tall-Tripod,,,0.03,100,300,,N,0.5,3-5,"For creators who want clean shots and steady takes. Stable base for calls, photos, and content. M‑Pesa friendly checkout and fast support on","For creators who want clean shots and steady takes. Stable base for calls, photos, and content. M‑Pesa friendly checkout and fast support on WhatsApp. It helps keep the phone visible, secure, and easier to use for navigation, calls, and quick stops on the road. A good holder is one of those small upgrades that quietly makes every drive better.","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-TR-HD-1001451835\RT-TR-HD-1001451835-01.png""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-TR-HD-1001451835\RT-TR-HD-1001451835-02.png""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-TR-HD-1001451835\RT-TR-HD-1001451835-04.png""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-TR-HD-1001451835\RT-TR-HD-1001451835-05.png""",assets/img/products/heavy-duty-tripod-stand-for-camera-&-phones-with-phone-holder--1.2-meters-tall-tripod/,steadycore-pro-tripod-stand,Heavy Duty Tripod Stand For Camera & Phones With Phone Holder - 1.2 Meters Tall Tripod Heavy Duty Tripod Stand For Camera & Phones With Phone Holder - 1.2 Meters Tall Tripod creator-gear Black,✓ Ready,Y,RT-TR-HD-1001451835,19578108
+P005,3366 Phone/SLR Camera Tripod Stand Max Height 1.4M,3366 Phone/SLR Camera Tripod Stand Max Height 1.4M,creator-gear,https://www.kilimall.co.ke/listing/2713243,,,0.03,100,300,,N,0.5,3-5,"For creators who want clean shots and steady takes. Stable base for calls, photos, and content. M‑Pesa friendly checkout and fast support on","For creators who want clean shots and steady takes. Stable base for calls, photos, and content. M‑Pesa friendly checkout and fast support on WhatsApp. It is designed to make daily use feel easier, cleaner, and more reliable, whether the product lives on a desk, in a bag, in a car, or on the move. The idea is simple: practical gear, better value, and a setup that feels thought through instead of rushed.","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-TR-3366-2713243\RT-TR-3366-2713243-01.png""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-TR-3366-2713243\RT-TR-3366-2713243-02.png""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-TR-3366-2713243\RT-TR-3366-2713243-04.png""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Lighting\RT-TR-3366-2713243\RT-TR-3366-2713243-05.png""",assets/img/products/3366-phone-slr-camera-tripod-stand-max-height-1.4m/,steadycore-pro-tripod-stand,3366 Phone/SLR Camera Tripod Stand Max Height 1.4M 3366 Phone/SLR Camera Tripod Stand Max Height 1.4M creator-gear Black,✓ Ready,Y,RT-TR-3366-2713243,18765011
+P006,Car Suction Cup Phone Holder,"Car Suction Cup Phone Holder (Long Neck, Dashboard/Windshield)",accessories-car-mounts,https://www.kilimall.co.ke/listing/1000154228,,,0.03,100,300,,N,0.5,3-5,"Built for everyday use in Kenya. Quality build, easy to use, ready for daily work. M‑Pesa friendly checkout and fast support on WhatsApp.","Built for everyday use in Kenya. Quality build, easy to use, ready for daily work. M‑Pesa friendly checkout and fast support on WhatsApp. It helps keep the phone visible, secure, and easier to use for navigation, calls, and quick stops on the road. A good holder is one of those small upgrades that quietly makes every drive better.","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\accessories\RT-HLD-CAR-1000154228\RT-HLD-CAR-1000154228-01-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\accessories\RT-HLD-CAR-1000154228\RT-HLD-CAR-1000154228-01-06.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\accessories\RT-HLD-CAR-1000154228\RT-HLD-CAR-1000154228-02-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\accessories\RT-HLD-CAR-1000154228\RT-HLD-CAR-1000154228-02.jpg""",assets/img/products/car-suction-cup-phone-holder/,gripdrive-phone-holder,"Car Suction Cup Phone Holder Car Suction Cup Phone Holder (Long Neck, Dashboard/Windshield) accessories-car-mounts Black",✓ Ready,Y,RT-HLD-CAR-1000154228,10000380328
+P007,Oraimo Hydra 3 Universal Car Phone Holder + Gift Car Charger,Oraimo Hydra 3 Universal Car Phone Holder (Long Arm) + Gift Car Charger,accessories-car-mounts,https://www.kilimall.co.ke/listing/1001760680-SPECIAL-OFFER-Oraimo-Hydra-3-Stable-Safe-Universal-Car-Phone-Holder-Long-Arm360Adjustable-Magnet-HeadCompatible-with-Phones-of-Various-Sizes-with-a-GIFT-of-Oraimo-Highway-15-155W-Car-Charger,,,0.03,100,300,,N,0.5,3-5,"Built for everyday use in Kenya. Quality build, easy to use, ready for daily work. M‑Pesa friendly checkout and fast support on WhatsApp.","Built for everyday use in Kenya. Quality build, easy to use, ready for daily work. M‑Pesa friendly checkout and fast support on WhatsApp. It helps keep the phone visible, secure, and easier to use for navigation, calls, and quick stops on the road. A good holder is one of those small upgrades that quietly makes every drive better.","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\accessories\RT-HLD-ORA-1001228345\RT-HLD-ORA-1001228345-01-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\accessories\RT-HLD-ORA-1001228345\RT-HLD-ORA-1001228345-01-6.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\accessories\RT-HLD-ORA-1001228345\RT-HLD-ORA-1001228345-01.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\accessories\RT-HLD-ORA-1001228345\RT-HLD-ORA-1001228345-06.jpg""",assets/img/products/oraimo-hydra-3-universal-car-phone-holder-+-gift-car-charger/,gripdrive-phone-holder,Oraimo Hydra 3 Universal Car Phone Holder + Gift Car Charger Oraimo Hydra 3 Universal Car Phone Holder (Long Arm) + Gift Car Charger accessories-car-mounts Black,✓ Ready,Y,RT-HLD-ORA-1001228345,10005553423
+P008,Long Neck Car Phone Holder,Long Neck Car Phone Holder (New Model),accessories-car-mounts,https://www.kilimall.co.ke/listing/3092623,,,0.03,100,300,,N,0.5,3-5,"Built for everyday use in Kenya. Quality build, easy to use, ready for daily work. M‑Pesa friendly checkout and fast support on WhatsApp.","Built for everyday use in Kenya. Quality build, easy to use, ready for daily work. M‑Pesa friendly checkout and fast support on WhatsApp. It helps keep the phone visible, secure, and easier to use for navigation, calls, and quick stops on the road. A good holder is one of those small upgrades that quietly makes every drive better.","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\accessories\RT-HLD-CAR-3092623\RT-HLD-CAR-3092623-01-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\accessories\RT-HLD-CAR-3092623\RT-HLD-CAR-3092623-01-4.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\accessories\RT-HLD-CAR-3092623\RT-HLD-CAR-3092623-01-9.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\accessories\RT-HLD-CAR-3092623\RT-HLD-CAR-3092623-01-11.jpg""",assets/img/products/long-neck-car-phone-holder/,gripdrive-phone-holder,Long Neck Car Phone Holder Long Neck Car Phone Holder (New Model) accessories-car-mounts Black,✓ Ready,Y,RT-HLD-CAR-3092623,20055044
+P009,K20 Wireless Bluetooth Earbuds,K20 Wireless Bluetooth Earbuds (ENC Noise Cancelling),audio,https://www.kilimall.co.ke/listing/1001479819-K20-Wireless-Bluetooth-Earbuds-with-ENC-Noise-Cancelling-HiFi-Stereo-Bass-Sound-Smart-Touch-Controls-Long-Battery-Backup-Portable-Charging-Case-Ergonomic-InEar-Comfort-Waterproof-Design-Lightw,,,0.03,100,300,,N,0.5,3-5,"For clear voice, clean recordings, and zero “say that again” moments. Wireless + plug-and-play setup. M‑Pesa friendly checkout and fast supp","For clear voice, clean recordings, and zero “say that again” moments. Wireless + plug-and-play setup. M‑Pesa friendly checkout and fast support on WhatsApp. It balances comfort, simple pairing, and everyday listening so you can move from music to calls without friction. Good audio gear should disappear into the day and just work. That is the energy here.","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT-AU-K20-1001479819\RT-AU-K20-1001479819\RT-AU-K20-1001479819-02.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT-AU-K20-1001479819\RT-AU-K20-1001479819\RT-AU-K20-1001479819-03.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT-AU-K20-1001479819\RT-AU-K20-1001479819\RT-AU-K20-1001479819-04.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT-AU-K20-1001479819\RT-AU-K20-1001479819\RT-AU-K20-1001479819-05.jpg""",assets/img/products/k20-wireless-bluetooth-earbuds/,pulsepods-wireless-earbuds-20w,K20 Wireless Bluetooth Earbuds K20 Wireless Bluetooth Earbuds (ENC Noise Cancelling) audio Black,✓ Ready,Y,RT-AU-K20-1001479819,10004228531
+P010,"BL True Wireless Earbuds | Ultra-Comfort Fit | Deep Bass | 40H Battery Life | Smart Digital Display Case | Seamless Bluetooth Connection | “Hurt Never, Fall Never” Secure Fit","BL True Wireless Earbuds | Ultra-Comfort Fit | Deep Bass | 40H Battery Life | Smart Digital Display Case | Seamless Bluetooth Connection | “Hurt Never, Fall Never” Secure Fit",audio,https://www.kilimall.co.ke/listing/1001539968-Generic-Bluetooth-Earbuds-with-Deep-Bass,,,0.03,100,300,,N,0.5,3-5,"Clear voice, clean recordings, zero “say that again” moments. Wireless freedom with instant plug‑and‑play setup. M‑Pesa friendly checkout and fast delivery support.","JBL True Wireless Earbuds – Built for Everyday Champions
+For clear voice, clean recordings, and zero “say that again” moments, these earbuds deliver studio‑grade sound wherever you go. Powered by deep bass drivers and noise‑isolating comfort tips, every call, track, or podcast comes through with crisp detail.
+Forget tangled wires—just plug‑and‑play with seamless Bluetooth pairing. The digital display charging case keeps you in control, showing battery levels at a glance, while the 40‑hour battery life means you’ll never be caught off guard mid‑playlist or mid‑meeting.
+Designed with the exclusive “Hurt Never, Fall Never” fit, these earbuds stay secure through workouts, commutes, and long listening sessions—comfort you can trust all day.
+And because we know convenience matters, checkout is M‑Pesa friendly, with fast support on WhatsApp to keep your experience smooth from purchase to delivery.
+
+Why you’ll love them:
+🎵 Deep Bass + Clear Voice: Perfect for music lovers and professionals.
+🔋 Long Battery Life: Up to 40 hours with case.
+📱 Seamless Bluetooth Connection: Instant pairing, no fuss.
+🎤 Clean Recordings: Great for creators, students, and meetings.
+💯 Ultra‑Comfort Fit: Secure and pain‑free wear.
+🛒 Easy Checkout: Local payment support + fast delivery.
+","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT-AU-M10-1000082287\RT-AU-M10-1000082287-02.png""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT-AU-M10-1000082287\RT-AU-M10-1000082287-04.png""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT-AU-M10-1000082287\RT-AU-M10-1000082287-06.png""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT-AU-M10-1000082287\RT-AU-M10-1000082287-07.png""","assets/img/products/bl-true-wireless-earbuds-|-ultra-comfort-fit-|-deep-bass-|-40h-battery-life-|-smart-digital-display-case-|-seamless-bluetooth-connection-|-“hurt-never,-fall-never”-secure-fit/",pulsepods-wireless-earbuds,"BL True Wireless Earbuds | Ultra-Comfort Fit | Deep Bass | 40H Battery Life | Smart Digital Display Case | Seamless Bluetooth Connection | “Hurt Never, Fall Never” Secure Fit BL True Wireless Earbuds | Ultra-Comfort Fit | Deep Bass | 40H Battery Life | Smart Digital Display Case | Seamless Bluetooth Connection | “Hurt Never, Fall Never” Secure Fit audio Black",✓ Ready,Y,RT-AU-M10-1000082287,10004460323
+P011,RTech AirPod 3 Wireless Bluetooth Earbuds | Noise Cancelling | Sweatproof Matte Finish | Touch Control | Long Battery Life with Charging Case | Compatible with Apple & Android,RTech AirPod 3 Wireless Bluetooth Earbuds | Noise Cancelling | Sweatproof Matte Finish | Touch Control | Long Battery Life with Charging Case | Compatible with Apple & Android,audio,https://www.kilimall.co.ke/listing/2739443-Air-Pod-3-Wireless-Bluetooth-Earphones,,,0.03,100,300,,N,0.5,3-5,"RTech AirPod 3 Wireless Earbuds | Noise Cancelling | Sweatproof | Touch Control | Long Battery Life | Apple & Android Compatible. Crisp sound, everyday comfort, and a grab-and-go fit for calls, music, and motion.","Step into sound clarity with the RTech AirPod 3 Wireless Bluetooth Earbuds—engineered for creators, students, and everyday champions in Kenya. With noise cancelling technology, you’ll enjoy clean recordings, clear calls, and zero “say that again” moments.
+
+The matte sweatproof finish keeps you moving through workouts and commutes, while the IPX6 waterproof rating protects against splashes and sweat. Touch control makes switching tracks, adjusting volume, or answering calls effortless—no fumbling, just smooth control.
+
+Powered by Bluetooth 5.0, these earbuds pair instantly with Apple or Android devices. The digital charging case not only keeps them safe but also extends listening time to a full day, so you’re never caught off guard.
+
+And because we know convenience matters, you get 12 months warranty, M‑Pesa friendly checkout, and fast support on WhatsApp—making the whole experience seamless from purchase to play.
+
+Why you’ll love them:
+🎵 Noise Cancelling + Clear Voice for calls and recordings
+
+🔋 All‑day battery life with charging case
+
+💧 IPX6 Sweatproof & Waterproof durability
+
+🎤 Touch Control for easy handling
+
+📱 Bluetooth 5.0 for seamless pairing
+
+🛒 M‑Pesa checkout + WhatsApp support for local convenience","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT-AU-I7S-1945271\RT-AU-I7S-1945271\RT-AU-I7S-1945271-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT-AU-I7S-1945271\RT-AU-I7S-1945271\RT-AU-I7S-1945271-7.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT-AU-I7S-1945271\RT-AU-I7S-1945271\RT-AU-I7S-1945271-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT-AU-I7S-1945271\RT-AU-I7S-1945271\RT-AU-I7S-1945271-7.jpg""",assets/img/products/rtech-airpod-3-wireless-bluetooth-earbuds-|-noise-cancelling-|-sweatproof-matte-finish-|-touch-control-|-long-battery-life-with-charging-case-|-compatible-with-apple-&-android/,pulsepods-wireless-earbuds-3w,RTech AirPod 3 Wireless Bluetooth Earbuds | Noise Cancelling | Sweatproof Matte Finish | Touch Control | Long Battery Life with Charging Case | Compatible with Apple & Android RTech AirPod 3 Wireless Bluetooth Earbuds | Noise Cancelling | Sweatproof Matte Finish | Touch Control | Long Battery Life with Charging Case | Compatible with Apple & Android audio Black,✓ Ready,Y,RT-AU-I7S-1945271,19768718
+P012,"Samsung Galaxy Buds 3 Pro Bluetooth Wireless Earbuds Earpods - Noise Cancellation, Bluetooth 5.4, Hi-Fi Audio, Long Battery Life – Compatible With Android & IOS","Samsung Galaxy Buds 3 Pro Bluetooth Wireless Earbuds Earpods - Noise Cancellation, Bluetooth 5.4, Hi-Fi Audio, Long Battery Life – Compatible With Android & IOS",audio,https://www.kilimall.co.ke/listing/1001447060-Samsung-Galaxy-Buds-3-Pro-Bluetooth-Wireless-Earbuds-Earpods-Noise-Cancellation-Bluetooth-54-HiFi-Audio-Long-Battery-Life-Compatible-With-Android-IOS,,,0.03,100,300,,N,0.5,3-5,"Samsung Galaxy Buds 3 Pro | Noise Cancelling | Hi‑Fi Audio | Bluetooth 5.4 | Long Battery Life | Android & iOS Compatible. Crisp sound, everyday comfort, and a grab-and-go fit for calls, music, and motion.","Experience sound the way it was meant to be with the Samsung Galaxy Buds 3 Pro Wireless Earbuds. Designed for music lovers, creators, and everyday champions, these earbuds deliver Hi‑Fi audio that makes every playlist, podcast, and call feel immersive and crystal clear.
+
+With active noise cancellation, you’ll block out distractions and enjoy uninterrupted focus—whether you’re recording, studying, or commuting through Nairobi’s hustle. The Bluetooth 5.4 connection ensures faster, more stable pairing across Android and iOS devices, so you’re always connected without lag.
+
+Stay powered with long battery life that keeps up with your day, and enjoy the sleek charging case that keeps your buds safe and ready. Intuitive touch controls make switching tracks, adjusting volume, or answering calls effortless, while the ergonomic fit ensures all‑day comfort.
+
+And because convenience matters, checkout is M‑Pesa friendly, backed by fast WhatsApp support and a 12‑month warranty—giving you peace of mind along with premium sound.
+
+Why you’ll love them:
+🎵 Hi‑Fi Audio + Noise Cancelling for immersive listening
+
+🔋 Long Battery Life with charging case
+
+📱 Bluetooth 5.4 for seamless pairing
+
+🎤 Crystal‑clear calls & recordings
+
+💯 Touch Control + Comfort Fit
+
+🛒 M‑Pesa checkout + WhatsApp support for local convenience","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT-AU-SGB3P-1001447060\RT-AU-SGB3P-1001447060\RT-AU-SGB3P-1001447060-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT-AU-SGB3P-1001447060\RT-AU-SGB3P-1001447060\RT-AU-SGB3P-1001447060-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT-AU-SGB3P-1001447060\RT-AU-SGB3P-1001447060\RT-AU-SGB3P-1001447060-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT-AU-SGB3P-1001447060\RT-AU-SGB3P-1001447060\RT-AU-SGB3P-1001447060-4.jpg""","assets/img/products/samsung-galaxy-buds-3-pro-bluetooth-wireless-earbuds-earpods--noise-cancellation,-bluetooth-5.4,-hi-fi-audio,-long-battery-life-–-compatible-with-android-&-ios/",pulsepods-wireless-earbuds,"Samsung Galaxy Buds 3 Pro Bluetooth Wireless Earbuds Earpods - Noise Cancellation, Bluetooth 5.4, Hi-Fi Audio, Long Battery Life – Compatible With Android & IOS Samsung Galaxy Buds 3 Pro Bluetooth Wireless Earbuds Earpods - Noise Cancellation, Bluetooth 5.4, Hi-Fi Audio, Long Battery Life – Compatible With Android & IOS audio White",✓ Ready,Y,RT-AU-SGB3P-1001447060,10004102569
+P013,BY‑MW3 USB‑C Wireless Lavalier Microphone | Clear Voice | Plug‑and‑Play | Noise Cancelling | Long Battery Life | Android & iOS Compatible,BY‑MW3 USB‑C Wireless Lavalier Microphone | Clear Voice | Plug‑and‑Play | Noise Cancelling | Long Battery Life | Android & iOS Compatible,audio,https://www.kilimall.co.ke/listing/1000215802-BYMW3-Single-Mic-USB-TYPE-C-Wireless-lavalier-Microphone,,,0.03,100,300,,N,0.5,3-5,"BY‑MW3 Wireless Lavalier Mic | Noise Cancelling | Plug‑and‑Play USB‑C | Clear Voice | Long Battery Life | Works with Android & iOS. Clear pickup, easy pairing, and creator-ready audio for interviews, reels, and live sessions.","Take your recordings to the next level with the BY‑MW3 Single Mic USB‑C Wireless Lavalier Microphone. Designed for creators, students, and professionals in Kenya, this mic delivers clear voice capture with noise cancelling technology, ensuring your audience hears you—not the background.
+
+Setup is effortless with plug‑and‑play USB‑C connectivity—no drivers, no delays, just instant recording. The wireless design gives you freedom to move naturally, while the long battery life keeps you powered through interviews, vlogs, online classes, or live events.
+
+Compact and lightweight, the BY‑MW3 clips easily to your shirt or jacket, making it ideal for mobile creators. Compatible with both Android and iOS devices, it adapts to your workflow seamlessly.
+
+And because convenience matters, checkout is M‑Pesa friendly, backed by fast WhatsApp support and a 12‑month warranty—so you get professional‑grade audio with peace of mind.
+
+Why you’ll love it:
+🎤 Noise Cancelling + Clear Voice for professional recordings
+
+🔋 Long Battery Life for uninterrupted sessions
+
+⚡ Plug‑and‑Play USB‑C simplicity
+
+📱 Wireless freedom with Android & iOS compatibility
+
+🛒 M‑Pesa checkout + WhatsApp support for local convenience","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Microphone\RT-MIC-BYMW3-1000215802\art 1 .jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Microphone\RT-MIC-BYMW3-1000215802\BCO.9d33994b-bb7d-4e12-81e8-f879b6985335.png""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Microphone\RT-MIC-BYMW3-1000215802\RT-MIC-BYMW3-1000215802-1.png""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Microphone\RT-MIC-BYMW3-1000215802\RT-MIC-BYMW3-1000215802\RT-MIC-BYMW3-1000215802-3.jpg""",assets/img/products/by‑mw3-usb‑c-wireless-lavalier-microphone-|-clear-voice-|-plug‑and‑play-|-noise-cancelling-|-long-battery-life-|-android-&-ios-compatible/,voiceforge-wireless-mic-kit,BY‑MW3 USB‑C Wireless Lavalier Microphone | Clear Voice | Plug‑and‑Play | Noise Cancelling | Long Battery Life | Android & iOS Compatible BY‑MW3 USB‑C Wireless Lavalier Microphone | Clear Voice | Plug‑and‑Play | Noise Cancelling | Long Battery Life | Android & iOS Compatible audio Black,✓ Ready,Y,RT-MIC-BYMW3-1000215802,10000591084
+P014,"3‑in‑1 Mini Double Wireless Lavalier Microphone | Plug‑and‑Play | Noise Reduction | Long Battery Life | Compatible with iPhone, Android & Cameras","3‑in‑1 Mini Double Wireless Lavalier Microphone | Plug‑and‑Play | Noise Reduction | Long Battery Life | Compatible with iPhone, Android & Cameras",audio,https://www.kilimall.co.ke/listing/1000270595-K9-Professional-Microphone-Wireless-Lavalier-Microphone-for-Android-Type-C-iPhone-Live-Game-Recording-Interview-Vlog,,,0.03,100,300,,N,0.5,3-5,"3‑in‑1 Wireless Lavalier Mic | Dual Clip | Noise Reduction | Plug‑and‑Play | Works with iPhone, Android & Cameras. Clear pickup, easy pairing, and creator-ready audio for interviews, reels, and live sessions.","Upgrade your recordings with the 3‑in‑1 Mini Double Wireless Lavalier Microphone, designed for creators, vloggers, and professionals in Kenya. With dual clip microphones, you can capture clear voice from two speakers at once—perfect for interviews, podcasts, or live broadcasts.
+
+Featuring professional noise reduction, this mic ensures your recordings stay crisp and free from background distractions. The plug‑and‑play design means setup takes seconds—just connect to your iPhone, Android, or camera and start recording instantly.
+
+Compact and lightweight, the dual mics clip easily to your shirt or jacket, giving you freedom to move naturally while staying hands‑free. The long battery life keeps you powered through classes, streams, or events without interruption.
+
+And because convenience matters, checkout is M‑Pesa friendly, backed by fast WhatsApp support and a 12‑month warranty—so you get professional‑grade audio with peace of mind.
+
+Why you’ll love it:
+🎤 Dual Clip Microphones for interviews & collabs
+
+🔇 Noise Reduction for clean recordings
+
+⚡ Plug‑and‑Play simplicity with iPhone, Android & cameras
+
+🔋 Long Battery Life for uninterrupted sessions
+
+🛒 M‑Pesa checkout + WhatsApp support for local convenience","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Microphone\RT‑MIC‑3IN1‑1000270600\RT‑MIC‑3IN1‑1000270600\RT‑MIC‑3IN1‑1000270600-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Microphone\RT‑MIC‑3IN1‑1000270600\RT‑MIC‑3IN1‑1000270600\RT‑MIC‑3IN1‑1000270600-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Microphone\RT‑MIC‑3IN1‑1000270600\RT‑MIC‑3IN1‑1000270600\RT‑MIC‑3IN1‑1000270600-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Microphone\RT‑MIC‑3IN1‑1000270600\RT‑MIC‑3IN1‑1000270600\RT‑MIC‑3IN1‑1000270600-4.jpg""","assets/img/products/3‑in‑1-mini-double-wireless-lavalier-microphone-|-plug‑and‑play-|-noise-reduction-|-long-battery-life-|-compatible-with-iphone,-android-&-cameras/",voiceforge-wireless-mic-kit,"3‑in‑1 Mini Double Wireless Lavalier Microphone | Plug‑and‑Play | Noise Reduction | Long Battery Life | Compatible with iPhone, Android & Cameras 3‑in‑1 Mini Double Wireless Lavalier Microphone | Plug‑and‑Play | Noise Reduction | Long Battery Life | Compatible with iPhone, Android & Cameras audio Black",✓ Ready,Y,RT‑MIC‑3IN1‑1000270600,10004919232
+P015,Plokama VM‑50 Wireless Lavalier Microphone | Plug‑and‑Play | Noise Cancelling | Long Battery Life | Compatible with Android & iOS,Plokama VM‑50 Wireless Lavalier Microphone (Type‑C + iPhone Adapter) | Plug‑and‑Play | Noise Cancelling | Long Battery Life | Compatible with Android & iOS,audio,https://www.kilimall.co.ke/listing/1001670280-Plokama-VM50-Wireless-Lavalier-Microphone,,,0.03,100,300,,N,0.5,3-5,"Plokama VM‑50 Wireless Mic | Noise Cancelling | Plug‑and‑Play | Long Battery Life | Works with Android & iPhone. Clear pickup, easy pairing, and creator-ready audio for interviews, reels, and live sessions.","Deliver professional sound anywhere with the Plokama VM‑50 Wireless Lavalier Microphone, designed for creators, interviewers, and vloggers in Kenya. With noise cancelling technology, your recordings stay crisp and clear, cutting out background distractions so your audience hears only you.
+
+The plug‑and‑play design makes setup effortless—just connect via Type‑C or use the included iPhone adapter and you’re ready to record instantly. The wireless freedom lets you move naturally while staying hands‑free, and the long battery life ensures uninterrupted sessions whether you’re streaming, teaching, or filming on the go.
+
+Compact and lightweight, the VM‑50 clips easily to your shirt or jacket, making it perfect for mobile creators. Compatible with both Android and iOS devices, it adapts seamlessly to your workflow.
+
+And because convenience matters, checkout is M‑Pesa friendly, backed by fast WhatsApp support and a 12‑month warranty—so you get professional‑grade audio with peace of mind.
+
+Why you’ll love it:
+🎤 Noise Cancelling + Clear Voice for professional recordings
+
+🔋 Long Battery Life for uninterrupted sessions
+
+⚡ Plug‑and‑Play Type‑C + iPhone adapter
+
+📱 Wireless freedom with Android & iOS compatibility
+
+🛒 M‑Pesa checkout + WhatsApp support for local convenience","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Microphone\RT-MIC-VM50-1001670280\RT-MIC-VM50-1001670280\RT-MIC-VM50-1001670280-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Microphone\RT-MIC-VM50-1001670280\RT-MIC-VM50-1001670280\RT-MIC-VM50-1001670280-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Microphone\RT-MIC-VM50-1001670280\RT-MIC-VM50-1001670280\RT-MIC-VM50-1001670280-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\creator gear\Microphone\RT-MIC-VM50-1001670280\RT-MIC-VM50-1001670280\RT-MIC-VM50-1001670280-4.jpg""",assets/img/products/plokama-vm‑50-wireless-lavalier-microphone-|-plug‑and‑play-|-noise-cancelling-|-long-battery-life-|-compatible-with-android-&-ios/,voiceforge-wireless-mic-kit-50w,Plokama VM‑50 Wireless Lavalier Microphone | Plug‑and‑Play | Noise Cancelling | Long Battery Life | Compatible with Android & iOS Plokama VM‑50 Wireless Lavalier Microphone (Type‑C + iPhone Adapter) | Plug‑and‑Play | Noise Cancelling | Long Battery Life | Compatible with Android & iOS audio Black,✓ Ready,Y,RT-MIC-VM50-1001670280,10005033172
+P016,"RichRipple 40,000mAh LED Power Bank | Mirror Screen | Large Capacity | Portable External Battery | Compatible with All Phones","RichRipple 40,000mAh LED Power Bank | Mirror Screen | Large Capacity | Portable External Battery | Compatible with All Phones",power,https://www.kilimall.co.ke/listing/1953945-RichRipple-40000mAh-Power-Bank-with-LED-Display,,,0.03,100,300,,N,0.5,3-5,"RichRipple 40,000mAh Power Bank | LED Display | Mirror Screen | Fast Charging | Works with iPhone & Android. Reliable backup power for long days, fast top-ups, and fewer low-battery panic moments.","Stay powered all day with the RichRipple 40,000mAh LED Power Bank, designed for heavy users, travelers, and professionals in Kenya. With its massive capacity, you can charge multiple devices—phones, tablets, or accessories—without worrying about running out of juice.
+
+The sleek mirror screen design doubles as a stylish accessory, while the LED display keeps you updated on battery levels at a glance. Built with fast charging USB ports, it ensures your devices are powered quickly and efficiently.
+
+Compact yet powerful, this portable external battery is perfect for commutes, road trips, or long workdays. Compatible with all phones (iPhone & Android), it adapts seamlessly to your lifestyle.
+
+And because convenience matters, checkout is M‑Pesa friendly, backed by fast WhatsApp support and a 12‑month warranty—so you get reliability and peace of mind with every charge.
+
+Why you’ll love it:
+🔋 40,000mAh Large Capacity for multiple charges
+
+💡 LED Display + Mirror Screen for style & function
+
+⚡ Fast Charging USB Ports for quick power‑ups
+
+📱 Universal Compatibility with iPhone & Android
+
+🛒 M‑Pesa checkout + WhatsApp support for local convenience","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT‑PB‑40K‑1001304835\RT‑PB‑40K‑1001304835\RT‑PB‑40K‑1001304835-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT‑PB‑40K‑1001304835\RT‑PB‑40K‑1001304835\RT‑PB‑40K‑1001304835-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT‑PB‑40K‑1001304835\RT‑PB‑40K‑1001304835\RT‑PB‑40K‑1001304835-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT‑PB‑40K‑1001304835\RT‑PB‑40K‑1001304835\RT‑PB‑40K‑1001304835-5.jpg""","assets/img/products/richripple-40,000mah-led-power-bank-|-mirror-screen-|-large-capacity-|-portable-external-battery-|-compatible-with-all-phones/",voltvault-fast-charge-power-bank-000mah,"RichRipple 40,000mAh LED Power Bank | Mirror Screen | Large Capacity | Portable External Battery | Compatible with All Phones RichRipple 40,000mAh LED Power Bank | Mirror Screen | Large Capacity | Portable External Battery | Compatible with All Phones power Red",✓ Ready,Y,RT‑PB‑40K‑1001304835,14053988
+P017,20000mAh PD 20W + QC3.0 Super Quick Charge Power Bank | Portable External Battery | LED Display | Compatible with iPhone & Android,20000mAh PD 20W + QC3.0 Super Quick Charge Power Bank | Portable External Battery | LED Display | Compatible with iPhone & Android,power,https://www.kilimall.co.ke/listing/1001244986,,,0.03,100,300,,N,0.5,3-5,"20,000mAh Power Bank | PD 20W + QC3.0 | Super Fast Charging | LED Display | Works with iPhone & Android. Reliable backup power for long days, fast top-ups, and fewer low-battery panic moments.","Stay charged wherever you go with the 20,000mAh PD 20W + QC3.0 Super Quick Charge Power Bank, built for travelers, students, and professionals in Kenya. With super fast charging technology, you can power up your devices in minutes instead of hours—keeping you connected and productive all day.
+
+The PD 20W + QC3.0 dual output ensures compatibility with both iPhone and Android, delivering efficient charging for multiple devices at once. The LED display keeps you updated on battery levels, while the sleek, portable design makes it easy to carry in your bag or pocket.
+
+With its large 20,000mAh capacity, this power bank can recharge your phone several times over, making it perfect for long commutes, road trips, or busy workdays. Durable and reliable, it’s the ultimate backup power solution.
+
+And because convenience matters, checkout is M‑Pesa friendly, backed by fast WhatsApp support and a 12‑month warranty—so you get peace of mind along with powerful performance.
+
+Why you’ll love it:
+🔋 20,000mAh Large Capacity for multiple charges
+
+⚡ PD 20W + QC3.0 Super Fast Charging
+
+💡 LED Display for easy monitoring
+
+📱 Universal Compatibility with iPhone & Android
+
+🛒 M‑Pesa checkout + WhatsApp support for local convenience","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT-PB-PD20-1001244986\RT-PB-PD20-1001244986\RT-PB-PD20-1001244986-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT-PB-PD20-1001244986\RT-PB-PD20-1001244986\RT-PB-PD20-1001244986-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT-PB-PD20-1001244986\RT-PB-PD20-1001244986\RT-PB-PD20-1001244986-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT-PB-PD20-1001244986\RT-PB-PD20-1001244986\RT-PB-PD20-1001244986-1.jpg""",assets/img/products/20000mah-pd-20w-+-qc3.0-super-quick-charge-power-bank-|-portable-external-battery-|-led-display-|-compatible-with-iphone-&-android/,voltvault-fast-charge-power-bank-20000mah,20000mAh PD 20W + QC3.0 Super Quick Charge Power Bank | Portable External Battery | LED Display | Compatible with iPhone & Android 20000mAh PD 20W + QC3.0 Super Quick Charge Power Bank | Portable External Battery | LED Display | Compatible with iPhone & Android power Black,✓ Ready,Y,RT-PB-PD20-1001244986,10003049009
+P018,"Oraimo 20,000mAh Power Bank Black | LED Display | Super Fast Charging | Portable External Battery | Compatible with iPhone & Android","Oraimo 20,000mAh Power Bank Black | LED Display | Super Fast Charging | Portable External Battery | Compatible with iPhone & Android",power,https://www.kilimall.co.ke/listing/1001348999,,,0.03,100,300,,N,0.5,3-5,"Oraimo 20,000mAh Power Bank | LED Display | Super Fast Charging | Portable | Works with iPhone & Android. Reliable backup power for long days, fast top-ups, and fewer low-battery panic moments.","Power up with confidence using the Oraimo 20,000mAh Power Bank, designed for heavy users, travelers, and professionals in Kenya. With its large capacity, you can charge your phone multiple times, keeping you connected through long commutes, busy workdays, or road trips.
+
+The sleek black design pairs with a LED display, giving you real‑time updates on battery levels. Built with super fast charging technology, it ensures your devices are powered quickly and efficiently, whether you’re using iPhone or Android.
+
+Compact and portable, this external battery slips easily into your bag, making it the perfect backup power solution for students, creators, and professionals on the go.
+
+And because convenience matters, checkout is M‑Pesa friendly, backed by fast WhatsApp support and a 12‑month warranty—so you get reliability and peace of mind with every charge.
+
+Why you’ll love it:
+🔋 20,000mAh Large Capacity for multiple charges
+
+⚡ Super Fast Charging for quick power‑ups
+
+💡 LED Display for easy monitoring
+
+📱 Universal Compatibility with iPhone & Android
+
+🛒 M‑Pesa checkout + WhatsApp support for local convenience","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT-PB-ORA-20K-1001348999\RT-PB-ORA-20K-1001348999\RT-PB-ORA-20K-1001348999-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT-PB-ORA-20K-1001348999\RT-PB-ORA-20K-1001348999\RT-PB-ORA-20K-1001348999-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT-PB-ORA-20K-1001348999\RT-PB-ORA-20K-1001348999\RT-PB-ORA-20K-1001348999-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT-PB-ORA-20K-1001348999\RT-PB-ORA-20K-1001348999\RT-PB-ORA-20K-1001348999-4.jpg""","assets/img/products/oraimo-20,000mah-power-bank-black-|-led-display-|-super-fast-charging-|-portable-external-battery-|-compatible-with-iphone-&-android/",voltvault-fast-charge-power-bank-000mah,"Oraimo 20,000mAh Power Bank Black | LED Display | Super Fast Charging | Portable External Battery | Compatible with iPhone & Android Oraimo 20,000mAh Power Bank Black | LED Display | Super Fast Charging | Portable External Battery | Compatible with iPhone & Android power Black",✓ Ready,Y,RT-PB-ORA-20K-1001348999,10003593683
+P019,"20,000mAh 4‑in‑1 Portable Power Bank Premium Black | Super Fast Charging | Large Capacity | Compatible with All Phones","20,000mAh 4‑in‑1 Portable Power Bank Premium Black | Super Fast Charging | Large Capacity | Compatible with All Phones",power,https://www.kilimall.co.ke/listing/2547348-20000mAh-powerbank-Portable-Power-Charging-Bank-Premium-Black,,,0.03,100,300,,N,0.5,3-5,"20,000mAh 4‑in‑1 Power Bank | Premium Black | Super Fast Charging | Portable | Works with iPhone & Android. Reliable backup power for long days, fast top-ups, and fewer low-battery panic moments.","Stay powered anywhere with the 20,000mAh 4‑in‑1 Portable Power Bank Premium Black, designed for professionals, students, and travelers in Kenya. With its large capacity, you can charge multiple devices several times over—keeping your phone, tablet, or accessories ready throughout the day.
+
+The 4‑in‑1 multi‑port design ensures you can power up different devices simultaneously, while super fast charging technology delivers efficient energy transfer for both iPhone and Android. The sleek premium black finish adds style to your everyday carry, and the compact build makes it easy to slip into your bag or pocket.
+
+With its LED indicators, you’ll always know your battery status at a glance. Durable and reliable, this power bank is the ultimate backup solution for commutes, road trips, or long workdays.
+
+And because convenience matters, checkout is M‑Pesa friendly, backed by fast WhatsApp support and a 12‑month warranty—so you get peace of mind along with powerful performance.
+
+📦 Package Details
+1 × 20,000mAh Power Bank
+
+1 × Charging Cable
+
+1 × User Manual
+
+1 × USB Light
+
+Why you’ll love it:
+🔋 20,000mAh Large Capacity for multiple charges
+
+⚡ Super Fast Charging with 4‑in‑1 multi‑port design
+
+🎨 Premium Black Finish for sleek style
+
+💡 LED Indicators for easy monitoring
+
+📱 Universal Compatibility with iPhone & Android
+
+📦 Comes with cable, manual & USB light
+
+🛒 M‑Pesa checkout + WhatsApp support for local convenience","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT-PB-4IN1-1001088977\RT-PB-4IN1-1001088977\RT-PB-4IN1-1001088977-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT-PB-4IN1-1001088977\RT-PB-4IN1-1001088977\RT-PB-4IN1-1001088977-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT-PB-4IN1-1001088977\RT-PB-4IN1-1001088977\RT-PB-4IN1-1001088977-4.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT-PB-4IN1-1001088977\RT-PB-4IN1-1001088977\RT-PB-4IN1-1001088977-5.jpg""","assets/img/products/20,000mah-4‑in‑1-portable-power-bank-premium-black-|-super-fast-charging-|-large-capacity-|-compatible-with-all-phones/",voltvault-fast-charge-power-bank-000mah,"20,000mAh 4‑in‑1 Portable Power Bank Premium Black | Super Fast Charging | Large Capacity | Compatible with All Phones 20,000mAh 4‑in‑1 Portable Power Bank Premium Black | Super Fast Charging | Large Capacity | Compatible with All Phones power Black",✓ Ready,Y,RT-PB-4IN1-1001088977,18410105
+P020,"Wireless 20,000mAh Power Bank | Full Capacity | 5W & 10W Wireless Charging | 4‑in‑1 Cables | LED Display | Premium Portable Charger","Wireless 20,000mAh Power Bank | Full Capacity | 5W & 10W Wireless Charging | 4‑in‑1 Cables (Lightning, Type‑C, Micro) | LED Display | Premium Portable Charger",power,https://www.kilimall.co.ke/listing/2741866,,,0.03,100,300,,N,0.5,3-5,"Wireless 20,000mAh Power Bank | 5W/10W Fast Charging | 4‑in‑1 Cables | LED Display | Works with iPhone & Android. Clear pickup, easy pairing, and creator-ready audio for interviews, reels, and live sessions.","Charge smarter with the Wireless 20,000mAh Power Bank, designed for professionals, students, and travelers in Kenya. With full capacity 20,000mAh, it delivers multiple charges for your phone, tablet, or accessories—keeping you powered all day.
+
+Enjoy wireless charging at 5W & 10W, perfect for quick top‑ups without cables. For wired connections, the 4‑in‑1 integrated cables (Lightning, Type‑C, Micro USB) make it universally compatible with iPhone, Android, and more.
+
+The sleek design features an LED display that shows real‑time battery levels, while the portable build makes it easy to carry in your bag or pocket. Durable and reliable, this power bank is the ultimate backup solution for commutes, road trips, or busy workdays.
+
+And because convenience matters, checkout is M‑Pesa friendly, backed by fast WhatsApp support and a 12‑month warranty—so you get peace of mind along with powerful performance.
+
+Why you’ll love it:
+🔋 20,000mAh Full Capacity for multiple charges
+
+⚡ Wireless 5W & 10W Fast Charging
+
+🔌 4‑in‑1 Cables (Lightning, Type‑C, Micro USB)
+
+💡 LED Display for easy monitoring
+
+📱 Universal Compatibility with iPhone & Android
+
+🛒 M‑Pesa checkout + WhatsApp support for local convenience","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT‑PB‑WLS‑20K‑2741866\RT‑PB‑WLS‑20K‑2741866\RT‑PB‑WLS‑20K‑2741866-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT‑PB‑WLS‑20K‑2741866\RT‑PB‑WLS‑20K‑2741866\RT‑PB‑WLS‑20K‑2741866-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT‑PB‑WLS‑20K‑2741866\RT‑PB‑WLS‑20K‑2741866\RT‑PB‑WLS‑20K‑2741866-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT‑PB‑WLS‑20K‑2741866\RT‑PB‑WLS‑20K‑2741866\RT‑PB‑WLS‑20K‑2741866-1.jpg""","assets/img/products/wireless-20,000mah-power-bank-|-full-capacity-|-5w-&-10w-wireless-charging-|-4‑in‑1-cables-|-led-display-|-premium-portable-charger/",voiceforge-wireless-mic-kit-000mah,"Wireless 20,000mAh Power Bank | Full Capacity | 5W & 10W Wireless Charging | 4‑in‑1 Cables | LED Display | Premium Portable Charger Wireless 20,000mAh Power Bank | Full Capacity | 5W & 10W Wireless Charging | 4‑in‑1 Cables (Lightning, Type‑C, Micro) | LED Display | Premium Portable Charger power Black",✓ Ready,Y,RT‑PB‑WLS‑20K‑2741866,19090996
+P021,"Samsung 45W USB‑C Super Fast Charger Plug + 1m Type‑C Cable | Compatible with Galaxy S23, S22, S21, S20, A13, A14, A54 5G | UK Adapter","Samsung 45W USB‑C Super Fast Charger Plug + 1m Type‑C Cable | Compatible with Galaxy S23, S22, S21, S20, A13, A14, A54 5G | UK Adapter",power,https://www.kilimall.co.ke/listing/1001752954-Samsung-45W-USBC-Super-Fast-Charger-Plug-1m-TypeC-Cable-Compatible-with-Galaxy-S23-S22-S21-S20-A13-A14-A54-5G-UK-TypeC-Fast-Charging-Adapter,699,,0.03,100,300,,N,0.5,3-5,"Samsung 45W Super Fast Charger | USB‑C Plug + 1m Cable | PD 45W | Works with Galaxy S23, S22, S21, S20, A‑Series. Fast charging with a compact build that keeps your setup clean and travel-friendly.","Power up your Galaxy devices with the Samsung 45W USB‑C Super Fast Charger Plug + 1m Type‑C Cable, designed for maximum speed and reliability. With PD 45W technology, it delivers ultra‑fast charging that keeps your phone ready for action in minutes, not hours.
+
+The included 1m Type‑C cable ensures stable, efficient power transfer, while the UK adapter design makes it perfect for use at home, in the office, or on the go. Compatible with a wide range of Samsung devices—including Galaxy S23, S22, S21, S20, A13, A14, and A54 5G—this charger adapts seamlessly to your lifestyle.
+
+Compact and durable, the Samsung 45W charger is built for everyday use, giving you peace of mind with safe, efficient charging.
+
+And because convenience matters, checkout is M‑Pesa friendly, backed by fast WhatsApp support and a 12‑month warranty—so you get reliability and speed in one package.
+
+Why you’ll love it:
+⚡ PD 45W Super Fast Charging for Galaxy devices
+
+🔌 USB‑C Plug + 1m Cable included
+
+📱 Compatible with Galaxy S23, S22, S21, S20, A‑Series
+
+🇬🇧 UK Adapter Design for easy use
+
+🛒 M‑Pesa checkout + WhatsApp support for local convenience","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT‑CH‑PD45‑1000358764\RT‑CH‑PD45‑1000358764\RT‑CH‑PD45‑1000358764-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT‑CH‑PD45‑1000358764\RT‑CH‑PD45‑1000358764\RT‑CH‑PD45‑1000358764-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT‑CH‑PD45‑1000358764\RT‑CH‑PD45‑1000358764\RT‑CH‑PD45‑1000358764-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\power\RT‑CH‑PD45‑1000358764\RT‑CH‑PD45‑1000358764\RT‑CH‑PD45‑1000358764-4.jpg""","assets/img/products/samsung-45w-usb‑c-super-fast-charger-plug-+-1m-type‑c-cable-|-compatible-with-galaxy-s23,-s22,-s21,-s20,-a13,-a14,-a54-5g-|-uk-adapter/",voltjet-pd-wall-charger-45w,"Samsung 45W USB‑C Super Fast Charger Plug + 1m Type‑C Cable | Compatible with Galaxy S23, S22, S21, S20, A13, A14, A54 5G | UK Adapter Samsung 45W USB‑C Super Fast Charger Plug + 1m Type‑C Cable | Compatible with Galaxy S23, S22, S21, S20, A13, A14, A54 5G | UK Adapter power White",✓ Ready,Y,RT‑CH‑PD45‑1000358764,10005532153
+P022,Original Brand UHS‑3 MicroSD TF Memory Card | High‑Speed U3 | 32GB / 64GB / 128GB / 256GB | For Phones & Cameras,"Original Brand UHS‑3 MicroSD TF Memory Card | High‑Speed U3 | 32GB / 64GB / 128GB / 256GB | For Phones & Cameras
+
+",storage-memory-cards,https://www.kilimall.co.ke/listing/1960578-Generic-256GB128GB64GB32GB-UHS3-Micro-SD-Card,159,,0.03,100,300,,N,0.012,3-5,UHS‑3 MicroSD TF Card | High‑Speed U3 | 32GB–256GB | Works with Phones & Cameras,"Store more, faster with the Original Brand UHS‑3 MicroSD TF Memory Card, available in 32GB, 64GB, 128GB, and 256GB capacities. Built with UHS‑3 high‑speed technology, these cards deliver smooth performance for photography, video recording, and data transfer.
+
+Compact and durable, each card is designed for everyday use in phones, cameras, and portable devices. Whether you need a small card for quick storage or a 256GB powerhouse for heavy media files, the TF Card family adapts to your needs.
+
+📦 Package Details
+
+1 × MicroSD TF Card (capacity chosen: 32GB / 64GB / 128GB / 256GB)
+
+1 × Protective Case (varies by seller)
+
+1 × User Manual
+
+⚙️ Specifications
+
+Type: MicroSD / TF Card
+
+Speed Class: UHS‑3 (U3)
+
+Capacities: 32GB, 64GB, 128GB, 256GB
+
+Model: C10/U3
+
+Compatibility: Phones, cameras, tablets, and other MicroSD‑enabled devices
+
+Color: As pictured
+
+🛡️ Warranty
+
+12‑Month Warranty against manufacturing defects
+
+Fulfilled by Kilimall (ships from Mavoko, Kenya)
+
+Customer Support: Fast WhatsApp & Kilimall after‑sale policy","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\storage\storage-memory-cards\RT‑MC‑TF‑UHS3‑1001670700\RT‑MC‑TF‑UHS3‑1001670700\RT‑MC‑TF‑UHS3‑1001670700-4.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\storage\storage-memory-cards\RT‑MC‑TF‑UHS3‑1001670700\RT‑MC‑TF‑UHS3‑1001670700\RT‑MC‑TF‑UHS3‑1001670700-5.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\storage\storage-memory-cards\RT‑MC‑TF‑UHS3‑1001670700\RT‑MC‑TF‑UHS3‑1001670700\RT‑MC‑TF‑UHS3‑1001670700-6.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\storage\storage-memory-cards\RT‑MC‑TF‑UHS3‑1001670700\RT‑MC‑TF‑UHS3‑1001670700\RT‑MC‑TF‑UHS3‑1001670700-7.jpg""",assets/img/products/original-brand-uhs‑3-microsd-tf-memory-card-|-high‑speed-u3-|-32gb--64gb--128gb--256gb-|-for-phones-&-cameras/,microsd-u3-memory-card,"micro sd card
+microsd memory card
+tf memory card
+u3 micro sd
+uhs3 sd card
+high speed memory card
+phone memory card
+camera memory card
+micro sd storage
+32gb sd card
+64gb sd card
+128gb sd card
+256gb sd card
+phone storage card
+camera storage card",✓ Ready,Y,RT‑MC‑TF‑UHS3‑1001670700,14118282
+P023,NovaFlash UltraSpeed MicroSD TF Card | Lightning-Fast U3 | 32GB / 64GB / 128GB / 256GB | Perfect for Phones & Cameras,NovaFlash UltraSpeed MicroSD TF Card | Lightning-Fast U3 | 32GB / 64GB / 128GB / 256GB | Perfect for Phones & Cameras,storage-memory-cards,https://www.kilimall.co.ke/listing/1872071-Generic-Micro-SD-Card-16G128G-High-Speed,159,,0.03,100,300,,N,0.012,3-5,"Built tough for everyday use in Kenya, this UHS-3 MicroSD TF Card combines reliable quality with lightning-fast performance across 32GB to 256GB capacities. Designed to seamlessly work with phones, cameras, and other portable devices, it’s perfect for capturing memories, storing important files, and powering your daily digital life. Enjoy hassle-free M-Pesa checkout and responsive WhatsApp support, making your purchase smooth and worry-free.| High‑Speed U3 | 32GB–256GB | Works with Phones & Cameras","Experience unmatched speed and reliability with the Original Brand UHS‑3 MicroSD TF Memory Card, offered in versatile 32GB, 64GB, 128GB, and 256GB capacities. Engineered with cutting-edge UHS‑3 high-speed technology, these memory cards ensure seamless performance for capturing stunning photos, recording crisp videos, and transferring data swiftly. Designed to withstand the rigors of daily use, their compact and durable build makes them the perfect companion for your phones, cameras, and other portable devices, delivering consistent quality you can trust every day in Kenya.
+
+📦 Package Details
+
+1 × MicroSD TF Card (capacity chosen: 32GB / 64GB / 128GB / 256GB)
+
+1 × Protective Case
+
+1 × User Manual
+
+⚙️ Specifications (Upgraded)
+
+Type: MicroSD / TF Card
+
+Brand: Original Brand
+
+Model: C10/U3
+
+Speed Class: UHS‑3 (U3), Class 10
+
+Flash Memory Type: NAND Flash
+
+Performance: ∼90MB/s read, ∼30MB/s write
+
+Capacities: 32GB, 64GB, 128GB, 256GB
+
+Dimensions: 11 × 15 × 1 mm
+
+Weight: ∼0.4 g
+
+Operating Temperature: −25°C to 85°C
+
+Storage Temperature: −40°C to 85°C
+
+Voltage: 2.7–3.6 V (max)
+
+Certifications: FCC / CE / RoHS
+
+Compatibility: Phones, cameras, tablets, and other MicroSD–enabled devices
+
+🛡️ Warranty & Support
+
+15‑Month Warranty against manufacturing defects
+
+Fulfilled by Kilimall (ships from Mavoko, Kenya)
+
+Customer Support: Fast WhatsApp & Kilimall after‑sale policy","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\storage\storage-memory-cards\RT-MC-TF-UHS3-1002670700\RT-MC-TF-UHS3-1002670700\RT-MC-TF-UHS3-1002670700-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\storage\storage-memory-cards\RT-MC-TF-UHS3-1002670700\RT-MC-TF-UHS3-1002670700\RT-MC-TF-UHS3-1002670700-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\storage\storage-memory-cards\RT-MC-TF-UHS3-1002670700\RT-MC-TF-UHS3-1002670700\RT-MC-TF-UHS3-1002670700-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\storage\storage-memory-cards\RT-MC-TF-UHS3-1002670700\RT-MC-TF-UHS3-1002670700\RT-MC-TF-UHS3-1002670700-4.jpg""",assets/img/products/novaflash-ultraspeed-microsd-tf-card-|-lightning-fast-u3-|-32gb--64gb--128gb--256gb-|-perfect-for-phones-&-cameras/,novaflash‑ultraspeed‑microsd‑tf‑family,"micro sd card
+microsd memory card
+tf memory card
+u3 micro sd
+uhs3 sd card
+high speed memory card
+phone memory card
+camera memory card
+micro sd storage
+32gb sd card
+64gb sd card
+128gb sd card
+256gb sd card
+phone storage card
+camera storage card",✓ Ready,Y,RT-MC-TF-UHS3-1002670700,10003130037
+P024,SanDisk OTG USB Flash Drive,Metal USB Flash Drive | High‑Speed Data Storage | 16GB / 32GB / 64GB / 128GB | With Android OTG + Type‑C OTG Adapter | Gold & Silver,storage-flash-drives,https://www.kilimall.co.ke/listing/2085761-128GB-USB-Flash-Drive-with-OTG-Adapter,159,,0.03,100,300,,N,0.012,3-5,Metal USB Flash Drive | 16GB–128GB | OTG Adapters Included | Gold & Silver,"Upgrade your storage with the Metal USB Flash Drive family, available in 16GB, 32GB, 64GB, and 128GB capacities. Built with a durable metal body in gold and silver finishes, these drives combine style with reliability.
+
+Each flash disk comes with Android OTG and Type‑C OTG adapters, making it easy to connect to smartphones, tablets, laptops, and other devices. Whether you’re transferring photos, videos, or work files, the high‑speed performance ensures smooth data handling.
+
+Compact and portable, these drives are perfect for everyday use—whether at school, work, or on the go.
+
+📦 Package Details
+1 × Metal USB Flash Drive (capacity chosen: 16GB / 32GB / 64GB / 128GB)
+
+1 × Android OTG Adapter
+
+1 × Type‑C OTG Adapter
+
+1 × Protective Case (varies by seller)
+
+⚙️ Specifications
+Type: USB Flash Drive
+
+Material: Metal (Gold / Silver)
+
+Capacities: 16GB, 32GB, 64GB, 128GB
+
+Connectivity: USB + OTG (Android + Type‑C)
+
+Performance: High‑speed data transfer
+
+Dimensions: Compact, pocket‑friendly design
+
+Weight: ~10–15 g (depending on capacity)
+
+Compatibility: Smartphones, tablets, laptops, PCs
+
+Certifications: FCC / CE / RoHS
+
+🛡️ Warranty & Support
+12‑Month Warranty against manufacturing defects
+
+Fulfilled by Kilimall (ships from Mavoko, Kenya)
+
+Customer Support: Fast WhatsApp & Kilimall after‑sale policy
+
+M‑Pesa Friendly Checkout for easy local purchase","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\storage\storage-flash-drives\RT-FD-USB-OTG-1001670900\RT-FD-USB-OTG-1001670900\RT-FD-USB-OTG-1001670900-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\storage\storage-flash-drives\RT-FD-USB-OTG-1001670900\RT-FD-USB-OTG-1001670900\RT-FD-USB-OTG-1001670900-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\storage\storage-flash-drives\RT-FD-USB-OTG-1001670900\RT-FD-USB-OTG-1001670900\RT-FD-USB-OTG-1001670900-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\storage\storage-flash-drives\RT-FD-USB-OTG-1001670900\RT-FD-USB-OTG-1001670900\RT-FD-USB-OTG-1001670900-4.jpg""",assets/img/products/sandisk-otg-usb-flash-drive/,flashcore-metal-usb-flash-drive,SanDisk OTG USB Flash Drive SanDisk OTG USB Flash Drive (8GB–128GB) (Listing) storage-flash-drives Standard,✓ Ready,Y,RT-FD-USB-OTG-1001670900,15665416
+P025,2 Elbow Pad Automatic Rebound Fitness Abdominal Abs Wheel Roller | Silent Rebound | Padded Support | Core Strength Training,2 Elbow Pad Automatic Rebound Fitness Abdominal Abs Wheel Roller | Silent Rebound | Padded Support | Core Strength Training,fitness,https://www.kilimall.co.ke/listing/1001001473-2-elbow-pad-automatic-rebound-fitness-abdominal-Abs-wheel-roller,699,,0.03,100,300,,N,0.5,3-5,Automatic Rebound Ab Wheel | Padded Elbow Support | Silent Design | Core & Upper Body Training,"Train smarter with the Automatic Rebound Ab Wheel Roller, designed to strengthen your core, arms, shoulders, and back. Featuring dual padded elbow supports, this roller reduces strain on your arms while keeping workouts comfortable.
+
+The automatic rebound mechanism helps beginners and pros alike maintain control, while the silent wheel design ensures smooth rolling without disturbing others. Compact and portable, it’s perfect for home gyms, office workouts, or travel fitness routines.
+
+📦 Package Details
+1 × Automatic Rebound Ab Wheel Roller
+
+2 × Padded Elbow Supports
+
+1 × Phone Holder (integrated)
+
+1 × User Manual
+
+⚙️ Specifications
+Type: Fitness Abdominal Roller
+
+Material: Soft, durable wheel + padded elbow rests
+
+Key Features:
+
+Automatic rebound system
+
+Silent wheel design
+
+Padded elbow support
+
+Stable stand design
+
+Soft wheel protects floor from wear
+
+Size: Large
+
+Weight: ~2.5–3 kg (approximate)
+
+Color: N/A (neutral design)
+
+Compatibility: Suitable for core, plank, and upper body training
+
+🛡️ Warranty & Support
+7‑Day Warranty (per Kilimall listing)
+
+Local Dispatch (ships from Syokimau/Mlolongo, Kenya)
+
+Customer Support: Fast WhatsApp & Kilimall after‑sale policy","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\Fitness\RT‑FIT‑ABW‑1001404766\RT‑FIT‑ABW‑1001404766-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\Fitness\RT‑FIT‑ABW‑1001404766\RT‑FIT‑ABW‑1001404766-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\Fitness\RT‑FIT‑ABW‑1001404766\RT‑FIT‑ABW‑1001404766-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\Fitness\RT‑FIT‑ABW‑1001404766\RT‑FIT‑ABW‑1001404766-4.jpg""",assets/img/products/2-elbow-pad-automatic-rebound-fitness-abdominal-abs-wheel-roller-|-silent-rebound-|-padded-support-|-core-strength-training/,automatic‑rebound‑ab‑wheel‑roller,"ab wheel roller, automatic rebound abs roller, fitness core trainer, padded elbow ab roller, silent ab wheel, abdominal exercise equipment, home gym roller, rebound fitness wheel, core strength trainer, portable ab roller, workout equipment Kenya, Kilimall fitness gear",✓ Ready,Y,RT‑FIT‑ABW‑1001404766,10002005709
+P026,Mini Massage Gun | Percussion Deep Tissue Muscle Massager | 6 Speeds | Type‑C Charging | 35dB Ultra Quiet | Portable Handheld for Back & Neck Pain Relief,Mini Massage Gun | Percussion Deep Tissue Muscle Massager | 6 Speeds | Type‑C Charging | 35dB Ultra Quiet | Portable Handheld for Back & Neck Pain Relief,fitness,https://www.kilimall.co.ke/listing/1000140486-Mini-Massage-Gun-Percussion-Deep-Tissues-Muscle-Massager-Gun-with-6-Speeds-TypeC-Charging-35DB-Ultra-Quiet-Portable-Electric-Handheld-Body-Massager-for-Back-Neck-Pain-Relief,159,,0.03,100,300,,N,0.5,3-5,Mini Massage Gun | 6 Speeds | Ultra Quiet | Portable Pain Relief,"Relieve tension and recover faster with the Mini Massage Gun, designed for deep tissue muscle therapy. With 6 adjustable speeds, this handheld device targets sore muscles, improves circulation, and accelerates recovery after workouts.
+
+Powered by Type‑C fast charging, it delivers up to 35dB ultra‑quiet performance, making it discreet enough for home, office, or gym use. Compact and portable, it’s the perfect companion for athletes, professionals, and anyone seeking daily relaxation.
+
+📦 Package Details
+1 × Mini Massage Gun
+
+4 × Interchangeable Massage Heads
+
+1 × Type‑C Charging Cable
+
+1 × User Manual
+
+⚙️ Specifications
+Type: Percussion Massage Gun
+
+Speeds: 6 adjustable levels
+
+Noise Level: ~35dB (ultra quiet)
+
+Charging: Type‑C fast charging
+
+Battery Life: ~4–6 hours per charge
+
+Material: ABS + durable motor
+
+Weight: ~0.8–1 kg (portable)
+
+Color Options: Black (primary)
+
+Compatibility: Suitable for back, neck, shoulders, arms, legs, and full body muscle relief
+
+🛡️ Warranty & Support
+12‑Month Warranty against manufacturing defects
+
+Fulfilled by Kilimall (ships locally in Kenya)
+
+Customer Support: Fast WhatsApp & Kilimall after‑sale policy","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\Fitness\RT‑FIT‑MMG‑2930589\RT‑FIT‑MMG‑2930589\RT‑FIT‑MMG‑2930589-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\Fitness\RT‑FIT‑MMG‑2930589\RT‑FIT‑MMG‑2930589\RT‑FIT‑MMG‑2930589-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\Fitness\RT‑FIT‑MMG‑2930589\RT‑FIT‑MMG‑2930589\RT‑FIT‑MMG‑2930589-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\Fitness\RT‑FIT‑MMG‑2930589\RT‑FIT‑MMG‑2930589\RT‑FIT‑MMG‑2930589-4.jpg""",assets/img/products/mini-massage-gun-|-percussion-deep-tissue-muscle-massager-|-6-speeds-|-type‑c-charging-|-35db-ultra-quiet-|-portable-handheld-for-back-&-neck-pain-relief/,deeppulse-recovery-gun,"mini massage gun, percussion massager, deep tissue therapy, handheld muscle massager, portable massage gun, quiet massage gun, type‑c charging massager, fitness recovery tool, neck pain relief, back pain relief, muscle relaxation device, Kilimall massage gun",✓ Ready,Y,RT‑FIT‑MMG‑2930589,10000338539
+P027,Menstrual Heating Pad | Smart Fast Warm Palace Belt | Period Pain Relief | 3 Heat Levels + Vibration | Portable Cordless Rechargeable Waist & Abdominal Massager,Menstrual Heating Pad | Smart Fast Warm Palace Belt | Period Pain Relief | 3 Heat Levels + Vibration | Portable Cordless Rechargeable Waist & Abdominal Massager,health,https://www.kilimall.co.ke/listing/1000235584-Menstrual-Heating-Pad-Period-Pain-Relief-Rechargeable-Fast-Heating-Massage-with-3-Heat-Levels-and-3-Vibration-Modes-for-Back-or-Abdominal-Gifts-for-Women-and-Girls,699,,0.03,100,300,,N,0.5,3-5,Smart Heating Pad | 3 Heat Levels | Vibration Massage | Portable Pain Relief,"Ease cramps and discomfort with the Smart Menstrual Heating Pad Palace Belt, designed for fast relief during periods. Featuring 3 adjustable heat levels and vibration massage, this device targets abdominal and waist pain to provide soothing comfort.
+
+Cordless and rechargeable via Type‑C charging, it’s lightweight and portable—perfect for use at home, in the office, or on the go. With its ultra‑quiet design, you can enjoy discreet relief whenever you need it.
+
+📦 Package Details
+1 × Smart Menstrual Heating Pad Belt
+
+1 × Type‑C Charging Cable
+
+1 × User Manual
+
+⚙️ Specifications
+Type: Heating Pad + Vibrating Massager
+
+Heat Levels: 3 adjustable settings
+
+Massage: Built‑in vibration function
+
+Noise Level: ~35dB (quiet operation)
+
+Charging: Type‑C rechargeable battery
+
+Battery Life: ~3–5 hours per charge
+
+Material: Soft, skin‑friendly fabric + heating element
+
+Weight: ~0.5–0.7 kg (portable)
+
+Color Options: Pink, Grey (depending on supplier)
+
+Compatibility: Suitable for abdominal, waist, and lower back pain relief
+
+🛡️ Warranty & Support
+12‑Month Warranty against manufacturing defects
+
+Fulfilled by Kilimall (ships locally in Kenya)
+
+Customer Support: Fast WhatsApp & Kilimall after‑sale policy","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\health\RT‑HLT‑MHP‑1001671100\RT‑HLT‑MHP‑1001671100\RT‑HLT‑MHP‑1001671100-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\health\RT‑HLT‑MHP‑1001671100\RT‑HLT‑MHP‑1001671100\RT‑HLT‑MHP‑1001671100-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\health\RT‑HLT‑MHP‑1001671100\RT‑HLT‑MHP‑1001671100\RT‑HLT‑MHP‑1001671100-4.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\health\RT‑HLT‑MHP‑1001671100\RT‑HLT‑MHP‑1001671100\RT‑HLT‑MHP‑1001671100-5.jpg""",assets/img/products/menstrual-heating-pad-|-smart-fast-warm-palace-belt-|-period-pain-relief-|-3-heat-levels-+-vibration-|-portable-cordless-rechargeable-waist-&-abdominal-massager/,menstrual‑heating‑pad‑smart‑belt,"menstrual heating pad, smart palace belt, period pain relief device, abdominal massager, vibrating heating pad, cordless rechargeable heating belt, cramps relief, waist pain relief, portable heating pad, women’s health device, Kilimall heating pad",✓ Ready,Y,RT‑HLT‑MHP‑1001671100,10000669506
+P028,Laptop Cooling Pad with 5 Fans + LED Lights,"Laptop Cooling Pad | 12""–17"" Chill Mat | 5 Quiet Fans + LED Lights | Dual USB 2.0 Ports | Adjustable Mounts",computing-accessories,https://www.kilimall.co.ke/listing/2977987-Laptop-Cooling-Pad-1217-Cooler-Pad-Chill-Mat-5-Quiet-Fans-LED-Lights-And-2-USB-20-Ports-Adjustable-Mounts,699,,0.03,100,300,,N,0.5,3-5,Laptop Cooling Pad | 5 Fans | LED Lights | Adjustable Mounts,"Keep your laptop cool and performing at its best with the Laptop Cooling Pad, designed for devices between 12"" and 17"". Featuring 5 ultra‑quiet fans with adjustable speed, this pad prevents overheating during gaming, streaming, or work.
+
+The built‑in LED lights add a stylish touch, while the dual USB 2.0 ports ensure you don’t lose connectivity. With adjustable mounts, you can set the perfect viewing angle for comfort and productivity. Durable, portable, and efficient, it’s the ultimate accessory for laptop users.
+
+📦 Package Details
+1 × Laptop Cooling Pad (12""–17"")
+
+1 × USB Power Cable
+
+1 × User Manual
+
+⚙️ Specifications
+Type: Laptop Cooling Pad / Chill Mat
+
+Fans: 5 ultra‑quiet cooling fans
+
+Lighting: LED lights (blue/red depending on model)
+
+Ports: 2 × USB 2.0
+
+Adjustable Mounts: Multiple height settings
+
+Noise Level: Low (quiet operation)
+
+Size Compatibility: 12""–17"" laptops
+
+Material: ABS + metal mesh
+
+Weight: ~1–1.5 kg
+
+Color Options: Black with LED accents
+
+Power Supply: USB powered
+
+🛡️ Warranty & Support
+12‑Month Warranty against manufacturing defects
+
+Fulfilled by Kilimall (ships locally in Kenya)
+
+Customer Support: Fast WhatsApp & Kilimall after‑sale policy","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\computer\RT‑LPT‑CLP‑1001671200\RT‑LPT‑CLP‑1001671200\RT‑LPT‑CLP‑1001671200-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\computer\RT‑LPT‑CLP‑1001671200\RT‑LPT‑CLP‑1001671200\RT‑LPT‑CLP‑1001671200-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\computer\RT‑LPT‑CLP‑1001671200\RT‑LPT‑CLP‑1001671200\RT‑LPT‑CLP‑1001671200-3.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\computer\RT‑LPT‑CLP‑1001671200\RT‑LPT‑CLP‑1001671200\RT‑LPT‑CLP‑1001671200-4.jpg""",assets/img/products/laptop-cooling-pad-with-5-fans-+-led-lights/,laptop‑cooling‑pad‑5‑fans,"laptop cooling pad, 5 fan cooler, LED laptop cooler, USB laptop cooling mat, adjustable laptop stand, gaming laptop cooler, portable laptop cooling pad, Kilimall laptop accessories, laptop heat prevention, laptop stand with fans",✓ Ready,Y,RT‑LPT‑CLP‑1001671200,19748033
+P029,Portable Wireless Bluetooth Speaker,Bluetooth Mini Speaker | Niche Design | Portable Wireless Subwoofer | Outdoor Small Speaker | Personality Style,audio,https://www.kilimall.co.ke/listing/2910146-Bluetooth-Speakers-This-Years-Popular-Niche-Design-Simple-Personality-Everything-Wireless-Bluetooth-Mini-Speaker-Portable-Subwoofer-Outdoor-Small-Speaker,159,,0.03,100,300,,N,0.5,3-5,Portable Bluetooth Mini Speaker | Wireless Freedom | Stylish Niche Design,"Bring your music everywhere with the Bluetooth Mini Speaker, designed with this year’s popular niche style for a touch of personality. Compact yet powerful, it delivers clear sound and deep bass in a portable form factor.
+
+With wireless Bluetooth connectivity, you can stream music from your phone, tablet, or laptop without cables. Perfect for outdoor gatherings, travel, or personal listening, this speaker combines style, portability, and performance in one.
+
+📦 Package Details
+1 × Bluetooth Mini Speaker
+
+1 × USB Charging Cable
+
+1 × User Manual
+
+⚙️ Specifications
+Type: Portable Bluetooth Speaker
+
+Design: Niche personality style, compact build
+
+Connectivity: Bluetooth wireless
+
+Sound: Subwoofer effect, clear audio
+
+Battery: Rechargeable (USB charging)
+
+Playtime: ~4–6 hours per charge
+
+Weight: ~0.5–0.7 kg (portable)
+
+Color Options: Black, White, or Custom (depending on supplier)
+
+Compatibility: Smartphones, tablets, laptops, outdoor use
+
+🛡️ Warranty & Support
+12‑Month Warranty against manufacturing defects
+
+Fulfilled by Kilimall (ships locally in Kenya)
+
+Customer Support: Fast WhatsApp & Kilimall after‑sale policy","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT‑AUD‑BTS‑1001671300\RT‑AUD‑BTS‑1001671300\RT‑AUD‑BTS‑1001671300-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT‑AUD‑BTS‑1001671300\RT‑AUD‑BTS‑1001671300\RT‑AUD‑BTS‑1001671300-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT‑AUD‑BTS‑1001671300\RT‑AUD‑BTS‑1001671300\RT‑AUD‑BTS‑1001671300-4.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\audio\RT‑AUD‑BTS‑1001671300\RT‑AUD‑BTS‑1001671300\RT‑AUD‑BTS‑1001671300-5.jpg""",assets/img/products/portable-wireless-bluetooth-speaker/,bluetooth‑mini‑speaker‑portable,"bluetooth mini speaker, portable wireless speaker, outdoor subwoofer, niche design speaker, small bluetooth speaker, personality style speaker, Kilimall audio accessories, wireless music device, travel speaker, compact bluetooth speaker",✓ Ready,Y,RT‑AUD‑BTS‑1001671300,19578410
+P030,Wireless Game Controller Joystick,PS4 Wireless Bluetooth Controller | DualShock 4 Gamepad | Compatible with PlayStation 4 & PC | Joystick Handle,gaming,https://www.kilimall.co.ke/listing/2824252-PS4-Wireless-Bluetooth-Controller-Gamepad-Playstation-4-Dualshock-4-Gamepad-PC-Joystick-for-Play-Station-Game-Controller-Handle-for-Dualshock-4,159,,0.03,100,300,,N,0.5,3-5,PS4 Wireless Controller | DualShock 4 Style | Bluetooth Gamepad,"Level up your gaming with the PS4 Wireless Bluetooth Controller, designed in the classic DualShock 4 style for PlayStation 4 and PC. Featuring precise joysticks, responsive buttons, and vibration feedback, this controller delivers smooth gameplay across action, sports, and adventure titles.
+
+With Bluetooth wireless connectivity, you can enjoy untethered gaming sessions, while the ergonomic design ensures comfort during long play. Compatible with both PlayStation 4 consoles and PCs, it’s the perfect choice for gamers who want versatility and performance.
+
+📦 Package Details
+1 × PS4 Wireless Bluetooth Controller
+
+1 × USB Charging Cable
+
+1 × User Manual
+
+⚙️ Specifications
+Type: Wireless Bluetooth Gamepad
+
+Design: DualShock 4 style
+
+Connectivity: Bluetooth + USB wired option
+
+Compatibility: PlayStation 4, PC (Windows)
+
+Features: Joysticks, vibration feedback, responsive triggers
+
+Battery: Rechargeable (USB charging)
+
+Weight: ~0.5 kg
+
+Color Options: Black, White, Red, Blue (depending on supplier)
+
+🛡️ Warranty & Support
+12‑Month Warranty against manufacturing defects
+
+Fulfilled by Kilimall (ships locally in Kenya)
+
+Customer Support: Fast WhatsApp & Kilimall after‑sale policy","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\gaming\RT‑GMG‑PS4C‑1001671500\RT‑GMG‑PS4C‑1001671500\RT‑GMG‑PS4C‑1001671500-1.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\gaming\RT‑GMG‑PS4C‑1001671500\RT‑GMG‑PS4C‑1001671500\RT‑GMG‑PS4C‑1001671500-2.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\gaming\RT‑GMG‑PS4C‑1001671500\RT‑GMG‑PS4C‑1001671500\RT‑GMG‑PS4C‑1001671500-5.jpg""","""C:\rtech-gear\assets\img\R-Tech Gear.🦉\gaming\RT‑GMG‑PS4C‑1001671500\RT‑GMG‑PS4C‑1001671500\RT‑GMG‑PS4C‑1001671500-8.jpg""",assets/img/products/wireless-game-controller-joystick/,ps4‑wireless‑controller‑dualshock4,"ps4 wireless controller, dualshock 4 gamepad, bluetooth joystick, playstation 4 controller, pc game controller, gaming accessories Kenya, Kilimall ps4 controller, wireless gamepad, ps4 joystick handle, rechargeable ps4 controller",✓ Ready,Y,RT‑GMG‑PS4C‑1001671500,19345851
