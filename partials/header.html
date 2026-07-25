@@ -1,5 +1,7 @@
 <!-- HEADER PARTIAL -->
 <header class="site-header" id="siteHeaderRoot">
+
+
   <div class="header-utility">
     <div class="container header-utility-inner">
       <a class="utility-left" href="track.html" aria-label="24hr dispatch">
@@ -16,6 +18,7 @@
     </div>
   </div>
 
+
   <div class="header-top">
     <div class="container header-top-inner">
       <a class="brand" href="index.html" aria-label="R-Tech Gear home">
@@ -23,27 +26,228 @@
         <span class="brand-text">R-Tech Gear</span>
       </a>
 
-      <nav class="nav-links" aria-label="Main navigation">
-        <a class="nav-link" href="index.html">Home</a>
-        <a class="nav-link" href="shop.html">Shop</a>
-        <a class="nav-link" href="flash-sale.html">Flash Sale</a>
-        <a class="nav-link" href="blog.html">Blog</a>
-        <a class="nav-link" href="track.html">Track Order</a>
-      </nav>
+
+      <div class="header-left-group">
+        <nav class="nav-links" aria-label="Main navigation">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="shop.html">Shop</a>
+          <a class="nav-link" href="flash-sale.html">Flash Sale</a>
+          <a class="nav-link" href="blog.html">Blog</a>
+          <a class="nav-link" href="track.html">Track Order</a>
+        </nav>
+
+
+        <!-- "Shop by Category" moved to the homepage hero (index.html, next to search bar).
+             See: assets/css/styles.css → .shopByCategoryBtn -->
+      </div>
+
 
       <div class="header-icons">
-        <button class="icon-btn icon-btn-heart" id="wishlistBtn" type="button" aria-label="Heart">
+        <button class="icon-btn icon-btn-heart" id="wishlistBtn" type="button" aria-label="Wishlist">
           <span class="icon-glyph icon-glyph-heart" aria-hidden="true"></span>
           <span class="badge" id="wishlistCount">0</span>
         </button>
+
+
+        <button
+          class="icon-btn icon-btn-account"
+          id="accountBtn"
+          type="button"
+          aria-label="Open your R-Tech Gear account"
+          aria-expanded="false"
+          aria-controls="accountDrawer"
+        >
+          <span class="icon-glyph icon-glyph-account" aria-hidden="true"></span>
+        </button>
+
 
         <button class="icon-btn icon-btn-cart" id="cartBtn" type="button" aria-label="Shopping cart">
           <span class="icon-glyph icon-glyph-cart" aria-hidden="true"></span>
           <span class="badge" id="cartCount">0</span>
         </button>
 
+
         <span class="price-pill" id="cartTotalMini">KSh 0</span>
       </div>
     </div>
   </div>
-</header>
+
+
+  </header>
+
+
+<!-- ==================================================
+     MOBILE BOTTOM NAVIGATION
+     EDIT LINKS HERE
+================================================== -->
+
+
+<nav class="mobile-bottom-nav">
+
+  <a href="index.html" aria-label="Home">
+    <span class="mobile-nav-icon" aria-hidden="true">
+      <img src="assets/icons/mobile-nav/home.svg" alt="">
+    </span>
+    <small>Home</small>
+  </a>
+
+  <a href="shop.html" aria-label="Shop">
+    <span class="mobile-nav-icon" aria-hidden="true">
+      <img src="assets/icons/mobile-nav/shop.svg" alt="">
+    </span>
+    <small>Shop</small>
+  </a>
+
+  <a href="blog.html" aria-label="Explore">
+    <span class="mobile-nav-icon" aria-hidden="true">
+      <img src="assets/icons/mobile-nav/explore.svg" alt="">
+    </span>
+    <small>Explore</small>
+  </a>
+
+  <a href="track.html" aria-label="Track Order">
+    <span class="mobile-nav-icon" aria-hidden="true">
+      <img src="assets/icons/mobile-nav/track.svg" alt="">
+    </span>
+    <small>Track Order</small>
+  </a>
+
+</nav>
+
+<!-- ==================================================
+     ACCOUNT DRAWER
+     GUEST STATE
+================================================== -->
+
+<div
+  class="accountDrawer"
+  id="accountDrawer"
+  aria-hidden="true"
+>
+  <button
+  class="accountDrawerBackdrop"
+  type="button"
+  aria-label="Close account menu"
+  data-account-close
+></button>
+
+  <aside
+    class="accountPanel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="accountDrawerTitle"
+  >
+
+    <div class="accountPanelHeader">
+
+      <div>
+        <span class="accountEyebrow">R-TECH GEAR</span>
+        <h2 id="accountDrawerTitle">Your Account</h2>
+      </div>
+
+      <button
+        class="accountCloseBtn"
+        type="button"
+        aria-label="Close account menu"
+        data-account-close
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+    </div>
+
+
+    <div class="accountGuestState">
+
+      <div class="accountGuestIntro">
+        <h3>Welcome to R-Tech Gear</h3>
+
+        <p>
+          Sign in to manage your orders, wishlist, and account details.
+        </p>
+      </div>
+
+
+      <div class="accountPrimaryActions">
+
+       <a
+         class="btn btnPrimary"
+         href="mailto:support@rtechgear.co.ke?subject=Sign%20In%20Request"
+       >
+         Sign in
+       </a>
+
+       <a
+         class="btn btnGhost"
+         href="mailto:support@rtechgear.co.ke?subject=Create%20Account%20Request"
+       >
+         Create account
+       </a>
+
+      </div>
+
+    </div>
+
+
+    <nav
+      class="accountQuickLinks"
+      aria-label="Account shortcuts"
+    >
+
+      <a
+        class="accountQuickLink"
+        href="account.html#account"
+      >
+        <span class="accountQuickLinkText">
+          <strong>My Account</strong>
+          <small>Manage your R-Tech Gear account</small>
+        </span>
+        <span class="accountArrow" aria-hidden="true">→</span>
+      </a>
+
+
+      <a
+        class="accountQuickLink"
+        href="track.html"
+      >
+        <span class="accountQuickLinkText">
+          <strong>Track Order</strong>
+          <small>Find and follow an existing order</small>
+        </span>
+        <span class="accountArrow" aria-hidden="true">→</span>
+      </a>
+
+
+      <!-- <a
+        class="accountQuickLink"
+        href="account.html#wishlist"
+      >
+        <span class="accountQuickLinkText">
+          <strong>Wishlist</strong>
+          <small>View your saved products</small>
+        </span>
+        <span class="accountArrow" aria-hidden="true">→</span>
+      </a> -->
+
+    </nav>
+
+
+    <div class="accountPanelFooter">
+
+      <a
+        href="mailto:support@rtechgear.co.ke"
+        class="accountSupportLink"
+      >
+        Need help? Contact R-Tech Gear Support
+      </a>
+
+    </div>
+
+  </aside>
+
+</div>
+
+
+
+
+

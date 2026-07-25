@@ -220,8 +220,6 @@
     const track = document.getElementById("flashSaleTrack");
     const ad = document.getElementById("flashSaleAd");
     const adTitle = document.getElementById("flashSaleAdTitle");
-    const prev = document.getElementById("flashSalePrev");
-    const next = document.getElementById("flashSaleNext");
     if (!track && !ad) return;
 
     if (track) {
@@ -230,8 +228,6 @@
       wireFlashCardNavigation(track);
       startTimers(track);
       startSlowAutoplay(track);
-      if (prev) prev.addEventListener("click", () => track.scrollBy({ left: -340, behavior: "smooth" }));
-      if (next) next.addEventListener("click", () => track.scrollBy({ left: 340, behavior: "smooth" }));
     }
 
     startHeroRotation(ad, adTitle);

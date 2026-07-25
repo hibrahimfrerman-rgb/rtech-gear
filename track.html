@@ -1,239 +1,1134 @@
 <!doctype html>
+<!-- ============================================================
+     R-TECH GEAR  |  track.html  — v2
+     Order tracking — fast lookup via URL params (?order=&email=),
+     local-storage order history, DPO payment token flow.
+     Design system: matches checkout.html — same CSS files,
+     same trust chips, same card/form patterns.
+     ============================================================ -->
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>R-Tech Gear - Track Your Order</title>
+  <title>Track Your Order — R-Tech Gear</title>
+  <meta name="description" content="Track your R-Tech Gear order in real time. Enter your Order ID and billing email to get live delivery status, estimated arrival, and payment details." />
+
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="stylesheet" href="assets/css/header.css" />
+  <link rel="stylesheet" href="assets/css/first-pass.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <style>
+    /* ============================================================
+       TRACK PAGE — scoped styles
+       All colour values pull from the existing CSS var system.
+       ============================================================ */
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    .trackShell {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding-block: 2.5rem;
+    }
+
+    .trackHero {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .trackEyebrow {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--brand);
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    .trackEyebrow i { font-size: .8rem; }
+    .trackTitle {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin: 0;
+      color: var(--text, #111);
+    }
+    .trackLead {
+      color: var(--muted, #666);
+      font-size: .95rem;
+      max-width: 52ch;
+      margin: 0;
+    }
+
+    /* ── Trust chips (reuse checkout pattern) ─────────────── */
+    .trackTrust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      padding-block: .25rem;
+    }
+
+    /* ── Main grid ────────────────────────────────────────── */
+    .trackGrid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    @media (min-width: 900px) {
+      .trackGrid {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+      }
+    }
+
+    /* ── Lookup card ──────────────────────────────────────── */
+    .trackLookupCard {
+      background: var(--surface, #fff);
+      border: 1px solid var(--border, #e5e7eb);
+      border-radius: var(--radius, 12px);
+      padding: 1.75rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    }
+    .trackLookupHead {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.4rem;
+    }
+    .trackLookupIcon {
+      width: 2.4rem;
+      height: 2.4rem;
+      background: var(--brand-light, #eff6ff);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .trackLookupTitle {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--text, #111);
+    }
+    .trackLookupSub {
+      font-size: .78rem;
+      color: var(--muted, #666);
+      margin: 0;
+    }
+
+    .trackForm { display: flex; flex-direction: column; gap: 1rem; }
+
+    .trackInputGroup { display: flex; flex-direction: column; gap: .35rem; }
+    .trackInputGroup label {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--text, #111);
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    .trackInputGroup label i { color: var(--brand); font-size: .8rem; }
+    .trackInputGroup input {
+      width: 100%;
+      padding: .7rem .9rem;
+      border: 1px solid var(--border, #e5e7eb);
+      border-radius: var(--radius-sm, 8px);
+      font-size: .9rem;
+      background: var(--bg, #f9fafb);
+      color: var(--text, #111);
+      transition: border-color .15s, box-shadow .15s;
+      box-sizing: border-box;
+    }
+    .trackInputGroup input:focus {
+      outline: none;
+      border-color: var(--brand);
+      box-shadow: 0 0 0 3px var(--brand-ring, rgba(59,130,246,.15));
+      background: var(--surface, #fff);
+    }
+    .trackInputGroup input.is-error {
+      border-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(239,68,68,.12);
+    }
+    .trackFieldError {
+      font-size: .75rem;
+      color: #ef4444;
+      display: none;
+    }
+    .trackFieldError.is-visible { display: block; }
+
+    /* Track button — same as btnPrimary */
+    .trackBtn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      width: 100%;
+      padding: .85rem 1.25rem;
+      background: var(--brand);
+      color: #fff;
+      font-weight: 700;
+      font-size: .95rem;
+      border: none;
+      border-radius: var(--radius-sm, 8px);
+      cursor: pointer;
+      transition: background .15s, transform .1s;
+      margin-top: .25rem;
+    }
+    .trackBtn:hover { background: var(--brand-dark, #1d4ed8); }
+    .trackBtn:active { transform: scale(.98); }
+    .trackBtn:disabled { opacity: .6; cursor: not-allowed; }
+    .trackBtn .spinner {
+      width: 1rem;
+      height: 1rem;
+      border: 2px solid rgba(255,255,255,.4);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .trackFormHint {
+      font-size: .75rem;
+      color: var(--muted, #888);
+      text-align: center;
+      margin-top: .25rem;
+    }
+    .trackFormHint i { color: var(--brand); }
+
+    /* ── Result panel ─────────────────────────────────────── */
+    .trackResultPanel {
+      display: none;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .trackResultPanel.is-open { display: flex; }
+
+    /* Status badge */
+    .trackStatusBadge {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .35rem .9rem;
+      border-radius: 999px;
+      font-size: .8rem;
+      font-weight: 700;
+      background: var(--brand-light, #eff6ff);
+      color: var(--brand);
+      border: 1px solid var(--brand-border, #bfdbfe);
+      width: fit-content;
+    }
+    .trackStatusBadge.is-success {
+      background: #f0fdf4;
+      color: #16a34a;
+      border-color: #bbf7d0;
+    }
+    .trackStatusBadge.is-warn {
+      background: #fffbeb;
+      color: #b45309;
+      border-color: #fde68a;
+    }
+    .trackStatusBadge.is-error {
+      background: #fef2f2;
+      color: #dc2626;
+      border-color: #fecaca;
+    }
+
+    .trackResultTitle {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin: 0;
+      color: var(--text, #111);
+    }
+
+    /* Meta cards grid */
+    .trackMetaGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: .75rem;
+    }
+    .trackMetaChip {
+      background: var(--bg, #f9fafb);
+      border: 1px solid var(--border, #e5e7eb);
+      border-radius: var(--radius-sm, 8px);
+      padding: .75rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .2rem;
+    }
+    .trackMetaChip small {
+      font-size: .7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--muted, #888);
+    }
+    .trackMetaChip strong {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--text, #111);
+      word-break: break-all;
+    }
+
+    /* ── Delivery timeline ────────────────────────────────── */
+    .trackTimelineCard {
+      background: var(--surface, #fff);
+      border: 1px solid var(--border, #e5e7eb);
+      border-radius: var(--radius, 12px);
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,.04);
+    }
+    .trackTimelineHead {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted, #888);
+      margin-bottom: 1.25rem;
+    }
+    .trackTimeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .trackStep {
+      display: grid;
+      grid-template-columns: 2.2rem 1fr;
+      gap: .75rem;
+      align-items: start;
+      position: relative;
+    }
+    .trackStep:not(:last-child) .trackStepLine {
+      position: absolute;
+      left: 1.05rem;
+      top: 2.2rem;
+      width: 2px;
+      height: calc(100% + .1rem);
+      background: var(--border, #e5e7eb);
+      z-index: 0;
+    }
+    .trackStep.is-done .trackStepLine { background: var(--brand); }
+    .trackStep.is-active .trackStepLine { background: var(--border, #e5e7eb); }
+
+    .trackStepDot {
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      font-weight: 700;
+      z-index: 1;
+      position: relative;
+      flex-shrink: 0;
+      border: 2px solid var(--border, #e5e7eb);
+      background: var(--surface, #fff);
+      color: var(--muted, #999);
+      transition: all .2s;
+    }
+    .trackStep.is-done .trackStepDot {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #fff;
+    }
+    .trackStep.is-active .trackStepDot {
+      background: var(--surface, #fff);
+      border-color: var(--brand);
+      color: var(--brand);
+      box-shadow: 0 0 0 4px var(--brand-ring, rgba(59,130,246,.15));
+    }
+
+    .trackStepBody { padding-bottom: 1.25rem; }
+    .trackStepName {
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--text, #111);
+      margin: .3rem 0 .15rem;
+    }
+    .trackStep:not(.is-done):not(.is-active) .trackStepName { color: var(--muted, #999); }
+    .trackStepNote {
+      font-size: .78rem;
+      color: var(--muted, #999);
+      line-height: 1.4;
+    }
+    .trackStep.is-active .trackStepNote { color: var(--brand); font-weight: 600; }
+
+    .trackStepEta {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      font-size: .72rem;
+      font-weight: 600;
+      padding: .18rem .55rem;
+      border-radius: 999px;
+      background: var(--brand-light, #eff6ff);
+      color: var(--brand);
+      margin-top: .3rem;
+    }
+
+    /* ── Support card ─────────────────────────────────────── */
+    .trackSupportCard {
+      background: var(--surface, #fff);
+      border: 1px solid var(--border, #e5e7eb);
+      border-radius: var(--radius, 12px);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .trackSupportIcon {
+      width: 2.4rem;
+      height: 2.4rem;
+      background: #f0fdf4;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #16a34a;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .trackSupportText h4 {
+      font-size: .9rem;
+      font-weight: 700;
+      margin: 0 0 .2rem;
+      color: var(--text, #111);
+    }
+    .trackSupportText p {
+      font-size: .8rem;
+      color: var(--muted, #666);
+      margin: 0 0 .75rem;
+      line-height: 1.5;
+    }
+    .trackSupportActions { display: flex; gap: .6rem; flex-wrap: wrap; }
+    .trackSupportBtn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .45rem .9rem;
+      border-radius: var(--radius-sm, 8px);
+      font-size: .8rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background .15s;
+    }
+    .trackSupportBtn.wa {
+      background: #16a34a;
+      color: #fff;
+    }
+    .trackSupportBtn.wa:hover { background: #15803d; }
+    .trackSupportBtn.ghost {
+      background: var(--bg, #f3f4f6);
+      color: var(--text, #111);
+      border: 1px solid var(--border, #e5e7eb);
+    }
+    .trackSupportBtn.ghost:hover { background: var(--border, #e5e7eb); }
+
+    /* ── Empty / error state ──────────────────────────────── */
+    .trackEmptyState {
+      text-align: center;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .6rem;
+    }
+    .trackEmptyIcon {
+      width: 3.5rem;
+      height: 3.5rem;
+      background: var(--bg, #f3f4f6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--muted, #999);
+    }
+    .trackEmptyTitle {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text, #111);
+      margin: 0;
+    }
+    .trackEmptyDesc {
+      font-size: .82rem;
+      color: var(--muted, #777);
+      margin: 0;
+      max-width: 34ch;
+    }
+
+    /* ── Right column — history + tip ─────────────────────── */
+    .trackSidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .trackHistoryCard {
+      background: var(--surface, #fff);
+      border: 1px solid var(--border, #e5e7eb);
+      border-radius: var(--radius, 12px);
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,.04);
+    }
+    .trackHistoryHead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .trackHistoryTitle {
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--text, #111);
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    .trackHistoryTitle i { color: var(--brand); }
+    .trackHistoryList {
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+    .trackHistoryItem {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .6rem .8rem;
+      border-radius: var(--radius-sm, 8px);
+      background: var(--bg, #f9fafb);
+      border: 1px solid var(--border, #e5e7eb);
+      cursor: pointer;
+      transition: background .12s, border-color .12s;
+      text-decoration: none;
+    }
+    .trackHistoryItem:hover {
+      background: var(--brand-light, #eff6ff);
+      border-color: var(--brand);
+    }
+    .trackHistoryRef {
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--text, #111);
+    }
+    .trackHistoryDate {
+      font-size: .72rem;
+      color: var(--muted, #888);
+    }
+    .trackHistoryPill {
+      font-size: .65rem;
+      font-weight: 700;
+      padding: .15rem .55rem;
+      border-radius: 999px;
+      background: var(--brand-light, #eff6ff);
+      color: var(--brand);
+      white-space: nowrap;
+    }
+    .trackHistoryEmpty {
+      font-size: .82rem;
+      color: var(--muted, #999);
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    /* Tip card */
+    .trackTipCard {
+      background: linear-gradient(135deg, var(--brand, #3b82f6) 0%, var(--brand-dark, #1d4ed8) 100%);
+      border-radius: var(--radius, 12px);
+      padding: 1.5rem;
+      color: #fff;
+    }
+    .trackTipLabel {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      opacity: .75;
+      margin-bottom: .4rem;
+    }
+    .trackTipTitle {
+      font-size: .95rem;
+      font-weight: 800;
+      margin: 0 0 .4rem;
+      line-height: 1.3;
+    }
+    .trackTipDesc {
+      font-size: .78rem;
+      opacity: .85;
+      line-height: 1.5;
+      margin: 0 0 1rem;
+    }
+    .trackTipAction {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: rgba(255,255,255,.18);
+      color: #fff;
+      padding: .45rem .9rem;
+      border-radius: 8px;
+      font-size: .8rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background .15s;
+    }
+    .trackTipAction:hover { background: rgba(255,255,255,.28); }
+
+    /* ── Animations ───────────────────────────────────────── */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .trackResultPanel.is-open {
+      animation: fadeSlideUp .3s ease both;
+    }
+    .trackTimelineCard,
+    .trackMetaGrid,
+    .trackSupportCard {
+      animation: fadeSlideUp .35s ease both;
+    }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 899px) {
+      .trackGrid { grid-template-columns: 1fr; }
+      .trackSidebar { order: -1; }
+      .trackHistoryCard { display: none; } /* simplified on mobile, history in sidebar is cluttered */
+    }
+  </style>
 </head>
 
-<body>
+<body class="track-page">
   <div id="siteHeader"></div>
 
-  <main class="container">
-    <section class="trackWrap">
-      <div class="trackHero">
-        <h1 class="trackTitle">Track Your Order</h1>
-        <p class="trackDesc">
-          Enter your Order ID and billing email to see your latest order status, estimated delivery stage, and payment details.
-        </p>
-        <div class="trackFlow" aria-hidden="true">
-          <span class="trackFlowIcon">1</span>
-          <span class="trackFlowLine"></span>
-          <span class="trackFlowIcon">2</span>
-          <span class="trackFlowLine"></span>
-          <span class="trackFlowIcon">3</span>
-          <span class="trackFlowLine"></span>
-          <span class="trackFlowIcon">4</span>
+  <main class="container trackShell">
+
+    <!-- Hero -->
+    <div class="trackHero">
+      <div class="trackEyebrow"><i class="fa-solid fa-truck-fast"></i> Live order tracking</div>
+      <h1 class="trackTitle">Track Your Order</h1>
+      <p class="trackLead">Enter your Order ID and billing email to get your latest status, delivery stage, and payment details.</p>
+    </div>
+
+    <!-- Trust chips — same pattern as checkout -->
+    <div class="trackTrust" aria-label="Service promises">
+      <div class="trustChip"><i class="fa-solid fa-clock" aria-hidden="true"></i><div><strong>24hr dispatch</strong><span>Same-day confirmation</span></div></div>
+      <div class="trustChip"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><div><strong>Kenya-wide delivery</strong><span>Nairobi + all counties</span></div></div>
+      <div class="trustChip"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><div><strong>WhatsApp support</strong><span>Dispatch team available daily</span></div></div>
+      <div class="trustChip"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i><div><strong>7-day returns</strong><span>Money-back guarantee</span></div></div>
+    </div>
+
+    <!-- Main grid -->
+    <div class="trackGrid">
+
+      <!-- LEFT: Lookup + Result -->
+      <div style="display:flex;flex-direction:column;gap:1.25rem;">
+
+        <!-- Lookup card -->
+        <div class="trackLookupCard">
+          <div class="trackLookupHead">
+            <div class="trackLookupIcon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div>
+              <p class="trackLookupTitle">Order lookup</p>
+              <p class="trackLookupSub">Both fields must match your confirmation message.</p>
+            </div>
+          </div>
+
+          <form class="trackForm" id="trackForm" novalidate>
+            <div class="trackInputGroup">
+              <label for="trackOrderId"><i class="fa-solid fa-hashtag"></i> Order ID</label>
+              <input id="trackOrderId" name="orderId" type="text"
+                placeholder="e.g. RTG-1737429201111"
+                autocomplete="off" spellcheck="false" required />
+              <span class="trackFieldError" id="errOrderId">Enter your Order ID from your confirmation message.</span>
+            </div>
+
+            <div class="trackInputGroup">
+              <label for="trackEmail"><i class="fa-solid fa-envelope"></i> Billing email</label>
+              <input id="trackEmail" name="email" type="email"
+                placeholder="Email used at checkout"
+                autocomplete="email" required />
+              <span class="trackFieldError" id="errEmail">Enter the email address you used when placing your order.</span>
+            </div>
+
+            <button type="submit" class="trackBtn" id="trackSubmitBtn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span id="trackBtnLabel">Track order</span>
+            </button>
+          </form>
+
+          <p class="trackFormHint"><i class="fa-solid fa-circle-info"></i> Your Order ID starts with <strong>RTG-</strong> and was sent to your email and WhatsApp.</p>
         </div>
-      </div>
 
-      <div class="trackCard">
-        <form class="trackForm" id="trackForm" novalidate>
-          <label class="trackLabel" for="trackOrderId">Order ID</label>
-          <input class="trackInput" id="trackOrderId" name="orderId" type="text" placeholder="Example: RTG-1737429201111" required />
-          <div class="trackHint">You can find this on your order confirmation message/email.</div>
+        <!-- Result panel (hidden until lookup) -->
+        <div class="trackResultPanel" id="trackResultPanel" aria-live="polite">
 
-          <label class="trackLabel" for="trackEmail">Billing email</label>
-          <input class="trackInput" id="trackEmail" name="email" type="email" placeholder="Email used during checkout" required />
-
-          <button class="btn btnPrimary trackBtn" type="submit" id="trackSubmitBtn">Track</button>
-        </form>
-
-        <div class="trackResult" id="trackResult">
-          <div class="trackResultHead">
+          <!-- Badge + title -->
+          <div style="display:flex;flex-direction:column;gap:.5rem;">
+            <div class="trackStatusBadge" id="trackStatusBadge">
+              <i class="fa-solid fa-circle-notch fa-spin" id="trackBadgeIcon"></i>
+              <span id="trackBadgeText">Checking…</span>
+            </div>
             <h2 class="trackResultTitle" id="trackResultTitle">Order found</h2>
-            <span class="trackBadge" id="trackBadge">Pending</span>
           </div>
-          <div class="trackMeta" id="trackMeta"></div>
-          <div class="trackTimeline" id="trackTimeline"></div>
-          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
-            <a class="btn btnGhost" href="shop.html">Continue shopping</a>
-            <a class="btn btnPrimary" id="trackSupportLink" href="#" target="_blank" rel="noopener">Need help?</a>
+
+          <!-- Meta chips -->
+          <div class="trackMetaGrid" id="trackMetaGrid"></div>
+
+          <!-- Timeline card -->
+          <div class="trackTimelineCard" id="trackTimelineCard">
+            <div class="trackTimelineHead"><i class="fa-solid fa-route"></i> Delivery progress</div>
+            <div class="trackTimeline" id="trackTimeline"></div>
+          </div>
+
+          <!-- Support card -->
+          <div class="trackSupportCard">
+            <div class="trackSupportIcon"><i class="fa-brands fa-whatsapp"></i></div>
+            <div class="trackSupportText">
+              <h4>Need delivery help?</h4>
+              <p>Our dispatch team is available daily for shipping updates, payment confirmations, and delivery timelines.</p>
+              <div class="trackSupportActions">
+                <a class="trackSupportBtn wa" id="trackWhatsAppBtn" href="#" target="_blank" rel="noopener">
+                  <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+                <a class="trackSupportBtn ghost" href="shop.html">
+                  <i class="fa-solid fa-arrow-left"></i> Continue shopping
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Empty / error state (shown when result is an error) -->
+        <div class="trackEmptyState" id="trackEmptyState" style="display:none;" aria-live="polite">
+          <div class="trackEmptyIcon" id="trackEmptyIcon"><i class="fa-solid fa-box-open"></i></div>
+          <p class="trackEmptyTitle" id="trackEmptyTitle">Order not found</p>
+          <p class="trackEmptyDesc" id="trackEmptyDesc">We couldn't match that Order ID and email. Check your confirmation message or contact our dispatch team.</p>
+          <div class="trackSupportActions" style="margin-top:.5rem;">
+            <a class="trackSupportBtn wa" id="trackEmptyWhatsApp" href="#" target="_blank" rel="noopener">
+              <i class="fa-brands fa-whatsapp"></i> Get help on WhatsApp
+            </a>
           </div>
         </div>
-      </div>
-    </section>
+
+      </div><!-- /left -->
+
+      <!-- RIGHT: Sidebar — history + tip -->
+      <div class="trackSidebar">
+
+        <!-- Recent orders -->
+        <div class="trackHistoryCard">
+          <div class="trackHistoryHead">
+            <div class="trackHistoryTitle"><i class="fa-solid fa-clock-rotate-left"></i> Recent orders</div>
+          </div>
+          <div class="trackHistoryList" id="trackHistoryList">
+            <p class="trackHistoryEmpty" id="trackHistoryEmpty">No recent orders on this device.</p>
+          </div>
+        </div>
+
+        <!-- Tip card -->
+        <div class="trackTipCard">
+          <div class="trackTipLabel">Pro tip</div>
+          <div class="trackTipTitle">Share your Order ID for faster support</div>
+          <p class="trackTipDesc">When you contact our team on WhatsApp, send your Order ID (starts with RTG-) and we'll pull up your delivery details instantly.</p>
+          <a class="trackTipAction" id="trackTipWa" href="#" target="_blank" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i> Open WhatsApp
+          </a>
+        </div>
+
+      </div><!-- /sidebar -->
+
+    </div><!-- /trackGrid -->
+
   </main>
 
   <div id="siteFooter"></div>
 
+  <!-- Cart drawer (for header cart icon) -->
+  <div class="cartDrawer" id="cartDrawer" aria-hidden="true">
+    <div class="cartPanel" role="dialog" aria-label="Shopping cart" aria-modal="true">
+      <div class="cartTop">
+        <div class="cartTitle"><span class="cartIcon" aria-hidden="true"></span>Shopping cart</div>
+        <button class="iconBtn" id="cartCloseBtn" type="button" aria-label="Close cart"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+      <div class="cartItems" id="cartItems"></div>
+      <div class="cartEmpty" id="cartEmpty" hidden>
+        <div class="cartEmptyArt" aria-hidden="true"></div>
+        <div class="cartEmptyTitle">Your cart is empty</div>
+        <div class="muted small">Find something you love in our store.</div>
+        <a class="btn btnGhost" href="shop.html">Browse products</a>
+      </div>
+      <div class="cartBottom">
+        <div class="cartTotalRow"><span class="muted">Subtotal</span><strong id="cartTotal">KES 0</strong></div>
+        <div class="cartActionsRow"><a class="btn btnGhost w100" href="cart.html">View cart</a><a class="btn btnPrimary w100" href="checkout.html">Checkout</a></div>
+      </div>
+    </div>
+  </div>
+
+  <a class="whatsAppBubble" id="floatWhatsAppLink" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp"><span class="waIcon" aria-hidden="true"></span></a>
+
   <script src="assets/js/include.js"></script>
   <script src="assets/js/app.js"></script>
-  <script>
-    (function () {
-      const TRACK_STEPS = ["Confirmed", "Packed", "Shipped", "Delivered"];
-      const form = document.getElementById("trackForm");
-      const orderIdInput = document.getElementById("trackOrderId");
-      const emailInput = document.getElementById("trackEmail");
-      const resultEl = document.getElementById("trackResult");
-      const resultTitle = document.getElementById("trackResultTitle");
-      const badgeEl = document.getElementById("trackBadge");
-      const metaEl = document.getElementById("trackMeta");
-      const timelineEl = document.getElementById("trackTimeline");
-      const supportEl = document.getElementById("trackSupportLink");
-
-      if (supportEl && window.makeWhatsAppLink) {
-        supportEl.href = window.makeWhatsAppLink("Hi R-Tech Gear, I need help tracking my order.");
-      }
-
-      function safeJson(raw) {
-        try { return JSON.parse(raw); } catch (_) { return null; }
-      }
-
-      function loadOrders() {
-        const list = [];
-        const one = safeJson(localStorage.getItem("rtech_last_order"));
-        if (one && one.reference) list.push(one);
-        const many = safeJson(localStorage.getItem("rtech_order_history"));
-        if (Array.isArray(many)) {
-          many.forEach((o) => {
-            if (o && o.reference) list.push(o);
-          });
-        }
-        return list;
-      }
-
-      function statusIndexFromOrder(order) {
-        const explicit = String(order.status || "").toLowerCase();
-        if (explicit.includes("deliver")) return 3;
-        if (explicit.includes("ship")) return 2;
-        if (explicit.includes("pack")) return 1;
-        if (explicit.includes("confirm") || explicit.includes("paid")) return 0;
-
-        const ts = Number((String(order.reference || "").split("-")[1]) || Date.now());
-        const ageMs = Date.now() - ts;
-        if (ageMs > 1000 * 60 * 60 * 24) return 3;
-        if (ageMs > 1000 * 60 * 60 * 4) return 2;
-        if (ageMs > 1000 * 60 * 30) return 1;
-        return 0;
-      }
-
-      function renderTimeline(activeIdx) {
-        timelineEl.innerHTML = TRACK_STEPS.map((step, i) => {
-          const cls = i < activeIdx ? "done" : (i === activeIdx ? "active" : "");
-          return (
-            "<div class='trackStep " + cls + "'>" +
-              "<div class='trackStepDot' aria-hidden='true'></div>" +
-              "<div class='trackStepLabel'>" + step + "</div>" +
-            "</div>"
-          );
-        }).join("");
-      }
-
-      function openResult(title, badge, badgeOk, metaLines, statusIdx) {
-        resultTitle.textContent = title;
-        badgeEl.textContent = badge;
-        badgeEl.classList.toggle("ok", !!badgeOk);
-        metaEl.innerHTML = metaLines.map((x) => "<div>" + x + "</div>").join("");
-        renderTimeline(statusIdx);
-        resultEl.classList.add("is-open");
-      }
-
-      function findOrder(reference, email) {
-        const ref = String(reference || "").trim().toLowerCase();
-        const em = String(email || "").trim().toLowerCase();
-        if (!ref || !em) return null;
-        const orders = loadOrders();
-        return orders.find((o) => {
-          const oRef = String(o.reference || "").trim().toLowerCase();
-          const oMail = String(o.email || "").trim().toLowerCase();
-          return oRef === ref && oMail === em;
-        }) || null;
-      }
-
-      function tryPaymentTokenFlow() {
-        const params = new URLSearchParams(window.location.search);
-        const token =
-          params.get("TransactionToken") ||
-          params.get("TransToken") ||
-          params.get("ID") ||
-          params.get("token") ||
-          "";
-        if (!token) return false;
-
-        orderIdInput.value = "";
-        emailInput.value = "";
-        openResult("Checking payment status...", "Verifying", false, ["Please wait while we verify your payment token."], 0);
-
-        fetch("/api/dpo-verify-token?token=" + encodeURIComponent(token))
-          .then((res) => res.json())
-          .then((json) => {
-            const result = json.result || "";
-            const status = json.status || "Pending";
-            const amount = json.amount || "";
-            const currency = json.currency || "";
-            const ref = json.companyRef || "N/A";
-            const ok = result === "000" || /success/i.test(String(json.explanation || ""));
-
-            const idx = ok ? 1 : 0;
-            openResult(
-              ok ? "Payment received" : "Payment pending",
-              ok ? "Paid" : "Pending",
-              ok,
-              [
-                "<strong>Reference:</strong> " + ref,
-                "<strong>Status:</strong> " + status,
-                amount && currency ? "<strong>Amount:</strong> " + currency + " " + amount : "<strong>Amount:</strong> N/A"
-              ],
-              idx
-            );
-          })
-          .catch(() => {
-            openResult("Verification failed", "Error", false, ["Could not verify payment token right now. Please contact support."], 0);
-          });
-        return true;
-      }
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const orderId = orderIdInput.value.trim();
-        const email = emailInput.value.trim();
-        if (!orderId || !email) {
-          openResult("Missing details", "Fix fields", false, ["Enter both Order ID and Billing Email."], 0);
-          return;
-        }
-
-        const order = findOrder(orderId, email);
-        if (!order) {
-          openResult(
-            "Order not found",
-            "Not found",
-            false,
-            [
-              "We could not match that Order ID and Billing Email.",
-              "Check your confirmation message or contact support for help."
-            ],
-            0
-          );
-          return;
-        }
-
-        const idx = statusIndexFromOrder(order);
-        const status = TRACK_STEPS[idx];
-        const amount = Number(order.amount || 0);
-        const formatted = amount % 1 === 0 ? amount.toFixed(0) : amount.toFixed(2);
-        openResult(
-          "Order found",
-          status,
-          idx >= 2,
-          [
-            "<strong>Order ID:</strong> " + order.reference,
-            "<strong>Billing Email:</strong> " + (order.email || email),
-            "<strong>Amount:</strong> " + (order.currency || "KES") + " " + formatted
-          ],
-          idx
-        );
-      });
-
-      const q = new URLSearchParams(window.location.search);
-      if (q.get("order")) orderIdInput.value = q.get("order");
-      if (q.get("email")) emailInput.value = q.get("email");
-      tryPaymentTokenFlow();
-    })();
-  </script>
-  <link rel="stylesheet" href="assets/css/first-pass.css" />
+  <script src="assets/js/header.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/wishlist.js"></script>
   <script src="assets/js/first-pass.js"></script>
+
+  <script>
+  (function () {
+    "use strict";
+
+    /* ── Constants ─────────────────────────────────────────── */
+    const STEPS = [
+      {
+        name: "Order confirmed",
+        note: "Payment received and order logged in our system.",
+        eta: null
+      },
+      {
+        name: "Packed",
+        note: "Your items have been picked and packed by our team.",
+        eta: null
+      },
+      {
+        name: "Shipped",
+        note: "Package handed to our delivery partner.",
+        eta: "Est. in transit"
+      },
+      {
+        name: "Delivered",
+        note: "Order delivered to your address or collection point.",
+        eta: null
+      }
+    ];
+
+    /* ── Helpers ───────────────────────────────────────────── */
+    function $(id) { return document.getElementById(id); }
+
+    function safeJson(raw) {
+      try { return JSON.parse(raw); } catch (_) { return null; }
+    }
+
+    function waLink(msg) {
+      if (window.makeWhatsAppLink) return window.makeWhatsAppLink(msg);
+      return "https://wa.me/254746343234?text=" + encodeURIComponent(msg);
+    }
+
+    function setAllWaLinks(msg) {
+      [$("trackWhatsAppBtn"), $("trackEmptyWhatsApp"), $("trackTipWa")].forEach(el => {
+        if (el) el.href = waLink(msg);
+      });
+    }
+
+    function loadOrders() {
+      const list = [];
+      const one = safeJson(localStorage.getItem("rtech_last_order"));
+      if (one && one.reference) list.push(one);
+      const many = safeJson(localStorage.getItem("rtech_order_history"));
+      if (Array.isArray(many)) {
+        many.forEach(o => { if (o && o.reference) list.push(o); });
+      }
+      // Deduplicate by reference
+      const seen = new Set();
+      return list.filter(o => {
+        if (seen.has(o.reference)) return false;
+        seen.add(o.reference);
+        return true;
+      });
+    }
+
+    function stepIndexFromOrder(order) {
+      const explicit = String(order.status || "").toLowerCase();
+      if (explicit.includes("deliver")) return 3;
+      if (explicit.includes("ship"))    return 2;
+      if (explicit.includes("pack"))    return 1;
+      if (explicit.includes("confirm") || explicit.includes("paid")) return 0;
+
+      const ts = Number((String(order.reference || "").split("-")[1]) || Date.now());
+      const ageMs = Date.now() - ts;
+      if (ageMs > 864e5)  return 3; // >24h
+      if (ageMs > 144e5)  return 2; // >4h
+      if (ageMs > 18e5)   return 1; // >30min
+      return 0;
+    }
+
+    function fmtAmount(order) {
+      const n = Number(order.amount || 0);
+      const s = n % 1 === 0 ? n.toFixed(0) : n.toFixed(2);
+      return (order.currency || "KES") + " " + s;
+    }
+
+    function fmtDate(ts) {
+      if (!ts) return "—";
+      const d = new Date(Number(ts));
+      return isNaN(d) ? "—" : d.toLocaleDateString("en-KE", { day: "numeric", month: "short", year: "numeric" });
+    }
+
+    /* ── Render history sidebar ────────────────────────────── */
+    function renderHistory() {
+      const orders = loadOrders();
+      const list = $("trackHistoryList");
+      const empty = $("trackHistoryEmpty");
+      if (!list) return;
+
+      if (!orders.length) {
+        if (empty) empty.style.display = "";
+        return;
+      }
+      if (empty) empty.style.display = "none";
+
+      list.innerHTML = orders.slice(0, 5).map(o => {
+        const idx = stepIndexFromOrder(o);
+        const statusLabel = STEPS[idx].name;
+        const ts = String(o.reference || "").split("-")[1];
+        return `<div class="trackHistoryItem" data-ref="${o.reference}" data-email="${o.email || ""}">
+          <div>
+            <div class="trackHistoryRef">${o.reference}</div>
+            <div class="trackHistoryDate">${fmtDate(ts)}</div>
+          </div>
+          <span class="trackHistoryPill">${statusLabel}</span>
+        </div>`;
+      }).join("");
+
+      // Click to prefill
+      list.querySelectorAll(".trackHistoryItem").forEach(item => {
+        item.addEventListener("click", function () {
+          const ref = this.dataset.ref;
+          const em  = this.dataset.email;
+          if (ref) $("trackOrderId").value = ref;
+          if (em)  $("trackEmail").value   = em;
+          if (ref && em) submitLookup(ref, em);
+          else $("trackOrderId").focus();
+        });
+      });
+    }
+
+    /* ── Render timeline ───────────────────────────────────── */
+    function renderTimeline(activeIdx) {
+      $("trackTimeline").innerHTML = STEPS.map((step, i) => {
+        const isDone   = i < activeIdx;
+        const isActive = i === activeIdx;
+        const cls = isDone ? "is-done" : (isActive ? "is-active" : "");
+        const icon = isDone
+          ? `<i class="fa-solid fa-check"></i>`
+          : (isActive ? `<i class="fa-solid fa-circle-dot"></i>` : `${i + 1}`);
+        const eta = isActive && step.eta
+          ? `<span class="trackStepEta"><i class="fa-solid fa-clock"></i> ${step.eta}</span>`
+          : "";
+        return `<div class="trackStep ${cls}">
+          <div class="trackStepLine"></div>
+          <div class="trackStepDot">${icon}</div>
+          <div class="trackStepBody">
+            <div class="trackStepName">${step.name}</div>
+            <div class="trackStepNote">${step.note}</div>
+            ${eta}
+          </div>
+        </div>`;
+      }).join("");
+    }
+
+    /* ── Open success result ───────────────────────────────── */
+    function showResult(title, badgeText, badgeType, metaChips, stepIdx, waMsg) {
+      // Badge
+      const badge = $("trackStatusBadge");
+      badge.className = "trackStatusBadge" + (badgeType ? " " + badgeType : "");
+      $("trackBadgeIcon").className = badgeType === "is-success"
+        ? "fa-solid fa-circle-check"
+        : badgeType === "is-error" || badgeType === "is-warn"
+          ? "fa-solid fa-triangle-exclamation"
+          : "fa-solid fa-box";
+      $("trackBadgeText").textContent = badgeText;
+      $("trackResultTitle").textContent = title;
+
+      // Meta grid
+      $("trackMetaGrid").innerHTML = metaChips.map(c =>
+        `<div class="trackMetaChip"><small>${c.label}</small><strong>${c.value}</strong></div>`
+      ).join("");
+
+      // Timeline
+      renderTimeline(stepIdx);
+
+      // WhatsApp links
+      setAllWaLinks(waMsg || "Hi R-Tech Gear, I need help tracking my order.");
+
+      // Show panel, hide error state
+      $("trackResultPanel").classList.add("is-open");
+      $("trackEmptyState").style.display = "none";
+    }
+
+    /* ── Open error / not-found state ──────────────────────── */
+    function showError(icon, title, desc) {
+      $("trackResultPanel").classList.remove("is-open");
+      const es = $("trackEmptyState");
+      $("trackEmptyIcon").innerHTML = `<i class="fa-solid fa-${icon}"></i>`;
+      $("trackEmptyTitle").textContent = title;
+      $("trackEmptyDesc").textContent  = desc;
+      es.style.display = "";
+    }
+
+    /* ── Core lookup ───────────────────────────────────────── */
+    function findOrder(ref, email) {
+      const r = ref.trim().toLowerCase();
+      const e = email.trim().toLowerCase();
+      return loadOrders().find(o =>
+        String(o.reference || "").trim().toLowerCase() === r &&
+        String(o.email    || "").trim().toLowerCase() === e
+      ) || null;
+    }
+
+    function submitLookup(orderId, email) {
+      const order = findOrder(orderId, email);
+      if (!order) {
+        showError(
+          "box-open",
+          "Order not found",
+          "We couldn't match that Order ID and email. Double-check your confirmation message or contact our dispatch team on WhatsApp."
+        );
+        setAllWaLinks(`Hi R-Tech Gear, I need help tracking order ${orderId}.`);
+        return;
+      }
+
+      const idx = stepIndexFromOrder(order);
+      const statusLabel = STEPS[idx].name;
+      const isDelivered = idx === 3;
+      const isShipped   = idx >= 2;
+      const ts = String(order.reference || "").split("-")[1];
+
+      showResult(
+        "Order found",
+        statusLabel,
+        isDelivered ? "is-success" : isShipped ? "is-success" : "is-warn",
+        [
+          { label: "Order ID",    value: order.reference },
+          { label: "Email",       value: order.email || email },
+          { label: "Amount",      value: fmtAmount(order) },
+          { label: "Order date",  value: fmtDate(ts) }
+        ],
+        idx,
+        `Hi R-Tech Gear, I need an update on order ${order.reference}.`
+      );
+    }
+
+    /* ── DPO payment token flow ─────────────────────────────── */
+    function tryPaymentTokenFlow() {
+      const params = new URLSearchParams(window.location.search);
+      const token  = params.get("TransactionToken") || params.get("TransToken") ||
+                     params.get("ID") || params.get("token") || "";
+      if (!token) return false;
+
+      // Show verifying state immediately
+      showResult(
+        "Verifying payment…",
+        "Verifying",
+        "",
+        [
+          { label: "Payment token", value: "Checking with payment gateway" },
+          { label: "Status",        value: "Please wait…" },
+          { label: "Support",       value: "Dispatch team available daily" }
+        ],
+        0,
+        "Hi R-Tech Gear, I need help verifying my payment."
+      );
+      $("trackResultPanel").classList.add("is-open");
+
+      fetch("/api/dpo-verify-token?token=" + encodeURIComponent(token))
+        .then(r => r.json())
+        .then(json => {
+          const ok  = json.result === "000" || /success/i.test(String(json.explanation || ""));
+          const ref = json.companyRef || "N/A";
+          const amt = json.amount && json.currency ? `${json.currency} ${json.amount}` : "—";
+
+          showResult(
+            ok ? "Payment received" : "Payment pending",
+            ok ? "Paid" : "Pending",
+            ok ? "is-success" : "is-warn",
+            [
+              { label: "Reference", value: ref },
+              { label: "Status",    value: json.status || (ok ? "Paid" : "Pending") },
+              { label: "Amount",    value: amt }
+            ],
+            ok ? 1 : 0,
+            `Hi R-Tech Gear, I need help with payment reference ${ref}.`
+          );
+        })
+        .catch(() => {
+          showError(
+            "triangle-exclamation",
+            "Verification failed",
+            "We couldn't verify your payment right now. Please contact our dispatch team on WhatsApp and we'll sort it out."
+          );
+        });
+      return true;
+    }
+
+    /* ── Form validation + submit ───────────────────────────── */
+    function setFieldError(inputEl, errEl, show) {
+      if (show) {
+        inputEl.classList.add("is-error");
+        errEl.classList.add("is-visible");
+      } else {
+        inputEl.classList.remove("is-error");
+        errEl.classList.remove("is-visible");
+      }
+    }
+
+    $("trackForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const orderId = $("trackOrderId").value.trim();
+      const email   = $("trackEmail").value.trim();
+      let valid = true;
+
+      setFieldError($("trackOrderId"), $("errOrderId"), !orderId);
+      setFieldError($("trackEmail"),   $("errEmail"),   !email);
+      if (!orderId || !email) return;
+
+      // Button loading state
+      const btn   = $("trackSubmitBtn");
+      const label = $("trackBtnLabel");
+      btn.disabled = true;
+      label.textContent = "Searching…";
+      btn.insertAdjacentHTML("afterbegin", "<span class='spinner'></span>");
+
+      // Small artificial delay so the UX feels responsive
+      setTimeout(() => {
+        btn.querySelector(".spinner")?.remove();
+        label.textContent = "Track order";
+        btn.disabled = false;
+        submitLookup(orderId, email);
+      }, 480);
+    });
+
+    // Clear errors on input
+    $("trackOrderId").addEventListener("input", () => setFieldError($("trackOrderId"), $("errOrderId"), false));
+    $("trackEmail").addEventListener("input",   () => setFieldError($("trackEmail"),   $("errEmail"),   false));
+
+    /* ── URL param pre-fill (ctrl+H fast link, confirmation emails) */
+    (function prefillFromUrl() {
+      const q = new URLSearchParams(window.location.search);
+      const order = q.get("order") || q.get("ref") || q.get("orderId") || "";
+      const email = q.get("email") || "";
+      if (order) $("trackOrderId").value = order;
+      if (email) $("trackEmail").value   = email;
+      // Auto-submit if both present
+      if (order && email && !tryPaymentTokenFlow()) {
+        submitLookup(order, email);
+      } else {
+        tryPaymentTokenFlow();
+      }
+    })();
+
+    /* ── Boot ──────────────────────────────────────────────── */
+    renderHistory();
+    setAllWaLinks("Hi R-Tech Gear, I need help tracking my order.");
+
+  })();
+  </script>
+
 </body>
 </html>

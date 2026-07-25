@@ -90,6 +90,7 @@
         name,
         displayName: cleanDisplayName(name) || name,
         desc: fixText(item.description || item.desc || ""),
+        category: String(item.category || "").toLowerCase().trim(),
         price,
         compareAt,
         currency: DEFAULT_CURRENCY,
@@ -294,6 +295,39 @@
       (p.tags || []).some((t) => String(t).toLowerCase().includes(key))
     );
   }
+  function filterByCategory(products, categorySlug) {
+  const slug = String(categorySlug || "").toLowerCase().trim();
+
+  return products.filter(
+    (product) =>
+      String(product.category || "").toLowerCase().trim() === slug
+  );
+}
+function filterBySearch(products, query) {
+  if (!query) return products;
+
+  return products.filter((product) => {
+    const text = [
+      product.name,
+      product.desc,
+      product.category,
+      ...(product.tags || [])
+    ]
+      .join(" ")
+      .toLowerCase();
+
+    return text.includes(query);
+  });
+}
+function renderShopEmptyState(el, categoryLabel) {
+  el.innerHTML = `
+    <div class="shopEmptyState" style="grid-column:1/-1;text-align:center;padding:48px 20px;">
+      <h2>No products yet</h2>
+      <p>We're currently restocking ${escapeHtml(categoryLabel || "this category")}.</p>
+      <a href="shop.html" class="btn btnPrimary">Browse all products</a>
+    </div>
+  `;
+}
 
   function uniqueByKey(products) {
     const seen = new Set();
@@ -329,7 +363,34 @@
       const products = normalizeProducts(json);
 
       if (featuredEl) renderInto(featuredEl, products, 6);
-      if (shopEl) renderInto(shopEl, products, 0);
+
+if (shopEl) {
+  const params = new URLSearchParams(window.location.search);
+
+  const category = params.get("category");
+  const search = (params.get("search") || "").trim().toLowerCase();
+
+  let results = [...products];
+
+  // Filter by category first
+  if (category) {
+    results = filterByCategory(results, category);
+  }
+
+  // Then filter by search text
+  if (search) {
+    results = filterBySearch(results, search);
+  }
+
+  if (results.length > 0) {
+    renderInto(shopEl, results, 0);
+  } else {
+    renderShopEmptyState(
+      shopEl,
+      search || category || "products"
+    );
+  }
+}
 
       const dealsEl = document.getElementById("dealsGrid");
       const trendingTrack = document.getElementById("trendingTrack");

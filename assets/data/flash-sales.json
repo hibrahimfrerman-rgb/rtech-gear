@@ -7,9 +7,9 @@
     "compareAt": 1311,
     "currency": "KES",
     "image": "assets/img/products/catalog/rt-mc-tf-uhs3-1001670700/RT‑MC‑TF‑UHS3‑1001670700-4.jpg",
-    "category": "storage-memory-cards",
+    "category": "accessories",
     "deliverySpeed": "same-day",
-    "endsAt": "2026-04-26T04:54:50.413Z"
+    "endsAt": "2026-06-30T15:08:29.144Z"
   },
   {
     "id": "RT-P023-32-10026707",
@@ -19,9 +19,9 @@
     "compareAt": 1311,
     "currency": "KES",
     "image": "assets/img/products/catalog/rt-mc-tf-uhs3-1002670700/RT-MC-TF-UHS3-1002670700-1.jpg",
-    "category": "storage-memory-cards",
+    "category": "accessories",
     "deliverySpeed": "next-day",
-    "endsAt": "2026-04-26T10:54:50.414Z"
+    "endsAt": "2026-06-30T21:08:29.178Z"
   },
   {
     "id": "RT-P011-Black",
@@ -33,7 +33,7 @@
     "image": "assets/img/products/catalog/rt-au-i7s-1945271/RT-AU-I7S-1945271-1.jpg",
     "category": "audio",
     "deliverySpeed": "standard",
-    "endsAt": "2026-04-26T16:54:50.414Z"
+    "endsAt": "2026-07-01T03:08:29.178Z"
   },
   {
     "id": "RT-P024-64-GD-10016",
@@ -43,9 +43,9 @@
     "compareAt": 1505,
     "currency": "KES",
     "image": "assets/img/products/catalog/rt-fd-usb-otg-1001670900/RT-FD-USB-OTG-1001670900-1.jpg",
-    "category": "storage-flash-drives",
+    "category": "accessories",
     "deliverySpeed": "same-day",
-    "endsAt": "2026-04-26T22:54:50.414Z"
+    "endsAt": "2026-07-01T09:08:29.178Z"
   },
   {
     "id": "RT-P024-64-SL-10016",
@@ -55,9 +55,9 @@
     "compareAt": 1505,
     "currency": "KES",
     "image": "assets/img/products/catalog/rt-fd-usb-otg-1001670900/RT-FD-USB-OTG-1001670900-1.jpg",
-    "category": "storage-flash-drives",
+    "category": "accessories",
     "deliverySpeed": "next-day",
-    "endsAt": "2026-04-27T04:54:50.414Z"
+    "endsAt": "2026-07-01T15:08:29.178Z"
   },
   {
     "id": "RT-P029-Black",
@@ -69,7 +69,7 @@
     "image": "assets/img/products/catalog/rt-aud-bts-1001671300/RT‑AUD‑BTS‑1001671300-1.jpg",
     "category": "audio",
     "deliverySpeed": "standard",
-    "endsAt": "2026-04-27T10:54:50.414Z"
+    "endsAt": "2026-07-01T21:08:29.178Z"
   },
   {
     "id": "RT-P024-128-GD-10016",
@@ -79,9 +79,9 @@
     "compareAt": 2111,
     "currency": "KES",
     "image": "assets/img/products/catalog/rt-fd-usb-otg-1001670900/RT-FD-USB-OTG-1001670900-1.jpg",
-    "category": "storage-flash-drives",
+    "category": "accessories",
     "deliverySpeed": "same-day",
-    "endsAt": "2026-04-26T04:54:50.414Z"
+    "endsAt": "2026-06-30T15:08:29.178Z"
   },
   {
     "id": "RT-P024-128-SL-10016",
@@ -91,9 +91,9 @@
     "compareAt": 2111,
     "currency": "KES",
     "image": "assets/img/products/catalog/rt-fd-usb-otg-1001670900/RT-FD-USB-OTG-1001670900-1.jpg",
-    "category": "storage-flash-drives",
+    "category": "accessories",
     "deliverySpeed": "next-day",
-    "endsAt": "2026-04-26T10:54:50.414Z"
+    "endsAt": "2026-06-30T21:08:29.179Z"
   },
   {
     "id": "RT-P026-black",
@@ -103,9 +103,9 @@
     "compareAt": 2111,
     "currency": "KES",
     "image": "assets/img/products/catalog/rt-fit-mmg-2930589/RT‑FIT‑MMG‑2930589-1.jpg",
-    "category": "fitness",
+    "category": "accessories",
     "deliverySpeed": "standard",
-    "endsAt": "2026-04-26T16:54:50.414Z"
+    "endsAt": "2026-07-01T03:08:29.179Z"
   },
   {
     "id": "RT-P021-White",
@@ -117,7 +117,7 @@
     "image": "assets/img/products/catalog/rt-ch-pd45-1000358764/RT‑CH‑PD45‑1000358764-1.jpg",
     "category": "power",
     "deliverySpeed": "same-day",
-    "endsAt": "2026-04-26T22:54:50.414Z"
+    "endsAt": "2026-07-01T09:08:29.179Z"
   },
   {
     "id": "RT-P028-Black",
@@ -127,9 +127,9 @@
     "compareAt": 3352,
     "currency": "KES",
     "image": "assets/img/products/catalog/rt-lpt-clp-1001671200/RT‑LPT‑CLP‑1001671200-1.jpg",
-    "category": "computing-accessories",
+    "category": "accessories",
     "deliverySpeed": "next-day",
-    "endsAt": "2026-04-27T04:54:50.414Z"
+    "endsAt": "2026-07-01T15:08:29.179Z"
   },
   {
     "id": "RT-P015-Black",
@@ -141,6 +141,6 @@
     "image": "assets/img/products/catalog/rt-mic-vm50-1001670280/RT-MIC-VM50-1001670280-1.jpg",
     "category": "audio",
     "deliverySpeed": "standard",
-    "endsAt": "2026-04-27T10:54:50.414Z"
+    "endsAt": "2026-07-01T21:08:29.179Z"
   }
 ]

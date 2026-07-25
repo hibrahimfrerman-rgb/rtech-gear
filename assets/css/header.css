@@ -10,6 +10,9 @@
   --radius-pill: 999px;
 }
 
+
+
+
 .site-header{
   position: sticky;
   top: 0;
@@ -20,6 +23,9 @@
   transition: box-shadow 180ms ease;
 }
 .site-header.is-scrolled{ box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08); }
+
+
+
 
 .header-utility{
   background: linear-gradient(90deg, #1e3a8a 0%, #5b21b6 55%, #7c3aed 100%);
@@ -38,6 +44,9 @@
 .utility-right{ display: flex; align-items: center; gap: 10px; }
 .utility-left{ color: #fff; }
 .utility-text-mobile{ display: none; }
+
+
+
 
 .phone-pill{
   display: inline-flex;
@@ -62,14 +71,31 @@
   50%{ transform: scale(1.15); opacity: 0.8; }
 }
 
+
+
+
 .header-top{ background: #fff; }
 .header-top-inner{
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 24px;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 24px;
   padding: 16px 0;
 }
+
+
+
+
+.header-left-group{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  min-width: 0;
+}
+
+
+
 
 .brand{
   display: inline-flex;
@@ -86,14 +112,76 @@
 }
 .brand-text{ letter-spacing: 0.2px; }
 
+
+
+
+.header-left-group{
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  min-width: 0;
+}
+
+
+
+
 .nav-links{
   display: flex;
   gap: 24px;
-  justify-content: center;
+  justify-content: flex-start;
   font-weight: 600;
 }
-.nav-link{ color: var(--text); }
+.nav-link{
+  position: relative;
+  color: var(--text);
+  padding-bottom: 4px;
+}
+.nav-link::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: right 200ms ease;
+}
 .nav-link:hover{ color: var(--primary); }
+.nav-link:hover::after{ right: 0; }
+
+
+
+
+/* .categoryLauncherBtn{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(31,58,138,0.18);
+  background: rgba(79,70,229,0.06);
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 13px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+.categoryLauncherBtn:hover{
+  background: rgba(79,70,229,0.12);
+  border-color: rgba(79,70,229,0.32);
+  transform: translateY(-1px);
+}
+.categoryLauncherChevron{
+  font-size: 11px;
+  line-height: 1;
+} */
+
+
+
+
+
+
 
 
 .header-icons{
@@ -122,6 +210,9 @@
 .icon-btn .icon-svg{ width: 22px; height: 22px; }
 .icon-btn:hover{ transform: translateY(-1px); color: var(--primary); border-color: rgba(31,58,138,0.3); }
 
+
+
+
 .icon-glyph{
   width: 20px;
   height: 20px;
@@ -129,29 +220,64 @@
   background: currentColor;
 }
 
+
+
+
 .icon-glyph-heart{
   -webkit-mask: url("../icons/icon-heart.svg") center/contain no-repeat;
           mask: url("../icons/icon-heart.svg") center/contain no-repeat;
 }
+
+
+
 
 .icon-glyph-cart{
   -webkit-mask: url("../icons/icon-cart.svg") center/contain no-repeat;
           mask: url("../icons/icon-cart.svg") center/contain no-repeat;
 }
 
+
+
+
+/* Account icon — same mask technique as heart/cart above.
+   Edit the SVG path here if the account icon file ever moves. */
+.icon-glyph-account{
+  -webkit-mask: url("../icons/icon-accounts.svg") center/contain no-repeat;
+          mask: url("../icons/icon-accounts.svg") center/contain no-repeat;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .icon-btn-heart,
-.icon-btn-cart{
+.icon-btn-cart,
+.icon-btn-account{
   background: transparent;
   border-color: transparent;
   color: #4f46e5;
 }
 
+
+
+
 .icon-btn-heart:hover,
-.icon-btn-cart:hover{
+.icon-btn-cart:hover,
+.icon-btn-account:hover{
   background: rgba(124, 58, 237, 0.10);
   border-color: rgba(124, 58, 237, 0.22);
   color: #7c3aed;
 }
+
+
+
 
 .badge{
   position: absolute;
@@ -169,6 +295,9 @@
   border: 2px solid #fff;
 }
 
+
+
+
 .price-pill{
   background: var(--icon-primary);
   color: #fff;
@@ -181,20 +310,1059 @@
   transition: background-color 160ms ease, transform 160ms ease;
 }
 
+
+
+
 .price-pill:hover{
   background: var(--icon-hover);
   transform: translateY(-1px);
 }
+
+
+
 
 @media (max-width: 980px){
   .header-top-inner{ grid-template-columns: auto auto; }
   .nav-links{ justify-content: flex-start; flex-wrap: wrap; }
 }
 
+
+
+
 @media (max-width: 720px){
-  .header-top-inner{ grid-template-columns: 1fr; gap: 12px; }
-  .nav-links{ justify-content: flex-start; font-size: 14px; }
-  .header-icons{ justify-content: flex-start; }
-  .utility-text-desktop{ display: none; }
-  .utility-text-mobile{ display: inline; }
+
+
+
+
+  .header-top-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+  }
+
+
+
+
+  .brand{
+    flex:1;
+  }
+
+
+
+
+  .header-icons{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:16px; /* cleaner spacing for wishlist + cart */
+    margin-left:auto;
+  }
+
+
+
+
+  .utility-text-desktop{
+    display:none;
+  }
+
+
+
+
+  .utility-text-mobile{
+    display:inline;
+  }
+
+
+
+
 }
+
+
+
+
+@media (max-width:720px){
+
+
+
+
+  .price-pill{
+    padding:10px 16px;
+    min-width:auto;
+    font-size:14px;
+  }
+
+
+
+
+}
+
+
+
+
+@media (max-width:720px){
+
+
+
+
+  .brand{
+    min-width:0;
+  }
+
+
+
+
+}
+
+
+
+
+/* ==================================================
+   MOBILE HEADER CLEANUP
+   Hide text logo on phones
+================================================== */
+
+
+
+
+@media (max-width:720px){
+
+
+
+
+  .brand-text{
+    display:none;
+  }
+
+
+
+
+  .brand-logo{
+    width:40px;
+    height:40px;
+  }
+
+
+
+
+}
+
+
+
+
+/* ==================================================
+   MOBILE ONLY
+   HIDE DESKTOP NAVIGATION
+================================================== */
+
+
+
+
+@media (max-width:720px){
+
+
+
+
+  .nav-links{
+    display:none !important;
+  }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================================
+   MOBILE FLOATING BOTTOM NAVIGATION
+================================================== */
+
+
+
+
+.mobile-bottom-nav{
+  display:none;
+}
+
+
+
+
+@media (max-width:720px){
+
+
+
+
+  .mobile-bottom-nav{
+
+
+
+
+    display:flex;
+    position:fixed;
+
+
+
+
+    left:50%;
+    transform:translateX(-50%);
+
+
+
+
+    bottom:12px;
+
+
+
+
+    width:92%;
+    max-width:420px;
+
+
+
+
+    /* ==========================================
+       PREMIUM FLOATING DOCK
+    ========================================== */
+
+
+
+
+    background:rgba(255,255,255,.82);
+
+
+backdrop-filter:blur(30px);
+-webkit-backdrop-filter:blur(30px);
+
+
+border:1px solid rgba(255,255,255,.60);
+
+
+border-radius:30px;
+
+
+box-shadow:
+  0 14px 40px rgba(15,23,42,.10),
+  0 4px 12px rgba(15,23,42,.08),
+  inset 0 1px rgba(255,255,255,.45);
+
+
+
+
+    z-index:999;
+
+
+
+
+    padding:14px 0;
+
+
+
+
+    justify-content:space-around;
+
+
+
+
+  }
+
+
+
+
+  .mobile-bottom-nav a{
+
+
+
+
+    position:relative;
+
+
+
+
+    text-decoration:none;
+
+
+
+
+    color:#111827;
+
+
+
+
+    display:flex;
+
+
+
+
+    flex-direction:column;
+
+
+
+
+    align-items:center;
+
+
+
+
+    justify-content:center;
+
+
+
+
+    gap:4px;
+
+
+
+
+    font-size:11px;
+
+
+
+
+    font-weight:600;
+
+
+
+
+    transition:all .2s ease;
+
+
+
+
+  }
+
+
+
+
+  .mobile-bottom-nav a:not(:last-child)::after{
+
+
+
+
+    content:"";
+
+
+
+
+    position:absolute;
+
+
+
+
+    right:-16px;
+
+
+
+
+    top:8px;
+
+
+
+
+    width:1px;
+
+
+
+
+    height:24px;
+
+
+
+
+    background:rgba(0,0,0,.08);
+
+
+
+
+  }
+
+
+
+
+  /* Active tab: brand-colour text + icon, reusing the project's
+     shared --icon-primary variable (same purple used by the
+     header's cart/wishlist icons) instead of a hard-coded hex. */
+  .mobile-bottom-nav a.active{
+
+
+
+
+    color:var(--icon-primary);
+    font-weight:800;
+
+
+
+
+  }
+
+
+
+
+.mobile-bottom-nav a.active .mobile-nav-icon{
+    transform:translateY(-2px) scale(1.08);
+}
+
+
+.mobile-bottom-nav a.active .mobile-nav-icon img{
+    filter:none;
+}
+
+
+/* mobile navigation icons */
+  .mobile-nav-icon{
+  width:24px;
+  height:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:transform .2s ease;
+}
+
+
+.mobile-nav-icon img{
+  width:22px;
+  height:22px;
+  display:block;
+
+
+  /* Makes white SVGs inherit the brand colour */
+  filter: brightness(0) saturate(100%)
+          invert(36%) sepia(86%)
+          saturate(1882%) hue-rotate(229deg)
+          brightness(96%) contrast(97%);
+
+
+  transition:
+    transform .2s ease,
+    filter .2s ease;
+}
+
+
+}
+
+
+/* ==================================================
+   ACCOUNT DRAWER
+   Premium account entry panel
+   Single source of truth
+================================================== */
+
+.accountDrawer{
+
+  position:fixed;
+  inset:0;
+  z-index:9999;
+
+  visibility:hidden;
+  pointer-events:none;
+  opacity:0;
+
+  transition:
+    opacity .25s ease,
+    visibility .25s ease;
+
+}
+
+.accountDrawer.is-open{
+
+  visibility:visible;
+  pointer-events:auto;
+  opacity:1;
+
+}
+
+
+/* -----------------------------------------------
+   BACKDROP
+------------------------------------------------ */
+
+.accountDrawerBackdrop{
+
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  padding:0;
+
+  border:0;
+
+  background:rgba(15,23,42,.42);
+
+  backdrop-filter:blur(5px);
+  -webkit-backdrop-filter:blur(5px);
+
+  cursor:pointer;
+
+}
+
+
+/* -----------------------------------------------
+   PANEL
+------------------------------------------------ */
+
+.accountDrawer .accountPanel{
+
+  position:absolute;
+  top:0;
+  right:0;
+
+  display:flex;
+  flex-direction:column;
+
+  width:min(440px, 100%);
+  height:100%;
+  min-height:0;
+
+  box-sizing:border-box;
+
+  padding:30px 28px 26px;
+
+  background:#ffffff;
+
+  box-shadow:-18px 0 50px rgba(15,23,42,.18);
+
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+
+  transform:translateX(100%);
+
+  transition:
+    transform .35s cubic-bezier(.22,1,.36,1);
+
+}
+
+.accountDrawer.is-open .accountPanel{
+
+  transform:translateX(0);
+
+}
+
+
+/* -----------------------------------------------
+   HEADER
+------------------------------------------------ */
+
+.accountPanelHeader{
+
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+
+  gap:20px;
+
+  padding-bottom:26px;
+
+  border-bottom:1px solid #e5e7eb;
+
+}
+
+.accountEyebrow{
+
+  display:block;
+
+  margin-bottom:6px;
+
+  color:#64748b;
+
+  font-size:11px;
+  font-weight:800;
+
+  letter-spacing:.14em;
+
+}
+
+.accountPanelHeader h2{
+
+  margin:0;
+
+  color:#0f172a;
+
+  font-size:30px;
+  line-height:1.1;
+
+  letter-spacing:-.025em;
+
+}
+
+.accountCloseBtn{
+
+  display:grid;
+  place-items:center;
+
+  flex:0 0 auto;
+
+  width:42px;
+  height:42px;
+
+  padding:0;
+
+  border:1px solid #e2e8f0;
+  border-radius:50%;
+
+  background:#ffffff;
+
+  color:#0f172a;
+
+  font-size:23px;
+  line-height:1;
+
+  cursor:pointer;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    transform .2s ease;
+
+}
+
+.accountCloseBtn:hover{
+
+  background:#f8fafc;
+
+  border-color:#cbd5e1;
+
+  transform:rotate(90deg);
+
+}
+
+
+/* -----------------------------------------------
+   GUEST INTRO
+------------------------------------------------ */
+
+.accountGuestState{
+
+  padding-top:30px;
+
+}
+
+.accountGuestIntro h3{
+
+  margin:0 0 8px;
+
+  color:#0f172a;
+
+  font-size:22px;
+  line-height:1.2;
+
+  letter-spacing:-.025em;
+
+}
+
+.accountGuestIntro p{
+
+  max-width:38ch;
+
+  margin:0;
+
+  color:#64748b;
+
+  font-size:15px;
+  line-height:1.5;
+
+}
+
+
+/* -----------------------------------------------
+   PRIMARY ACTIONS
+------------------------------------------------ */
+
+.accountPrimaryActions{
+
+  display:grid;
+
+  gap:12px;
+
+  margin-top:24px;
+
+}
+
+.accountPrimaryActions .btn{
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width:100%;
+  min-height:54px;
+
+  box-sizing:border-box;
+
+  text-decoration:none;
+
+}
+
+
+/* SIGN IN */
+
+.accountPrimaryActions .btnPrimary{
+
+  box-shadow:
+    0 8px 18px rgba(31,58,138,.16);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+
+}
+
+.accountPrimaryActions .btnPrimary:hover{
+
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 12px 24px rgba(31,58,138,.22);
+
+}
+
+
+/* CREATE ACCOUNT */
+
+.accountPrimaryActions .btnGhost{
+
+  min-height:54px;
+
+  border:1px solid #dbe3f0;
+
+  border-radius:999px;
+
+  background:#ffffff;
+
+  color:var(--primary);
+
+  font-weight:800;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    color .2s ease,
+    transform .2s ease,
+    box-shadow .2s ease;
+
+}
+
+.accountPrimaryActions .btnGhost:hover{
+
+  background:#f8fafc;
+
+  border-color:#c7d2fe;
+
+  color:#1d4ed8;
+
+  transform:translateY(-1px);
+
+  box-shadow:
+    0 6px 16px rgba(15,23,42,.06);
+
+}
+
+
+/* -----------------------------------------------
+   QUICK LINKS
+------------------------------------------------ */
+
+.accountQuickLinks{
+
+  display:grid;
+
+  gap:14px;
+
+  margin-top:30px;
+
+}
+
+.accountQuickLink{
+
+  min-height:104px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:18px;
+
+  padding:20px 20px;
+
+  box-sizing:border-box;
+
+  border:1px solid #e1e6ef;
+
+  border-radius:20px;
+
+  background:#ffffff;
+
+  text-decoration:none;
+
+  transition:
+    border-color .22s ease,
+    box-shadow .22s ease,
+    transform .22s ease;
+
+}
+
+.accountQuickLink:hover{
+
+  border-color:#cbd5e1;
+
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 12px 26px rgba(15,23,42,.07);
+
+}
+
+
+/* FLEXIBLE TEXT AREA */
+
+.accountQuickLinkText{
+
+  flex:1;
+
+  min-width:0;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:6px;
+
+}
+
+.accountQuickLinkText strong{
+
+  display:block;
+
+  color:#0f172a;
+
+  font-size:18px;
+  font-weight:800;
+
+  line-height:1.2;
+
+}
+
+.accountQuickLinkText small{
+
+  display:block;
+
+  color:#64748b;
+
+  font-size:15px;
+
+  line-height:1.4;
+
+}
+
+
+/* -----------------------------------------------
+   SINGLE ARROW
+   No pseudo-element.
+   No duplicate arrow.
+------------------------------------------------ */
+
+.accountArrow{
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  flex:0 0 46px;
+
+  width:46px;
+  height:46px;
+
+  box-sizing:border-box;
+
+  border:1px solid #e2e8f0;
+
+  border-radius:50%;
+
+  background:#ffffff;
+
+  color:#3154e8;
+
+  font-size:26px;
+  font-weight:400;
+
+  line-height:1;
+
+  transition:
+    background .22s ease,
+    border-color .22s ease,
+    color .22s ease,
+    transform .22s ease,
+    box-shadow .22s ease;
+
+}
+
+.accountQuickLink:hover .accountArrow{
+
+  background:#3154e8;
+
+  border-color:#3154e8;
+
+  color:#ffffff;
+
+  transform:translateX(3px);
+
+  box-shadow:
+    0 8px 18px rgba(49,84,232,.18);
+
+}
+
+.accountQuickLink:focus-visible .accountArrow{
+
+  outline:3px solid rgba(49,84,232,.18);
+
+  outline-offset:3px;
+
+}
+
+
+/* -----------------------------------------------
+   FOOTER
+------------------------------------------------ */
+
+.accountPanelFooter{
+
+  margin-top:auto;
+
+  padding-top:26px;
+
+  border-top:1px solid #e5e7eb;
+
+  text-align:center;
+
+}
+
+.accountSupportLink{
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  max-width:34ch;
+
+  color:#64748b;
+
+  font-size:14px;
+
+  line-height:1.45;
+
+  text-decoration:none;
+
+  transition:
+    color .2s ease,
+    transform .2s ease;
+
+}
+
+.accountSupportLink:hover{
+
+  color:#0f172a;
+
+  transform:translateY(-1px);
+
+}
+
+
+/* -----------------------------------------------
+   MOBILE
+------------------------------------------------ */
+
+@media (max-width:720px){
+
+  .accountDrawer .accountPanel{
+
+    width:100%;
+
+    padding:
+      24px
+      20px
+      calc(22px + 96px + env(safe-area-inset-bottom, 0px));
+
+  }
+
+  .accountPanelHeader h2{
+
+    font-size:27px;
+
+  }
+
+  .accountGuestState{
+
+    padding-top:26px;
+
+  }
+
+  .accountQuickLink{
+
+    min-height:96px;
+
+    padding:18px;
+
+  }
+
+  .accountQuickLinkText strong{
+
+    font-size:17px;
+
+  }
+
+  .accountQuickLinkText small{
+
+    font-size:14px;
+
+  }
+
+  .accountArrow{
+
+    flex-basis:44px;
+
+    width:44px;
+    height:44px;
+
+  }
+
+  /* ==================================================
+   CHECKOUT PAGE
+   Hide mobile dock during payment
+================================================== */
+
+.checkout-page .mobile-bottom-nav{
+  display:none !important;
+}
+
+/* ==================================================
+   ACCOUNT PAGE
+   Dock not needed here — page already has its own
+   clear navigation (hero CTAs, benefit cards, footer).
+================================================== */
+
+.accountPage .mobile-bottom-nav{
+  display:none !important;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+

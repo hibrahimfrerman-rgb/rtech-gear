@@ -15,76 +15,102 @@
 
   <main class="container">
 
-    <!-- HERO -->
+    <!-- =====================================================
+         HOME: HERO
+         Slider + search + trending category quick filters
+         ===================================================== -->
     <section class="hero heroEcom" id="home-hero">
       <div class="heroTop">
-        <button class="heroPill" type="button">Shop Now</button>
+        <!-- ===========================================
+             NEW ARRIVALS BUTTON
+             Desktop shortcut to the latest products.
+             This is a plain link. No dropdown. No JavaScript.
+             Styling lives in styles.css → .newArrivalsBtn
+        =========================================== -->
+        <a class="newArrivalsBtn"
+           id="newArrivalsBtn"
+           href="shop.html?sort=new"
+           aria-label="View New Arrivals">
+             New Arrivals
+        </a>
+
         <div class="heroSearch">
-          <input type="search" placeholder="Enter your keyword" aria-label="Search products" />
-          <button class="heroSearchBtn" type="button" aria-label="Search">
-            <img class="icon-svg" src="assets/icons/icon-search.svg" alt="" aria-hidden="true" />
+          <input
+            id="heroSearchInput"
+            type="search"
+            placeholder="Search phones, laptops, watches..."
+            aria-label="Search products"
+          />
+
+          <button
+            id="heroSearchBtn"
+            class="heroSearchBtn"
+            type="button"
+            aria-label="Search">
+            <img
+              class="icon-svg"
+              src="assets/icons/icon-search.svg"
+              alt=""
+              aria-hidden="true" />
           </button>
+
+          <div id="heroSearchResults" class="heroSearchResults"></div>
         </div>
+
         <div class="heroTrending" aria-label="Quick category filters">
           <span class="heroTrendLabel">Search trending:</span>
           <div class="heroTrendRail">
-            <select class="heroSelect" aria-label="Headphone category">
-              <option>Headphone</option>
-              <option>Wireless</option>
-              <option>Gaming</option>
-              <option>Noise Cancel</option>
-            </select>
-            <select class="heroSelect" aria-label="Audio category">
-              <option>Audio</option>
-              <option>Speakers</option>
-              <option>Earbuds</option>
-              <option>Soundbars</option>
-            </select>
-            <select class="heroSelect" aria-label="Smartphone category">
-              <option>Smartphone</option>
-              <option>Android</option>
-              <option>iOS</option>
-              <option>Budget</option>
-            </select>
-            <select class="heroSelect" aria-label="Smartwatch category">
-              <option>Smartwatch</option>
-              <option>Fitness</option>
-              <option>Hybrid</option>
-              <option>Kids</option>
-            </select>
+
+            <a href="shop.html?search=New+Arrivals" class="trendLink">New Arrivals</a>
+
+            <a href="shop.html?search=Best+Sellers" class="trendLink">Best Sellers</a>
+
+            <a href="shop.html?search=Headphones" class="trendLink">Headphones</a>
+
+            <a href="shop.html?search=Audio" class="trendLink">Audio</a>
+
+            <a href="shop.html?search=Gaming" class="trendLink">Gaming</a>
+
+            <a href="shop.html?search=Smartphones" class="trendLink">Smartphones</a>
+
+            <a href="shop.html?search=Smartwatch" class="trendLink">Smartwatch</a>
+
+           <a href="shop.html?search=Accessories" class="trendLink">Accessories</a>
+
           </div>
         </div>
       </div>
-
+      <!-- HERO BLOCK -->
       <div class="heroRow">
         <div class="heroLeft">
           <div class="heroSlider" id="heroSlider">
+
             <div class="heroSlide isActive" data-bg-desktop="assets/img/hero/hero-main/desktop/hero-main-01-desktop.jpg" data-bg-mobile="assets/img/hero/hero-main/mobile/hero-main-01-mobile.jpg" data-pill="Kenya-friendly payments (M-Pesa, cards, bank transfer)">
               <div class="heroOverlay">
                 <div class="heroKicker">KENYA-FIRST TECH</div>
                 <div class="heroTitle">Tech gear that fits real life in Kenya.</div>
-                <div class="heroDesc">Curated tech picks. Fast checkout. Fast support.</div>
+                <div class="heroDesc">Shop genuine tech with fast delivery, secure payments and support you can trust.</div>
                 <a class="heroCta" href="shop.html">Shop Now</a>
               </div>
             </div>
-            <div class="heroSlide" data-bg-desktop="assets/img/hero/hero-main/desktop/hero-main-02-desktop.jpg" data-bg-mobile="assets/img/hero/hero-main/mobile/hero-main-02-mobile.jpg" data-pill="Quick checkout">
+
+            <div class="heroSlide" data-bg-desktop="assets/img/hero/hero-main/desktop/hero-main-02-desktop.jpg" data-bg-mobile="assets/img/hero/hero-main/mobile/hero-main-02-mobile.jpg" data-pill="New arrivals • Best sellers • Trusted brands">
               <div class="heroOverlay">
-                <div class="heroKicker">PAYMENTS</div>
-                <div class="heroTitle">Build better content with gear that actually performs.</div>
-                <div class="heroDesc">Tripods, lighting, audio & creator tools designed to upgrade your setup, without breaking your budget.</div>
-                <a class="heroCta" href="shop.html">Learn More</a>
-              </div>
-            </div>
-            <div class="heroSlide" data-bg-desktop="assets/img/hero/hero-main/desktop/hero-main-03-desktop.jpg" data-bg-mobile="assets/img/hero/hero-main/mobile/hero-main-03-mobile.jpg" data-pill="Fast WhatsApp support">
-              <div class="heroOverlay">
-                <div class="heroKicker">SUPPORT</div>
-                <div class="heroTitle">Fast support on WhatsApp</div>
-                <div class="heroDesc">Quick answers. Smooth checkout.</div>
-                <a class="heroCta" href="#" id="heroWhatsApp">Chat on WhatsApp</a>
+                <div class="heroKicker">PREMIUM COLLECTION</div>
+                <div class="heroTitle">Upgrade your setup with the latest tech.</div>
+                <div class="heroDesc">Smartphones, laptops, gaming gear, audio and smart devices from trusted brands at unbeatable prices.</div>
+                <a class="heroCta" href="shop.html?featured=true">Explore Collection</a>
               </div>
             </div>
 
-           <div class="heroPillText" id="heroPillText">Kenya-friendly payments (M-Pesa, cards, bank transfer)</div>
+            <div class="heroSlide" data-bg-desktop="assets/img/hero/hero-main/desktop/hero-main-03-desktop.jpg" data-bg-mobile="assets/img/hero/hero-main/mobile/hero-main-03-mobile.jpg" data-pill="Fast WhatsApp support">
+              <div class="heroOverlay">
+                <div class="heroKicker">WE'RE HERE TO HELP</div>
+                <div class="heroTitle">Need advice before you buy?</div>
+                <div class="heroDesc">Chat with our team on WhatsApp for product recommendations, order updates and fast support.</div>
+                <a class="heroCta" href="#" id="heroWhatsApp" target="_blank" rel="noopener"> Chat on WhatsApp </a>
+              </div>
+            </div>
 
             <div class="heroControls">
               <button class="heroCtrlBtn" type="button" id="heroPrev" aria-label="Previous">&lsaquo;</button>
@@ -95,49 +121,199 @@
           </div>
         </div>
 
-        <div class="heroRight">
-          <a
-            class="promoCard"
-            href="shop.html"
-            data-bg-desktop="assets/img/hero/hero-side-top/desktop/hero-side-top-desktop.jpg"
-            data-bg-mobile="assets/img/hero/hero-side-top/mobile/hero-side-top-mobile.jpg"
-            style="background-image:url('assets/img/hero/hero-side-top/desktop/hero-side-top-desktop.jpg')">
-            <div class="promoOverlay">
-              <div class="promoTag">NEW ARRIVALS</div>
-              <div class="promoName">Smart Skipping Ropes</div>
-              <div class="promoLink">Shop Now &rarr;</div>
-            </div>
-          </a>
-          <a
-            class="promoCard"
-            href="shop.html"
-            data-bg-desktop="assets/img/hero/hero-side-bottom/desktop/hero-side-bottom-desktop.jpg"
-            data-bg-mobile="assets/img/hero/hero-side-bottom/mobile/hero-side-bottom-mobile.jpg"
-            style="background-image:url('assets/img/hero/hero-side-bottom/desktop/hero-side-bottom-desktop.jpg')">
-            <div class="promoOverlay">
-              <div class="promoTag">TRENDING</div>
-              <div class="promoName">Massage Guns</div>
-              <div class="promoLink">Shop Now &rarr;</div>
-            </div>
-          </a>
+        
+        
+<div class="heroRight">
+<div class="promoCard promoSlider">
+
+  <!-- ==================================================
+       Promo Slide 1
+       Duplicate this block to add future slides.
+  ================================================== -->
+  <a
+    class="promoSlide isActive"
+    href="shop.html"
+    data-bg-desktop="assets/img/hero/hero-side-top/desktop/hero-slide 1.jpg"
+    data-bg-mobile="assets/img/hero/hero-side-top/mobile/hero-slide 1.jpg">
+
+    <div class="promoOverlay">
+      <div class="promoTag">NEW ARRIVALS</div>
+      <div class="promoName">Best Gadgets</div>
+      <div class="promoLink">Shop Now &rarr;</div>
+    </div>
+
+  </a>
+<!-- slide 2 -->
+  <a
+    class="promoSlide isActive"
+    href="shop.html"
+    data-bg-desktop="assets/img/hero/hero-side-top/desktop/hero-slide 2.jpg"
+    data-bg-mobile="assets/img/hero/hero-side-top/mobile/hero-slide 2.jpg">
+
+    <div class="promoOverlay">
+      <div class="promoTag">NEW ARRIVALS</div>
+      <div class="promoName">Best Audio Speakers</div>
+      <div class="promoLink">Shop Now &rarr;</div>
+    </div>
+
+  </a>
+<!-- slide 3 -->
+  <a
+    class="promoSlide isActive"
+    href="shop.html"
+    data-bg-desktop="assets/img/hero/hero-side-top/desktop/hero-slide 3.jpg"
+    data-bg-mobile="assets/img/hero/hero-side-top/mobile/hero-slide 3.jpg">
+
+    <div class="promoOverlay">
+      <div class="promoTag">NEW ARRIVALS</div>
+      <div class="promoName">Long Lasting Earpods</div>
+      <div class="promoLink">Shop Now &rarr;</div>
+    </div>
+
+  </a>
+
+  <a
+    class="promoSlide isActive"
+    href="shop.html"
+    data-bg-desktop="assets/img/hero/hero-side-top/desktop/hero-slide 4.jpg"
+    data-bg-mobile="assets/img/hero/hero-side-top/mobile/hero-slide 4.jpg">
+
+    <div class="promoOverlay">
+      <div class="promoTag">NEW ARRIVALS</div>
+      <div class="promoName">Fast Charging Earpods</div>
+      <div class="promoLink">Shop Now &rarr;</div>
+    </div>
+
+  </a>
+
+</div>
+           
+<div class="promoCard promoSlider">
+
+  <!-- ==================================================
+       Promo Slide 2
+       Duplicate this block to add future slides.
+  ================================================== -->
+  <a
+    class="promoSlide isActive"
+    href="shop.html?search=Audio"
+    data-bg-desktop="assets/img/hero/hero-side-bottom/desktop/hero-slide 1.jpg"
+    data-bg-mobile="assets/img/hero/hero-side-bottom/mobile/hero-slide 1.jpg">
+
+    <div class="promoOverlay">
+      <div class="promoTag">TRENDING</div>
+      <div class="promoName">Massage Guns</div>
+      <div class="promoLink">Shop Now &rarr;</div>
+    </div>
+
+  </a>
+
+<!-- slide 2 -->
+  <a
+    class="promoSlide isActive"
+    href="shop.html?search=Audio"
+    data-bg-desktop="assets/img/hero/hero-side-bottom/desktop/hero-slide 2.jpg"
+    data-bg-mobile="assets/img/hero/hero-side-bottom/mobile/hero-slide 2.jpg">
+
+    <div class="promoOverlay">
+      <div class="promoTag">TRENDING</div>
+      <div class="promoName">Tripod Stands</div>
+      <div class="promoLink">Shop Now &rarr;</div>
+    </div>
+
+  </a>
+
+  <!-- slide 3 -->
+   <a
+    class="promoSlide isActive"
+    href="shop.html?search=Audio"
+    data-bg-desktop="assets/img/hero/hero-side-bottom/desktop/hero-slide 3.jpg"
+    data-bg-mobile="assets/img/hero/hero-side-bottom/mobile/hero-slide 3.jpg">
+
+    <div class="promoOverlay">
+      <div class="promoTag">TRENDING</div>
+      <div class="promoName">Cameras</div>
+      <div class="promoLink">Shop Now &rarr;</div>
+    </div>
+
+  </a>
+
+</div>
         </div>
       </div>
     </section>
 
-    <!-- HOME: CATEGORY ICON STRIP -->
-    <section class="categoryRow" id="home-categories" aria-label="Popular categories">
-      <div class="categoryItem"><div class="catIcon"></div><div class="catName">Audio</div></div>
-      <div class="categoryItem"><div class="catIcon"></div><div class="catName">Phones</div></div>
-      <div class="categoryItem"><div class="catIcon"></div><div class="catName">Gaming</div></div>
-      <div class="categoryItem"><div class="catIcon"></div><div class="catName">Cameras</div></div>
-      <div class="categoryItem"><div class="catIcon"></div><div class="catName">Wearables</div></div>
-      <div class="categoryItem"><div class="catIcon"></div><div class="catName">Smart Home</div></div>
-      <div class="categoryItem"><div class="catIcon"></div><div class="catName">Power</div></div>
-      <div class="categoryItem"><div class="catIcon"></div><div class="catName">Accessories</div></div>
-    </section>
+    <!-- =====================================================
+         HOME: CATEGORY NAVIGATION
+         8 category anchors — navigates to shop.html?category=
+         Icons: assets/icons/SVG/  (existing SVGs, never replaced)
+         Layout: 8-col desktop → 4-col tablet → scroll row mobile
+         ===================================================== -->
+    <section class="categoryRow" id="home-categories" aria-label="Shop by category">
 
-    <!-- BENEFITS STRIP (like "Free shipping Nairobi" etc.) -->
-    <!-- HOME: SERVICE POLICIES / BENEFITS -->
+      <a class="categoryItem" href="shop.html?category=audio" aria-label="Shop Audio">
+        <div class="catIcon" aria-hidden="true">
+          <img src="assets/icons/icon gallary/category icons/audio.svg" alt="" width="26" height="26" loading="lazy" decoding="async" />
+        </div>
+        <span class="catName">Audio</span>
+      </a>
+
+      <a class="categoryItem" href="shop.html?category=phones" aria-label="Shop Phones">
+        <div class="catIcon" aria-hidden="true">
+          <img src="assets/icons/icon gallary/category icons/phone.svg" alt="" width="26" height="26" loading="lazy" decoding="async" />
+        </div>
+        <span class="catName">Phones</span>
+      </a>
+
+      <a class="categoryItem" href="shop.html?category=gaming" aria-label="Shop Gaming">
+        <div class="catIcon" aria-hidden="true">
+          <img src="assets/icons/icon gallary/category icons/game.svg" alt="" width="26" height="26" loading="lazy" decoding="async" />
+        </div>
+        <span class="catName">Gaming</span>
+      </a>
+
+      <a class="categoryItem" href="shop.html?category=cameras" aria-label="Shop Cameras">
+        <div class="catIcon" aria-hidden="true">
+          <img src="assets/icons/icon gallary/category icons/camera.svg" alt="" width="26" height="26" loading="lazy" decoding="async" />
+        </div>
+        <span class="catName">Cameras</span>
+      </a>
+
+      <a class="categoryItem" href="shop.html?category=wearables" aria-label="Shop Wearables">
+        <div class="catIcon" aria-hidden="true">
+          <img src="assets/icons/icon gallary/category icons/wearebles.svg" alt="" width="26" height="26" loading="lazy" decoding="async" />
+        </div>
+        <span class="catName">Wearables</span>
+      </a>
+
+      <a class="categoryItem" href="shop.html?category=smart-home" aria-label="Shop Smart Home">
+        <div class="catIcon" aria-hidden="true">
+          <img src="assets/icons/icon gallary/category icons/home.svg" alt="" width="26" height="26" loading="lazy" decoding="async" />
+        </div>
+        <span class="catName">Smart Home</span>
+      </a>
+
+      <a class="categoryItem" href="shop.html?category=power" aria-label="Shop Power">
+        <div class="catIcon" aria-hidden="true">
+          <img src="assets/icons/icon gallary/category icons/power.svg" alt="" width="26" height="26" loading="lazy" decoding="async" />
+        </div>
+        <span class="catName">Power</span>
+      </a>
+
+      <a class="categoryItem" href="shop.html?category=accessories" aria-label="Shop Accessories">
+        <div class="catIcon" aria-hidden="true">
+          <img src="assets/icons/icon gallary/category icons/accesories.svg" alt="" width="26" height="26" loading="lazy" decoding="async" />
+        </div>
+        <span class="catName">Accessories</span>
+      </a>
+
+    </section>
+    <!-- END: HOME: CATEGORY NAVIGATION -->
+
+    <!-- =====================================================
+         HOME: SERVICE POLICIES / BENEFITS STRIP
+         e.g. "Free shipping Nairobi", "Secure payments", etc.
+         ===================================================== -->
     <section class="benefits" id="home-benefits">
       <div class="benefit">
         <div class="benefitIcon" data-icon="fast-delivery" aria-hidden="true"></div>
@@ -170,14 +346,14 @@
       </div>
     </section>
 
-    <!-- HOME: FLASH SALE (AD + MOVING PRODUCTS) -->
+    <!-- =====================================================
+         HOME: FLASH SALE (AD + MOVING PRODUCTS)
+         ===================================================== -->
     <section class="section flashSaleSection" id="flashSaleSection">
       <div class="sectionTop">
         <h2 class="sectionTitle">Deals of the day</h2>
         <div class="flashSaleControls">
           <a class="btn btnGhost" href="flash-sale.html">Open Flash Sale</a>
-          <button class="iconBtn flashSaleBtn" id="flashSalePrev" type="button" aria-label="Previous">&#8249;</button>
-          <button class="iconBtn flashSaleBtn" id="flashSaleNext" type="button" aria-label="Next">&#8250;</button>
         </div>
       </div>
       <div class="flashSaleLayout">
@@ -193,8 +369,9 @@
       </div>
     </section>
 
-    <!-- FEATURED -->
-    <!-- HOME: FEATURED PRODUCTS -->
+    <!-- =====================================================
+         HOME: FEATURED PRODUCTS
+         ===================================================== -->
     <section class="section" id="home-featured-products">
       <div class="sectionTop">
         <h2 class="sectionTitle">Featured products</h2>
@@ -203,8 +380,9 @@
       <div class="grid" id="featuredGrid"></div>
     </section>
 
-    <!-- TOP DEALS -->
-    <!-- HOME: DEALS OF THE WEEK -->
+    <!-- =====================================================
+         HOME: DEALS OF THE WEEK
+         ===================================================== -->
     <section class="section" id="home-deals-of-week">
       <div class="sectionTop">
         <h2 class="sectionTitle">Deals of the week</h2>
@@ -212,8 +390,9 @@
       <div class="scrollRow" id="dealsGrid"></div>
     </section>
 
-    <!-- TRENDING -->
-    <!-- HOME: TRENDING SMARTPHONES -->
+    <!-- =====================================================
+         HOME: TRENDING SMARTPHONES
+         ===================================================== -->
     <section class="section" id="home-trending-smartphones">
       <div class="sectionTop">
         <h2 class="sectionTitle">Top smartphone trends</h2>
@@ -227,8 +406,9 @@
       </div>
     </section>
 
-    <!-- AUDIO -->
-    <!-- HOME: AUDIO BLOCK -->
+    <!-- =====================================================
+         HOME: AUDIO BLOCK
+         ===================================================== -->
     <section class="section splitSection" id="home-audio-block">
       <div class="splitArt"></div>
       <div class="splitContent">
@@ -239,8 +419,9 @@
       </div>
     </section>
 
-    <!-- SMARTWATCH -->
-    <!-- HOME: SMARTWATCH BLOCK -->
+    <!-- =====================================================
+         HOME: SMARTWATCH BLOCK
+         ===================================================== -->
     <section class="section splitSection" id="home-smartwatch-block">
       <div class="splitContent">
         <div class="sectionTop">
@@ -251,8 +432,9 @@
       <div class="splitArt alt"></div>
     </section>
 
-    <!-- REVIEWS -->
-    <!-- HOME: CUSTOMER REVIEWS -->
+    <!-- =====================================================
+         HOME: CUSTOMER REVIEWS
+         ===================================================== -->
     <section class="section reviewsSection" id="home-reviews">
       <div class="sectionTop">
         <h2 class="sectionTitle">What our customers say</h2>
@@ -276,8 +458,9 @@
       </div>
     </section>
 
-    <!-- NEWS -->
-    <!-- HOME: LATEST NEWS -->
+    <!-- =====================================================
+         HOME: LATEST NEWS
+         ===================================================== -->
     <section class="section" id="home-news">
       <div class="sectionTop">
         <h2 class="sectionTitle">From latest news</h2>
@@ -317,6 +500,10 @@
     <span class="waIcon" aria-hidden="true"></span>
   </a>
 
+  <!-- =====================================================
+       NEWSLETTER MODAL
+       Netlify form — name/attributes must stay exact.
+       ===================================================== -->
   <div class="newsletterModal" id="newsletterModal" aria-hidden="true">
     <div class="newsletterPanel" role="dialog" aria-label="Newsletter signup">
       <button class="iconBtn closeModalBtn" id="closeNewsletterBtn" type="button" aria-label="Close">x</button>
@@ -357,7 +544,9 @@
     </div>
   </div>
 
-  <!-- CART DRAWER -->
+  <!-- =====================================================
+       CART DRAWER
+       ===================================================== -->
   <div class="cartDrawer" id="cartDrawer" aria-hidden="true">
     <div class="cartPanel" role="dialog" aria-label="Cart">
       <div class="cartTop">
@@ -366,14 +555,6 @@
           Shopping Cart
         </div>
         <button class="iconBtn" id="cartCloseBtn" type="button" aria-label="Close cart">x</button>
-      </div>
-
-      <div class="cartProgress">
-        <div class="cartProgressBar">
-          <span class="cartProgressFill" id="cartProgressFill"></span>
-          <span class="cartProgressCheck" id="cartProgressCheck" aria-hidden="true"></span>
-        </div>
-        <div class="cartProgressText" id="cartProgressText">Buy KES 0 more to get Free Delivery</div>
       </div>
 
       <div class="cartItems" id="cartItems"></div>
@@ -399,7 +580,9 @@
     </div>
   </div>
 
-  <!-- WISHLIST DRAWER -->
+  <!-- =====================================================
+       WISHLIST DRAWER
+       ===================================================== -->
   <div class="wishlistDrawer" id="wishlistDrawer" aria-hidden="true">
     <div class="wishlistPanel" role="dialog" aria-label="Wishlist">
       <div class="cartTop">

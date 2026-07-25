@@ -1,277 +1,340 @@
-<!doctype html>
+<!DOCTYPE html>
+<!-- ============================================================
+     R-TECH GEAR  |  checkout.html  — v8 FINAL
+     Single source of truth. HTML order = mobile order = desktop
+     order (desktop just lays the grid out differently via CSS,
+     but the underlying flow top-to-bottom is now identical and
+     correct on every screen size: Contact -> Delivery -> Payment).
+     ============================================================ -->
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>R-Tech Gear - Checkout</title>
+  <title>R-Tech Gear — Checkout</title>
+  <meta name="description" content="Secure checkout — pay via M-Pesa, card, or PayPal. Fast Kenya delivery." />
+
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="stylesheet" href="assets/css/header.css" />
+  <link rel="stylesheet" href="assets/css/first-pass.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Google Places — replace YOUR_API_KEY_HERE with a real key -->
 </head>
 
-<body>
+<body class="checkout-page">
+
   <div id="siteHeader"></div>
 
-  <main class="container">
-    <section class="checkoutTop">
+  <main class="container checkoutShell">
+
+    <section class="checkoutHero">
       <div>
-        <h1 class="checkoutTitle">Checkout</h1>
-        <p class="muted">Online payments are live via DPO. WhatsApp remains available for assistance.</p>
+        <div class="checkoutEyebrow">Secure checkout</div>
+        <h1 class="checkoutTitle">Complete your order</h1>
+        <p class="muted checkoutLead">Fastest checkout in Kenya — M-Pesa first, card and PayPal ready.</p>
       </div>
-      <div class="checkoutSteps" aria-label="Checkout steps">
-        <div class="stepPill isActive">Cart</div>
-        <div class="stepPill isActive">Details</div>
-        <div class="stepPill">Payment</div>
-        <div class="stepPill">Complete</div>
-      </div>
+
+      <nav class="checkoutProgress" aria-label="Checkout steps">
+        <div class="checkoutProgressStep isDone">
+          <span class="checkoutProgressDot"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+          <span>Cart</span>
+        </div>
+        <div class="checkoutProgressStep isDone">
+          <span class="checkoutProgressDot"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+          <span>Contact</span>
+        </div>
+        <div class="checkoutProgressStep isActive">
+          <span class="checkoutProgressDot">3</span>
+          <span>Payment</span>
+        </div>
+        <div class="checkoutProgressStep">
+          <span class="checkoutProgressDot">4</span>
+          <span>Done</span>
+        </div>
+      </nav>
     </section>
 
+    <section class="checkoutTrust" aria-label="Trust signals">
+      <div class="trustChip"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><div><strong>Secure checkout</strong><span>256-bit SSL</span></div></div>
+      <div class="trustChip"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i><div><strong>M-Pesa STK</strong><span>Pay from your phone in seconds</span></div></div>
+      <div class="trustChip"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><div><strong>WhatsApp support</strong><span>Help before or after payment</span></div></div>
+      <div class="trustChip"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i><div><strong>Money-back guarantee</strong><span>7-day returns</span></div></div>
+    </section>
+
+    <!-- ============================================================
+         MOBILE ORDER NOTE:
+         On screens <=980px, .checkoutGrid becomes a single column
+         and .checkoutSummary is pulled to the top via CSS order:-1.
+         Everything else follows natural HTML/DOM order below:
+           1. Contact details
+           2. Delivery
+           3. Payment (M-Pesa + alt methods) — LAST, always.
+         There is only ONE payment section in the whole page.
+         No duplicates.
+         ============================================================ -->
     <section class="checkoutGrid">
-      <form class="checkoutForm" id="checkoutForm">
-        <section class="checkoutCard">
+
+      <form class="checkoutForm" id="checkoutForm" novalidate>
+
+        <!-- 1. CONTACT -->
+        <section class="checkoutCard" data-step="contact">
           <div class="cardHead">
             <div>
-              <div class="cardTitle">Shipping information</div>
-              <div class="muted small">Where should we deliver your order?</div>
+              <div class="cardTitle"><i class="fa-solid fa-circle-user" aria-hidden="true"></i> Contact details</div>
+              <div class="muted small">Used for receipts, delivery updates, and payment communication.</div>
             </div>
-            <button class="btn btnGhost btnTiny" type="button">Edit</button>
           </div>
 
-          <div class="formGrid">
+          <div class="formGrid formGridTwo">
             <div class="formGroup">
-              <label for="fullName">Full name</label>
-              <input id="fullName" name="fullName" type="text" required />
+              <label for="fullName"><i class="fa-solid fa-user" aria-hidden="true"></i> Full name</label>
+              <input id="fullName" name="fullName" type="text" placeholder="Your full name" autocomplete="name" required />
+              <span class="fieldError" id="errFullName">Please enter your name.</span>
             </div>
-
             <div class="formGroup">
-              <label for="phone">Phone number</label>
-              <input id="phone" name="phone" type="tel" required />
+              <label for="phone"><i class="fa-solid fa-phone" aria-hidden="true"></i> M-Pesa phone</label>
+              <input id="phone" name="phone" type="tel" placeholder="07XX XXX XXX" autocomplete="tel" inputmode="tel" required />
+              <span class="fieldError" id="errPhone">Enter a valid Safaricom number (07XX or 01XX).</span>
             </div>
           </div>
 
           <div class="formGroup">
-            <label for="email">Email address</label>
-            <input id="email" name="email" type="email" required />
+            <label for="email"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Email address</label>
+            <input id="email" name="email" type="email" placeholder="name@email.com" autocomplete="email" required />
+            <span class="fieldError" id="errEmail">Enter a valid email address.</span>
           </div>
 
-          <div class="formGroup">
-            <label for="location">Delivery location (Nairobi suggestions)</label>
-            <input id="location" name="location" type="text" list="nairobiLocations" required />
-            <datalist id="nairobiLocations">
-              <option value="CBD - Kenyatta Ave"></option>
-              <option value="Westlands - Sarit Center"></option>
-              <option value="Kilimani - Yaya Center"></option>
-              <option value="Lavington - Junction Mall"></option>
-              <option value="Upper Hill - Hospital Rd"></option>
-              <option value="Kileleshwa - Oloitoktok Rd"></option>
-              <option value="Karen - The Hub"></option>
-              <option value="Roysambu - TRM"></option>
-              <option value="Kasarani - Seasons"></option>
-              <option value="Embakasi - Nyayo Estate"></option>
-              <option value="Ruiru - Bypass"></option>
-              <option value="Ruai - Eastern Bypass"></option>
-            </datalist>
-          </div>
-
-          <div class="formGroup">
-            <label for="notes">Order notes (optional)</label>
-            <textarea id="notes" name="notes" rows="3" placeholder="Landmark, delivery time, etc."></textarea>
-          </div>
+          <label class="checkboxRow">
+            <input type="checkbox" id="emailOffers" name="emailOffers" checked />
+            <span>Send me order updates and offers</span>
+          </label>
         </section>
 
-        <section class="checkoutCard">
+        <!-- 2. DELIVERY -->
+        <section class="checkoutCard" data-step="delivery">
           <div class="cardHead">
             <div>
-              <div class="cardTitle">Payment method</div>
-              <div class="muted small">Trusted payment. 100% money back guarantee.</div>
+              <div class="cardTitle"><i class="fa-solid fa-truck" aria-hidden="true"></i> Delivery</div>
+              <div class="muted small">Delivery to your address or convenient collection point.</div>
             </div>
-            <button class="btn btnGhost btnTiny" type="button" id="changePaymentBtn">Change</button>
           </div>
 
-          <div class="paymentChoice" id="paymentChoice">
-            <div class="payBadge">DPO</div>
-            <div class="payMeta">
-              <div class="payTitle">Cards, M-Pesa, Bank Transfer or Mobile Money</div>
-              <div class="muted small">Pay securely on checkout.</div>
-            </div>
-            <div class="payCheck" aria-hidden="true"></div>
+          <div class="deliveryTiles" role="group" aria-label="Delivery method">
+            <label class="deliveryTile">
+              <input type="radio" name="deliveryMode" value="ship" checked />
+              <span><strong>Deliver to address</strong><small>Doorstep delivery</small></span>
+            </label>
+            <label class="deliveryTile">
+              <input type="radio" name="deliveryMode" value="pickup" />
+              <span><strong>Collection Point</strong><small>Collect from a location near you</small></span>
+            </label>
           </div>
 
-          <div class="paymentBlock">
-            <label class="payOption">
-              <input type="radio" name="payment" value="Cash on delivery" />
-              Cash on delivery (active)
-            </label>
-            <label class="payOption">
-              <input type="radio" name="payment" value="M-Pesa" />
-              M-Pesa (pay on checkout)
-            </label>
-            <label class="payOption">
-              <input type="radio" name="payment" value="PayPal" />
-              PayPal (cards)
-            </label>
-            <label class="payOption">
-              <input type="radio" name="payment" value="Pay slow" />
-              Pay slow (installments)
-            </label>
-            <label class="payOption">
-              <input type="radio" name="payment" value="DPO" checked />
-              DPO (cards, M-Pesa, bank)
-            </label>
+          <div class="formGrid formGridTwo">
+            <div class="formGroup">
+              <label for="countryRegion">Country / Region</label>
+              <select id="countryRegion" name="countryRegion">
+                <option value="Kenya" selected>Kenya</option>
+              </select>
+            </div>
+            <div class="formGroup">
+              <label for="countySelect">
+                <i class="fa-solid fa-map-location-dot"></i> County
+              </label>
+              <select id="countySelect" name="county">
+                <option value="Nairobi" selected>Nairobi</option>
+                <option value="Kiambu">Kiambu</option>
+                <option value="Machakos">Machakos</option>
+                <option value="Kajiado">Kajiado</option>
+                <option value="Nakuru">Nakuru</option>
+                <option value="Mombasa">Mombasa</option>
+                <option value="Kisumu">Kisumu</option>
+                <option value="Uasin Gishu">Uasin Gishu</option>
+              </select>
+            </div>
+            <div class="formGroup" id="deliverySpeedGroup">
+              <label for="shippingSpeed">Delivery speed</label>
+              <select id="shippingSpeed" name="shippingSpeed">
+                <option value="normal|300">Standard (2–4 days) — KES 300</option>
+                <option value="priority|550">Priority (next day) — KES 550</option>
+              </select>
+            </div>
           </div>
+
+          <div class="formGroup checkoutShipOnly" id="shipAddressGroup">
+            <label for="location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Delivery address</label>
+            <input id="location" name="location" type="text"
+                   placeholder="Start typing your address — e.g. Kilimani, Nairobi"
+                   autocomplete="off" />
+            <input type="hidden" id="locationLat" name="locationLat" />
+            <input type="hidden" id="locationLng" name="locationLng" />
+            <span class="fieldError" id="errLocation">Please enter a delivery address.</span>
+            <span class="fieldHint" id="locationConfirmed" hidden>
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i> Address confirmed
+            </span>
+          </div>
+
+          <div class="formGroup checkoutShipOnly" id="deliveryInstructionsGroup">
+            <label for="notes">Delivery instructions <span class="muted small">(optional)</span></label>
+            <textarea id="notes" name="notes" rows="3" placeholder="Landmark, gate colour, floor, or helpful note"></textarea>
+          </div>
+
+          <div class="collectionTrustNote">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <div>
+              <strong>Collection Points Available Nationwide</strong>
+              <span>We arrange collection from convenient locations near your area. Delivery to your doorstep is also available at checkout.</span>
+            </div>
+          </div>
+
+          <p class="checkoutHint"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Parcel weight is shown in the order summary for accurate delivery cost.</p>
         </section>
 
-        <section class="checkoutCard">
+        <!-- 3. PAYMENT — ONE section only, always last -->
+        <section class="checkoutCard checkoutPaymentSection" data-step="payment" id="paymentSection">
           <div class="cardHead">
             <div>
-              <div class="cardTitle">Discounts</div>
-              <div class="muted small">Add a voucher or redeem credits</div>
+              <div class="cardTitle"><i class="fa-solid fa-credit-card" aria-hidden="true"></i> Payment</div>
+              <div class="muted small">M-Pesa is the fastest way to pay — no extra fees.</div>
             </div>
           </div>
-          <div class="discountRow">
-            <div class="discountItem">
-              <div class="discountTitle">Voucher</div>
-              <div class="muted small">No voucher applied</div>
+
+          <label class="mpesaExpressBtn" id="mpesaExpressBtn" for="payMpesa">
+            <input type="radio" name="payment" id="payMpesa" value="M-Pesa" checked aria-label="Pay with M-Pesa" />
+            <span class="mpesaBadge">M-Pesa</span>
+            <span class="mpesaCopy">
+              <strong>Pay instantly with M-Pesa</strong>
+              <span>STK push sent straight to your phone</span>
+            </span>
+            <span class="mpesaCheck" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+          </label>
+
+          <button class="paymentMoreToggle" type="button" id="expressMoreToggle" aria-expanded="false">
+            <span>Pay with card or PayPal instead</span>
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+
+          <div class="paymentBlock" id="altPaymentCard" hidden>
+            <label class="payOption">
+              <input type="radio" name="payment" value="DPO" id="payDPO" />
+              <span class="payOptionBadge cardBadge"><i class="fa-solid fa-credit-card" aria-hidden="true"></i></span>
+              <span class="payOptionCopy">
+                <span class="payOptionTitle">Credit or debit card</span>
+                <span class="payOptionNote">Visa, Mastercard, Amex via DPO</span>
+              </span>
+              <span class="payOptionRadio" aria-hidden="true"></span>
+            </label>
+            <label class="payOption">
+              <input type="radio" name="payment" value="PayPal" id="payPayPal" />
+              <span class="payOptionBadge paypalBadge"><i class="fa-brands fa-paypal" aria-hidden="true"></i></span>
+              <span class="payOptionCopy">
+                <span class="payOptionTitle">PayPal</span>
+                <span class="payOptionNote">Cards and PayPal balance</span>
+              </span>
+              <span class="payOptionRadio" aria-hidden="true"></span>
+            </label>
+
+            <div class="cardFieldsGrid" id="cardFieldsGrid" hidden aria-hidden="true">
+              <div class="formGroup">
+                <label for="cardNumber">Card number</label>
+                <input id="cardNumber" name="cardNumber" type="text" inputmode="numeric" placeholder="1234 5678 9012 3456" autocomplete="cc-number" />
+              </div>
+              <div class="formGrid formGridTwo">
+                <div class="formGroup">
+                  <label for="cardExpiry">Expiry date</label>
+                  <input id="cardExpiry" name="cardExpiry" type="text" placeholder="MM / YY" autocomplete="cc-exp" />
+                </div>
+                <div class="formGroup">
+                  <label for="cardCvv">CVV</label>
+                  <input id="cardCvv" name="cardCvv" type="text" inputmode="numeric" placeholder="3 digits" autocomplete="cc-csc" />
+                </div>
+              </div>
+              <div class="formGroup">
+                <label for="cardName">Name on card</label>
+                <input id="cardName" name="cardName" type="text" placeholder="As it appears on the card" autocomplete="cc-name" />
+              </div>
             </div>
-            <button class="btn btnGhost btnTiny" type="button">Apply</button>
+          </div>
+
+          <div class="payActionRow">
+            <button class="btn btnPrimary" id="payNowBtn" type="button"><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i> Pay with M-Pesa</button>
+            <button class="btn btnGhost" id="whatsAppSupportBtn" type="button"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Need help? Chat on WhatsApp</button>
           </div>
         </section>
 
-        <div class="payActionRow">
-          <button class="btn btnPrimary" id="payNowBtn" type="button">Pay now</button>
-          <button class="btn btnGhost" type="submit">Place order (WhatsApp)</button>
-        </div>
       </form>
 
-      <aside class="checkoutSummary">
-        <div class="summaryTitle">Order summary</div>
-        <div id="checkoutItems"></div>
-        <div class="summaryLine">
-          <span>Shipping fee</span>
-          <span>Calculated</span>
-        </div>
-        <div class="summaryTotal">
-          <span>Total</span>
-          <strong id="checkoutTotal">KSH 0</strong>
-        </div>
-        <div class="summaryNote">We will confirm availability and delivery time.</div>
-
-        <div class="deliveryCard">
-          <div class="deliveryTitle">Delivery details</div>
-          <div class="muted small">Ships from Nairobi, arrives in 1-3 workdays.</div>
-        </div>
-
-        <div class="guaranteeCard">
-          <div class="guaranteeBadge">7 days</div>
+      <!-- ORDER SUMMARY -->
+      <aside class="checkoutSummary" aria-label="Order summary">
+        <div class="summaryTop">
           <div>
-            <div class="guaranteeTitle">Money back guarantee</div>
-            <div class="muted small">Return if the item is not as described.</div>
+            <div class="summaryKicker">Your order</div>
+            <div class="summaryTitle">Order summary</div>
           </div>
+          <div class="summaryBadge" aria-live="polite">Live</div>
         </div>
+
+        <div class="summaryPreview" id="checkoutItems" aria-live="polite"></div>
+
+        <div class="summaryBreakdown">
+          <div class="summaryLine"><span>Subtotal</span><strong id="checkoutSubtotal">KES 0</strong></div>
+          <div class="summaryLine"><span>Shipping</span><strong id="checkoutShipping">KES 0</strong></div>
+          <div class="summaryTotal"><span>Total</span><strong id="checkoutTotal">KES 0</strong></div>
+        </div>
+
+        <div class="summaryMeta">
+          <div id="checkoutWeight" class="muted small">Estimated weight: 0.6 kg</div>
+          <div id="checkoutShippingLabel" class="muted small">Standard delivery — KES 300</div>
+          <div class="summaryTrustLine"><span>Est. delivery</span><strong id="checkoutDeliveryEstimate">Wed 17 Jun – Fri 19 Jun</strong></div>
+          <div class="summaryTrustLine"><span>Payment status</span><strong id="checkoutPaymentStatus">Awaiting payment</strong></div>
+        </div>
+
+        <section class="summaryRecommendations">
+          <div class="summarySectionLabel">You might also need</div>
+          <div class="recommendGrid" id="recommendGrid" aria-live="polite"></div>
+        </section>
+
+        <section class="guaranteeCard">
+          <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+          <div>
+            <div class="guaranteeTitle">Money-back guarantee</div>
+            <div class="muted small">Return within 7 days if the item is not as described.</div>
+          </div>
+        </section>
       </aside>
     </section>
   </main>
 
   <div id="siteFooter"></div>
 
-  <a class="whatsAppBubble" id="floatWhatsAppLink" href="#" target="_blank" rel="noopener" aria-label="WhatsApp support">
-    <span class="waIcon" aria-hidden="true"></span>
-  </a>
-
   <div class="cartDrawer" id="cartDrawer" aria-hidden="true">
-    <div class="cartPanel" role="dialog" aria-label="Cart">
+    <div class="cartPanel" role="dialog" aria-label="Shopping cart" aria-modal="true">
       <div class="cartTop">
-        <div class="cartTitle">
-          <span class="cartIcon" aria-hidden="true"></span>
-          Shopping Cart
-        </div>
-        <button class="iconBtn" id="cartCloseBtn" type="button" aria-label="Close cart">x</button>
+        <div class="cartTitle"><span class="cartIcon" aria-hidden="true"></span>Shopping cart</div>
+        <button class="iconBtn" id="cartCloseBtn" type="button" aria-label="Close cart"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
       </div>
-
-      <div class="cartProgress">
-        <div class="cartProgressBar">
-          <span class="cartProgressFill" id="cartProgressFill"></span>
-          <span class="cartProgressCheck" id="cartProgressCheck" aria-hidden="true"></span>
-        </div>
-        <div class="cartProgressText" id="cartProgressText">Buy KES 0 more to get Free Delivery</div>
-      </div>
-
       <div class="cartItems" id="cartItems"></div>
-
-      <div class="cartEmpty" id="cartEmpty">
-        <div class="cartEmptyArt"></div>
-        <div class="cartEmptyTitle">No products in the cart.</div>
-        <div class="muted small">Your cart is currently empty. Let us help you find the perfect item!</div>
-        <a class="btn btnGhost" href="shop.html">Continue Shopping</a>
+      <div class="cartEmpty" id="cartEmpty" hidden>
+        <div class="cartEmptyArt" aria-hidden="true"></div>
+        <div class="cartEmptyTitle">Your cart is empty</div>
+        <div class="muted small">Find something you love in our store.</div>
+        <a class="btn btnGhost" href="shop.html">Browse products</a>
       </div>
-
       <div class="cartBottom">
-        <div class="cartTotalRow">
-          <span class="muted">Subtotal</span>
-          <strong id="cartTotal">KES 0</strong>
-        </div>
-
-        <div class="cartActionsRow">
-          <a class="btn btnGhost w100" href="cart.html">View Cart</a>
-          <a class="btn btnPrimary w100" href="checkout.html">Checkout</a>
-        </div>
+        <div class="cartTotalRow"><span class="muted">Subtotal</span><strong id="cartTotal">KES 0</strong></div>
+        <div class="cartActionsRow"><a class="btn btnGhost w100" href="cart.html">View cart</a><a class="btn btnPrimary w100" href="checkout.html">Checkout</a></div>
       </div>
     </div>
   </div>
 
-  <div class="wishlistDrawer" id="wishlistDrawer" aria-hidden="true">
-    <div class="wishlistPanel" role="dialog" aria-label="Wishlist">
-      <div class="cartTop">
-        <div class="cartTitle">
-          <span class="cartIcon" aria-hidden="true"></span>
-          Wishlist
-        </div>
-        <button class="iconBtn" id="wishlistCloseBtn" type="button" aria-label="Close wishlist">x</button>
-      </div>
-      <div class="cartItems" id="wishlistItems"></div>
-    </div>
-  </div>
-
-  <div class="modal" id="paymentModal" aria-hidden="true">
-    <div class="modalPanel" role="dialog" aria-label="Select payment method">
-      <div class="modalHead">
-        <div>
-          <div class="modalTitle">Payment Method</div>
-          <div class="muted small">Trusted payment. 100% money back guarantee.</div>
-        </div>
-        <button class="iconBtn" type="button" id="closePaymentModal">x</button>
-      </div>
-
-      <div class="modalBody">
-        <label class="modalOption">
-          <input type="radio" name="modalPayment" value="M-Pesa" />
-          <span class="modalLogo">M-Pesa</span>
-          <span>Via R-Tech Gear</span>
-        </label>
-        <label class="modalOption">
-          <input type="radio" name="modalPayment" value="PayPal" />
-          <span class="modalLogo">PayPal</span>
-          <span>Cards, bank or balance</span>
-        </label>
-        <label class="modalOption">
-          <input type="radio" name="modalPayment" value="DPO" checked />
-          <span class="modalLogo">DPO</span>
-          <span>Cards, M-Pesa, bank</span>
-        </label>
-      </div>
-
-      <button class="btn btnPrimary w100" type="button" id="confirmPaymentBtn">Proceed</button>
-    </div>
-  </div>
+  <a class="whatsAppBubble" id="floatWhatsAppLink" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp"><span class="waIcon" aria-hidden="true"></span></a>
 
   <script src="assets/js/include.js"></script>
   <script src="assets/js/app.js"></script>
   <script src="assets/js/header.js"></script>
   <script src="assets/js/cart.js"></script>
   <script src="assets/js/wishlist.js"></script>
-  <link rel="stylesheet" href="assets/css/first-pass.css" />
   <script src="assets/js/first-pass.js"></script>
 </body>
 </html>
-
-
-

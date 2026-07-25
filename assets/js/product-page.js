@@ -556,12 +556,8 @@
 
         if (buyNow) {
           buyNow.onclick = function () {
-            if (typeof window.addToCart !== "function") return;
-            window.addToCart(addItem);
-            for (let i = 1; i < qty; i += 1) {
-              if (typeof window.addOne === "function") window.addOne(addItem.id);
-            }
-            window.location.href = "checkout.html";
+            if (typeof window.buyNow !== "function") return;
+            window.buyNow(addItem, qty);
           };
         }
 

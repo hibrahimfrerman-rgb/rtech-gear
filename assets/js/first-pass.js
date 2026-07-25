@@ -1,610 +1,557 @@
-﻿/* first-pass.js: focused behavior patch for hero search/trending */
 (function () {
-  const JSON_PATH = "assets/data/products.json";
-  const FREE_SHIPPING_THRESHOLD = 3000;
-  const state = {
-    products: [],
-    suggestEl: null
-  };
+  "use strict";
 
-  function norm(v) {
-    return String(v || "").toLowerCase().replace(/\s+/g, " ").trim();
+  function el(id) { return document.getElementById(id); }
+  function show(e) { if (e) { e.hidden = false; e.setAttribute("aria-hidden", "false"); } }
+  function hide(e) { if (e) { e.hidden = true; e.setAttribute("aria-hidden", "true"); } }
+  function getRadio(name) {
+    const c = document.querySelector(`input[name="${name}"]:checked`);
+    return c ? c.value : null;
+  }
+  function isSafaricomPhone(v) {
+    const n = String(v || "").replace(/\s+/g, "").replace(/^\+254/, "0");
+    return /^(07|01)\d{8}$/.test(n);
+  }
+  function normalisePhone(v) {
+    const c = String(v || "").replace(/\s+/g, "").replace(/^\+/, "");
+    return c.startsWith("0") ? "254" + c.slice(1) : c;
   }
 
-  function debounce(fn, delay) {
-    let t;
-    return function () {
-      const args = arguments;
-      clearTimeout(t);
-      t = setTimeout(function () { fn.apply(null, args); }, delay);
+  /* ============================================================
+     DELIVERY MODE TOGGLE
+     ============================================================ */
+  function initDeliveryToggle() {
+    const radios        = document.querySelectorAll('input[name="deliveryMode"]');
+    const shipGroup     = el("shipAddressGroup");
+    const speedGroup    = el("deliverySpeedGroup");
+    const instrGroup    = el("deliveryInstructionsGroup");
+    const shippingSpeed = el("shippingSpeed");
+
+    function updateMode(value) {
+      if (value === "pickup") {
+        hide(shipGroup);
+        hide(speedGroup);
+        hide(instrGroup);
+        if (shippingSpeed) shippingSpeed.disabled = true;
+      } else {
+        show(shipGroup);
+        show(speedGroup);
+        show(instrGroup);
+        if (shippingSpeed) shippingSpeed.disabled = false;
+      }
+    }
+
+    radios.forEach(r => r.addEventListener("change", function () { updateMode(this.value); }));
+    updateMode(getRadio("deliveryMode") || "ship");
+  }
+
+  /* ============================================================
+     ADDRESS AUTOCOMPLETE — OpenStreetMap / Nominatim
+     (free, no API key, Kenya-restricted)
+     ============================================================ */
+  function initPlacesAutocomplete() {
+    const input = el("location");
+    if (!input) return;
+
+    let dropdown = null;
+    let debounceTimer = null;
+    let activeIndex = -1;
+    let currentResults = [];
+
+    function closeDropdown() {
+      if (dropdown) { dropdown.remove(); dropdown = null; }
+      activeIndex = -1;
+      currentResults = [];
+    }
+
+    function openDropdown(results) {
+      closeDropdown();
+      if (!results.length) return;
+
+      dropdown = document.createElement("div");
+      dropdown.className = "pac-container";
+      dropdown.setAttribute("role", "listbox");
+
+      const rect = input.getBoundingClientRect();
+      dropdown.style.left  = rect.left + "px";
+      dropdown.style.top   = (rect.bottom + 4) + "px";
+      dropdown.style.width = rect.width + "px";
+
+      results.forEach((r, i) => {
+        const item = document.createElement("div");
+        item.className = "pac-item";
+        item.setAttribute("role", "option");
+        item.textContent = r.display_name;
+        item.addEventListener("mousedown", function (e) {
+          e.preventDefault();
+          selectResult(r);
+        });
+        dropdown.appendChild(item);
+      });
+
+      document.body.appendChild(dropdown);
+      currentResults = results;
+    }
+
+    function selectResult(r) {
+      input.value = r.display_name;
+      const latField = el("locationLat");
+      const lngField = el("locationLng");
+      if (latField) latField.value = r.lat;
+      if (lngField) lngField.value = r.lon;
+
+      show(el("locationConfirmed"));
+      clearFieldError(input);
+      closeDropdown();
+    }
+
+    async function fetchSuggestions(query) {
+      if (!query || query.trim().length < 3) { closeDropdown(); return; }
+      try {
+        const url = "https://nominatim.openstreetmap.org/search?format=json&addressdetails=0&countrycodes=ke&limit=6&q=" + encodeURIComponent(query);
+        const res = await fetch(url, { headers: { "Accept": "application/json" } });
+        if (!res.ok) throw new Error("Nominatim request failed");
+        const data = await res.json();
+        openDropdown(Array.isArray(data) ? data : []);
+      } catch (err) {
+        closeDropdown();
+      }
+    }
+
+    input.addEventListener("input", function () {
+      hide(el("locationConfirmed"));
+      clearTimeout(debounceTimer);
+      const query = input.value;
+      debounceTimer = setTimeout(() => fetchSuggestions(query), 350);
+    });
+
+    input.addEventListener("keydown", function (e) {
+      if (!dropdown || !currentResults.length) return;
+      const items = dropdown.querySelectorAll(".pac-item");
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        activeIndex = Math.min(activeIndex + 1, items.length - 1);
+        items.forEach((it, i) => it.classList.toggle("pac-item-selected", i === activeIndex));
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        activeIndex = Math.max(activeIndex - 1, 0);
+        items.forEach((it, i) => it.classList.toggle("pac-item-selected", i === activeIndex));
+      } else if (e.key === "Enter") {
+        if (activeIndex >= 0 && currentResults[activeIndex]) {
+          e.preventDefault();
+          selectResult(currentResults[activeIndex]);
+        }
+      } else if (e.key === "Escape") {
+        closeDropdown();
+      }
+    });
+
+    input.addEventListener("blur", function () {
+      setTimeout(closeDropdown, 150);
+    });
+
+    window.addEventListener("resize", closeDropdown);
+    window.addEventListener("scroll", closeDropdown, true);
+  }
+
+  /* ============================================================
+     PAYMENT TOGGLE — "Pay with card or PayPal instead"
+     ============================================================ */
+  function initExpressToggle() {
+    const toggle = el("expressMoreToggle");
+    const altCard = el("altPaymentCard");
+    if (!toggle || !altCard) return;
+
+    toggle.addEventListener("click", function () {
+      const expanded = !altCard.hidden;
+      if (expanded) {
+        hide(altCard);
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.querySelector("span").textContent = "Pay with card or PayPal instead";
+        const mpesa = document.querySelector('input[name="payment"][value="M-Pesa"]');
+        if (mpesa) { mpesa.checked = true; syncPaymentUI("M-Pesa"); }
+      } else {
+        show(altCard);
+        toggle.setAttribute("aria-expanded", "true");
+        toggle.querySelector("span").textContent = "Hide card and PayPal options";
+      }
+    });
+  }
+
+  /* ============================================================
+     PAYMENT RADIOS
+     ============================================================ */
+  function initPaymentRadios() {
+    document.querySelectorAll('input[name="payment"]').forEach(r => {
+      r.addEventListener("change", function () { syncPaymentUI(this.value); });
+    });
+    syncPaymentUI(getRadio("payment") || "M-Pesa");
+  }
+
+  function syncPaymentUI(method) {
+    const cardFields = el("cardFieldsGrid");
+    const payNowBtn = el("payNowBtn");
+
+    if (cardFields) (method === "DPO" ? show : hide)(cardFields);
+
+    if (payNowBtn) {
+      if (method === "M-Pesa") {
+        payNowBtn.innerHTML = '<i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i> Pay with M-Pesa';
+        payNowBtn.style.background = "#16a34a";
+      } else if (method === "DPO") {
+        payNowBtn.innerHTML = '<i class="fa-solid fa-credit-card" aria-hidden="true"></i> Pay with card';
+        payNowBtn.style.background = "#111827";
+      } else if (method === "PayPal") {
+        payNowBtn.innerHTML = '<i class="fa-brands fa-paypal" aria-hidden="true"></i> Continue to PayPal';
+        payNowBtn.style.background = "#0b69ff";
+      }
+    }
+    if (method !== "M-Pesa") hideStkPendingBanner();
+  }
+
+  /* ============================================================
+     VALIDATION
+     ============================================================
+     KEY FIX: every field gets a LIVE listener from the very
+     start (not just after first submit). Before the first Pay
+     click, the listener only ever REMOVES error state (never
+     adds it) — so nothing can show prematurely. After the
+     first Pay click (hasAttemptedSubmit = true), the listener
+     also re-validates and ADDS error state back if the field
+     becomes invalid again. Net effect: once a field is correct,
+     its red message disappears immediately and stays gone
+     unless the user makes it invalid again.
+     ============================================================ */
+  let hasAttemptedSubmit = false;
+
+  function clearFieldError(inputEl) {
+    const group = inputEl.closest(".formGroup");
+    if (group) group.classList.remove("hasError");
+  }
+
+  function setFieldValidity(groupEl, isValid) {
+    if (!groupEl) return;
+    groupEl.classList.toggle("hasError", !isValid);
+  }
+
+  function fieldValidators() {
+    return {
+      fullName: () => (el("fullName")?.value || "").trim().length >= 2,
+      phone: () => isSafaricomPhone(el("phone")?.value || ""),
+      email: () => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el("email")?.value || ""),
+      location: () => {
+        if (getRadio("deliveryMode") !== "ship") return true;
+        return (el("location")?.value || "").trim().length >= 3;
+      },
     };
   }
 
-  function cards() {
-    return Array.from(document.querySelectorAll(".productCard"));
+  function validateField(id) {
+    const input = el(id);
+    if (!input) return true;
+    const group = input.closest(".formGroup");
+    const validators = fieldValidators();
+    const isValid = validators[id] ? validators[id]() : true;
+    setFieldValidity(group, isValid);
+    return isValid;
   }
 
-  function cardName(card) {
-    const el = card.querySelector(".productName");
-    return el ? el.textContent.trim() : "";
+  function validateForm() {
+    const ids = ["fullName", "phone", "email", "location"];
+    let allValid = true;
+    ids.forEach(id => { if (!validateField(id)) allValid = false; });
+    return allValid;
   }
 
-  function cardText(card) {
-    const name = card.querySelector(".productName");
-    const desc = card.querySelector(".productDesc");
-    return norm((name ? name.textContent : "") + " " + (desc ? desc.textContent : ""));
-  }
+  function initLiveValidation() {
+    const ids = ["fullName", "phone", "email", "location"];
+    ids.forEach(id => {
+      const input = el(id);
+      if (!input) return;
 
-  function getSearchInput() {
-    return document.querySelector(".heroSearch input[type='search']") || document.querySelector("input[type='search']");
-  }
-
-  function filterOnPage(q) {
-    const key = norm(q);
-    const list = cards();
-    if (!list.length) return;
-
-    list.forEach(function (card) {
-      const show = !key || cardText(card).indexOf(key) !== -1;
-      card.style.display = show ? "" : "none";
-    });
-  }
-
-  function findCardByName(name) {
-    const key = norm(name);
-    return cards().find(function (card) {
-      return norm(cardName(card)) === key;
-    }) || null;
-  }
-
-  function focusCard(card) {
-    if (!card) return;
-    card.scrollIntoView({ behavior: "smooth", block: "center" });
-    card.classList.add("fp-card-hit");
-    setTimeout(function () { card.classList.remove("fp-card-hit"); }, 900);
-  }
-
-  function topMatches(q, limit) {
-    const key = norm(q);
-    if (!key) return [];
-
-    const onPage = cards().map(function (card) {
-      return {
-        name: cardName(card),
-        source: "On this page",
-        hit: cardText(card).indexOf(key) !== -1
-      };
-    }).filter(function (x) { return x.hit; });
-
-    if (onPage.length) return onPage.slice(0, limit);
-
-    return state.products.filter(function (p) {
-      const text = norm([p.name, p.description, (p.tags || []).join(" ")].join(" "));
-      return text.indexOf(key) !== -1;
-    }).slice(0, limit).map(function (p) {
-      return { name: p.name, source: "Catalog" };
-    });
-  }
-
-  function ensureSuggestBox(input) {
-    if (state.suggestEl) return state.suggestEl;
-    const box = document.createElement("div");
-    box.className = "fp-suggest";
-    box.hidden = true;
-    input.parentElement.appendChild(box);
-    state.suggestEl = box;
-    return box;
-  }
-
-  function renderSuggest(input, items) {
-    const box = ensureSuggestBox(input);
-    if (!items.length) {
-      box.hidden = true;
-      box.innerHTML = "";
-      return;
-    }
-
-    box.innerHTML = items.map(function (item, i) {
-      return ""
-        + "<button class='fp-suggest-btn' type='button' data-fp-idx='" + i + "'>"
-        + item.name
-        + "<span class='fp-suggest-meta'>" + item.source + "</span>"
-        + "</button>";
-    }).join("");
-    box.hidden = false;
-
-    box.querySelectorAll(".fp-suggest-btn").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        const idx = Number(btn.getAttribute("data-fp-idx") || 0);
-        const picked = items[idx];
-        if (!picked) return;
-
-        input.value = picked.name;
-        filterOnPage(picked.name);
-        box.hidden = true;
-
-        const card = findCardByName(picked.name);
-        if (card) {
-          focusCard(card);
+      const recheck = function () {
+        // Before first submit: only ever clear errors, never add them.
+        // After first submit: fully re-validate (can add or clear).
+        if (hasAttemptedSubmit) {
+          validateField(id);
         } else {
-          window.location.href = "shop.html?q=" + encodeURIComponent(picked.name);
+          const validators = fieldValidators();
+          const isValid = validators[id] ? validators[id]() : true;
+          if (isValid) clearFieldError(input);
+        }
+      };
+
+      input.addEventListener("input", recheck);
+      input.addEventListener("blur", recheck);
+      input.addEventListener("change", recheck);
+    });
+
+    // Re-check location validity whenever delivery mode changes
+    document.querySelectorAll('input[name="deliveryMode"]').forEach(r => {
+      r.addEventListener("change", function () {
+        if (hasAttemptedSubmit) validateField("location");
+        else {
+          const loc = el("location");
+          if (loc && fieldValidators().location()) clearFieldError(loc);
         }
       });
     });
   }
 
-  function bindSearch() {
-    const input = getSearchInput();
-    if (!input || input.dataset.fpBound) return;
-    input.dataset.fpBound = "1";
+  /* ============================================================
+     PAYMENT HANDLERS
+     ============================================================ */
+  async function handlePayment(method) {
+    const name = (el("fullName") || {}).value?.trim() || "";
+    const phone = normalisePhone((el("phone") || {}).value || "");
+    const email = (el("email") || {}).value?.trim() || "";
+    const shipping = typeof getCheckoutShippingChoice === "function" ? getCheckoutShippingChoice() : { shippingFee: 0 };
+    const cart = typeof getCart === "function" ? getCart() : [];
+    const subtotal = cart.reduce((s, i) => s + (Number(i.price) || 0) * (Number(i.qty) || 1), 0);
+    const total = subtotal + (Number(shipping.shippingFee) || 0);
 
-    const doSearch = debounce(function () {
-      const q = input.value;
-      filterOnPage(q);
-      renderSuggest(input, topMatches(q, 5));
-    }, 140);
+    if (!cart.length) { alert("Your cart is empty."); return; }
 
-    input.addEventListener("input", doSearch);
-    input.addEventListener("focus", function () {
-      renderSuggest(input, topMatches(input.value, 5));
-    });
-
-    const searchBtn = document.querySelector(".heroSearchBtn");
-    if (searchBtn && !searchBtn.dataset.fpBound) {
-      searchBtn.dataset.fpBound = "1";
-      searchBtn.addEventListener("click", function () {
-        const q = input.value;
-        filterOnPage(q);
-        const first = topMatches(q, 1)[0];
-        if (!first) return;
-        const card = findCardByName(first.name);
-        if (card) focusCard(card);
-      });
-    }
-
-    document.addEventListener("click", function (e) {
-      if (!state.suggestEl || !input.parentElement) return;
-      if (!input.parentElement.contains(e.target)) {
-        state.suggestEl.hidden = true;
+    if (method === "M-Pesa") {
+      try {
+        const r = await fetch("/.netlify/functions/mpesa-stk", {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ phone, name, email, amount: total })
+        });
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.message || "M-Pesa request failed");
+        showStkPendingBanner(phone.replace(/^254/, "0"));
+        setPaymentStatus("M-Pesa push sent — check your phone");
+      } catch (err) {
+        alert(err.message || "M-Pesa request failed. Please try again.");
       }
-    });
-
-    const paramQ = new URLSearchParams(window.location.search).get("q");
-    if (paramQ) {
-      input.value = paramQ;
-      filterOnPage(paramQ);
-      renderSuggest(input, topMatches(paramQ, 5));
+      return;
     }
+
+    if (method === "DPO") {
+      try {
+        const r = await fetch("/.netlify/functions/dpo-create-token", {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, amount: total })
+        });
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.message || "DPO request failed");
+        if (j.paymentUrl) { window.location.href = j.paymentUrl; return; }
+        throw new Error("No payment URL returned from DPO.");
+      } catch (err) {
+        alert(err.message || "Card payment failed. Please try again.");
+      }
+      return;
+    }
+
+    if (method === "PayPal") {
+      try {
+        const r = await fetch("/.netlify/functions/paypal-create-order", {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ amount: total, currency: "USD" })
+        });
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.message || "PayPal request failed");
+        const approvalUrl = (j.links || []).find(l => l.rel === "approve")?.href;
+        if (approvalUrl) { window.location.href = approvalUrl; return; }
+        throw new Error("PayPal approval URL not found.");
+      } catch (err) {
+        alert(err.message || "PayPal request failed. Please try again.");
+      }
+      return;
+    }
+
+    alert("Select M-Pesa, Card, or PayPal to continue.");
   }
 
-  function makeTrendDropdown(term) {
-    const wrap = document.createElement("span");
-    wrap.className = "fp-trend";
+  function initPayBtn() {
+    const payNowBtn = el("payNowBtn");
+    const form = el("checkoutForm");
+    if (!payNowBtn) return;
 
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "fp-trend-btn";
-    btn.textContent = term;
+    payNowBtn.addEventListener("click", async function () {
+      hasAttemptedSubmit = true;
+      if (form) form.classList.add("show-errors");
 
-    const menu = document.createElement("div");
-    menu.className = "fp-trend-menu";
-
-    function fillMenu() {
-      const list = topMatches(term, 5);
-      menu.innerHTML = "";
-
-      if (!list.length) {
-        const fallback = document.createElement("button");
-        fallback.type = "button";
-        fallback.className = "fp-trend-item";
-        fallback.textContent = "Browse " + term + " products";
-        fallback.addEventListener("click", function () {
-          window.location.href = "shop.html?q=" + encodeURIComponent(term);
-        });
-        menu.appendChild(fallback);
+      if (!validateForm()) {
+        const firstError = document.querySelector(".hasError");
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+          firstError.querySelector("input, select, textarea")?.focus();
+        }
         return;
       }
 
-      list.forEach(function (item) {
-        const option = document.createElement("button");
-        option.type = "button";
-        option.className = "fp-trend-item";
-        option.textContent = item.name;
-        option.addEventListener("click", function () {
-          wrap.classList.remove("is-open");
-          const input = getSearchInput();
-          if (input) {
-            input.value = item.name;
-            input.dispatchEvent(new Event("input", { bubbles: true }));
-          }
-
-          const card = findCardByName(item.name);
-          if (card) focusCard(card);
-          else window.location.href = "shop.html?q=" + encodeURIComponent(item.name);
-        });
-        menu.appendChild(option);
-      });
-    }
-
-    btn.addEventListener("click", function (e) {
-      e.stopPropagation();
-      document.querySelectorAll(".fp-trend.is-open").forEach(function (el) {
-        if (el !== wrap) el.classList.remove("is-open");
-      });
-      fillMenu();
-      wrap.classList.toggle("is-open");
-    });
-
-    wrap.appendChild(btn);
-    wrap.appendChild(menu);
-    return wrap;
-  }
-
-  function bindTrendingDropdowns() {
-    const row = document.querySelector(".heroTrending");
-    if (!row || row.dataset.fpBound) return;
-    row.dataset.fpBound = "1";
-
-    const items = Array.from(row.querySelectorAll("span"));
-    items.forEach(function (sp, idx) {
-      if (idx === 0 || sp.classList.contains("heroTrendLabel")) return;
-      const text = sp.textContent.trim();
-      const dd = makeTrendDropdown(text);
-      sp.replaceWith(dd);
-    });
-
-    document.addEventListener("click", function () {
-      document.querySelectorAll(".fp-trend.is-open").forEach(function (el) {
-        el.classList.remove("is-open");
-      });
+      const method = getRadio("payment") || "M-Pesa";
+      this.disabled = true;
+      this.innerHTML = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Processing…';
+      await handlePayment(method);
+      this.disabled = false;
+      syncPaymentUI(method);
     });
   }
 
-  function bindShopNow() {
-    const btn = document.querySelector(".heroPill");
-    if (!btn || btn.dataset.fpBound) return;
-    btn.dataset.fpBound = "1";
-
+  /* ============================================================
+     WHATSAPP
+     ============================================================ */
+  function initWhatsAppSupport() {
+    const btn = el("whatsAppSupportBtn");
+    if (!btn) return;
     btn.addEventListener("click", function () {
-      const featured = document.getElementById("featuredGrid");
-      if (featured) {
-        featured.scrollIntoView({ behavior: "smooth", block: "start" });
+      const url = typeof makeWhatsAppLink === "function"
+        ? makeWhatsAppLink("Hi R-Tech Gear, I need help with checkout.")
+        : "https://wa.me/254700000000";
+      window.open(url, "_blank");
+    });
+  }
+
+  /* ============================================================
+     LIVE BADGE
+     ============================================================ */
+  function pulseLiveBadge() {
+    const badge = document.querySelector(".summaryBadge");
+    if (!badge) return;
+    badge.classList.add("summaryBadge--updating");
+    badge.textContent = "Updating";
+    setTimeout(() => {
+      badge.classList.remove("summaryBadge--updating");
+      badge.textContent = "Live";
+    }, 700);
+  }
+
+  function initLiveBadgeWatcher() {
+    const totalEl = el("checkoutTotal");
+    if (!totalEl) return;
+    new MutationObserver(pulseLiveBadge).observe(totalEl, { childList: true, characterData: true, subtree: true });
+  }
+
+  function setPaymentStatus(text) {
+    const s = el("checkoutPaymentStatus");
+    if (s) s.textContent = text;
+  }
+
+  /* ============================================================
+     M-PESA STK BANNER
+     ============================================================ */
+  function showStkPendingBanner(phoneDisplay) {
+    let banner = el("mpesaStkBanner");
+    if (!banner) {
+      banner = document.createElement("div");
+      banner.id = "mpesaStkBanner";
+      banner.className = "mpesaConfirmBanner";
+      el("paymentSection")?.querySelector(".payActionRow")?.before(banner);
+    }
+    banner.innerHTML =
+      '<i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i>' +
+      '<div><strong>Check your phone</strong>' +
+      '<span>We sent an M-Pesa request to ' + phoneDisplay + '. Enter your M-Pesa PIN to complete payment. This page updates automatically once confirmed.</span></div>';
+    show(banner);
+    banner.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  function hideStkPendingBanner() {
+    hide(el("mpesaStkBanner"));
+  }
+
+  /* ============================================================
+     SPRINT 3.0: SHOP BY CATEGORY DROPDOWN (DESKTOP ONLY)
+     ------------------------------------------------------------
+     WHAT THIS DOES:
+     - On desktop (wider than 900px), clicking the "Shop by
+       Category" button opens a dropdown panel instead of
+       navigating straight to shop.html.
+     - Clicking the button again, clicking outside the panel,
+       or pressing ESC all close the panel.
+     - On mobile/tablet (900px and below) this code does nothing
+       extra: the button keeps working exactly as a normal link
+       to shop.html, unchanged from before this sprint.
+     ============================================================ */
+  function initShopByCategoryDropdown() {
+    const dropdownWrap  = el("categoryDropdownWrap");
+    const triggerButton = el("shopByCategoryBtn");
+    const dropdownPanel = el("categoryDropdownPanel");
+
+    // If this page does not have the dropdown markup (e.g. checkout,
+    // cart, track), do nothing. This keeps the function safe to call
+    // on every page.
+    if (!dropdownWrap || !triggerButton || !dropdownPanel) return;
+
+    const DESKTOP_MIN_WIDTH_PX = 901;
+
+    function isDesktopViewport() {
+      return window.innerWidth >= DESKTOP_MIN_WIDTH_PX;
+    }
+
+    function isDropdownPanelOpen() {
+      return dropdownPanel.classList.contains("categoryDropdownPanel--open");
+    }
+
+    function openDropdownPanel() {
+      dropdownPanel.classList.add("categoryDropdownPanel--open");
+      dropdownPanel.setAttribute("aria-hidden", "false");
+      triggerButton.setAttribute("aria-expanded", "true");
+    }
+
+    function closeDropdownPanel() {
+      dropdownPanel.classList.remove("categoryDropdownPanel--open");
+      dropdownPanel.setAttribute("aria-hidden", "true");
+      triggerButton.setAttribute("aria-expanded", "false");
+    }
+
+    // Clicking the button: on desktop, open/close the panel instead
+    // of following the link straight to shop.html. On mobile, do
+    // nothing here — the browser follows the link exactly as before.
+    triggerButton.addEventListener("click", function (clickEvent) {
+      if (!isDesktopViewport()) return;
+      clickEvent.preventDefault();
+      if (isDropdownPanelOpen()) {
+        closeDropdownPanel();
       } else {
-        window.location.href = "shop.html";
+        openDropdownPanel();
       }
     });
-  }
 
-  function bindMobileMenu() {
-    const header = document.getElementById("siteHeaderRoot");
-    const inner = document.querySelector(".header-top-inner");
-    const nav = document.querySelector(".nav-links");
-    if (!header || !inner || !nav) return;
-    if (header.dataset.fpMobileNavBound) return;
-    header.dataset.fpMobileNavBound = "1";
-
-    const leftToggle = document.createElement("button");
-    leftToggle.type = "button";
-    leftToggle.className = "fp-menu-toggle fp-menu-toggle-left";
-    leftToggle.setAttribute("aria-label", "Open navigation");
-    leftToggle.setAttribute("aria-expanded", "false");
-    leftToggle.innerHTML = "<span class='fp-menu-bars'><span></span><span></span><span></span></span>";
-
-    inner.insertBefore(leftToggle, inner.firstChild);
-
-    const backdrop = document.createElement("button");
-    backdrop.type = "button";
-    backdrop.className = "fp-mobile-backdrop";
-    backdrop.setAttribute("aria-label", "Close menu");
-    backdrop.hidden = true;
-
-    const navDrawer = document.createElement("aside");
-    navDrawer.className = "fp-mobile-drawer is-left";
-    navDrawer.setAttribute("aria-label", "Mobile navigation");
-
-    const navTitle = document.createElement("div");
-    navTitle.className = "fp-mobile-drawer-title";
-    navTitle.textContent = "Menu";
-    navDrawer.appendChild(navTitle);
-
-    nav.querySelectorAll(".nav-link").forEach(function (a) {
-      const link = document.createElement("a");
-      link.className = "fp-mobile-drawer-link";
-      link.href = a.getAttribute("href") || "#";
-      link.textContent = a.textContent || "Link";
-      navDrawer.appendChild(link);
+    // Clicking anywhere outside the button/panel closes the panel.
+    document.addEventListener("click", function (clickEvent) {
+      if (!isDropdownPanelOpen()) return;
+      const clickLandedInsideDropdown = dropdownWrap.contains(clickEvent.target);
+      if (!clickLandedInsideDropdown) closeDropdownPanel();
     });
 
-    header.appendChild(backdrop);
-    header.appendChild(navDrawer);
-
-    function setOpen(open) {
-      header.classList.toggle("fp-left-open", !!open);
-      backdrop.hidden = !open;
-
-      leftToggle.setAttribute("aria-expanded", open ? "true" : "false");
-      leftToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
-    }
-
-    leftToggle.addEventListener("click", function (e) {
-      e.stopPropagation();
-      setOpen(!header.classList.contains("fp-left-open"));
+    // Pressing ESC closes the panel and returns focus to the button.
+    document.addEventListener("keydown", function (keyEvent) {
+      if (keyEvent.key === "Escape" && isDropdownPanelOpen()) {
+        closeDropdownPanel();
+        triggerButton.focus();
+      }
     });
 
-    backdrop.addEventListener("click", function () { setOpen(false); });
-    navDrawer.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { setOpen(false); }); });
-
-    document.addEventListener("click", function (e) {
-      if (!header.contains(e.target)) setOpen(false);
-    });
-
+    // If the window is resized down to mobile width while the panel
+    // is open, close it so it can never get stuck open on a phone.
     window.addEventListener("resize", function () {
-      if (window.innerWidth > 1024) setOpen(false);
+      if (!isDesktopViewport() && isDropdownPanelOpen()) closeDropdownPanel();
     });
   }
 
-  function bindRevealMotion() {
-    const targets = Array.from(document.querySelectorAll(".section, .benefit, .categoryItem, .promoCard"));
-    if (!targets.length) return;
+  /* ============================================================
+     INIT
+     ============================================================ */
+  function initCheckoutPage() {
+    initDeliveryToggle();
+    initExpressToggle();
+    initPaymentRadios();
+    initPayBtn();
+    initWhatsAppSupport();
+    initLiveBadgeWatcher();
+    initLiveValidation();
+    initPlacesAutocomplete();
 
-    targets.forEach(function (el) {
-      if (!el.classList.contains("fp-reveal")) el.classList.add("fp-reveal");
-      // Large, long-scrolling sections (like shop grids) can miss high
-      // intersection ratios on mobile, leaving content hidden.
-      if (el.classList.contains("section") && el.querySelector("#shopGrid")) {
-        el.classList.add("is-in");
-      }
-    });
-
-    if (!("IntersectionObserver" in window)) {
-      targets.forEach(function (el) { el.classList.add("is-in"); });
-      return;
-    }
-
-    const io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-in");
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.02, rootMargin: "0px 0px -30px 0px" });
-
-    targets.forEach(function (el) {
-      if (el.classList.contains("is-in")) return;
-      io.observe(el);
-    });
+    // Not checkout-only: this also powers the homepage "Shop by
+    // Category" dropdown (Sprint 3.0). Safe to call on every page —
+    // it exits immediately if the dropdown markup isn't present.
+    initShopByCategoryDropdown();
   }
 
-  function bindCategoryIcons() {
-    const row = document.querySelector(".categoryRow");
-    if (!row || row.dataset.fpIconsBound) return;
-    row.dataset.fpIconsBound = "1";
-
-    const iconByName = {
-      "audio": "audio.svg",
-      "phones": "phone.svg",
-      "gaming": "game.svg",
-      "cameras": "camera.svg",
-      "wearables": "wearebles.svg",
-      "smart home": "home.svg",
-      "power": "power.svg",
-      "accessories": "accesories.svg"
-    };
-    const items = Array.from(row.querySelectorAll(".categoryItem"));
-
-    items.forEach(function (item) {
-      const nameEl = item.querySelector(".catName");
-      const iconEl = item.querySelector(".catIcon");
-      if (!nameEl || !iconEl) return;
-
-      const key = norm(nameEl.textContent);
-      const file = iconByName[key] || iconByName["accessories"];
-      iconEl.classList.add("fp-cat-icon", "fp-cat-icon-image");
-      iconEl.innerHTML = "<img src='assets/icons/SVG/" + file + "' alt='' aria-hidden='true' loading='lazy' decoding='async'>";
-      item.classList.add("fp-cat-live");
-    });
-  }
-
-  function bindMobileDock() {
-    if (document.querySelector(".fp-mobile-dock")) return;
-
-    const dock = document.createElement("nav");
-    dock.className = "fp-mobile-dock";
-    dock.setAttribute("aria-label", "Mobile quick navigation");
-
-    const path = (window.location.pathname || "").toLowerCase();
-    const links = [
-      { label: "Home", href: "index.html", icon: "is-home", active: /(^|\/)index\.html$|\/$/.test(path) },
-      { label: "Shop", href: "shop.html", icon: "is-shop", active: path.indexOf("shop.html") !== -1 },
-      { label: "Wishlist", href: "wishlist.html", icon: "is-heart", active: path.indexOf("wishlist.html") !== -1 },
-      { label: "Account", href: "track.html", icon: "is-user", active: path.indexOf("track.html") !== -1 || path.indexOf("checkout.html") !== -1 }
-    ];
-
-    links.forEach(function (item) {
-      const a = document.createElement("a");
-      a.className = "fp-dock-link" + (item.active ? " is-active" : "");
-      a.href = item.href;
-      a.innerHTML = "<span class='fp-dock-icon " + item.icon + "' aria-hidden='true'></span><span class='fp-dock-label'>" + item.label + "</span>";
-      dock.appendChild(a);
-    });
-
-    document.body.appendChild(dock);
-    document.body.classList.add("fp-has-mobile-dock");
-  }
-
-  function safeParseCart() {
-    try {
-      const raw = localStorage.getItem("rtech_cart_v1");
-      return raw ? JSON.parse(raw) : [];
-    } catch (_) {
-      return [];
-    }
-  }
-
-  function syncHeaderCartSummary() {
-    const cart = safeParseCart();
-    const countEl = document.getElementById("cartCount");
-    const totalEl = document.getElementById("cartTotalMini");
-    if (!countEl || !totalEl) return;
-
-    const count = cart.reduce(function (sum, item) {
-      return sum + Number(item.qty || 0);
-    }, 0);
-    countEl.textContent = String(count);
-
-    const totals = {};
-    cart.forEach(function (item) {
-      const cur = item.currency || "KSh";
-      totals[cur] = (totals[cur] || 0) + Number(item.price || 0) * Number(item.qty || 0);
-    });
-
-    const currencies = Object.keys(totals);
-    if (!currencies.length) {
-      totalEl.textContent = "KSh 0";
-      return;
-    }
-    if (currencies.length > 1) {
-      totalEl.textContent = "Mixed";
-      return;
-    }
-
-    const cur = currencies[0];
-    const val = totals[cur];
-    const show = val % 1 === 0 ? String(val.toFixed(0)) : String(val.toFixed(2));
-    totalEl.textContent = cur + " " + show;
-  }
-
-  function renderWishlistEmptyIllustration() {
-    const itemsEl = document.getElementById("wishlistItems");
-    if (!itemsEl) return;
-    if (itemsEl.querySelector(".cartRow")) return;
-
-    const hasPatch = itemsEl.querySelector(".fp-wishlist-empty");
-    const text = (itemsEl.textContent || "").toLowerCase();
-    if (hasPatch || text.indexOf("empty") === -1) return;
-
-    itemsEl.innerHTML = ""
-      + "<div class='fp-wishlist-empty'>"
-      + "  <div class='fp-wishlist-empty-art' aria-hidden='true'></div>"
-      + "  <div class='cartEmptyTitle'>Your wishlist is empty.</div>"
-      + "  <div class='muted small'>Save favorites to quickly find them later.</div>"
-      + "</div>";
-  }
-
-  function syncFreeShippingState() {
-    const progress = document.getElementById("cartProgressFill");
-    const textEl = document.getElementById("cartProgressText");
-    const wrap = textEl ? textEl.closest(".cartProgress") : null;
-    const bar = wrap ? wrap.querySelector(".cartProgressBar") : null;
-    const cartTitleIcon = document.querySelector("#cartDrawer .cartTitle .cartIcon");
-    if (!progress || !textEl || !wrap || !bar) return;
-
-    let icon = bar.querySelector(".fp-progress-icon");
-    if (!icon) {
-      icon = document.createElement("span");
-      icon.className = "fp-progress-icon";
-      icon.setAttribute("aria-hidden", "true");
-      bar.appendChild(icon);
-    }
-
-    const cart = safeParseCart();
-    const subtotal = cart.reduce(function (sum, item) {
-      const cur = String(item.currency || "").toUpperCase();
-      const include = cur === "KES" || cur === "KSH" || cur === "";
-      if (!include) return sum;
-      return sum + Number(item.price || 0) * Number(item.qty || 0);
-    }, 0);
-
-    const hit = subtotal >= FREE_SHIPPING_THRESHOLD;
-    const pct = hit ? 100 : Math.max(0, Math.min(100, Math.round((subtotal / FREE_SHIPPING_THRESHOLD) * 100)));
-    const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
-
-    progress.style.width = String(pct) + "%";
-    wrap.style.setProperty("--fp-progress", String(pct) + "%");
-    wrap.classList.remove("fp-free-pending", "fp-free-hit");
-    wrap.classList.add(hit ? "fp-free-hit" : "fp-free-pending");
-    if (cartTitleIcon) {
-      cartTitleIcon.classList.toggle("fp-free-hit-icon", hit);
-    }
-
-    if (hit) {
-      textEl.textContent = "Congratulations! You’ve got FREE SHIPPING";
-    } else {
-      const amt = remaining % 1 === 0 ? String(remaining.toFixed(0)) : String(remaining.toFixed(2));
-      textEl.textContent = "Buy KES " + amt + " more to get Free Delivery";
-    }
-  }
-
-  function loadProducts() {
-    return fetch(JSON_PATH)
-      .then(function (res) { return res.json(); })
-      .then(function (json) {
-        state.products = (json || []).map(function (p) {
-          return {
-            name: String(p.name || ""),
-            description: String(p.description || p.desc || ""),
-            tags: Array.isArray(p.tags) ? p.tags : []
-          };
-        });
-      })
-      .catch(function () {
-        state.products = [];
-      });
-  }
-
-  function boot() {
-    bindShopNow();
-    bindSearch();
-    bindTrendingDropdowns();
-    bindMobileMenu();
-    bindCategoryIcons();
-    bindRevealMotion();
-    syncHeaderCartSummary();
-    renderWishlistEmptyIllustration();
-    syncFreeShippingState();
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    loadProducts().finally(function () {
-      boot();
-      let n = 0;
-      const timer = setInterval(function () {
-        boot();
-        n += 1;
-        if (n > 30) clearInterval(timer);
-      }, 250);
-
-      // Keep summary synced after async partial/header load and early cart mutations.
-      let syncTicks = 0;
-      const syncTimer = setInterval(function () {
-        syncHeaderCartSummary();
-        renderWishlistEmptyIllustration();
-        syncFreeShippingState();
-        syncTicks += 1;
-        if (syncTicks > 40) clearInterval(syncTimer);
-      }, 500);
-
-      // Keep shipping progress visual state live when cart content mutates.
-      const cartItems = document.getElementById("cartItems");
-      if (cartItems && "MutationObserver" in window) {
-        const mo = new MutationObserver(function () {
-          syncHeaderCartSummary();
-          syncFreeShippingState();
-        });
-        mo.observe(cartItems, { childList: true, subtree: true });
-      }
-
-      document.addEventListener("click", function (e) {
-        const t = e.target;
-        if (!t) return;
-        if (t.closest(".btn") || t.closest(".qtyBtn") || t.closest(".cartRowRemove") || t.closest("#cartBtn")) {
-          setTimeout(function () {
-            syncHeaderCartSummary();
-            syncFreeShippingState();
-          }, 60);
-        }
-      });
-    });
-  });
+  document.addEventListener("DOMContentLoaded", initCheckoutPage);
 })();
+

@@ -29,7 +29,7 @@ const STORE_CONFIG = {
   whatsappHelloMessage: "Hi R-Tech Gear, I need help choosing a product.",
 
   // Default currency if product does not specify
-  currency: "KSh",
+  currency: "KES",
   freeShippingThreshold: 3000
 };
 
@@ -42,6 +42,63 @@ function makeWhatsAppLink(message) {
   return `https://wa.me/${num}?text=${text}`;
 }
 window.makeWhatsAppLink = makeWhatsAppLink;
+window.PRODUCTS = window.PRODUCTS || [];
+
+function normalizeProductCatalog(list = []) {
+  return list
+    .filter((item) => item && item.id && item.name)
+    .map((item) => ({
+      id: String(item.id),
+      name: String(item.name),
+      price: Number(item.price || item.price_ksh || 0),
+      href: item.href || `product.html?id=${encodeURIComponent(String(item.id))}`,
+      image: item.image || (Array.isArray(item.images) ? item.images[0] : ""),
+      category: item.category || "",
+      tags: item.tags || []
+    }));
+}
+
+async function loadGlobalProducts() {
+  if (window.PRODUCTS && window.PRODUCTS.length) return window.PRODUCTS;
+  try {
+    const response = await fetch("assets/data/products.json");
+    if (!response.ok) throw new Error("Product feed failed");
+    const json = await response.json();
+    window.PRODUCTS = normalizeProductCatalog(json).slice(0, 8);
+  } catch (err) {
+    window.PRODUCTS = window.PRODUCTS || [];
+  }
+  return window.PRODUCTS;
+}
+
+function renderRecommendationGrid() {
+  const grid = document.getElementById("recommendGrid");
+  if (!grid) return;
+  const products = (window.PRODUCTS && window.PRODUCTS.length ? window.PRODUCTS : []).slice(0, 4);
+  if (!products.length) {
+    grid.innerHTML = `
+      <a class="recommendCard" href="shop.html?q=accessories">
+        <div class="recommendImage"></div>
+        <div class="recommendCopy"><strong>Must-have accessories</strong><span>Explore curated add-ons for your purchase.</span></div>
+      </a>
+      <a class="recommendCard" href="shop.html?q=portable">
+        <div class="recommendImage"></div>
+        <div class="recommendCopy"><strong>Portable essentials</strong><span>Everything you need while on the move.</span></div>
+      </a>
+    `;
+    return;
+  }
+
+  grid.innerHTML = products.map((product) => `
+    <a class="recommendCard" href="${product.href}">
+      <div class="recommendImage" style="background-image:url('${product.image}')"></div>
+      <div class="recommendCopy">
+        <strong>${product.name}</strong>
+        <span>${formatMoney(product.price)}</span>
+      </div>
+    </a>
+  `).join("");
+}
 
 function refreshWhatsAppLinks() {
   const floatBtn = document.getElementById("floatWhatsAppLink");
@@ -67,18 +124,21 @@ function ensureGlobalDrawers() {
               <span class="cartIcon" aria-hidden="true"></span>
               Shopping Cart
             </div>
-            <button class="iconBtn" id="cartCloseBtn" type="button" aria-label="Close cart">x</button>
-          </div>
-          <div class="cartProgress">
-            <div class="cartProgressBar">
-              <span class="cartProgressFill" id="cartProgressFill"></span>
-              <span class="cartProgressCheck" id="cartProgressCheck" aria-hidden="true"></span>
-            </div>
-            <div class="cartProgressText" id="cartProgressText">Buy KES 0 more to get Free Delivery</div>
+            <button class="accountCloseBtn" id="cartCloseBtn" type="button" aria-label="Close cart">&times;</button>
           </div>
           <div class="cartItems" id="cartItems"></div>
           <div class="cartEmpty" id="cartEmpty">
-            <div class="cartEmptyArt"></div>
+            <picture class="cartEmptyArt">
+
+              <source
+                  media="(max-width:768px)"
+                  srcset="assets/img/header pics/shopping cart phone_.png">
+
+              <img
+                  src="assets/img/header pics/shopping cart pc.png"
+                  alt="Shopping Cart">
+
+            </picture>
             <div class="cartEmptyTitle">No products in the cart.</div>
             <div class="muted small">Your cart is currently empty. Let us help you find the perfect item!</div>
             <a class="btn btnGhost" href="shop.html">Continue Shopping</a>
@@ -109,25 +169,92 @@ function ensureGlobalDrawers() {
               <span class="cartIcon" aria-hidden="true"></span>
               Wishlist
             </div>
-            <button class="iconBtn" id="wishlistCloseBtn" type="button" aria-label="Close wishlist">x</button>
+            <button class="accountCloseBtn" id="wishlistCloseBtn" type="button" aria-label="Close wishlist">&times;</button>
           </div>
           <div class="cartItems" id="wishlistItems"></div>
+          <div class="cartEmpty" id="wishlistEmpty" hidden>
+            <picture class="cartEmptyArt">
+              <source media="(max-width:768px)" srcset="assets/img/header pics/wishlist cart phone_.png">
+              <img src="assets/img/header pics/wishlist cart pc.png" alt="Empty wishlist">
+            </picture>
+            <div class="cartEmptyTitle">Your wishlist is empty.</div>
+            <div class="muted small">Save products you love and come back to them anytime.</div>
+            <a class="btn btnGhost" href="shop.html">Explore products</a>
+          </div>
         </div>
       </div>
     `;
     document.body.appendChild(wishlistDrawer.firstElementChild);
   }
+
+  // The account drawer owns the close-button design. Apply that exact
+  // component class to existing page-level drawers too.
+  document.querySelectorAll("#cartCloseBtn, #wishlistCloseBtn").forEach((button) => {
+    button.classList.add("accountCloseBtn");
+    button.classList.remove("iconBtn");
+    button.innerHTML = '<span aria-hidden="true">&times;</span>';
+  });
+
+  document.querySelectorAll(".wishlistPanel").forEach((panel) => {
+    if (panel.querySelector("#wishlistEmpty")) return;
+    const empty = document.createElement("div");
+    empty.className = "cartEmpty";
+    empty.id = "wishlistEmpty";
+    empty.hidden = true;
+    empty.innerHTML = `
+      <picture class="cartEmptyArt">
+        <source media="(max-width:768px)" srcset="assets/img/header pics/wishlist cart phone_.png">
+        <img src="assets/img/header pics/wishlist cart pc.png" alt="Empty wishlist">
+      </picture>
+      <div class="cartEmptyTitle">Your wishlist is empty.</div>
+      <div class="muted small">Save products you love and come back to them anytime.</div>
+      <a class="btn btnGhost" href="shop.html">Explore products</a>
+    `;
+    panel.appendChild(empty);
+  });
+
+  document.querySelectorAll(".cartEmptyArt:empty").forEach((art) => {
+    art.innerHTML = `
+      <picture>
+        <source media="(max-width:768px)" srcset="assets/img/header pics/shopping cart phone_.png">
+        <img src="assets/img/header pics/shopping cart pc.png" alt="Shopping Cart">
+      </picture>
+    `;
+  });
 }
 
 function syncCartState() {
+  refreshStoreCounters();
   refreshCartUI();
   renderCheckoutSummary();
   renderCartPage();
+  renderRecommendationGrid();
 }
 
 function getCart() {
-  const raw = localStorage.getItem(CART_KEY);
-  return raw ? JSON.parse(raw) : [];
+  const readList = (key) => {
+    try {
+      const raw = localStorage.getItem(key);
+      const value = raw ? JSON.parse(raw) : null;
+      return Array.isArray(value) ? value : null;
+    } catch (error) {
+      return null;
+    }
+  };
+
+  const currentCart = readList(CART_KEY);
+  if (currentCart) return currentCart;
+
+  // Keep carts created by older storefront builds when the storage key changed.
+  for (const legacyKey of ["rtech_cart", "cart"]) {
+    const legacyCart = readList(legacyKey);
+    if (legacyCart) {
+      saveCart(legacyCart);
+      return legacyCart;
+    }
+  }
+
+  return [];
 }
 
 function saveCart(cart) {
@@ -135,8 +262,13 @@ function saveCart(cart) {
 }
 
 function getWishlist() {
-  const raw = localStorage.getItem(WISHLIST_KEY);
-  return raw ? JSON.parse(raw) : [];
+  try {
+    const raw = localStorage.getItem(WISHLIST_KEY);
+    const list = raw ? JSON.parse(raw) : [];
+    return Array.isArray(list) ? list : [];
+  } catch (error) {
+    return [];
+  }
 }
 
 function saveWishlist(list) {
@@ -144,10 +276,21 @@ function saveWishlist(list) {
 }
 
 function toggleWishlist(item) {
+  if (!item || !item.id) return;
   const list = getWishlist();
-  const exists = list.find((x) => x.id === item.id);
-  const next = exists ? list.filter((x) => x.id !== item.id) : [...list, item];
+  const itemId = String(item.id);
+  const exists = list.some((x) => String(x.id) === itemId);
+  const next = exists
+    ? list.filter((x) => String(x.id) !== itemId)
+    : [...list, { ...item, id: itemId }];
   saveWishlist(next);
+  refreshWishlistUI();
+}
+
+function removeFromWishlist(id) {
+  const itemId = String(id || "");
+  if (!itemId) return;
+  saveWishlist(getWishlist().filter((item) => String(item.id) !== itemId));
   refreshWishlistUI();
 }
 
@@ -168,10 +311,135 @@ function totalsByCurrency(cart) {
   return totals;
 }
 
+const CHECKOUT_SHIPPING_RATES = {
+  normal: 300,
+  priority: 550
+};
+
+function getCheckoutDeliveryMode() {
+  const selected = document.querySelector("input[name='deliveryMode']:checked");
+  return selected ? selected.value : "ship";
+}
+
+function getCheckoutShippingChoice() {
+  const deliveryMode = getCheckoutDeliveryMode();
+  const shippingSpeed = document.getElementById("shippingSpeed");
+  const value = String(shippingSpeed && shippingSpeed.value ? shippingSpeed.value : "normal|300");
+  const parts = value.split("|");
+  const speedKey = parts[0] || "normal";
+  const rate = Number(parts[1] || CHECKOUT_SHIPPING_RATES[speedKey] || 0);
+  const shippingFee = deliveryMode === "pickup" ? 0 : rate;
+  const shippingLabel = deliveryMode === "pickup"
+    ? "Collection Point"
+    : speedKey === "priority"
+      ? "Priority delivery"
+      : "Normal delivery";
+
+  return {
+    deliveryMode,
+    speedKey,
+    shippingFee,
+    shippingLabel
+  };
+}
+
+function addBusinessDays(date, days) {
+  const result = new Date(date);
+  let added = 0;
+  while (added < days) {
+    result.setDate(result.getDate() + 1);
+    const day = result.getDay();
+    if (day !== 0 && day !== 6) added += 1;
+  }
+  return result;
+}
+
+function formatDeliveryDate(date) {
+  return new Intl.DateTimeFormat("en-GB", {
+    weekday: "short",
+    day: "numeric",
+    month: "short"
+  }).format(date);
+}
+
+function getCheckoutDeliveryEstimate() {
+  const shipping = getCheckoutShippingChoice();
+  const today = new Date();
+
+  if (shipping.deliveryMode === "pickup") {
+    return "Ready for pickup today";
+  }
+
+  if (shipping.speedKey === "priority") {
+    return `${formatDeliveryDate(today)} - ${formatDeliveryDate(addBusinessDays(today, 1))}`;
+  }
+
+  return `${formatDeliveryDate(addBusinessDays(today, 2))} - ${formatDeliveryDate(addBusinessDays(today, 4))}`;
+}
+
+function estimateCartWeight(cart) {
+  const weight = cart.reduce((sum, item) => {
+    const itemWeight = Number(item.weight || item.estimatedWeight || 0.55);
+    const qty = Number(item.qty || 1);
+    return sum + (Number.isFinite(itemWeight) ? itemWeight : 0.55) * qty;
+  }, 0);
+  return Number.isFinite(weight) ? weight : 0;
+}
+
+function syncCheckoutDeliveryUI() {
+  const mode = getCheckoutDeliveryMode();
+  const shipOnly = document.querySelector(".checkoutShipOnly");
+  const pickupOnly = document.querySelector(".checkoutPickupOnly");
+  const locationGroup = document.getElementById("location");
+  const shippingSpeed = document.getElementById("shippingSpeed");
+  const shippingSpeedGroup = shippingSpeed ? shippingSpeed.closest(".formGroup") : null;
+  const pickupStore = document.getElementById("pickupStore");
+
+  if (shipOnly) shipOnly.hidden = mode === "pickup";
+  if (pickupOnly) pickupOnly.hidden = mode !== "pickup";
+  if (shippingSpeedGroup) shippingSpeedGroup.hidden = mode === "pickup";
+  if (locationGroup) locationGroup.required = mode !== "pickup";
+  if (shippingSpeed) shippingSpeed.disabled = mode === "pickup";
+  if (pickupStore) pickupStore.disabled = mode !== "pickup";
+}
+
+function syncPaymentChoiceLabel() {
+  const paymentChoice = document.getElementById("paymentChoice");
+  const cardFieldsGrid = document.getElementById("cardFieldsGrid");
+
+  const selected = document.querySelector("input[name='payment']:checked");
+  const value = selected ? selected.value : "M-Pesa";
+
+  if (cardFieldsGrid) cardFieldsGrid.hidden = value !== "DPO";
+  if (!paymentChoice) return;
+
+  const badge = paymentChoice.querySelector(".payBadge");
+  const title = paymentChoice.querySelector(".payTitle");
+  const subtitle = paymentChoice.querySelector(".muted.small");
+
+  if (badge) {
+    badge.textContent = value === "M-Pesa" ? "M-Pesa" : value === "PayPal" ? "PayPal" : "Card";
+  }
+  if (title) {
+    title.textContent = value === "M-Pesa"
+      ? "Express M-Pesa checkout"
+      : value === "PayPal"
+        ? "Pay with PayPal"
+        : "Credit or debit card";
+  }
+  if (subtitle) {
+    subtitle.textContent = value === "M-Pesa"
+      ? "Fast mobile checkout for Kenya"
+      : value === "PayPal"
+        ? "Cards and PayPal balance"
+        : "Visa, Mastercard, Amex, and bank gateway ready";
+  }
+}
+
 /* =========================
    4) CART ACTIONS
 ========================= */
-function addToCart(product) {
+function addToCart(product, options = {}) {
   const cart = getCart();
   const currency = product.currency || STORE_CONFIG.currency;
   const found = cart.find((item) => item.id === product.id);
@@ -181,7 +449,13 @@ function addToCart(product) {
 
   saveCart(cart);
   syncCartState();
-  openCart();
+  if (options.openDrawer !== false && typeof openCart === "function") openCart();
+}
+
+function buyNow(product, quantity = 1) {
+  addToCart(product, { openDrawer: false });
+  for (let index = 1; index < quantity; index += 1) addOne(product.id);
+  window.location.assign("checkout.html");
 }
 
 function removeOne(id) {
@@ -226,6 +500,8 @@ function buildCheckoutMessage(cart) {
     lines.push(`- ${item.name} x${item.qty} (${formatMoney(itemTotal, cur)})`);
   });
 
+  const shipping = getCheckoutShippingChoice();
+  const weight = estimateCartWeight(cart);
   const currencies = Object.keys(totals);
   if (currencies.length === 1) {
     lines.push(`Total: ${formatMoney(totals[currencies[0]], currencies[0])}`);
@@ -234,10 +510,15 @@ function buildCheckoutMessage(cart) {
       lines.push(`Total ${cur}: ${formatMoney(totals[cur], cur)}`);
     });
   }
+  lines.push(`Shipping: ${shipping.shippingLabel} (${formatMoney(shipping.shippingFee, STORE_CONFIG.currency)})`);
+  lines.push(`Estimated delivery: ${getCheckoutDeliveryEstimate()}`);
+  lines.push(`Estimated weight: ${weight.toFixed(1)} kg`);
   lines.push("");
   lines.push("My name: ____");
   lines.push("My phone: ____");
   lines.push("Delivery location: ____");
+  lines.push("Email: ____");
+  lines.push("Delivery mode: ____");
 
   return lines.join("\n");
 }
@@ -245,25 +526,31 @@ function buildCheckoutMessage(cart) {
 /* =========================
    6) UI RENDER
 ========================= */
+function refreshStoreCounters() {
+  const cartCount = getCart().reduce((sum, item) => sum + Number(item.qty || 0), 0);
+  const wishlistCount = getWishlist().length;
+
+  document.querySelectorAll("#cartCount").forEach((element) => {
+    element.textContent = String(cartCount);
+  });
+  document.querySelectorAll("#wishlistCount").forEach((element) => {
+    element.textContent = String(wishlistCount);
+  });
+}
+
 function refreshCartUI() {
   const cart = getCart();
-
-  // Count badge
-  const countEl = document.getElementById("cartCount");
   const totalMiniEl = document.getElementById("cartTotalMini");
-  if (countEl) {
-    const count = cart.reduce((sum, x) => sum + x.qty, 0);
-    countEl.textContent = String(count);
-  }
 
   // Drawer elements
   const itemsEl = document.getElementById("cartItems");
   const totalEl = document.getElementById("cartTotal");
   const emptyEl = document.getElementById("cartEmpty");
-  const progressFill = document.getElementById("cartProgressFill");
-  const progressText = document.getElementById("cartProgressText");
-  const progressWrap = progressText ? progressText.closest(".cartProgress") : null;
-  const cartTitleIcon = document.querySelector("#cartDrawer .cartTitle .cartIcon");
+
+  /* Hide the free-shipping progress completely whenever
+     the drawer contains products. It returns automatically
+     when the cart becomes empty. */
+  const progress = document.querySelector(".cartProgress");
 
   if (!itemsEl || !totalEl) return;
 
@@ -271,10 +558,24 @@ function refreshCartUI() {
   const totals = totalsByCurrency(cart);
 
   if (cart.length === 0) {
-    if (emptyEl) emptyEl.classList.add("isVisible");
+
+    if(progress) progress.style.display = "";
+
+    if (emptyEl) {
+      emptyEl.hidden = false;
+      emptyEl.classList.add("isVisible");
+    }
     itemsEl.style.display = "none";
-  } else {
-    if (emptyEl) emptyEl.classList.remove("isVisible");
+
+  }
+   else {
+
+    if(progress) progress.style.display = "none";
+
+    if (emptyEl) {
+      emptyEl.classList.remove("isVisible");
+      emptyEl.hidden = true;
+    }
     itemsEl.style.display = "block";
     cart.forEach((item) => {
       const itemTotal = item.price * item.qty;
@@ -319,29 +620,6 @@ function refreshCartUI() {
     if (totalMiniEl) totalMiniEl.textContent = "Mixed";
   }
 
-  if (progressFill && progressText) {
-    const subtotal = totals[STORE_CONFIG.currency] || 0;
-    const threshold = STORE_CONFIG.freeShippingThreshold;
-    const pct = Math.min(100, Math.round((subtotal / threshold) * 100));
-    const hit = subtotal >= threshold;
-
-    progressFill.style.width = `${pct}%`;
-    if (hit) {
-      progressText.textContent = "Congratulations! You've got FREE DELIVERY";
-    } else {
-      const remaining = Math.max(0, threshold - subtotal);
-      progressText.textContent = `Buy KES ${remaining} more to get Free Delivery`;
-    }
-
-    if (progressWrap) {
-      progressWrap.classList.remove("fp-free-pending", "fp-free-hit");
-      progressWrap.classList.add(hit ? "fp-free-hit" : "fp-free-pending");
-      progressWrap.style.setProperty("--fp-progress", `${pct}%`);
-    }
-    if (cartTitleIcon) {
-      cartTitleIcon.classList.toggle("fp-free-hit-icon", hit);
-    }
-  }
 
   const miniItems = document.getElementById("cartMiniItems");
   if (miniItems) {
@@ -367,13 +645,22 @@ function refreshCartUI() {
 
 function refreshWishlistUI() {
   const list = getWishlist();
-  const drawer = document.getElementById("wishlistDrawer");
   const itemsEl = document.getElementById("wishlistItems");
+  const emptyEl = document.getElementById("wishlistEmpty");
   if (itemsEl) {
     itemsEl.innerHTML = "";
     if (!list.length) {
-      itemsEl.innerHTML = `<div class="muted small">Your wishlist is empty.</div>`;
+      itemsEl.style.display = "none";
+      if (emptyEl) {
+        emptyEl.hidden = false;
+        emptyEl.classList.add("isVisible");
+      }
     } else {
+      itemsEl.style.display = "block";
+      if (emptyEl) {
+        emptyEl.classList.remove("isVisible");
+        emptyEl.hidden = true;
+      }
       list.forEach((item) => {
         const row = document.createElement("div");
         row.className = "cartRow";
@@ -385,8 +672,8 @@ function refreshWishlistUI() {
               <div class="muted small">${formatMoney(item.price, item.currency)}</div>
             </div>
           </div>
-          <button class="cartRowRemove" type="button" aria-label="Remove"
-            onclick="toggleWishlist({ id:'${item.id}', name:'${item.name}', price:${item.price}, currency:'${item.currency}', image:'${item.image || ""}' })">
+          <button class="cartRowRemove" type="button" aria-label="Remove ${item.name} from wishlist"
+            data-wishlist-remove="${item.id}">
             <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
               <path fill="none" stroke="currentColor" stroke-width="1.6" d="M4 7h16M9 7V5h6v2m-7 0l1 12h8l1-12"/>
             </svg>
@@ -396,13 +683,10 @@ function refreshWishlistUI() {
       });
     }
   }
-  if (drawer) {
-    const countEl = document.getElementById("wishlistCount");
-    if (countEl) countEl.textContent = String(list.length);
-  }
+  refreshStoreCounters();
   document.querySelectorAll("[data-wishlist-id]").forEach((btn) => {
     const id = btn.getAttribute("data-wishlist-id");
-    const active = list.some((x) => x.id === id);
+    const active = list.some((x) => String(x.id) === String(id));
     btn.classList.toggle("isActive", active);
   });
 }
@@ -410,42 +694,71 @@ function refreshWishlistUI() {
 /* =========================
    6b) CHECKOUT PAGE
 ========================= */
-function renderCheckoutSummary() {
+function renderCheckoutItems() {
   const itemsEl = document.getElementById("checkoutItems");
-  const totalEl = document.getElementById("checkoutTotal");
-  if (!itemsEl || !totalEl) return;
-
+  if (!itemsEl) return;
   const cart = getCart();
   itemsEl.innerHTML = "";
-  const totals = totalsByCurrency(cart);
 
-  if (cart.length === 0) {
-    itemsEl.innerHTML = `<p class="muted">Your cart is empty.</p>`;
-  } else {
-    cart.forEach((item) => {
-      const itemTotal = item.price * item.qty;
-      const cur = item.currency || STORE_CONFIG.currency;
-      const row = document.createElement("div");
-      row.className = "summaryRow";
-      row.innerHTML = `
-        <div class="summaryLeft">
-          <div class="summaryName">${item.name}</div>
-          <div class="muted small">${formatMoney(item.price, cur)} - Qty ${item.qty}</div>
-        </div>
-        <div class="summaryPrice">${formatMoney(itemTotal, cur)}</div>
-      `;
-      itemsEl.appendChild(row);
-    });
+  if (!cart.length) {
+    itemsEl.innerHTML = `<div class="muted">Your cart is empty.</div>`;
+    return;
   }
+
+  cart.forEach((item) => {
+    const itemTotal = item.price * item.qty;
+    const cur = item.currency || STORE_CONFIG.currency;
+    const row = document.createElement("div");
+    row.className = "summaryRow";
+    row.innerHTML = `
+      <div class="summaryThumb" style="background-image:url('${item.image || ""}')">
+        <span class="summaryQtyBadge">${item.qty}</span>
+      </div>
+      <div class="summaryRowBody">
+        <div class="summaryName">${item.name}</div>
+        <div class="summaryRowMeta">
+          <span>${formatMoney(item.price, cur)} each</span>
+          <strong>${formatMoney(itemTotal, cur)}</strong>
+        </div>
+      </div>
+    `;
+    itemsEl.appendChild(row);
+  });
+}
+
+window.renderCheckoutItems = renderCheckoutItems;
+
+function renderCheckoutSummary() {
+  renderCheckoutItems();
+
+  const subtotalEl = document.getElementById("checkoutSubtotal");
+  const shippingEl = document.getElementById("checkoutShipping");
+  const totalEl = document.getElementById("checkoutTotal");
+  const weightEl = document.getElementById("checkoutWeight");
+  const shippingLabelEl = document.getElementById("checkoutShippingLabel");
+  const deliveryEstimateEl = document.getElementById("checkoutDeliveryEstimate");
+  if (!subtotalEl || !shippingEl || !totalEl) return;
+
+  const cart = getCart();
+  const totals = totalsByCurrency(cart);
+  const shipping = getCheckoutShippingChoice();
+  const weight = estimateCartWeight(cart);
 
   const currencies = Object.keys(totals);
+  let subtotalValue = 0;
+  let subtotalCurrency = STORE_CONFIG.currency;
+
   if (currencies.length === 1) {
-    totalEl.textContent = formatMoney(totals[currencies[0]], currencies[0]);
-  } else if (currencies.length === 0) {
-    totalEl.textContent = formatMoney(0, STORE_CONFIG.currency);
-  } else {
-    totalEl.textContent = "Mixed";
+    subtotalValue = Number(totals[currencies[0]] || 0);
+    subtotalCurrency = currencies[0];
   }
+
+  subtotalEl.textContent = formatMoney(subtotalValue, subtotalCurrency);
+  shippingEl.textContent = formatMoney(shipping.shippingFee, STORE_CONFIG.currency);
+  totalEl.textContent = formatMoney(subtotalValue + shipping.shippingFee, subtotalCurrency);
+  if (weightEl) weightEl.textContent = `Estimated weight: ${weight.toFixed(1)} kg`;
+  if (shippingLabelEl) shippingLabelEl.innerHTML = shipping.shippingLabel + (shipping.deliveryMode === "pickup" ? " — <span class='freeTag'>Free ✓</span>" : ` - ${formatMoney(shipping.shippingFee, STORE_CONFIG.currency)}`);
+  if (deliveryEstimateEl) deliveryEstimateEl.textContent = getCheckoutDeliveryEstimate();
 }
 
 /* =========================
@@ -497,125 +810,34 @@ function connectCheckoutForm() {
   if (!form) return;
 
   const payNowBtn = document.getElementById("payNowBtn");
-  const changePaymentBtn = document.getElementById("changePaymentBtn");
   const paymentModal = document.getElementById("paymentModal");
   const closePaymentModal = document.getElementById("closePaymentModal");
   const confirmPaymentBtn = document.getElementById("confirmPaymentBtn");
   const paymentChoice = document.getElementById("paymentChoice");
+  const expressMoreToggle = document.getElementById("expressMoreToggle");
+  const morePaymentMethods = document.getElementById("morePaymentMethods");
+  const mpesaExpressBtn = document.getElementById("mpesaExpressBtn");
+  const whatsAppSupportBtn = document.getElementById("whatsAppSupportBtn");
+  const shippingSpeed = document.getElementById("shippingSpeed");
+  const couponCode = document.getElementById("couponCode");
+  const summaryCouponCode = document.getElementById("summaryCouponCode");
+  const applyCouponBtn = document.getElementById("applyCouponBtn");
+  const summaryApplyCouponBtn = document.getElementById("summaryApplyCouponBtn");
+  const paymentInputs = Array.from(document.querySelectorAll("input[name='payment']"));
+  const deliveryInputs = Array.from(document.querySelectorAll("input[name='deliveryMode']"));
+  const shippingSpeedGroup = shippingSpeed ? shippingSpeed.closest(".formGroup") : null;
+  const locationInput = document.getElementById("location");
+  const pickupStore = document.getElementById("pickupStore");
 
-  if (payNowBtn) {
-    payNowBtn.addEventListener("click", async () => {
-      const data = new FormData(form);
-      const payment = data.get("payment") || "Cash on delivery";
-
-      if (payment === "DPO") {
-        const cart = getCart();
-        if (!cart.length) {
-          alert("Your cart is empty.");
-          return;
-        }
-
-        const name = String(data.get("fullName") || "").trim();
-        const phone = String(data.get("phone") || "").trim();
-        const email = String(data.get("email") || "").trim();
-        const location = String(data.get("location") || "").trim();
-
-        if (!name || !phone || !email || !location) {
-          alert("Please complete your shipping details first.");
-          return;
-        }
-
-        const totals = totalsByCurrency(cart);
-        const currencies = Object.keys(totals);
-        if (currencies.length !== 1) {
-          alert("Please checkout with one currency at a time.");
-          return;
-        }
-
-        const currency = currencies[0];
-        const amount = Number(totals[currency] || 0);
-        if (!Number.isFinite(amount) || amount <= 0) {
-          alert("Invalid order total.");
-          return;
-        }
-
-        const reference = `RTG-${Date.now()}`;
-        const payload = {
-          amount,
-          currency,
-          reference,
-          description: `${STORE_CONFIG.brandName} order (${cart.length} items)`,
-          customer: { name, phone, email },
-          shipping: { location },
-          items: cart.map((item) => ({
-            id: item.id,
-            name: item.name,
-            price: item.price,
-            qty: item.qty,
-            currency: item.currency || STORE_CONFIG.currency
-          }))
-        };
-
-        try {
-          payNowBtn.disabled = true;
-          payNowBtn.textContent = "Redirecting...";
-          const res = await fetch("/api/dpo-create-token", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-          });
-          const json = await res.json();
-          if (!res.ok) {
-            throw new Error(json && json.error ? json.error : "DPO setup pending.");
-          }
-          if (!json.paymentUrl) {
-            throw new Error("DPO setup pending.");
-          }
-
-          localStorage.setItem("rtech_last_order", JSON.stringify({
-            reference,
-            amount,
-            currency,
-            name,
-            phone,
-            email
-          }));
-
-          window.location.href = json.paymentUrl;
-        } catch (err) {
-          alert(err.message || "DPO setup pending.");
-        } finally {
-          payNowBtn.disabled = false;
-          payNowBtn.textContent = "Pay now";
-        }
-        return;
-      }
-
-      if (payment === "M-Pesa") {
-        try {
-          const res = await fetch("/api/mpesa-stk", { method: "POST" });
-          const json = await res.json();
-          alert(json.message || "M-Pesa setup pending.");
-        } catch (err) {
-          alert("M-Pesa setup pending.");
-        }
-        return;
-      }
-
-      if (payment === "PayPal") {
-        try {
-          const res = await fetch("/api/paypal-create-order", { method: "POST" });
-          const json = await res.json();
-          alert(json.message || "PayPal setup pending.");
-        } catch (err) {
-          alert("PayPal setup pending.");
-        }
-        return;
-      }
-
-      alert("Cash on delivery does not need Pay now. Use Place order.");
-    });
+  function refreshCheckout() {
+    syncCheckoutDeliveryUI();
+    syncPaymentChoiceLabel();
+    renderCheckoutSummary();
   }
+
+  // PAYMENT EXECUTION REMOVED (Patch 1 — Duplicate Payment Handler Removal).
+  // first-pass.js's initPayBtn() / handlePayment() is now the single checkout
+  // payment controller for #payNowBtn. Do not re-add a click listener here.
 
   function openModal() {
     if (paymentModal) paymentModal.classList.add("isOpen");
@@ -625,7 +847,6 @@ function connectCheckoutForm() {
     if (paymentModal) paymentModal.classList.remove("isOpen");
   }
 
-  if (changePaymentBtn) changePaymentBtn.addEventListener("click", openModal);
   if (closePaymentModal) closePaymentModal.addEventListener("click", closeModal);
   if (paymentModal) {
     paymentModal.addEventListener("click", (e) => {
@@ -640,55 +861,71 @@ function connectCheckoutForm() {
       if (target) target.checked = true;
 
       if (paymentChoice && modalSelection) {
-        paymentChoice.querySelector(".payBadge").textContent = modalSelection.value;
-        paymentChoice.querySelector(".payTitle").textContent = modalSelection.value === "PayPal"
-          ? "Cards, bank or balance"
-          : "Cards, M-Pesa, Bank Transfer or Mobile Money";
-        if (modalSelection.value === "DPO") {
-          paymentChoice.querySelector(".payTitle").textContent = "Cards, M-Pesa, Bank Transfer or Mobile Money";
-          paymentChoice.querySelector(".muted.small").textContent = "Pay securely on checkout.";
-        }
+        syncPaymentChoiceLabel();
       }
       closeModal();
     });
   }
 
+  if (expressMoreToggle && morePaymentMethods) {
+    expressMoreToggle.addEventListener("click", () => {
+      morePaymentMethods.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
+  if (mpesaExpressBtn) {
+    mpesaExpressBtn.addEventListener("click", () => {
+      const mpesaOption = document.querySelector("input[name='payment'][value='M-Pesa']");
+      if (mpesaOption) mpesaOption.checked = true;
+      syncPaymentChoiceLabel();
+      if (payNowBtn) payNowBtn.click();
+    });
+  }
+
+  paymentInputs.forEach((input) => {
+    input.addEventListener("change", () => {
+      refreshCheckout();
+      if (payNowBtn) {
+        payNowBtn.textContent = input.value === "DPO" ? "Pay with Card" : input.value === "PayPal" ? "Pay with PayPal" : "Pay with M-Pesa";
+      }
+    });
+  });
+
+  deliveryInputs.forEach((input) => {
+    input.addEventListener("change", refreshCheckout);
+  });
+
+  if (shippingSpeed) shippingSpeed.addEventListener("change", refreshCheckout);
+  if (couponCode) couponCode.addEventListener("input", () => {
+    if (summaryCouponCode && summaryCouponCode.value !== couponCode.value) summaryCouponCode.value = couponCode.value;
+  });
+  if (summaryCouponCode) summaryCouponCode.addEventListener("input", () => {
+    if (couponCode && couponCode.value !== summaryCouponCode.value) couponCode.value = summaryCouponCode.value;
+  });
+  if (applyCouponBtn) applyCouponBtn.addEventListener("click", () => {
+    const code = String(couponCode ? couponCode.value : "").trim() || String(summaryCouponCode ? summaryCouponCode.value : "").trim();
+    alert(code ? `Coupon "${code}" saved for integration.` : "Add a coupon code first.");
+  });
+  if (summaryApplyCouponBtn) summaryApplyCouponBtn.addEventListener("click", () => {
+    const code = String(summaryCouponCode ? summaryCouponCode.value : "").trim() || String(couponCode ? couponCode.value : "").trim();
+    alert(code ? `Coupon "${code}" saved for integration.` : "Add a coupon code first.");
+  });
+
+  if (locationInput) locationInput.addEventListener("input", refreshCheckout);
+  if (pickupStore) pickupStore.addEventListener("change", refreshCheckout);
+
+  if (shippingSpeedGroup) shippingSpeedGroup.hidden = getCheckoutDeliveryMode() === "pickup";
+  refreshCheckout();
+
+  if (whatsAppSupportBtn) {
+    whatsAppSupportBtn.addEventListener("click", () => {
+      window.open(makeWhatsAppLink("Hi R-Tech Gear, I need help with checkout."), "_blank");
+    });
+  }
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const cart = getCart();
-    if (!cart.length) return;
-
-    const data = new FormData(form);
-    const name = data.get("fullName") || "";
-    const phone = data.get("phone") || "";
-    const location = data.get("location") || "";
-    const notes = data.get("notes") || "";
-    const payment = data.get("payment") || "Cash on delivery";
-
-    let lines = [];
-    lines.push(`Hi ${STORE_CONFIG.brandName}, I want to order:`);
-    cart.forEach((item) => {
-      const itemTotal = item.price * item.qty;
-      const cur = item.currency || STORE_CONFIG.currency;
-      lines.push(`- ${item.name} x${item.qty} (${formatMoney(itemTotal, cur)})`);
-    });
-    const totals = totalsByCurrency(cart);
-    const currencies = Object.keys(totals);
-    if (currencies.length === 1) {
-      lines.push(`Total: ${formatMoney(totals[currencies[0]], currencies[0])}`);
-    } else {
-      currencies.forEach((cur) => {
-        lines.push(`Total ${cur}: ${formatMoney(totals[cur], cur)}`);
-      });
-    }
-    lines.push(`Payment: ${payment}`);
-    lines.push("");
-    lines.push(`Name: ${name}`);
-    lines.push(`Phone: ${phone}`);
-    lines.push(`Location: ${location}`);
-    if (notes) lines.push(`Notes: ${notes}`);
-
-    window.open(makeWhatsAppLink(lines.join("\n")), "_blank");
+    if (payNowBtn) payNowBtn.click();
   });
 }
 
@@ -699,6 +936,12 @@ function connectCheckoutForm() {
 
 function connectWishlistToggles() {
   document.addEventListener("click", (e) => {
+    const removeBtn = e.target.closest("[data-wishlist-remove]");
+    if (removeBtn) {
+      removeFromWishlist(removeBtn.getAttribute("data-wishlist-remove"));
+      return;
+    }
+
     const btn = e.target.closest("[data-wishlist-id]");
     if (!btn) return;
     const payload = {
@@ -906,6 +1149,66 @@ function connectNetlifyForms() {
    Note: header loads after include.js fetches it,
    so we refresh WhatsApp links + connect cart buttons twice.
 ========================= */
+/* =========================
+   ACCOUNT DRAWER
+   GUEST STATE
+========================= */
+
+function connectAccountDrawer() {
+  const accountBtn = document.getElementById("accountBtn");
+  const accountDrawer = document.getElementById("accountDrawer");
+
+  if (!accountBtn || !accountDrawer) return false;
+
+  if (accountDrawer.dataset.bound === "1") return true;
+  accountDrawer.dataset.bound = "1";
+
+  const accountPanel = accountDrawer.querySelector(".accountPanel");
+  const closeButtons = accountDrawer.querySelectorAll("[data-account-close]");
+
+  function openAccountDrawer() {
+    accountDrawer.classList.add("is-open");
+    accountDrawer.setAttribute("aria-hidden", "false");
+    accountBtn.setAttribute("aria-expanded", "true");
+    document.body.classList.add("no-scroll");
+  }
+
+  function closeAccountDrawer() {
+    accountDrawer.classList.remove("is-open");
+    accountDrawer.setAttribute("aria-hidden", "true");
+    accountBtn.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("no-scroll");
+    accountBtn.focus();
+  }
+
+  accountBtn.addEventListener("click", openAccountDrawer);
+
+  closeButtons.forEach((button) => {
+    button.addEventListener("click", closeAccountDrawer);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (
+      event.key === "Escape" &&
+      accountDrawer.classList.contains("is-open")
+    ) {
+      closeAccountDrawer();
+    }
+  });
+
+  return true;
+}
+
+function waitForAccountDrawer() {
+  if (connectAccountDrawer()) return;
+  setTimeout(waitForAccountDrawer, 120);
+}
+
+
+/* =========================
+   APP START
+========================= */
+
 document.addEventListener("DOMContentLoaded", () => {
   ensureGlobalDrawers();
   syncCartState();
@@ -916,6 +1219,23 @@ document.addEventListener("DOMContentLoaded", () => {
   connectNetlifyForms();
   connectTrendingCarousel();
   connectFlashSaleAd();
+  waitForAccountDrawer();
+  loadGlobalProducts().then(renderRecommendationGrid).catch(renderRecommendationGrid);
+
+  // Always render from storage immediately before opening the cart and when a
+  // page is restored or another tab changes the basket.
+  document.addEventListener("click", (event) => {
+    if (event.target.closest("#cartBtn")) syncCartState();
+    if (event.target.closest("#wishlistBtn")) refreshWishlistUI();
+  });
+  window.addEventListener("storage", (event) => {
+    if (event.key === CART_KEY) syncCartState();
+    if (event.key === WISHLIST_KEY) refreshWishlistUI();
+  });
+  window.addEventListener("pageshow", () => {
+    syncCartState();
+    refreshWishlistUI();
+  });
 
   const newsletterModal = document.getElementById("newsletterModal");
   const closeNewsletterBtn = document.getElementById("closeNewsletterBtn");
@@ -976,5 +1296,6 @@ document.addEventListener("DOMContentLoaded", () => {
     connectNetlifyForms();
     connectTrendingCarousel();
     connectFlashSaleAd();
+    connectAccountDrawer();
   }, 250);
 });

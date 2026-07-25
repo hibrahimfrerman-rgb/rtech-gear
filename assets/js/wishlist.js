@@ -7,15 +7,22 @@
 
   function openWishlist() {
     ensureDrawersReady();
+    if (typeof window.refreshWishlistUI === "function") {
+      window.refreshWishlistUI();
+    }
     const drawer = document.getElementById("wishlistDrawer");
     if (drawer) {
       drawer.classList.add("isOpen");
+      drawer.setAttribute("aria-hidden", "false");
     }
   }
 
   function closeWishlist() {
     const drawer = document.getElementById("wishlistDrawer");
-    if (drawer) drawer.classList.remove("isOpen");
+    if (drawer) {
+      drawer.classList.remove("isOpen");
+      drawer.setAttribute("aria-hidden", "true");
+    }
   }
 
   function connectWishlistButtons() {
@@ -23,7 +30,7 @@
     document.body.dataset.wishlistEventsBound = "1";
 
     document.addEventListener("click", (e) => {
-      if (e.target.closest("#wishlistBtn")) {
+      if (e.target.closest("#wishlistBtn.icon-btn")) {
         openWishlist();
         return;
       }

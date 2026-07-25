@@ -1,0 +1,877 @@
+/* ==================================================
+   R-TECH GEAR
+   ACCOUNT PAGE
+   Standalone Account Experience
+================================================== */
+
+
+/* ==================================================
+   PAGE FOUNDATION
+================================================== */
+
+.accountPage{
+
+  background:
+    linear-gradient(
+      180deg,
+      #f8fafc 0%,
+      #ffffff 42%,
+      #f8fafc 100%
+    );
+
+}
+
+
+.accountMain{
+
+  overflow:hidden;
+
+}
+
+
+/* ==================================================
+   SHARED ACCOUNT TYPOGRAPHY
+================================================== */
+
+.accountEyebrow{
+
+  display:block;
+
+  margin-bottom:12px;
+
+  color:#64748b;
+
+  font-size:11px;
+  font-weight:800;
+
+  letter-spacing:.16em;
+  text-transform:uppercase;
+
+}
+
+
+/* ==================================================
+   HERO
+================================================== */
+
+.accountHero{
+
+  position:relative;
+
+  padding:
+    clamp(32px, 4vw, 56px)
+    24px
+    clamp(60px, 8vw, 100px);
+
+  background:
+
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(49,84,232,.09),
+      transparent 34%
+    ),
+
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f8fafc 100%
+    );
+
+}
+
+
+.accountHeroInner{
+
+  display:grid;
+
+  grid-template-columns:
+    minmax(0, 1.05fr)
+    minmax(320px, .95fr);
+
+  align-items:center;
+
+  gap:clamp(48px, 8vw, 110px);
+
+  width:min(1120px, 100%);
+
+  margin:0 auto;
+
+}
+
+
+.accountHeroCopy{
+
+  max-width:620px;
+
+}
+
+
+.accountHeroCopy h1{
+
+  margin:0;
+
+  color:#0f172a;
+
+  font-size:clamp(42px, 6vw, 76px);
+
+  font-weight:850;
+
+  line-height:1.02;
+
+  letter-spacing:-.055em;
+
+}
+
+
+.accountHeroCopy p{
+
+  max-width:52ch;
+
+  margin:28px 0 0;
+
+  color:#64748b;
+
+  font-size:18px;
+
+  line-height:1.7;
+
+}
+
+
+.accountHeroActions{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:12px;
+
+  margin-top:34px;
+
+}
+
+
+.accountPageBtn{
+
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  min-height:54px;
+
+  padding:0 26px;
+
+  border-radius:999px;
+
+  font-size:14px;
+  font-weight:800;
+
+  text-decoration:none;
+
+  transition:
+
+    transform .22s ease,
+    box-shadow .22s ease,
+    background .22s ease,
+    border-color .22s ease;
+
+}
+
+
+.accountPageBtn:hover{
+
+  transform:translateY(-2px);
+
+}
+
+
+.accountPageBtnPrimary{
+
+  background:#3154e8;
+
+  color:#ffffff;
+
+  box-shadow:
+    0 12px 26px rgba(49,84,232,.22);
+
+}
+
+
+.accountPageBtnPrimary:hover{
+
+  box-shadow:
+    0 16px 34px rgba(49,84,232,.30);
+
+}
+
+
+.accountPageBtnSecondary{
+
+  border:1px solid #dbe3ef;
+
+  background:#ffffff;
+
+  color:#0f172a;
+
+}
+
+
+.accountPageBtnSecondary:hover{
+
+  border-color:#b9c5d6;
+
+  box-shadow:
+    0 10px 24px rgba(15,23,42,.07);
+
+}
+
+
+/* ==================================================
+   ACCOUNT HERO — "KEEP EXPLORING" SHOP CARD
+   Desktop/base styles. Mobile overrides already exist
+   further down in the RESPONSIVE section (max-width:620px)
+   and will now apply on top of these base styles.
+================================================== */
+
+.accountHeroVisual{
+  display:flex;
+  justify-content:flex-end;
+}
+
+.accountShopCard{
+  width:100%;
+  max-width:420px;
+  box-sizing:border-box;
+  padding:36px 32px;
+  border:1px solid #e2e8f0;
+  border-radius:28px;
+  background:#ffffff;
+  box-shadow:0 18px 40px rgba(15,23,42,.08);
+}
+
+.accountShopCardEyebrow{
+  display:block;
+  margin-bottom:12px;
+  color:#64748b;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.accountShopCard h2{
+  margin:0 0 12px;
+  color:#0f172a;
+  font-size:28px;
+  font-weight:850;
+  letter-spacing:-.03em;
+}
+
+.accountShopCard p{
+  margin:0 0 24px;
+  color:#64748b;
+  font-size:15px;
+  line-height:1.6;
+}
+
+.accountShopCardBtn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  min-height:50px;
+  padding:0 24px;
+  border-radius:999px;
+  background:#3154e8;
+  color:#ffffff;
+  font-size:14px;
+  font-weight:800;
+  text-decoration:none;
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+
+.accountShopCardBtn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 26px rgba(49,84,232,.24);
+}
+
+
+/* ==================================================
+   BENEFITS
+================================================== */
+
+.accountBenefitsSection{
+
+  width:min(1120px, calc(100% - 48px));
+
+  margin:0 auto;
+
+  padding:
+    56px
+    0
+    80px;
+
+}
+
+
+.accountSectionHeading{
+
+  max-width:620px;
+
+  margin-bottom:38px;
+
+}
+
+
+.accountSectionHeading h2{
+
+  margin:0;
+
+  color:#0f172a;
+
+  font-size:clamp(30px, 4vw, 48px);
+
+  line-height:1.08;
+
+  letter-spacing:-.04em;
+
+}
+
+
+.accountSectionHeading p{
+
+  margin:16px 0 0;
+
+  color:#64748b;
+
+  font-size:16px;
+
+  line-height:1.65;
+
+}
+
+
+.accountBenefitsGrid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap:16px;
+
+}
+
+
+.accountBenefitCard{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:18px;
+
+  min-height:138px;
+
+  box-sizing:border-box;
+
+  padding:24px;
+
+  border:1px solid #e2e8f0;
+
+  border-radius:24px;
+
+  background:#ffffff;
+
+  text-decoration:none;
+
+  transition:
+
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease;
+
+}
+
+
+.accountBenefitCard:hover{
+
+  transform:translateY(-4px);
+
+  border-color:#cbd5e1;
+
+  box-shadow:
+    0 18px 34px rgba(15,23,42,.08);
+
+}
+
+
+.accountBenefitIcon{
+
+  display:grid;
+  place-items:center;
+
+  flex:0 0 50px;
+
+  width:50px;
+  height:50px;
+
+  border-radius:16px;
+
+  background:#f1f5f9;
+
+  color:#3154e8;
+
+  font-size:22px;
+  font-weight:700;
+
+}
+
+
+.accountBenefitContent{
+
+  display:flex;
+  flex:1;
+  min-width:0;
+
+  flex-direction:column;
+
+  gap:6px;
+
+}
+
+
+.accountBenefitContent strong{
+
+  color:#0f172a;
+
+  font-size:17px;
+  font-weight:800;
+
+}
+
+
+.accountBenefitContent small{
+
+  color:#64748b;
+
+  font-size:14px;
+
+  line-height:1.45;
+
+}
+
+
+.accountBenefitArrow{
+
+  flex:0 0 auto;
+
+  color:#94a3b8;
+
+  font-size:22px;
+
+  transition:
+
+    transform .22s ease,
+    color .22s ease;
+
+}
+
+
+.accountBenefitCard:hover .accountBenefitArrow{
+
+  transform:translateX(5px);
+
+  color:#3154e8;
+
+}
+
+
+/* ==================================================
+   TRACK ORDER
+================================================== */
+
+.accountTrackSection{
+
+  display:flex;
+
+  align-items:center;
+  justify-content:space-between;
+
+  gap:32px;
+
+  width:min(1120px, calc(100% - 48px));
+
+  box-sizing:border-box;
+
+  margin:0 auto 64px;
+
+  padding:42px;
+
+  border-radius:28px;
+
+  background:#0f172a;
+
+  box-shadow:
+    0 24px 50px rgba(15,23,42,.16);
+
+}
+
+
+.accountTrackSection .accountEyebrow{
+
+  color:#94a3b8;
+
+}
+
+
+.accountTrackContent h2{
+
+  margin:0;
+
+  color:#ffffff;
+
+  font-size:clamp(25px, 4vw, 38px);
+
+  letter-spacing:-.035em;
+
+}
+
+
+.accountTrackContent p{
+
+  margin:10px 0 0;
+
+  color:#cbd5e1;
+
+  font-size:15px;
+
+}
+
+
+.accountTrackBtn{
+
+  display:inline-flex;
+
+  align-items:center;
+  gap:12px;
+
+  flex:0 0 auto;
+
+  min-height:52px;
+
+  padding:0 22px;
+
+  border-radius:999px;
+
+  background:#ffffff;
+
+  color:#0f172a;
+
+  font-size:14px;
+  font-weight:800;
+
+  text-decoration:none;
+
+  transition:
+
+    transform .22s ease,
+    box-shadow .22s ease;
+
+}
+
+
+.accountTrackBtn:hover{
+
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 12px 24px rgba(0,0,0,.18);
+
+}
+
+
+/* ==================================================
+   SUPPORT
+================================================== */
+
+.accountSupportSection{
+
+  padding:
+    0
+    24px
+    48px;
+
+}
+
+
+.accountSupportInner{
+
+  display:flex;
+
+  align-items:center;
+  justify-content:space-between;
+
+  gap:40px;
+
+  width:min(1120px, 100%);
+
+  margin:0 auto;
+
+  padding:42px 0;
+
+  border-top:1px solid #e2e8f0;
+
+}
+
+
+.accountSupportInner h2{
+
+  margin:0;
+
+  color:#0f172a;
+
+  font-size:32px;
+
+  letter-spacing:-.035em;
+
+}
+
+
+.accountSupportInner p{
+
+  max-width:48ch;
+
+  margin:10px 0 0;
+
+  color:#64748b;
+
+  line-height:1.6;
+
+}
+
+
+.accountSupportActions{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:10px;
+
+}
+
+
+.accountSupportBtn{
+
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  min-height:46px;
+
+  padding:0 20px;
+
+  border-radius:999px;
+
+  background:#3154e8;
+
+  color:#ffffff;
+
+  font-size:13px;
+  font-weight:800;
+
+  text-decoration:none;
+
+}
+
+
+.accountSupportBtnGhost{
+
+  border:1px solid #dbe3ef;
+
+  background:#ffffff;
+
+  color:#0f172a;
+
+}
+
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+
+@media (max-width:850px){
+
+  .accountHeroInner{
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  .accountHeroCopy{
+
+    max-width:700px;
+
+  }
+
+
+  .accountHeroVisual{
+
+    justify-content:flex-start;
+
+  }
+
+
+  .accountTrackSection{
+
+    align-items:flex-start;
+
+    flex-direction:column;
+
+  }
+
+
+  .accountSupportInner{
+
+    align-items:flex-start;
+
+    flex-direction:column;
+
+  }
+
+}
+
+
+@media (max-width:620px){
+
+  .accountHero{
+
+    padding:
+      58px
+      20px
+      72px;
+
+  }
+
+
+  .accountHeroCopy h1{
+
+    font-size:42px;
+
+  }
+
+
+  .accountHeroCopy p{
+
+    font-size:16px;
+
+  }
+
+
+  .accountHeroActions{
+
+    flex-direction:column;
+
+  }
+
+
+  .accountPageBtn{
+
+    width:100%;
+
+  }
+
+
+  .accountShopCard{
+
+  width:100%;
+
+  padding:30px 24px;
+
+  border-radius:24px;
+
+  }
+
+
+  .accountShopCardBtn{
+
+  width:100%;
+
+  }
+
+
+  .accountBenefitsSection{
+
+    width:calc(100% - 40px);
+
+    padding:
+      72px
+      0
+      80px;
+
+  }
+
+
+  .accountBenefitsGrid{
+
+    grid-template-columns:1fr;
+
+  }
+
+
+  .accountBenefitCard{
+
+    min-height:120px;
+
+  }
+
+
+  .accountTrackSection{
+
+    width:calc(100% - 40px);
+
+    margin-bottom:72px;
+
+    padding:28px 24px;
+
+  }
+
+
+  .accountTrackBtn{
+
+    width:100%;
+
+    justify-content:center;
+
+  }
+
+
+  .accountSupportSection{
+
+    padding:
+      0
+      20px
+      80px;
+
+  }
+
+
+  .accountSupportActions{
+
+    width:100%;
+
+    flex-direction:column;
+
+  }
+
+
+  .accountSupportBtn{
+
+    width:100%;
+
+  }
+
+}

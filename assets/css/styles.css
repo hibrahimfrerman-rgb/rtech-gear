@@ -63,221 +63,11 @@ button{ font-family: inherit; }
 
 /* =========================
    3) HEADER
+   Legacy .siteHeader/.topBar/.headerRow/.navLinks/.headerSearch/
+   .cartMini* system removed — superseded by header.css's .site-header
+   (used by header.html on every page). Confirmed unused via search
+   across index/shop/cart/checkout/product/blog/track/account HTML.
 ========================= */
-.siteHeader{
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-}
-.topBar{
-  background: linear-gradient(90deg, #1e3a8a, #6d28d9);
-  color: white;
-  font-size: 12px;
-}
-.topBarRow{
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
-  padding: 8px 0;
-  font-weight: 600;
-}
-.topBarRight{
-  display:flex;
-  align-items:center;
-  gap: 12px;
-}
-.callCta{
-  display:flex;
-  align-items:center;
-  gap: 6px;
-}
-.callIcon{
-  width: 14px;
-  height: 14px;
-  background: white;
-  border-radius: 50%;
-  display:inline-block;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.7.6 4.2.6.7 0 1.2.5 1.2 1.2V20c0 .7-.5 1.2-1.2 1.2C11 21.2 2.8 13 2.8 2.2 2.8 1.5 3.3 1 4 1h3.3c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.9.6 4.2.1.4 0 .9-.3 1.2L6.6 10.8z'/%3E%3C/svg%3E") center/contain no-repeat;
-          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.8-.4 1.2-.3 1.3.4 2.7.6 4.2.6.7 0 1.2.5 1.2 1.2V20c0 .7-.5 1.2-1.2 1.2C11 21.2 2.8 13 2.8 2.2 2.8 1.5 3.3 1 4 1h3.3c.7 0 1.2.5 1.2 1.2 0 1.4.2 2.9.6 4.2.1.4 0 .9-.3 1.2L6.6 10.8z'/%3E%3C/svg%3E") center/contain no-repeat;
-  animation: phonePulse 1.8s ease-in-out infinite;
-}
-@keyframes phonePulse{
-  0%{ transform: scale(1); opacity: 1; }
-  50%{ transform: scale(1.08); opacity: 0.85; }
-  100%{ transform: scale(1); opacity: 1; }
-}
-.waCta{
-  display:inline-flex;
-  align-items:center;
-  gap: 6px;
-  color: white;
-}
-.waMini{
-  width: 14px;
-  height: 14px;
-  background: white;
-  border-radius: 50%;
-  display:inline-block;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12.04 2C6.58 2 2.16 6.42 2.16 11.88c0 1.75.46 3.45 1.34 4.95L2 22l5.3-1.39c1.45.79 3.09 1.2 4.74 1.2h.01c5.46 0 9.88-4.42 9.88-9.88C21.93 6.42 17.5 2 12.04 2zm5.77 14.28c-.25.7-1.25 1.29-2.07 1.46-.56.12-1.29.21-3.74-.79-3.14-1.29-5.15-4.45-5.3-4.66-.15-.21-1.27-1.69-1.27-3.23 0-1.54.8-2.3 1.09-2.62.29-.32.63-.4.84-.4.21 0 .42 0 .6.01.19.01.45-.07.7.53.25.6.84 2.07.92 2.22.08.15.13.32.02.53-.11.21-.17.32-.34.49-.17.17-.36.38-.52.51-.17.13-.35.28-.15.55.2.27.88 1.45 1.89 2.35 1.3 1.16 2.39 1.52 2.66 1.69.27.17.43.15.6-.09.17-.25.69-.8.88-1.07.19-.27.38-.23.63-.13.25.09 1.61.76 1.88.9.27.13.45.2.52.31.07.11.07.64-.18 1.34z'/%3E%3C/svg%3E") center/contain no-repeat;
-          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12.04 2C6.58 2 2.16 6.42 2.16 11.88c0 1.75.46 3.45 1.34 4.95L2 22l5.3-1.39c1.45.79 3.09 1.2 4.74 1.2h.01c5.46 0 9.88-4.42 9.88-9.88C21.93 6.42 17.5 2 12.04 2zm5.77 14.28c-.25.7-1.25 1.29-2.07 1.46-.56.12-1.29.21-3.74-.79-3.14-1.29-5.15-4.45-5.3-4.66-.15-.21-1.27-1.69-1.27-3.23 0-1.54.8-2.3 1.09-2.62.29-.32.63-.4.84-.4.21 0 .42 0 .6.01.19.01.45-.07.7.53.25.6.84 2.07.92 2.22.08.15.13.32.02.53-.11.21-.17.32-.34.49-.17.17-.36.38-.52.51-.17.13-.35.28-.15.55.2.27.88 1.45 1.89 2.35 1.3 1.16 2.39 1.52 2.66 1.69.27.17.43.15.6-.09.17-.25.69-.8.88-1.07.19-.27.38-.23.63-.13.25.09 1.61.76 1.88.9.27.13.45.2.52.31.07.11.07.64-.18 1.34z'/%3E%3C/svg%3E") center/contain no-repeat;
-}
-.headerRow{
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
-  padding: 14px 0;
-  gap: 14px;
-}
-.logo{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-  font-weight: 900;
-  letter-spacing: 0.2px;
-  color: var(--brand);
-}
-.logoMark{
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  background: var(--brand);
-}
-.logoText{
-  font-size: 18px;
-}
-
-.navLinks{
-  display:flex;
-  align-items:center;
-  gap: 14px;
-  flex: 1;
-  justify-content: center;
-}
-.navLink{
-  font-weight: 700;
-  padding: 10px 10px;
-  border-radius: 999px;
-}
-.navLink:hover{
-  background: var(--card);
-}
-
-.headerSearch{
-  width: 320px;
-  display:flex;
-  align-items:center;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: white;
-  padding: 6px 8px 6px 12px;
-  gap: 8px;
-}
-.headerSearch input{
-  border: none;
-  outline: none;
-  font-size: 13px;
-  width: 100%;
-  font-family: inherit;
-}
-.searchBtn{
-  border: none;
-  background: var(--brand);
-  color: white;
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor: pointer;
-}
-.headerIcons{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-}
-.cartIconWrap{
-  position: relative;
-}
-.cartMini{
-  position: absolute;
-  right: 0;
-  top: 48px;
-  width: 260px;
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  padding: 10px;
-  display: none;
-  z-index: 5;
-}
-.cartIconWrap:hover .cartMini{
-  display: grid;
-  gap: 8px;
-}
-.cartMiniTitle{
-  font-weight: 900;
-}
-.cartMiniItems{
-  display:grid;
-  gap: 6px;
-  max-height: 160px;
-  overflow: auto;
-}
-.cartMiniRow{
-  display:flex;
-  align-items:center;
-  gap: 8px;
-}
-.cartMiniText{
-  display:grid;
-  gap: 2px;
-}
-.cartMiniRow{
-  display:flex;
-  align-items:center;
-  gap: 8px;
-}
-.cartMiniText{
-  display:grid;
-  gap: 2px;
-}
-
-.wishlistDrawer{
-  position: fixed;
-  inset: 0;
-  background: rgba(11, 18, 32, 0.35);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 220ms ease;
-  z-index: 60;
-}
-.wishlistDrawer.isOpen{
-  opacity: 1;
-  pointer-events: auto;
-}
-.wishlistPanel{
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  width: min(360px, 92vw);
-  background: white;
-  border-left: 1px solid var(--border);
-  padding: 16px;
-  display:flex;
-  flex-direction: column;
-  transform: translateX(100%);
-  transition: transform 240ms ease;
-}
-
-.wishlistDrawer.isOpen .wishlistPanel{
-  transform: translateX(0);
-}
 
 /* =========================
    4) BUTTONS
@@ -363,47 +153,94 @@ button{ font-family: inherit; }
   gap: 12px;
   align-items: center;
 }
-.heroPill{
-  border: 2px solid #3b82f6;
-  color: #1d4ed8;
-  background: white;
+/* =========================================================
+   NEW ARRIVALS BUTTON (Homepage Hero)
+   ---------------------------------------------------------
+   WHAT IT IS: the button next to the homepage search bar.
+   WHERE THE TEXT LIVES: index.html → id="newArrivalsBtn"
+   WHAT TO EDIT TO CHANGE COLOR: "color" + "border-color" below
+   WHAT TO EDIT TO CHANGE SIZE: "height" + "padding" below
+   Height matches .heroSearch (52px) so both sit as one bar.
+   This is a plain link with no dropdown and no JavaScript.
+========================================================= */
+.newArrivalsBtn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 22px;
   border-radius: 999px;
-  min-height: 36px;
-  padding: 6px 16px;
-  font-size: 12px;
+  border: 1px solid #dbe4f0;
+  background: #ffffff;
+  color: #1d4ed8;
+  font-size: 13px;
   font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background-color .2s ease;
 }
+.newArrivalsBtn:hover{
+  border-color: #4f46e5;
+  background: #f5f6ff;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(79, 70, 229, 0.18);
+}
+
 .heroSearch{
   display:flex;
   align-items:center;
-  gap: 6px;
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 4px 8px 4px 10px;
-  width: 100%;
-  max-width: 420px;
-  box-shadow: var(--shadow);
+  gap:10px;
+  background:#fff;
+  border:1px solid #dbe4f0;
+  border-radius:999px;
+  padding:6px 8px 6px 16px;
+  width:100%;
+  max-width:420px;
+  min-height:52px;
+  box-shadow:0 8px 20px rgba(15,23,42,.08);
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+
+.heroSearch:focus-within{
+  border-color:#4f46e5;
+  box-shadow:0 0 0 4px rgba(79,70,229,.12);
 }
 .heroSearch input{
-  border: none;
-  outline: none;
-  width: 100%;
-  font-size: 14px;
-  font-family: inherit;
+  border:none;
+  outline:none;
+  width:100%;
+  background:transparent;
+  font-size:15px;
+  font-weight:500;
+  font-family:inherit;
+}
+
+.heroSearch input::placeholder{
+  color:#94a3b8;
 }
 .heroSearchBtn{
-  width: 30px;
-  height: 30px;
-  flex: 0 0 30px;
-  border-radius: 999px;
-  border: none;
-  background: #1d4ed8;
-  color: white;
+  width:42px;
+  height:42px;
+  flex:0 0 42px;
+  border:none;
+  border-radius:50%;
+  background:linear-gradient(135deg,#4f46e5,#2563eb);
   display:flex;
   align-items:center;
   justify-content:center;
-  cursor: pointer;
+  cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.heroSearchBtn:hover{
+  transform:scale(1.05);
+  box-shadow:0 8px 18px rgba(37,99,235,.28);
+}
+
+.heroSearchBtn .icon-svg{
+  width:18px;
+  height:18px;
+  filter:brightness(0) invert(1);
 }
 .heroTrending{
   position: relative;
@@ -414,25 +251,33 @@ button{ font-family: inherit; }
   flex-wrap: nowrap;
 }
 .heroTrendLabel{
-  font-weight: 800;
-  color: var(--text);
-  font-size: 12px;
-  letter-spacing: 0.02em;
-  flex: 0 0 auto;
-  white-space: nowrap;
+  font-weight:600;
+  margin-right:18px;
+  white-space:nowrap;
+  color:#111827;
+  font-size:13px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  opacity:.72;
+  flex:0 0 auto;
 }
 .heroTrendRail{
-  position: relative;
+  position:relative;
   display:flex;
   align-items:center;
-  gap: 10px;
-  min-width: 0;
-  flex: 1 1 auto;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-behavior: smooth;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+
+  /* Space between trending terms.
+     Larger spacing creates a cleaner,
+     luxury editorial appearance. */
+  gap:30px;
+  min-width:0;
+  flex:1 1 auto;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;
+  -ms-overflow-style:none;
+  scrollbar-width:none;
 }
 .heroTrendRail::-webkit-scrollbar{
   display: none;
@@ -447,6 +292,9 @@ button{ font-family: inherit; }
   flex: 0 0 36px;
   pointer-events: none;
   background: linear-gradient(90deg, rgba(242, 245, 247, 0), #f2f5f7 72%);
+}
+.heroTrendRail > *{
+  flex:0 0 auto;
 }
 .heroSelect{
   position: relative;
@@ -473,6 +321,129 @@ button{ font-family: inherit; }
 .heroSelect:focus-visible{
   box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.2);
 }
+
+/* ==================================================
+   Premium Trending Search Link
+   Clean editorial-style typography inspired by
+   Apple, Stripe and Linear navigation systems.
+
+   Edit typography here.
+================================================== */
+
+/* ==================================================
+   Premium Trending Search Links
+   Uses lighter typography so the search bar remains
+   the hero while trending terms act as subtle guides.
+================================================== */
+
+.trendLink{
+
+  position:relative;
+
+  flex:0 0 auto;
+
+  color:#6b7280;
+
+  font-size:11px;
+
+  font-weight:500;
+
+  letter-spacing:.10em;
+
+  text-transform:uppercase;
+
+  text-decoration:none;
+
+  white-space:nowrap;
+
+  line-height:1;
+
+  /* Smooth premium transition.
+   Slightly slower than default so interactions feel
+   deliberate instead of instant. */
+  transition:
+    color .38s cubic-bezier(.22,.61,.36,1),
+    transform .38s cubic-bezier(.22,.61,.36,1),
+    opacity .38s cubic-bezier(.22,.61,.36,1),
+    letter-spacing .38s cubic-bezier(.22,.61,.36,1);
+
+  opacity:.68;
+
+}
+
+/* Premium underline.
+   Instead of a heavy line, this behaves like a soft
+   navigation indicator underneath the active text. */
+
+.trendLink::after{
+
+  content:"";
+
+  position:absolute;
+
+  left:50%;
+
+  bottom:-6px;
+
+  width:0;
+
+  height:1.5px;
+
+  border-radius:999px;
+
+  background:linear-gradient(
+      90deg,
+      #4f46e5,
+      #7c3aed
+  );
+
+  transform:translateX(-50%);
+
+  /* Underline glides in gently instead of appearing
+   immediately on hover. */
+transition:width .42s ease;
+
+}
+
+/* Gentle movement keeps the navigation feeling expensive
+   without looking like animated buttons. */
+
+/* Hover lifts the text very slightly.
+   Enough to feel interactive without
+   looking like a button. */
+
+/* Hover adds only a whisper of movement.
+   Premium interfaces avoid exaggerated effects. */
+
+.trendLink:hover{
+
+  color:var(--brand);
+
+  opacity:1;
+
+  transform:translateY(-1px);
+
+  letter-spacing:.12em;
+
+}
+
+.trendLink:hover::after{
+
+  width:100%;
+
+}
+
+.trendLink:focus-visible{
+
+  color:var(--brand);
+
+}
+
+.trendLink:focus-visible::after{
+
+  width:100%;
+
+}
 .heroRow{
   display:grid;
   grid-template-columns: 2fr 1fr;
@@ -496,24 +467,46 @@ button{ font-family: inherit; }
   position: absolute;
   inset: 0;
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 200ms ease, transform 200ms ease;
+  transform:scale(1.03);
+  transition:
+  opacity .45s ease,
+  transform 1.8s ease;
   background-size: cover;
   background-position: center;
+  z-index: 1;
+  pointer-events: none;
 }
 .heroSlide.isActive{
   opacity: 1;
-  transform: translateY(0);
+  transform:scale(1);
+  z-index: 2;
+  pointer-events: auto;
 }
 .heroOverlay{
-  position: absolute;
-  inset: 0;
-  padding: 34px;
-  color: white;
-  background: linear-gradient(90deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.15) 60%);
-  display:grid;
-  gap: 10px;
-  align-content: center;
+  position:absolute;
+  inset:0;
+  padding:26px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding-top:0;
+  padding-bottom:0;
+  gap:10px;
+  color:#fff;
+  background:
+  linear-gradient(
+  to top,
+  rgba(0,0,0,.72),
+  rgba(0,0,0,.32) 45%,
+  rgba(0,0,0,.05)
+  );
+}
+.heroOverlay > *{
+    max-width:460px;
+}
+
+.heroOverlay{
+    padding-left:42px;
 }
 .heroKicker{
   font-size: 12px;
@@ -521,23 +514,42 @@ button{ font-family: inherit; }
   font-weight: 800;
 }
 .heroTitle{
-  font-size: clamp(28px, 3vw, 44px);
-  font-weight: 900;
+    font-size:clamp(34px,3vw,50px);
+    line-height:1.05;
+    font-weight:900;
+    max-width:11ch;
 }
 .heroDesc{
-  font-size: 15px;
-  opacity: 0.9;
+  font-size:15px;
+  line-height:1.55;
+  max-width:470px;
+  opacity:.92;
 }
 .heroCta{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  background: white;
-  color: #111827;
-  border-radius: 999px;
-  padding: 12px 18px;
-  font-weight: 800;
-  width: max-content;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    width:fit-content;
+
+    padding:10px 18px;
+
+    margin-top:8px;
+
+    border-radius:999px;
+
+    font-size:13px;
+    font-weight:700;
+
+    text-decoration:none;
+
+    background:#ffffff;
+    color:var(--brand);
+
+    transition:.2s;
+}
+.heroCta:hover{
+    transform:translateY(-2px);
 }
 .heroPillText{
   position: absolute;
@@ -551,23 +563,30 @@ button{ font-family: inherit; }
   font-weight: 800;
 }
 .heroControls{
-  position: absolute;
-  left: 18px;
-  bottom: 18px;
-  display:flex;
-  gap: 8px;
-  z-index: 3;
+  position:absolute;
+  left:16px;
+  bottom:16px;
+  display:none;
+  gap:6px;
+  z-index:5;
 }
 .heroCtrlBtn{
-  width: 36px;
-  height: 36px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.35);
-  background: rgba(255,255,255,0.16);
-  color: white;
-  cursor: pointer;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.10);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  color:#fff;
+  font-size:13px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.heroCtrlBtn:hover{
+  background:rgba(255,255,255,.22);
+  transform:translateY(-1px);
 }
 .heroDots{
   position: absolute;
@@ -576,6 +595,8 @@ button{ font-family: inherit; }
   transform: translateX(-50%);
   display:flex;
   gap: 8px;
+  z-index: 5;
+  pointer-events: auto;
 }
 .heroDot{
   width: 8px;
@@ -593,7 +614,8 @@ button{ font-family: inherit; }
   grid-template-rows: 1fr 1fr;
   gap: 16px;
 }
-.promoCard{
+.promoCard,
+.promoSlider{
   border-radius: 24px;
   overflow: hidden;
   background-size: cover;
@@ -601,6 +623,32 @@ button{ font-family: inherit; }
   box-shadow: var(--shadow);
   position: relative;
   min-height: 200px;
+}
+/* ==================================================
+   PROMO SLIDES
+   Each slide fills the promo card completely.
+   Only the active slide is visible.
+================================================== */
+
+.promoSlide{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:flex-end;
+  text-decoration:none;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  opacity:0;
+  visibility:hidden;
+  transition:
+    opacity .45s ease,
+    visibility .45s ease;
+}
+
+.promoSlide.isActive{
+  opacity:1;
+  visibility:visible;
 }
 .promoOverlay{
   position: absolute;
@@ -779,14 +827,19 @@ button{ font-family: inherit; }
 
 @media (max-width: 900px){
   .heroTop{
-    grid-template-columns: auto minmax(0, 1fr);
+    /* Single column now that New Arrivals is hidden on mobile —
+       heroSearch becomes the full-width top element. */
+    grid-template-columns: 1fr;
     gap: 10px;
   }
-  .heroPill{
-    min-height: 44px;
-    padding: 8px 18px;
-    font-size: 14px;
-    line-height: 1.05;
+  /* ===================================================
+     MOBILE ONLY
+     Hide New Arrivals.
+     Categories will move into the future
+     mobile hamburger menu.
+  =================================================== */
+  .newArrivalsBtn{
+    display:none !important;
   }
   .heroSearch{
     width: 100%;
@@ -799,14 +852,23 @@ button{ font-family: inherit; }
   }
   .heroTrending{
     grid-column: 1 / -1;
-    gap: 8px;
+    /* Matches --cat-mobile-gap (10px) used by the category row directly
+       below this section, so the two horizontal-scroll patterns feel
+       like one consistent system rather than two different spacings. */
+    gap: 10px;
     padding-bottom: 2px;
   }
   .heroTrendLabel{
     display: none;
   }
   .heroTrendRail{
+    animation:trendFade .35s ease;
     width: 100%;
+    /* Reuses the same snap pattern as .categoryRow's mobile scroll row
+       so chips settle cleanly instead of stopping half-clipped.
+       Edit scroll-snap-type here if snapping ever needs to be relaxed. */
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
   }
   .heroTrendRail::after{
     width: 26px;
@@ -816,10 +878,32 @@ button{ font-family: inherit; }
   .heroSelect{
     flex: 0 0 auto;
     min-width: 130px;
-    height: 40px;
+    /* Bumped from 40px to 44px: matches the standard comfortable
+       touch-target height used elsewhere in the project (e.g. .icon-btn,
+       .hamburger-btn). Edit this value if the chip row height changes. */
+    height: 44px;
     font-size: 13px;
     padding: 8px 28px 8px 14px;
+    /* Pairs with .heroTrendRail's scroll-snap-type above so each chip
+       snaps into place on swipe. */
+    scroll-snap-align: start;
   }
+  /* Mobile typography.
+   Slightly larger than desktop for
+   comfortable reading while keeping
+   the premium compact appearance. */
+
+.trendLink{
+
+  scroll-snap-align:start;
+
+  font-size:13px;
+
+  letter-spacing:.06em;
+
+  padding:5px 0;
+
+}
   .heroOverlay{
     padding: 24px;
   }
@@ -1407,7 +1491,8 @@ button{ font-family: inherit; }
   border-radius: 999px;
 }
 .footerLinks a:hover{
-  background: var(--card);
+  background: #eef2ff;
+  color: var(--brand);
 }
 
 /* =========================
@@ -1430,43 +1515,58 @@ button{ font-family: inherit; }
 /* =========================
    9) CART DRAWER
 ========================= */
-.cartDrawer{
+.cartDrawer,
+.wishlistDrawer{
   position: fixed;
   inset: 0;
-  background: rgba(11, 18, 32, 0.35);
+  background: rgba(15, 23, 42, .42);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 220ms ease;
+  transition: opacity .25s ease;
   z-index: 60;
 }
-.cartDrawer.isOpen{
+.cartDrawer.isOpen,
+.wishlistDrawer.isOpen{
   opacity: 1;
   pointer-events: auto;
 }
-.cartPanel{
+.cartPanel,
+.wishlistPanel{
   position: absolute;
   right: 0;
   top: 0;
   height: 100%;
-  width: min(420px, 92vw);
+  width: min(420px, 100%);
+  min-height: 0;
   background: white;
   border-left: 1px solid var(--border);
-  padding: 16px;
+  padding: 24px;
   display:flex;
   flex-direction: column;
   transform: translateX(100%);
-  transition: transform 240ms ease;
+  box-shadow: -18px 0 50px rgba(15,23,42,.18);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  transition: transform .35s cubic-bezier(.22,1,.36,1);
 }
-.cartDrawer.isOpen .cartPanel{
+.wishlistPanel{ width: min(360px, 100%); }
+.cartDrawer.isOpen .cartPanel,
+.wishlistDrawer.isOpen .wishlistPanel{
   transform: translateX(0);
 }
 .cartTop{
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   justify-content: space-between;
-  padding-bottom: 10px;
+  gap: 20px;
+  padding-bottom: 20px;
   border-bottom: 1px solid var(--border);
 }
+/* Cart + Wishlist close buttons only — scoped by ID so the shared
+   .iconBtn class (used by flash-sale arrows, modal close buttons, etc.)
+   stays untouched. Hover values copied from .accountCloseBtn:hover
+   so both drawers feel like the same family. */
 .cartTitle{
   display:flex;
   align-items:center;
@@ -1474,91 +1574,156 @@ button{ font-family: inherit; }
   font-weight: 900;
 }
 .cartIcon{
+  position: relative;
+  z-index: 0;
   width: 24px;
   height: 24px;
   display:inline-block;
-  background: #2563eb;
+  background: var(--brand);
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 6h15l-2 7H7L6 6Zm0 0L5 4H3m4 9l-1 2h12M9 19a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm9 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z'/%3E%3C/svg%3E") center/contain no-repeat;
           mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 6h15l-2 7H7L6 6Zm0 0L5 4H3m4 9l-1 2h12M9 19a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm9 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z'/%3E%3C/svg%3E") center/contain no-repeat;
 }
-.cartProgress{
-  padding: 12px 0;
-}
-.cartProgressBar{
-  position: relative;
-  height: 8px;
-  border-radius: 999px;
-  background: #eef2f7;
-  overflow: hidden;
-}
-.cartProgressFill{
-  position: absolute;
-  inset: 0;
-  width: 0%;
-  background: #22c55e;
-}
-.cartProgressCheck{
-  position: absolute;
-  right: 6px;
-  top: 50%;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #22c55e;
-  transform: translateY(-50%);
-  display: none;
-}
-.cartProgressCheck::after{
+.cartIcon::before{
+  /* Soft circular badge behind the icon — same 40px size already used
+     by .icon-btn elsewhere in the header, tinted from the brand var
+     instead of a hardcoded hex so it always matches site blue. */
   content: "";
   position: absolute;
-  inset: 5px;
-  border-right: 2px solid white;
-  border-bottom: 2px solid white;
-  transform: rotate(45deg);
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--brand) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand) 16%, transparent);
+  transform: translate(-50%, -50%);
+  z-index: -1;
 }
-.cartProgressText{
-  margin-top: 8px;
-  font-weight: 700;
-  color: var(--muted);
-  font-size: 13px;
+
+/* WISHLIST DRAWER — swap the cart glyph for the heart icon,
+   scoped to .wishlistPanel so the cart drawer is untouched. */
+.wishlistPanel .cartIcon{
+  background: var(--brand);
+  -webkit-mask: url("../icons/icon-heart-wish.svg") center/contain no-repeat;
+          mask: url("../icons/icon-heart-wish.svg") center/contain no-repeat;
+}
+.cartItems,
+.cartEmpty{
+  flex: 0 0 auto;
+  min-height: auto;
+  overflow: visible;
 }
 .cartItems{
-  padding: 12px 0;
-  overflow: auto;
-  flex: 1;
+  padding: 16px 0;
 }
 .cartRow{
   display:flex;
   align-items:center;
   justify-content: space-between;
   gap: 10px;
-  padding: 10px;
+  padding: 18px;
   border: 1px solid var(--border);
   border-radius: 14px;
   margin-bottom: 10px;
 }
 .cartRowLeft{
-  display:flex;
-  gap: 10px;
-  align-items:center;
+
+    display:flex;
+    align-items:flex-start;
+
+    gap:18px;
+
+    flex:1;
+
 }
 .cartThumb{
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
-  background: #eef2ff;
-  background-size: cover;
-  background-position: center;
-  border: 1px solid var(--border);
+    width:78px;
+    height:78px;
+    flex-shrink:0;
+
+    border-radius:18px;
+
+    background:#f8fafc;
+    background-size:contain;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    border:1px solid rgba(15,23,42,.06);
+
+    padding:8px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    transition:transform .2s ease;
 }
 .cartRowTitle{
-  font-weight: 900;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    line-height:1.45;
+
+    color:#0f172a;
+
+    display:-webkit-box;
+
+    -webkit-line-clamp:2;
+
+    -webkit-box-orient:vertical;
+
+    overflow:hidden;
+
+    margin-bottom:6px;
+
+}
+
+.cartRowRemove{
+
+    width:40px;
+
+    height:40px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:12px;
+
+    border:1px solid rgba(15,23,42,.08);
+
+    background:#fff;
+
+    color:#64748b;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease,
+        transform .2s ease;
+
+}
+
+.cartRowRemove:hover{
+
+    background:#f8fafc;
+
+    border-color:#cbd5e1;
+
+    color:#ef4444;
+
+    transform:rotate(8deg);
+
 }
 .qtyControl{
   display:flex;
   align-items:center;
   gap: 8px;
-  margin-top: 6px;
+  margin-top:10px;
 }
 .qtyBtn{
   width: 26px;
@@ -1575,49 +1740,42 @@ button{ font-family: inherit; }
   font-weight: 800;
   font-size: 13px;
 }
-.cartRowRemove{
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  color: var(--muted);
+.cartEmptyArt{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 280px;
+  height: 220px;
+  margin: 4px auto 12px;
+  overflow: hidden;
+}
+.cartEmptyArt picture{ display: flex; width: 100%; height: 100%; }
+.cartEmptyArt img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
 }
 .cartEmpty{
   display: none;
+  place-content: center;
   text-align: center;
   gap: 10px;
-  padding: 20px 0 10px;
+  padding: 16px 0 24px;
 }
 .cartEmpty.isVisible{
   display: grid;
-}
-.cartEmptyArt{
-  width: 120px;
-  height: 120px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #f3f4f6, #ffffff);
-  margin: 0 auto 10px;
-  position: relative;
-}
-.cartEmptyArt::before{
-  content: "";
-  position: absolute;
-  inset: 22px;
-  border: 2px solid #cbd5e1;
-  border-radius: 8px;
-}
-.cartEmptyArt::after{
-  content: "";
-  position: absolute;
-  width: 40px;
-  height: 6px;
-  border-radius: 6px;
-  background: #cbd5e1;
-  left: 50%;
-  bottom: 24px;
-  transform: translateX(-50%);
+  min-height: 460px;
 }
 .cartEmptyTitle{
+  color: #0f172a;
+  font-size: 22px;
   font-weight: 900;
+  letter-spacing: -.025em;
 }
 .cartPage{
   border: 1px solid var(--border);
@@ -1635,7 +1793,7 @@ button{ font-family: inherit; }
 }
 .cartBottom{
   border-top: 1px solid var(--border);
-  padding-top: 12px;
+  padding-top: 16px;
 }
 .cartTotalRow{
   display:flex;
@@ -1644,9 +1802,35 @@ button{ font-family: inherit; }
   margin-bottom: 12px;
 }
 .cartActionsRow{
-  display:flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.3fr);
+  gap: 12px;
+}
+.cartActionsRow .btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  font-weight: 800;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+}
+.cartActionsRow .btnPrimary{
+  box-shadow: 0 8px 18px rgba(31,58,138,.16);
+}
+.cartActionsRow .btnPrimary:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(31,58,138,.22);
+}
+.cartActionsRow .btnGhost{
+  border-color: #dbe3f0;
+}
+.cartActionsRow .btnGhost:hover{
+  border-color: #c7d2fe;
+  background: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(15,23,42,.06);
 }
 
 /* =========================
@@ -1770,44 +1954,59 @@ button{ font-family: inherit; }
   transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 .benefitIcon::before{
-  content: "";
-  width: 34px;
-  height: 34px;
-  background-image: var(--service-icon);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  filter: none;
-  mix-blend-mode: multiply;
-  transition: transform 220ms ease;
+  content:"";
+
+  width:34px;
+  height:34px;
+
+  display:block;
+
+  background:currentColor;
+
+  -webkit-mask:var(--service-icon) center/contain no-repeat;
+          mask:var(--service-icon) center/contain no-repeat;
+
+  transition:
+    transform .22s ease,
+    color .22s ease;
 }
+
+.benefitIcon{
+  color:var(--icon-primary);
+}
+
+
 .benefit:nth-child(1){ --service-glow: #0ea5e9; }
 .benefit:nth-child(2){ --service-glow: #2563eb; }
 .benefit:nth-child(3){ --service-glow: #14b8a6; }
 .benefit:nth-child(4){ --service-glow: #3b82f6; }
 .benefit:nth-child(5){ --service-glow: #10b981; }
+
 .benefit:hover .benefitIcon{
+  color: var(--icon-hover);
   transform: translateY(-2px) scale(1.03);
   border-color: color-mix(in oklab, var(--service-glow, #60a5fa) 45%, #ffffff);
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--service-glow, #60a5fa) 14%, #ffffff), 0 14px 24px rgba(29, 78, 216, 0.16);
+  box-shadow:
+    0 0 0 3px color-mix(in oklab, var(--service-glow, #60a5fa) 14%, #ffffff),
+    0 14px 24px rgba(29, 78, 216, 0.16);
 }
 .benefit:hover .benefitIcon::before{
   transform: scale(1.04);
 }
 .benefitIcon[data-icon="fast-delivery"]{
-  --service-icon: url("../icons/service icons/fast delivery.svg");
+  --service-icon:url("../icons/services/fast-delivery.svg");
 }
 .benefitIcon[data-icon="secure-payments"]{
-  --service-icon: url("../icons/service icons/secure payments.svg");
+  --service-icon:url("../icons/services/secure-payments.svg");
 }
 .benefitIcon[data-icon="support-24"]{
-  --service-icon: url("../icons/service icons/support 24 hrs.svg");
+  --service-icon:url("../icons/services/support 24 hrs-1.svg");
 }
 .benefitIcon[data-icon="warranty"]{
-  --service-icon: url("../icons/service icons/warranty.svg");
+  --service-icon:url("../icons/services/warranty.svg");
 }
 .benefitIcon[data-icon="money-back"]{
-  --service-icon: url("../icons/service icons/money back garranty.svg");
+  --service-icon:url("../icons/services/money-back.svg");
 }
 
 .benefitTitle{
@@ -1835,6 +2034,13 @@ button{ font-family: inherit; }
 @keyframes waBubbleBob{
   0%,100%{ transform: translateY(0); }
   50%{ transform: translateY(-4px); }
+}
+
+@media (max-width: 720px){
+  .floatWhatsApp,
+  .whatsAppBubble{
+    bottom: 110px;
+  }
 }
 
 .waIcon{
@@ -1991,9 +2197,60 @@ button{ font-family: inherit; }
 }
 
 /* responsive */
-@media (max-width: 900px){
-  .heroRow{ grid-template-columns: 1fr; }
-  .heroRight{ grid-template-rows: auto; }
+/* ==========================================================
+   SPRINT 3A — MOBILE HERO STABILITY
+   Prevent hero collapse on phones caused by absolutely
+   positioned hero slides.
+   Desktop behaviour remains unchanged.
+========================================================== */
+
+@media (max-width:900px){
+
+  .heroRow{
+    grid-template-columns:1fr;
+    grid-template-rows:auto auto;
+    min-height:0;
+  }
+
+  .heroLeft{
+    min-height:clamp(340px,65vw,480px);
+  }
+
+  .heroSlider{
+    min-height:inherit;
+  }
+  .heroOverlay{
+    justify-content:center;
+    padding:24px;
+  }
+  .heroTitle{
+    font-size:26px;
+    line-height:1.1;
+  }
+  .heroKicker{
+    margin-bottom:2px;
+}
+  .heroDesc{
+    font-size:14px;
+    max-width:85%;
+  }
+  .heroCta{
+    align-self:flex-start;
+    margin-top:8px;
+    padding:10px 18px;
+    font-size:14px;
+  }
+  .heroControls{
+    display:none;
+  }
+  .heroDots{
+    display:none;
+  }
+
+  .heroRight{
+    grid-template-rows:auto;
+  }
+
 }
 @media (max-width: 900px){
   .headerRow{ flex-wrap: wrap; }
@@ -2062,37 +2319,133 @@ button{ font-family: inherit; }
   .whatsAppBubble{
     animation: none;
   }
+  /* Keep the same cinematic crossfade + zoom used on desktop —
+     mobile should feel like the same premium product, not a stripped-down version. */
   .heroSlide{
-    transition: opacity 140ms ease, transform 140ms ease;
+    transition: opacity .45s ease, transform 1.8s ease;
   }
 }
-
-.categoryRow{
-  display:grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
-  gap: 12px;
-  margin: 18px 0 8px;
+/* PRODUCT PAGE */
+/* =====================================================
+   HOME: CATEGORY NAVIGATION — BASE TOKENS & DESKTOP
+   Desktop: 8-col grid (≥901px)
+   Tablet:  4-col grid (601px–900px)  ← see @media block below
+   Mobile:  horizontal scroll row (≤600px) ← see @media block above
+   Edit the tokens here to restyle desktop + tablet together.
+   ===================================================== */
+:root{
+  --cat-icon-size:     48px;              /* icon bubble diameter */
+  --cat-icon-img:      26px;              /* SVG size inside the bubble */
+  --cat-card-radius:   18px;              /* card corner radius */
+  --cat-card-pad-v:    14px;              /* card top/bottom padding */
+  --cat-card-pad-h:    8px;              /* card left/right padding */
+  --cat-gap:           12px;              /* gap between cards */
+  --cat-transition:    200ms ease;        /* hover / active timing */
+  --cat-icon-bg:       linear-gradient(135deg, #e0f2fe 0%, #ede9fe 100%);
+  --cat-icon-bg-hover: linear-gradient(135deg, #bfdbfe 0%, #ddd6fe 100%);
+  --cat-shadow:        0 8px 20px rgba(12, 26, 50, 0.07);
+  --cat-shadow-hover:  0 12px 28px rgba(29, 78, 216, 0.14);
 }
+
+/* Desktop: 8-col grid */
+.categoryRow{
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: var(--cat-gap);
+  margin: 18px 0 14px;
+}
+
+/* Each card is a full anchor — keyboard + touch navigable */
 .categoryItem{
-  display:grid;
-  gap: 8px;
+  display: grid;
+  gap: 10px;
   justify-items: center;
-  padding: 10px 6px;
-  border-radius: 18px;
+  align-content: center;
+  padding: var(--cat-card-pad-v) var(--cat-card-pad-h);
+  border-radius: var(--cat-card-radius);
   background: #ffffff;
   border: 1px solid var(--border);
-  box-shadow: 0 8px 18px rgba(12, 26, 50, 0.06);
+  box-shadow: var(--cat-shadow);
+  text-decoration: none;
+  color: var(--text);
+  min-height: 90px;
+  cursor: pointer;
+  transition:
+    transform       var(--cat-transition),
+    box-shadow      var(--cat-transition),
+    border-color    var(--cat-transition);
 }
+
+/* Hover: lift + shadow + border tint */
+.categoryItem:hover{
+  transform: translateY(-3px);
+  box-shadow: var(--cat-shadow-hover);
+  border-color: rgba(99, 102, 241, 0.30);
+}
+
+/* Active: partial lift */
+.categoryItem:active{
+  transform: translateY(-1px);
+  box-shadow: var(--cat-shadow);
+}
+
+/* Keyboard focus ring — visible without polluting mouse users */
+.categoryItem:focus-visible{
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+}
+
+/* Icon bubble */
 .catIcon{
-  width: 44px;
-  height: 44px;
+  width: var(--cat-icon-size);
+  height: var(--cat-icon-size);
   border-radius: 50%;
-  background: linear-gradient(135deg, #e0f2fe, #ede9fe);
+  background: var(--cat-icon-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(99, 102, 241, 0.12);
+  transition:
+    background      var(--cat-transition),
+    transform       var(--cat-transition),
+    box-shadow      var(--cat-transition);
 }
+
+/* Icon bubble hover: brighten + scale + glow */
+.categoryItem:hover .catIcon{
+  background: var(--cat-icon-bg-hover);
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.18);
+}
+
+/* SVG inside bubble — existing icons, never replaced */
+.catIcon img{
+  width: var(--cat-icon-img);
+  height: var(--cat-icon-img);
+  display: block;
+  object-fit: contain;
+  filter: none;
+}
+
+/* Category label */
 .catName{
   font-weight: 800;
   font-size: 12px;
+  text-align: center;
+  color: var(--text);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  transition: color var(--cat-transition);
 }
+
+/* Label hover: brand colour */
+.categoryItem:hover .catName{
+  color: var(--brand);
+}
+/* END: HOME: CATEGORY NAVIGATION — BASE TOKENS & DESKTOP */
+
+/* PRODUCT PAGE */
 
 /* PRODUCT PAGE */
 .crumbs{
@@ -2287,6 +2640,122 @@ button{ font-family: inherit; }
   display:grid;
   gap: 10px;
 }
+/* =====================================================
+   HOME: CATEGORY NAVIGATION — TABLET (601px–900px)
+   ===================================================== */
+@media (max-width: 900px){
+
+  /* Categories: 4-column grid on tablet */
+  .categoryRow{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+}
+/* =====================================================
+   HOME: CATEGORY NAVIGATION — MOBILE (≤600px)
+   Single horizontal scroll row with CSS scroll snap.
+   Scrollbar hidden. Fixed card dimensions. Edge padding.
+   All sizing controlled by the six tokens below —
+   change a token here and the entire mobile row updates.
+   ===================================================== */
+@media (max-width: 600px){
+
+  /* —— Mobile-only category tokens —— */
+  :root{
+    --cat-mobile-card-width:  88px;    /* card width — ~3.5 cards on 360px = peek signal */
+    --cat-mobile-card-height: 104px;   /* fixed height — every card stays perfectly level */
+    --cat-mobile-icon-size:   44px;    /* icon bubble diameter */
+    --cat-mobile-icon-img:    24px;    /* SVG size inside the bubble */
+    --cat-mobile-edge-pad:    16px;    /* breathing room at left + right screen edge */
+    --cat-mobile-gap:         10px;    /* gap between cards */
+  }
+
+  /* Scrolling container */
+  .categoryRow{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    /* Scroll snap — each card snaps cleanly to its leading edge */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;     /* iOS momentum scroll */
+
+    gap: var(--cat-mobile-gap);
+    margin: 14px 0 10px;
+
+    /* Edge padding — first and last cards never sit flush against the screen */
+    padding-block: 4px 14px;               /* top: 4px | bottom: 14px (shadow clearance) */
+    padding-inline: var(--cat-mobile-edge-pad);
+
+    /* scroll-padding-inline matches padding-inline so the first snapped
+       card aligns to the visible content area, not the raw container edge */
+    scroll-padding-inline: var(--cat-mobile-edge-pad);
+
+    /* Hide scrollbar — all browsers */
+    scrollbar-width: none;                 /* Firefox */
+    -ms-overflow-style: none;              /* IE / Edge legacy */
+  }
+
+  /* Chrome / Safari / Opera scrollbar hide */
+  .categoryRow::-webkit-scrollbar{
+    display: none;
+  }
+
+  /* Each card: fixed dimensions — never shrinks, never grows */
+  .categoryItem{
+    flex: 0 0 var(--cat-mobile-card-width);
+    width:  var(--cat-mobile-card-width);
+    height: var(--cat-mobile-card-height);  /* fixed height keeps the row baseline level */
+    padding: 12px 6px;
+    gap: 8px;
+    align-content: center;                  /* vertically centre icon + label as a group */
+
+    /* Snap card to its leading edge */
+    scroll-snap-align: start;
+
+    /* Shadow rides above the bottom padding — not clipped */
+    box-shadow: var(--cat-shadow);
+  }
+
+  /* Icon bubble — override desktop token with mobile token */
+  .categoryItem .catIcon{
+    width:  var(--cat-mobile-icon-size);
+    height: var(--cat-mobile-icon-size);
+  }
+
+  /* SVG inside bubble — override desktop token with mobile token */
+  .categoryItem .catIcon img{
+    width:  var(--cat-mobile-icon-img);
+    height: var(--cat-mobile-icon-img);
+  }
+
+  /* Label — fixed two-line height so wrapping ("Smart Home") never
+     stretches the card and breaks the row's horizontal alignment.
+     Two lines × 1.25 line-height × 11px = 27.5px reserved.
+     Single-word labels ("Audio") flex-centre inside the same slot. */
+  .catName{
+    font-size: 11px;
+    line-height: 1.25;
+    height: calc(11px * 1.25 * 2);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  /* Press feedback — scale-down is more natural than lift on touch */
+  .categoryItem:active{
+    transform: scale(0.96);
+    box-shadow: var(--cat-shadow);
+  }
+}
+/* END: HOME: CATEGORY NAVIGATION — MOBILE */
 
 @media (max-width: 900px){
   .productGrid{ grid-template-columns: 1fr; }
@@ -2294,7 +2763,9 @@ button{ font-family: inherit; }
   .payRow{ grid-template-columns: 1fr; }
 }
 
-/* CHECKOUT */
+/*================= 
+ CHECKOUT 
+==================*/
 .checkoutTop{
   padding: 18px 0 8px;
   display:flex;
@@ -2774,4 +3245,78 @@ button{ font-family: inherit; }
   .wishlistDrawer.isOpen .wishlistPanel{
     transform: none;
   }
+}
+
+@media (max-width: 720px){
+  .cartDrawer,
+  .wishlistDrawer{
+    display: block;
+    padding: 0;
+  }
+  .cartPanel,
+  .wishlistPanel{
+    width: 100%;
+    height: 100dvh;
+    min-height: 100dvh;
+    padding: 24px 20px calc(22px + 96px + env(safe-area-inset-bottom, 0px));
+    border: 0;
+    border-radius: 0;
+  }
+  .cartEmpty.isVisible{ min-height: 420px; }
+  .cartEmptyArt{ max-width: 240px; height: 200px; }
+  .cartEmptyArt picture{ width: 100%; flex-basis: auto; }
+  .cartEmptyArt img{ width: 100%; transform: none; }
+  .cartActionsRow{ grid-template-columns: minmax(0, .92fr) minmax(0, 1.28fr); }
+}
+
+.pac-container {
+  z-index: 99999 !important;
+  border-radius: 12px;
+  margin-top: 6px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.12);
+  border: 1px solid #e5e7eb;
+}
+
+/* ===== FREE PICKUP BADGE GLOW ===== */
+.freeTag, 
+#checkoutShippingLabel .free-highlight {
+  color: #16a34a;
+  font-weight: 700;
+  background: #dcfce7;
+  padding: 1px 7px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  box-shadow: 0 0 0 3px #bbf7d0;
+  animation: freeGlow 1.8s ease-in-out infinite;
+}
+
+@keyframes freeGlow {
+  0%, 100% { box-shadow: 0 0 0 3px #bbf7d0; }
+  50%       { box-shadow: 0 0 8px 4px #86efac; }
+}
+
+/* ==================================================
+   HERO TRENDING SEARCH ANIMATION
+
+   Small entrance animation used only on mobile to
+   softly reveal the trending search links after the
+   hero loads.
+
+   Edit duration on .heroTrendRail if needed.
+================================================== */
+@keyframes trendFade{
+
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+
+  
+
 }

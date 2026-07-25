@@ -260,6 +260,47 @@ function splitTags(value) {
   return Array.from(new Set(tokens));
 }
 
+/* =====================================================
+   CATEGORY NORMALIZATION
+   Homepage category slugs are the single source of truth.
+   ===================================================== */
+
+const CATEGORY_NORMALIZATION_MAP = {
+  "audio": "audio",
+
+  "phones": "phones",
+  "smartphones": "phones",
+
+  "gaming": "gaming",
+
+  "creator gear": "cameras",
+  "camera accessories": "cameras",
+  "tripods": "cameras",
+  "ring lights": "cameras",
+  "cameras": "cameras",
+
+  "wearables": "wearables",
+
+  "smart home": "smart-home",
+  "smart-home": "smart-home",
+
+  "power": "power",
+
+  "storage memory cards": "accessories",
+  "storage flash drives": "accessories",
+  "computing accessories": "accessories",
+  "fitness": "accessories",
+  "health": "accessories",
+  "accessories car mounts": "accessories",
+  "car mounts": "accessories",
+  "accessories": "accessories"
+};
+
+function normalizeCategory(category) {
+  const key = fixText(category).toLowerCase().trim();
+  return CATEGORY_NORMALIZATION_MAP[key] || "accessories";
+}
+
 function build() {
   console.log("Reading CSVs...");
   const hubText = readText(PRODUCT_HUB_CSV);
@@ -305,7 +346,7 @@ function build() {
       .map((k) => copyImageToFolder(toAbsoluteImagePath(row[k]), webFolder))
       .filter(Boolean);
 
-    const category = fixText(row["Category"]).replace(/[-_]/g, " ");
+    const category = normalizeCategory(row["Category"]);
     const tags = Array.from(
       new Set([
         ...splitTags(row["Search Tags"]),

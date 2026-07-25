@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="shop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <g id="SVGRepo_iconCarrier" data-name="SVGRepo iconCarrier">
+    <g>
+      <path d="m576.6,311.65h177.1V90.28c0-24.47-19.8-44.28-44.28-44.28h-132.83v265.65Z" fill="#fff"/>
+      <rect x="310.95" y="46" width="177.1" height="265.65" fill="#fff"/>
+      <path d="m222.4,311.65V46H89.57c-24.47,0-44.28,19.8-44.28,44.28v221.38h177.1Z" fill="#fff"/>
+      <path d="m89.57,400.2v309.93c0,24.47,19.8,44.28,44.28,44.28h177.1v-221.38h177.1v221.38h177.1c24.47,0,44.28-19.8,44.28-44.28v-309.93H89.57Z" fill="#fff"/>
+    </g>
+  </g>
+</svg>
