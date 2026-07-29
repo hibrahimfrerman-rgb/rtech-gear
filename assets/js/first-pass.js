@@ -310,13 +310,56 @@
     const subtotal = cart.reduce((s, i) => s + (Number(i.price) || 0) * (Number(i.qty) || 1), 0);
     const total = subtotal + (Number(shipping.shippingFee) || 0);
 
+    // ORDER OBJECT (Sprint 12) — built once, before any payment request is sent.
+    // Not saved to localStorage and not sent to any API yet — this is just the
+    // in-memory shape that future sprints (STK response, callback confirm,
+    // localStorage save) will read from and fill in further.
+    // Edit this block to add/remove fields the order needs to carry.
+    const order = {
+      reference: "RTG-" + Date.now(),
+      status: "pending",
+      createdAt: new Date().toISOString(),
+
+      customer: {
+        name,
+        phone,
+        email
+      },
+
+      items: cart.map((item) => ({ ...item })), // snapshot copy, not a live reference to cart
+
+      totals: {
+        subtotal,
+        shippingFee: Number(shipping.shippingFee) || 0,
+        total,
+        currency: (typeof STORE_CONFIG !== "undefined" && STORE_CONFIG.currency) || "KES"
+      },
+
+      delivery: {
+        county: (el("countySelect") || {}).value || "",
+        location: (el("location") || {}).value || "",
+        latitude: (el("locationLat") || {}).value || "",
+        longitude: (el("locationLng") || {}).value || "",
+        notes: (el("notes") || {}).value || "",
+        deliveryMode: shipping.deliveryMode || ""
+      },
+
+      payment: {
+        method,
+        checkoutRequestId: null,
+        merchantRequestId: null,
+        dpoToken: null,
+        receipt: null
+      }
+    };
+
     if (!cart.length) { alert("Your cart is empty."); return; }
 
     if (method === "M-Pesa") {
       try {
         const r = await fetch("/.netlify/functions/mpesa-stk", {
           method: "POST", headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ phone, name, email, amount: total })
+          body: JSON.stringify({ phone, name, email, amount: total, reference: order.reference })
         });
         const j = await r.json();
         if (!r.ok) throw new Error(j.message || "M-Pesa request failed");

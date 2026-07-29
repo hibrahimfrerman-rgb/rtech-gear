@@ -103,7 +103,13 @@ exports.handler = async (event) => {
   const phone = normalizeMsisdn(payload.phone);
   const amount = Math.round(Number(payload.amount || 0));
   // AccountReference max 12 chars, TransactionDesc max 13 chars per Daraja spec.
-  const accountReference = String(payload.reference || payload.name || "RTechGear").slice(0, 12);
+  const accountReference =
+  String(
+    payload.reference ||
+    payload.orderNumber ||
+    payload.orderId ||
+    "RTechGear"
+  ).slice(0, 12);
   const description = String(payload.description || "RTech order").slice(0, 13);
 
   if (!/^254(7|1)\d{8}$/.test(phone)) {
@@ -150,6 +156,13 @@ exports.handler = async (event) => {
     AccountReference: accountReference,
     TransactionDesc: description
   };
+
+  // TEMPORARY DEBUG LOG — Order Reference Propagation Verification.
+  // Confirms the value Patch 1 sent from first-pass.js made it all the
+  // way into the Daraja STK payload as AccountReference.
+  // REMOVE after verification succeeds (see PATCH MODE — TEMPORARY
+  // VERIFICATION, Sprint: Payment Completion Pipeline).
+  console.log("Account Reference:", stkPayload.AccountReference);
 
   // STK Push step.
   try {
