@@ -157,13 +157,6 @@ exports.handler = async (event) => {
     TransactionDesc: description
   };
 
-  // TEMPORARY DEBUG LOG — Order Reference Propagation Verification.
-  // Confirms the value Patch 1 sent from first-pass.js made it all the
-  // way into the Daraja STK payload as AccountReference.
-  // REMOVE after verification succeeds (see PATCH MODE — TEMPORARY
-  // VERIFICATION, Sprint: Payment Completion Pipeline).
-  console.log("Account Reference:", stkPayload.AccountReference);
-
   // STK Push step.
   try {
     const stkRes = await fetch(`${DARAJA_BASE_URL}/mpesa/stkpush/v1/processrequest`, {
