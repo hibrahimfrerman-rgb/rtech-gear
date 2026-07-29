@@ -75,6 +75,25 @@ try {
   console.log("Phone:", phone);
   console.log("Transaction Date:", transactionDate);
 
+  const checkoutRequestId = stkCallback.CheckoutRequestID;
+  const merchantRequestId = stkCallback.MerchantRequestID;
+
+  const paymentResult = {
+    method: "M-Pesa",
+    status: "paid",
+    resultCode,
+    resultDescription,
+    checkoutRequestId,
+    merchantRequestId,
+    amount,
+    receipt,
+    phone,
+    transactionDate
+  };
+
+  console.log("M-Pesa Payment Result:");
+  console.log(JSON.stringify(paymentResult, null, 2));
+
 } else {
 
   console.log("❌ PAYMENT FAILED");
