@@ -1,4 +1,6 @@
-﻿/* mpesa-stk.js
+﻿const { getStore } = require("@netlify/blobs");
+
+/* mpesa-stk.js
    Production Safaricom Daraja STK Push endpoint.
    Called by first-pass.js's handlePayment() when payment method === "M-Pesa".
    Frontend contract (unchanged): POST { phone, name, email, amount } -> { ok, message }
@@ -180,6 +182,17 @@ exports.handler = async (event) => {
         })
       };
     }
+
+    const checkoutRequestId = stkData.CheckoutRequestID;
+
+    const correlationStore = getStore("mpesa-correlations");
+
+    await correlationStore.setJSON(accountReference, {
+      accountReference,
+      checkoutRequestId,
+      merchantRequestId: stkData.MerchantRequestID,
+      createdAt: new Date().toISOString()
+    });
 
     return {
       statusCode: 200,
