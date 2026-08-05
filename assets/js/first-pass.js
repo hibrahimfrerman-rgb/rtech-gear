@@ -357,9 +357,33 @@
 
     if (method === "M-Pesa") {
       try {
+        // PATCH 4B — save the Checkout Order to the Order Repository
+        // BEFORE M-Pesa is contacted. The repository is the source of
+        // truth from this point on: we use its returned canonical
+        // order object directly rather than mutating the local one.
+        const saveRes = await fetch("/.netlify/functions/order-save", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            customer: order.customer,
+            items: order.items,
+            totals: order.totals,
+            delivery: order.delivery,
+            payment: order.payment
+          })
+        });
+        const saveJson = await saveRes.json();
+        if (!saveRes.ok || !saveJson.ok || !saveJson.order) {
+          throw new Error(saveJson.message || "Could not save your order. Please try again.");
+        }
+
+        // Repository-returned canonical order — used for the rest of
+        // this payment flow instead of the local `order` variable.
+        const canonicalOrder = saveJson.order;
+
         const r = await fetch("/.netlify/functions/mpesa-stk", {
           method: "POST", headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ phone, name, email, amount: total, reference: order.reference })
+          body: JSON.stringify({ phone, name, email, amount: total, reference: canonicalOrder.reference })
         });
         const j = await r.json();
         if (!r.ok) throw new Error(j.message || "M-Pesa request failed");

@@ -1,3 +1,5 @@
+const { getStore } = require("@netlify/blobs");
+const { updateOrderPayment } = require("./order-repository");
 exports.handler = async (event) => {
 
   if (event.httpMethod !== "POST") {
@@ -49,6 +51,9 @@ try {
   const resultCode = stkCallback.ResultCode;
   const resultDescription = stkCallback.ResultDesc;
 
+  const paymentStatus =
+    resultCode === 0 ? "paid" : "failed";
+
   console.log("Result Code:", resultCode);
   console.log("Result Description:", resultDescription);
 
@@ -78,9 +83,23 @@ try {
   const checkoutRequestId = stkCallback.CheckoutRequestID;
   const merchantRequestId = stkCallback.MerchantRequestID;
 
+  const correlationStore = getStore("mpesa-correlations");
+
+  const correlation = await correlationStore.get(checkoutRequestId, {
+    type: "json"
+  });
+
+  if (!correlation) {
+    console.error("Correlation record not found.");
+  } else if (!correlation.accountReference) {
+    console.error("Canonical accountReference missing from correlation record.");
+  }
+
+  const accountReference = correlation?.accountReference || null;
+
   const paymentResult = {
     method: "M-Pesa",
-    status: "paid",
+    status: paymentStatus,
     resultCode,
     resultDescription,
     checkoutRequestId,
@@ -93,6 +112,17 @@ try {
 
   console.log("M-Pesa Payment Result:");
   console.log(JSON.stringify(paymentResult, null, 2));
+
+  if (accountReference) {
+    try {
+      await updateOrderPayment(accountReference, {
+        status: paymentStatus,
+        payment: paymentResult
+      });
+    } catch (error) {
+      console.error("Failed to update order payment:", error);
+    }
+  }
 
 } else {
 
