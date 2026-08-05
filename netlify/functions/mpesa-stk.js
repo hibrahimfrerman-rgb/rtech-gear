@@ -187,7 +187,7 @@ exports.handler = async (event) => {
 
     const correlationStore = getStore("mpesa-correlations");
 
-    await correlationStore.setJSON(accountReference, {
+    await correlationStore.setJSON(checkoutRequestId, {
       accountReference,
       checkoutRequestId,
       merchantRequestId: stkData.MerchantRequestID,
