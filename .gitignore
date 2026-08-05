@@ -20,3 +20,4 @@ yarn-error.log*
 
 # Local tooling/build output (not needed for public demo site)
 admin/
+.vscode/
