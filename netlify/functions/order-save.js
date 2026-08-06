@@ -85,6 +85,12 @@ exports.handler = async (event) => {
       body: JSON.stringify({ ok: true, order })
     };
   } catch (err) {
+    // DIAGNOSTIC LOGGING — Sprint 4A/4C forensic fix.
+    // The previous catch block discarded `err`, so the real cause of every
+    // order-save 500 was invisible in Netlify function logs. This line does
+    // NOT change the response the browser sees (still a generic 500) — it
+    // only surfaces the real error server-side so we can write the actual fix.
+    console.error("order-save: createOrder failed:", err && err.message, err && err.stack);
     return {
       statusCode: 500,
       headers: { "Content-Type": "application/json" },
