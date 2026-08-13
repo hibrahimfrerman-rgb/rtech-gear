@@ -1,4 +1,5 @@
 ﻿const { getStore } = require("@netlify/blobs");
+const { blobOptions } = require("./blob-context");
 
 /* mpesa-stk.js
    Production Safaricom Daraja STK Push endpoint.
@@ -185,7 +186,7 @@ exports.handler = async (event) => {
 
     const checkoutRequestId = stkData.CheckoutRequestID;
 
-    const correlationStore = getStore("mpesa-correlations");
+    const correlationStore = getStore("mpesa-correlations", blobOptions());
 
     await correlationStore.setJSON(checkoutRequestId, {
       accountReference,

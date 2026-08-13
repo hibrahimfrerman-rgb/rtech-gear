@@ -48,13 +48,14 @@
    ============================================================ */
 
 const { getStore } = require("@netlify/blobs");
+const { blobOptions } = require("./blob-context");
 
 const ORDER_STORE_NAME = "rtech-orders";
 
 // Single place that opens the Blobs store, so the store name above is
 // the only line anyone needs to change if it's ever renamed.
 function ordersStore() {
-  return getStore(ORDER_STORE_NAME);
+  return getStore(ORDER_STORE_NAME, blobOptions());
 }
 
 function isNonEmptyString(value) {

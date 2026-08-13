@@ -1,4 +1,5 @@
 const { getStore } = require("@netlify/blobs");
+const { blobOptions } = require("./blob-context");
 const { updateOrderPayment } = require("./order-repository");
 exports.handler = async (event) => {
 
@@ -83,7 +84,7 @@ try {
   const checkoutRequestId = stkCallback.CheckoutRequestID;
   const merchantRequestId = stkCallback.MerchantRequestID;
 
-  const correlationStore = getStore("mpesa-correlations");
+  const correlationStore = getStore("mpesa-correlations", blobOptions());
 
   const correlation = await correlationStore.get(checkoutRequestId, {
     type: "json"
