@@ -106,13 +106,14 @@ exports.handler = async (event) => {
   const phone = normalizeMsisdn(payload.phone);
   const amount = Math.round(Number(payload.amount || 0));
   // AccountReference max 12 chars, TransactionDesc max 13 chars per Daraja spec.
-  const accountReference =
-  String(
-    payload.reference ||
-    payload.orderNumber ||
-    payload.orderId ||
-    "RTechGear"
-  ).slice(0, 12);
+  const orderReference = String(
+  payload.reference ||
+  payload.orderNumber ||
+  payload.orderId ||
+  "RTechGear"
+);
+
+const darajaAccountReference = orderReference.slice(0, 12);
   const description = String(payload.description || "RTech order").slice(0, 13);
 
   if (!/^254(7|1)\d{8}$/.test(phone)) {
@@ -156,7 +157,7 @@ exports.handler = async (event) => {
     PartyB: MPESA_SHORTCODE,
     PhoneNumber: phone,
     CallBackURL: MPESA_CALLBACK_URL,
-    AccountReference: accountReference,
+    AccountReference: darajaAccountReference,
     TransactionDesc: description
   };
 
@@ -189,7 +190,7 @@ exports.handler = async (event) => {
     const correlationStore = getStore("mpesa-correlations", blobOptions());
 
     await correlationStore.setJSON(checkoutRequestId, {
-      accountReference,
+      accountReference: orderReference,
       checkoutRequestId,
       merchantRequestId: stkData.MerchantRequestID,
       createdAt: new Date().toISOString()
