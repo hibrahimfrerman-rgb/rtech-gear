@@ -842,8 +842,21 @@
       });
     }
 
+    /* Explicit negative payment/order states (exact match on order.status).
+       These are final problem states: the age-based guess in
+       stepIndexFromOrder() must never push them forward to Packed/Shipped/
+       Delivered. Returns a customer-facing label, or "" for any other status
+       (paid, pending, legacy/unknown keep their existing behaviour).
+       To protect another status, add it to the map below. */
+    function problemLabelFromOrder(order) {
+      const s = String(order.status || "").trim().toLowerCase();
+      return ({ failed: "Payment failed", cancelled: "Order cancelled",
+                canceled: "Order cancelled", rejected: "Payment rejected" })[s] || "";
+    }
+
     function stepIndexFromOrder(order) {
       const explicit = String(order.status || "").toLowerCase();
+      if (problemLabelFromOrder(order)) return -1; // problem state: skip every progress/age guess
       if (explicit.includes("deliver")) return 3;
       if (explicit.includes("ship"))    return 2;
       if (explicit.includes("pack"))    return 1;
@@ -858,14 +871,15 @@
     }
 
     function fmtAmount(order) {
-      const n = Number(order.amount || 0);
+      const n = Number((order.totals && order.totals.total) || order.amount || 0);
       const s = n % 1 === 0 ? n.toFixed(0) : n.toFixed(2);
-      return (order.currency || "KES") + " " + s;
+      return ((order.totals && order.totals.currency) || order.currency || "KES") + " " + s;
     }
 
     function fmtDate(ts) {
       if (!ts) return "—";
-      const d = new Date(Number(ts));
+      const value = /^\d+$/.test(String(ts)) ? Number(ts) : ts;
+      const d = new Date(value);
       return isNaN(d) ? "—" : d.toLocaleDateString("en-KE", { day: "numeric", month: "short", year: "numeric" });
     }
 
@@ -884,9 +898,10 @@
 
       list.innerHTML = orders.slice(0, 5).map(o => {
         const idx = stepIndexFromOrder(o);
-        const statusLabel = STEPS[idx].name;
+        const statusLabel = problemLabelFromOrder(o) || STEPS[idx].name;
         const ts = String(o.reference || "").split("-")[1];
-        return `<div class="trackHistoryItem" data-ref="${o.reference}" data-email="${o.email || ""}">
+        const email = (o.customer && o.customer.email) || o.email || "";
+        return `<div class="trackHistoryItem" data-ref="${o.reference}" data-email="${email}">
           <div>
             <div class="trackHistoryRef">${o.reference}</div>
             <div class="trackHistoryDate">${fmtDate(ts)}</div>
@@ -972,46 +987,67 @@
     }
 
     /* ── Core lookup ───────────────────────────────────────── */
-    function findOrder(ref, email) {
-      const r = ref.trim().toLowerCase();
-      const e = email.trim().toLowerCase();
-      return loadOrders().find(o =>
-        String(o.reference || "").trim().toLowerCase() === r &&
-        String(o.email    || "").trim().toLowerCase() === e
-      ) || null;
-    }
-
-    function submitLookup(orderId, email) {
-      const order = findOrder(orderId, email);
-      if (!order) {
-        showError(
-          "box-open",
-          "Order not found",
-          "We couldn't match that Order ID and email. Double-check your confirmation message or contact our dispatch team on WhatsApp."
-        );
-        setAllWaLinks(`Hi R-Tech Gear, I need help tracking order ${orderId}.`);
-        return;
+    async function submitLookup(orderId, email) {
+      const btn = $("trackSubmitBtn");
+      const label = $("trackBtnLabel");
+      btn.disabled = true;
+      label.textContent = "Searching…";
+      if (!btn.querySelector(".spinner")) {
+        btn.insertAdjacentHTML("afterbegin", "<span class='spinner'></span>");
       }
 
-      const idx = stepIndexFromOrder(order);
-      const statusLabel = STEPS[idx].name;
-      const isDelivered = idx === 3;
-      const isShipped   = idx >= 2;
-      const ts = String(order.reference || "").split("-")[1];
+      try {
+        const response = await fetch("/api/order-get", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ reference: orderId, email })
+        });
+        const result = await response.json();
+        const order = result && result.ok && result.order;
+        if (!response.ok || !order) {
+          showError(
+            "box-open",
+            "Order not found",
+            "We couldn't match that Order ID and email. Double-check your confirmation message or contact our dispatch team on WhatsApp."
+          );
+          setAllWaLinks(`Hi R-Tech Gear, I need help tracking order ${orderId}.`);
+          return;
+        }
 
-      showResult(
-        "Order found",
-        statusLabel,
-        isDelivered ? "is-success" : isShipped ? "is-success" : "is-warn",
-        [
-          { label: "Order ID",    value: order.reference },
-          { label: "Email",       value: order.email || email },
-          { label: "Amount",      value: fmtAmount(order) },
-          { label: "Order date",  value: fmtDate(ts) }
-        ],
-        idx,
-        `Hi R-Tech Gear, I need an update on order ${order.reference}.`
-      );
+        const idx = stepIndexFromOrder(order);
+        const problem = problemLabelFromOrder(order); // "" unless failed/cancelled/rejected
+        const statusLabel = problem || STEPS[idx].name;
+        const isDelivered = idx === 3;
+        const isShipped   = idx >= 2;
+        const ts = order.createdAt || String(order.reference || "").split("-")[1];
+
+        showResult(
+          problem ? "Payment problem" : "Order found",
+          statusLabel,
+          problem ? "is-error" : isDelivered ? "is-success" : isShipped ? "is-success" : "is-warn",
+          [
+            { label: "Order ID",    value: order.reference },
+            { label: "Email",       value: email },
+            { label: "Amount",      value: fmtAmount(order) },
+            { label: "Order date",  value: fmtDate(ts) }
+          ],
+          idx,
+          problem
+            ? `Hi R-Tech Gear, order ${order.reference} shows "${statusLabel}". I need help.`
+            : `Hi R-Tech Gear, I need an update on order ${order.reference}.`
+        );
+      } catch (err) {
+        showError(
+          "triangle-exclamation",
+          "Tracking unavailable",
+          "We couldn't retrieve your order right now. Please try again shortly or contact our dispatch team on WhatsApp."
+        );
+        setAllWaLinks(`Hi R-Tech Gear, I need help tracking order ${orderId}.`);
+      } finally {
+        btn.querySelector(".spinner")?.remove();
+        label.textContent = "Track order";
+        btn.disabled = false;
+      }
     }
 
     /* ── DPO payment token flow ─────────────────────────────── */
@@ -1088,20 +1124,7 @@
       setFieldError($("trackEmail"),   $("errEmail"),   !email);
       if (!orderId || !email) return;
 
-      // Button loading state
-      const btn   = $("trackSubmitBtn");
-      const label = $("trackBtnLabel");
-      btn.disabled = true;
-      label.textContent = "Searching…";
-      btn.insertAdjacentHTML("afterbegin", "<span class='spinner'></span>");
-
-      // Small artificial delay so the UX feels responsive
-      setTimeout(() => {
-        btn.querySelector(".spinner")?.remove();
-        label.textContent = "Track order";
-        btn.disabled = false;
-        submitLookup(orderId, email);
-      }, 480);
+      submitLookup(orderId, email);
     });
 
     // Clear errors on input
